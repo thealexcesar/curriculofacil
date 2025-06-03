@@ -1,2 +1,4 @@
 # curriculofacil
-Uma ferramenta simples e intuitiva para criar currículos, ideal para quem tem pouca experiência com tecnologia. Basta preencher as informações e gerar um currículo profissional em poucos cliques.
+O "Currículo Fácil" é uma aplicação web voltada para inclusão digital que permite a criação simples e intuitiva de
+currículos profissionais, sem necessidade de cadastro ou login. Focada em usuários com pouca familiaridade com TI,
+a ferramenta oferece uma experiência guiada para gerar currículos atraentes e eficazes.
