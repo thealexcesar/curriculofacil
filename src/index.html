@@ -3,222 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>curriculo facil</title>
+    <title>Currículo Fácil - Gerador de Currículos</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/tailwind.css">
 </head>
-<body class="bg-gray-50 min-h-screen">
+<body class="bg-gray-50 min-h-screen py-8">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header class="text-center mb-10">
+        <h1 class="text-3xl font-bold text-gray-900">Currículo Fácil</h1>
+        <p class="text-gray-600">Crie um currículo profissional em minutos</p>
+    </header>
 
-<header class="bg-white shadow-sm border-b">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div class="flex items-center justify-between">
-            <div>
-                <h1 class="text-2xl font-bold text-gray-900">Easy Resume Builder</h1>
-                <p class="text-gray-600">Crie um currículo profissional em minutos</p>
-            </div>
-            <div class="flex space-x-2">
-                <button id="save-data" class="btn bg-green-600">
-                    <i class="material-symbols-outlined">save</i> <span>Salvar</span>
-                </button>
-                <button id="clear-data" class="btn bg-red-600">
-                    <i class="material-symbols-outlined">delete</i> <span>Delete</span>
-                </button>
-            </div>
-        </div>
-    </div>
-</header>
-
-<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <div class="mb-8">
-        <div class="flex items-center justify-center space-x-4 mb-4">
-            <div class="step-indicator active flex items-center justify-center w-10 h-10 bg-blue-600 text-white rounded-full font-semibold" data-step="1">1</div>
-            <div class="w-16 h-1 bg-gray-300 rounded"></div>
-            <div class="step-indicator flex items-center justify-center w-10 h-10 bg-gray-300 text-gray-600 rounded-full font-semibold" data-step="2">2</div>
-            <div class="w-16 h-1 bg-gray-300 rounded"></div>
-            <div class="step-indicator flex items-center justify-center w-10 h-10 bg-gray-300 text-gray-600 rounded-full font-semibold" data-step="3">3</div>
-            <div class="w-16 h-1 bg-gray-300 rounded"></div>
-            <div class="step-indicator flex items-center justify-center w-10 h-10 bg-gray-300 text-gray-600 rounded-full font-semibold" data-step="4">4</div>
-            <div class="w-16 h-1 bg-gray-300 rounded"></div>
-            <div class="step-indicator flex items-center justify-center w-10 h-10 bg-gray-300 text-gray-600 rounded-full font-semibold" data-step="5">5</div>
+    <div class="no-print mb-10">
+        <div class="flex items-center justify-center space-x-4 mb-6">
+            <div class="step-indicator active" data-step="1">1</div>
+            <div class="step-indicator-line"></div>
+            <div class="step-indicator" data-step="2">2</div>
+            <div class="step-indicator-line"></div>
+            <div class="step-indicator" data-step="3">3</div>
+            <div class="step-indicator-line"></div>
+            <div class="step-indicator" data-step="4">4</div>
+            <div class="step-indicator-line"></div>
+            <div class="step-indicator" data-step="5">5</div>
         </div>
         <div class="text-center">
-            <span id="step-title" class="text-lg font-semibold text-gray-700">Informações Pessoais</span>
+            <h2 id="step-title" class="text-xl font-semibold text-gray-800">Informações Pessoais</h2>
         </div>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
-        <div class="bg-white rounded-lg shadow-sm p-6">
+        <div class="no-print bg-white rounded-lg shadow-md p-6">
             <form id="resume-form">
-
                 <section id="step-1" class="form-section active">
-                    <h2 class="text-xl font-semibold mb-6 text-gray-800">Informações Pessoais</h2>
-
+                    <h3 class="text-xl font-semibold mb-6 text-gray-800">Informações Pessoais</h3>
                     <div class="space-y-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Nome Completo</label>
-                            <input type="text" id="personal-name" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Seu nome completo">
+                        <div class="form-group">
+                            <label for="name">Nome Completo</label>
+                            <input type="text" id="name" placeholder="Seu nome completo">
                         </div>
-
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Título Profissional</label>
-                            <input type="text" id="personal-title" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Ex: Desenvolvedor Frontend">
+                        <div class="form-group">
+                            <label for="title">Título Profissional</label>
+                            <input type="text" id="title" placeholder="Ex: Desenvolvedor Web">
                         </div>
-
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                                <input type="email" id="personal-email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="seu@email.com">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" placeholder="seu@email.com">
                             </div>
-
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Telefone</label>
-                                <input type="tel" id="personal-phone" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="(11) 99999-9999">
+                            <div class="form-group">
+                                <label for="phone">Telefone</label>
+                                <input type="tel" id="phone" placeholder="(00) 00000-0000">
                             </div>
                         </div>
-
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Localização</label>
-                            <input type="text" id="personal-location" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Cidade, Estado">
+                        <div class="form-group">
+                            <label for="location">Localização</label>
+                            <input type="text" id="location" placeholder="Cidade, Estado">
                         </div>
-
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">LinkedIn (opcional)</label>
-                            <input type="url" id="personal-linkedin" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="https://linkedin.com/in/seuperfil">
+                        <div class="form-group">
+                            <label for="linkedin">LinkedIn (opcional)</label>
+                            <input type="url" id="linkedin" placeholder="https://linkedin.com/in/seuperfil">
                         </div>
                     </div>
                 </section>
 
                 <section id="step-2" class="form-section">
-                    <h2 class="text-xl font-semibold mb-6 text-gray-800">Perfil Profissional</h2>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Resumo Profissional</label>
-                        <textarea id="profile-text" rows="6" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Escreva um breve resumo sobre sua experiência e objetivos profissionais..."></textarea>
+                    <h3 class="text-xl font-semibold mb-6 text-gray-800">Perfil Profissional</h3>
+                    <div class="form-group">
+                        <label for="profile">Resumo Profissional</label>
+                        <textarea id="profile" rows="6" placeholder="Escreva um breve resumo sobre sua experiência..."></textarea>
                         <div class="text-right text-sm text-gray-500 mt-1">
                             <span id="profile-counter">0</span>/400 caracteres
                         </div>
                     </div>
-
-                    <div class="mt-4 p-4 bg-blue-50 rounded-lg">
-                        <h3 class="font-semibold text-blue-800 mb-2">💡 Dicas:</h3>
-                        <ul class="text-sm text-blue-700 space-y-1">
-                            <li>• Mantenha entre 3-5 frases</li>
-                            <li>• Destaque suas principais habilidades</li>
-                            <li>• Mencione seus objetivos de carreira</li>
-                        </ul>
-                    </div>
                 </section>
 
                 <section id="step-3" class="form-section">
-                    <h2 class="text-xl font-semibold mb-6 text-gray-800">Experiência Profissional</h2>
-
-                    <div id="experience-container" class="space-y-6">
-                        <!-- Experience items will be added here -->
-                    </div>
-
-                    <button type="button" id="add-experience" class="w-full py-2 px-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition-colors">
-                        + Adicionar Experiência
+                    <h3 class="text-xl font-semibold mb-6 text-gray-800">Experiência Profissional</h3>
+                    <div id="experience-container" class="space-y-6"></div>
+                    <button type="button" id="add-experience" class="w-full py-3 px-4 mt-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition-colors">
+                        <span class="material-symbols-outlined align-middle mr-1">add</span> Adicionar Experiência
                     </button>
                 </section>
 
                 <section id="step-4" class="form-section">
-                    <h2 class="text-xl font-semibold mb-6 text-gray-800">Educação</h2>
-
-                    <div id="education-container" class="space-y-6">
-                        <!-- Education items will be added here -->
-                    </div>
-
-                    <button type="button" id="add-education" class="w-full py-2 px-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition-colors">
-                        + Adicionar Educação
+                    <h3 class="text-xl font-semibold mb-6 text-gray-800">Educação</h3>
+                    <div id="education-container" class="space-y-6"></div>
+                    <button type="button" id="add-education" class="w-full py-3 px-4 mt-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition-colors">
+                        <span class="material-symbols-outlined align-middle mr-1">add</span> Adicionar Educação
                     </button>
                 </section>
 
                 <section id="step-5" class="form-section">
-                    <h2 class="text-xl font-semibold mb-6 text-gray-800">Habilidades e Competências</h2>
-
+                    <h3 class="text-xl font-semibold mb-6 text-gray-800">Habilidades e Idiomas</h3>
                     <div class="space-y-6">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Adicionar Habilidade</label>
-                            <div class="flex space-x-2">
-                                <input type="text" id="skill-input" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Ex: JavaScript">
-                                <button type="button" id="add-skill" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Adicionar</button>
+                            <h4 class="font-medium text-gray-700 mb-3">Habilidades</h4>
+                            <div class="form-group">
+                                <div class="flex space-x-2">
+                                    <input type="text" id="skill-input" class="flex-1" placeholder="Ex: JavaScript">
+                                    <button type="button" id="add-skill" class="btn primary">Adicionar</button>
+                                </div>
                             </div>
+                            <div id="skills-list" class="flex flex-wrap gap-2 mt-3"></div>
                         </div>
-
-                        <div id="skills-list" class="flex flex-wrap gap-2">
-                            <!-- Skills will be displayed here -->
-                        </div>
-
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Adicionar Idioma</label>
-                            <div class="flex space-x-2">
-                                <input type="text" id="language-input" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Ex: Inglês">
-                                <select id="language-level" class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                    <option value="Básico">Básico</option>
-                                    <option value="Intermediário">Intermediário</option>
-                                    <option value="Avançado">Avançado</option>
-                                    <option value="Fluente">Fluente</option>
-                                    <option value="Nativo">Nativo</option>
-                                </select>
-                                <button type="button" id="add-language" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">Adicionar</button>
+                            <h4 class="font-medium text-gray-700 mb-3">Idiomas</h4>
+                            <div class="form-group">
+                                <div class="flex space-x-2">
+                                    <input type="text" id="language-input" class="flex-1" placeholder="Ex: Inglês">
+                                    <select id="language-level" class="w-40">
+                                        <option value="Básico">Básico</option>
+                                        <option value="Intermediário">Intermediário</option>
+                                        <option value="Avançado">Avançado</option>
+                                        <option value="Fluente">Fluente</option>
+                                        <option value="Nativo">Nativo</option>
+                                    </select>
+                                    <button type="button" id="add-language" class="btn primary">Adicionar</button>
+                                </div>
                             </div>
-                        </div>
-
-                        <div id="languages-list" class="flex flex-wrap gap-2">
-                            <!-- Languages will be displayed here -->
+                            <div id="languages-list" class="mt-3"></div>
                         </div>
                     </div>
                 </section>
             </form>
 
             <div class="flex justify-between mt-8 pt-6 border-t">
-                <button id="prev-btn" class="btn bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-                    <i class="material-symbols-outlined">chevron_left</i> Anterior
+                <button id="prev-btn" class="btn secondary disabled:opacity-50" disabled>
+                    <span class="material-symbols-outlined mr-1">arrow_back</span> Anterior
                 </button>
-                <button id="next-btn" class="btn bg-blue-600">
-                    Próximo <i class="material-symbols-outlined">chevron_right</i>
+                <button id="next-btn" class="btn primary">
+                    Próximo <span class="material-symbols-outlined ml-1">arrow_forward</span>
                 </button>
-                <button id="finish-btn" class="btn bg-green-600 hidden">
-                    <i class="material-symbols-outlined">check</i> Finalizar
+                <button id="finish-btn" class="btn success hidden">
+                    <span class="material-symbols-outlined mr-1">check</span> Finalizar
                 </button>
             </div>
         </div>
 
-        <div class="bg-white rounded-lg shadow-sm p-6">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-xl font-semibold text-gray-800">Visualização</h2>
-                <div class="flex space-x-2">
-                    <button id="export-pdf" class="btn bg-slate-800" title="PDF">
-                        <i class="material-symbols-outlined">picture_as_pdf</i> PDF
-                    </button>
-                    <button id="print-resume" class="btn bg-slate-600" title="Print">
-                        <i class="material-symbols-outlined">print</i> Imprimir
-                    </button>
+        <div>
+            <div class="backdrop-blur-xl bg-gray-900/10 rounded shadow-md p-6 border border-white/20">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800">Visualização</h3>
+                    <div class="flex space-x-2">
+                        <button id="export-pdf" class="btn primary">
+                            <span class="material-symbols-outlined mr-1">picture_as_pdf</span> PDF
+                        </button>
+                        <button id="print-resume" class="btn secondary">
+                            <span class="material-symbols-outlined mr-1">print</span> Imprimir
+                        </button>
+                    </div>
                 </div>
-            </div>
-
-            <div id="cv-preview" class="bg-white border rounded-lg p-6 min-h-[600px] shadow-sm">
-                <div class="text-center text-gray-500 py-20">
-                    Preencha as informações para ver a visualização do seu currículo
+                <div id="cv-preview" class="cv-preview min-h-[700px]">
+                    <div class="text-center text-gray-500 py-20">
+                        Preencha as informações para ver a visualização do seu currículo
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
-</main>
-
-<div id="autosave-notification" class="fixed top-4 right-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg transform translate-y-20 transition-transform opacity-0">
-    <i class="material-symbols-outlined">check</i> Dados salvos automaticamente
 </div>
 
-<script src="js/main.js"></script>
+<div id="autosave-notification" class="fixed top-4 right-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300">
+    <span class="material-symbols-outlined align-middle mr-1">check</span> Dados salvos automaticamente
+</div>
+
+<script src="js/app.js"></script>
 </body>
 </html>
