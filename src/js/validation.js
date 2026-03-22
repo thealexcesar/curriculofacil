@@ -57,6 +57,8 @@ function initStep1Validation() {
     if (linkedinInput.value === 'https://linkedin.com/in/') linkedinInput.value = '';
   });
 
+  document.getElementById('add-phone').addEventListener('click', addExtraPhone);
+
   updateNextButton();
 }
 
@@ -143,4 +145,38 @@ function toTitleCase(str) {
   return str.replace(/\w\S*/g, word =>
     word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
   );
+}
+
+function addExtraPhone() {
+  const container = document.getElementById('extra-phones');
+  const idx = container.children.length;
+
+  const div = document.createElement('div');
+  div.className = 'phone-extra';
+  div.className = 'phone-extra';
+  div.innerHTML = `
+    <div class="phone-extra-row">
+      <input type="tel" class="extra-phone-input" placeholder="(00) 00000-0000">
+      <label class="checkbox-label" title="WhatsApp">
+        <input type="checkbox" class="extra-phone-whatsapp">
+        <img src="assets/icons/whatsapp.svg" class="whatsapp-icon" alt="WhatsApp">
+      </label>
+      <button type="button" class="phone-extra-remove" title="Remover">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <input type="text" class="extra-phone-label" placeholder="Observação (ex: Trabalho, Recados...)">
+  `;
+
+  div.querySelector('.phone-extra-remove').addEventListener('click', () => div.remove());
+  div.querySelector('.extra-phone-input').addEventListener('input', (e) => {
+    e.target.value = applyPhoneMask(e.target.value);
+  });
+
+  div.querySelector('.phone-extra-remove').addEventListener('click', () => div.remove());
+  div.querySelector('.extra-phone-input').addEventListener('input', (e) => {
+    e.target.value = applyPhoneMask(e.target.value);
+  });
+
+  container.appendChild(div);
 }
