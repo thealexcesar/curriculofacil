@@ -1,4 +1,19 @@
-document.getElementById('test-success').onclick = () => showToast('Dados salvos com sucesso', 'success');
-document.getElementById('test-error').onclick   = () => showToast('Erro ao salvar dados', 'error');
-document.getElementById('test-warning').onclick = () => showToast('Preencha todos os campos', 'warning');
-document.getElementById('test-info').onclick    = () => showToast('Dica: use o LinkedIn completo', 'info');
+/**
+ * App entry point — initializes navigation and preview scaling
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  initNavigation();
+  scaleCvPreview();
+  window.addEventListener('resize', scaleCvPreview);
+});
+
+function scaleCvPreview() {
+  const wrapper = document.querySelector('.cv-preview-wrapper');
+  const preview = document.getElementById('cv-preview');
+  if (!wrapper || !preview) return;
+  const scale = wrapper.clientWidth / 794;
+  preview.style.transform = `scale(${scale})`;
+  preview.style.transformOrigin = 'top left';
+  wrapper.style.height = `${Math.round(1123 * scale)}px`;
+}
