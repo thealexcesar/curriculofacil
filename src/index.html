@@ -49,6 +49,41 @@
     <div class="form-panel no-print">
       <section id="step-1" class="step-section active">
         <h2 class="section-title">Informações Pessoais</h2>
+
+        <div class="field">
+          <label for="name">Nome Completo *</label>
+          <input type="text" id="name" placeholder="Ex: Maria da Silva" autocomplete="name">
+          <span class="field-hint" id="name-hint"></span>
+        </div>
+
+        <div class="field">
+          <label for="job-title">Título Profissional *</label>
+          <input type="text" id="job-title" placeholder="Ex: Desenvolvedora Web" autocomplete="organization-title">
+          <span class="field-hint" id="job-title-hint"></span>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="email">Email *</label>
+            <input type="email" id="email" placeholder="seu@email.com" autocomplete="email">
+            <span class="field-hint" id="email-hint"></span>
+          </div>
+          <div class="field">
+            <label for="phone">Telefone *</label>
+            <input type="tel" id="phone" placeholder="(00) 00000-0000" autocomplete="tel">
+            <span class="field-hint" id="phone-hint"></span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="location">Localização</label>
+          <input type="text" id="location" placeholder="Ex: Blumenau, SC" autocomplete="address-level2">
+        </div>
+
+        <div class="field">
+          <label for="linkedin">LinkedIn</label>
+          <input type="text" id="linkedin" placeholder="https://linkedin.com/in/seuperfil" autocomplete="off">
+        </div>
       </section>
       <section id="step-2" class="step-section">
         <h2 class="section-title">Perfil Profissional</h2>

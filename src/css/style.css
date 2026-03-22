@@ -387,6 +387,73 @@ body {
 .btn-sm { padding: 8px 14px; font-size: var(--font-size-sm); }
 
 /* ============================================================
+   FIELDS
+   ============================================================ */
+.field {
+    margin-bottom: var(--space-4);
+    position: relative;
+}
+
+.field label {
+    display: block;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-1);
+}
+
+.field input,
+.field textarea,
+.field select {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
+    color: var(--color-text);
+    background: var(--color-surface);
+    transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+    outline: none;
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+.field input.is-valid   { border-color: var(--color-success); }
+.field input.is-invalid { border-color: var(--color-danger); }
+.field-hint {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--font-size-xs);
+    margin-top: var(--space-1);
+    color: var(--color-danger);
+}
+
+.field-hint.error { color: var(--color-danger-text); }
+
+.field-hint .material-symbols-outlined {
+    font-size: 14px;
+    font-variation-settings: 'FILL' 1;
+}
+
+.field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+}
+
+@media (max-width: 480px) {
+    .field-row { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
    PREVIEW PANEL
    ============================================================ */
 .preview-panel {
