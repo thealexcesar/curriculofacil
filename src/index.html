@@ -69,9 +69,19 @@
             <span class="field-hint" id="email-hint"></span>
           </div>
           <div class="field">
-            <label for="phone">Telefone *</label>
-            <input type="tel" id="phone" placeholder="(00) 00000-0000" autocomplete="tel">
+            <label>Telefone *</label>
+            <div class="phone-entry">
+              <input type="tel" id="phone" placeholder="(00) 00000-0000" autocomplete="tel">
+              <label class="checkbox-label" title="WhatsApp">
+                <input type="checkbox" id="phone-whatsapp">
+                <img src="assets/icons/whatsapp.svg" class="whatsapp-icon" alt="WhatsApp">
+              </label>
+            </div>
             <span class="field-hint" id="phone-hint"></span>
+            <div id="extra-phones"></div>
+            <button type="button" class="btn-add-small" id="add-phone">
+              <span class="material-symbols-outlined">add</span> Adicionar telefone
+            </button>
           </div>
         </div>
 
