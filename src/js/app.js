@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initStep1Validation();
   initStep2Profile();
   initStep3Experience();
+  initStep4Education();
   scaleCvPreview();
   window.addEventListener('resize', scaleCvPreview);
 });
