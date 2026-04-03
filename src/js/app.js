@@ -5,6 +5,7 @@ import {initStep3Experience} from './components/ExperienceItem.js';
 import {initStep4Education} from './components/EducationItem.js';
 import {initPreview} from './components/Preview.js';
 import {showToast} from './components/Toast.js';
+import { t, setLocale, getLocale } from './services/i18n.js';
 
 /**
  * Application entry point.
@@ -13,6 +14,7 @@ import {showToast} from './components/Toast.js';
  * @returns {void}
  */
 document.addEventListener('DOMContentLoaded', () => {
+  setLocale(document.documentElement.lang);
   initNavigation();
   initStep1Validation();
   initStep2Profile();
