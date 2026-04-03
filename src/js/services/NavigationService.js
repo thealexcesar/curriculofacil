@@ -1,11 +1,12 @@
 /**
  * Step navigation
  */
+import {showToast} from "../components/Toast.js";
 
 const TOTAL_STEPS = 5;
 let currentStep = 1;
 
-function initNavigation() {
+export function initNavigation() {
   document.getElementById('next-btn').onclick   = () => goToStep(currentStep + 1);
   document.getElementById('prev-btn').onclick   = () => goToStep(currentStep - 1);
   document.getElementById('finish-btn').onclick = () => showToast('Currículo finalizado!', 'success');

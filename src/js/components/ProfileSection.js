@@ -4,7 +4,7 @@
 
 const PROFILE_MAX_CHARS = 400;
 
-function initStep2Profile() {
+export function initStep2Profile() {
   const textarea = document.getElementById('profile');
   const counter  = document.getElementById('profile-count');
   const hint     = document.getElementById('profile-hint');

@@ -1,23 +1,25 @@
-/**
- * App entry point — initializes navigation and preview scaling
- */
+import {initNavigation} from './services/NavigationService.js';
+import {initStep1Validation} from './services/ValidationService.js';
+import {initStep2Profile} from './components/ProfileSection.js';
+import {initStep3Experience} from './components/ExperienceItem.js';
+import {initStep4Education} from './components/EducationItem.js';
+import {initPreview} from './components/Preview.js';
+import {showToast} from './components/Toast.js';
 
+/**
+ * Application entry point.
+ * Initializes all modules after DOM is ready.
+ *
+ * @returns {void}
+ */
 document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
   initStep1Validation();
   initStep2Profile();
   initStep3Experience();
   initStep4Education();
-  scaleCvPreview();
-  window.addEventListener('resize', scaleCvPreview);
-});
+  initPreview();
 
-function scaleCvPreview() {
-  const wrapper = document.querySelector('.cv-preview-wrapper');
-  const preview = document.getElementById('cv-preview');
-  if (!wrapper || !preview) return;
-  const scale = wrapper.clientWidth / 794;
-  preview.style.transform = `scale(${scale})`;
-  preview.style.transformOrigin = 'top left';
-  wrapper.style.height = `${Math.round(1123 * scale)}px`;
-}
+  // TODO: remove — module test only
+  showToast('Módulos funcionando!', 'success', "Success", 2000);
+});

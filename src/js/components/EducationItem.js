@@ -2,7 +2,7 @@
  * Step 4 — Education
  */
 
-function initStep4Education() {
+export function initStep4Education() {
   document.getElementById('add-education').addEventListener('click', addEducation);
 }
 
