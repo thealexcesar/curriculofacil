@@ -1,0 +1,106 @@
+{
+  "app": {
+    "subtitle": "Create a professional resume in minutes",
+    "title": "Easy Resume"
+  },
+
+  "btn": {
+    "add": {
+      "education": "+ Add Education",
+      "experience": "+ Add Experience",
+      "phone": "+ Add phone"
+    },
+    "finish": "Finish",
+    "next": "Next",
+    "prev": "Previous",
+    "print": "Print / PDF",
+    "remove": "Remove"
+  },
+
+  "field": {
+    "current": { "label": "Current job" },
+    "degree": {
+      "label": "Degree / Title *",
+      "placeholder": "Ex: Computer Science"
+    },
+    "description": { "label": "Description" },
+    "email": {
+      "error": {
+        "invalid": "Invalid e-mail",
+        "required": "E-mail is required"
+      },
+      "label": "E-mail"
+    },
+    "endDate": { "label": "End Date" },
+    "expCompany": {
+      "label": "Company *",
+      "placeholder": "Ex: Google"
+    },
+    "expTitle": {
+      "label": "Job Title *",
+      "placeholder": "Ex: Web Developer"
+    },
+    "institution": {
+      "label": "Institution *",
+      "placeholder": "Ex: MIT"
+    },
+    "jobTitle": {
+      "error": "Title is required",
+      "label": "Professional Title *",
+      "placeholder": "Ex: Full Stack Developer"
+    },
+    "linkedin": {
+      "label": "LinkedIn",
+      "placeholder": "https://linkedin.com/in/yourprofile"
+    },
+    "location": {
+      "label": "Location",
+      "placeholder": "Ex: New York, NY"
+    },
+    "name": {
+      "error": "Name is required",
+      "label": "Full Name *",
+      "placeholder": "Ex: John Smith"
+    },
+    "phone": {
+      "error": "Invalid phone number",
+      "label": "Phone *",
+      "placeholder": "(00) 00000-0000"
+    },
+    "profile": {
+      "error": "400 character limit reached",
+      "label": "Professional Summary",
+      "placeholder": "Ex: Professional with experience in..."
+    },
+    "startDate": { "label": "Start Date" }
+  },
+
+  "nav": {
+    "step": {
+      "1": "Personal",
+      "2": "Profile",
+      "3": "Experience",
+      "4": "Education",
+      "5": "Skills"
+    }
+  },
+
+  "preview": {
+    "empty": "Fill in your information to preview the resume",
+    "label": "Preview"
+  },
+
+  "section": {
+    "education": "Education",
+    "experience": "Work Experience",
+    "personal": "Personal Information",
+    "profile": "Professional Profile",
+    "skills": "Skills & Languages"
+  },
+
+  "toast": {
+    "finished": "Resume complete!",
+    "print": { "hint": "Uncheck \"Headers and footers\" in the print dialog" },
+    "saved": "Auto-saved"
+  }
+}

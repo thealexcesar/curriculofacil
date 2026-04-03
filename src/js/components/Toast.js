@@ -9,8 +9,6 @@
  * @property {string} icon   - Material icon name
  */
 
-const TOAST_DURATION = 4000;
-
 /** @type {Record<ToastVariant, ToastConfig>} */
 const TOAST_VARIANTS = {
   success: {bg: '#1a2e1a', border: '#16a34a', text: '#fff', muted: '#86efac', icon: 'check_circle'},

@@ -1,0 +1,106 @@
+{
+  "app": {
+    "subtitle": "Crie um currículo profissional em minutos",
+    "title": "Currículo Fácil"
+  },
+
+  "btn": {
+    "add": {
+      "education": "+ Adicionar Educação",
+      "experience": "+ Adicionar Experiência",
+      "phone": "+ Adicionar telefone"
+    },
+    "finish": "Finalizar",
+    "next": "Próximo",
+    "prev": "Anterior",
+    "print": "Imprimir / PDF",
+    "remove": "Remover"
+  },
+
+  "field": {
+    "current": { "label": "Trabalho atual" },
+    "degree": {
+      "label": "Curso / Título *",
+      "placeholder": "Ex: Análise e Desenvolvimento de Sistemas"
+    },
+    "description": { "label": "Descrição" },
+    "email": {
+      "error": {
+        "invalid": "E-mail inválido",
+        "required": "E-mail é obrigatório"
+      },
+      "label": "E-mail"
+    },
+    "endDate": { "label": "Data de Fim / Conclusão" },
+    "expCompany": {
+      "label": "Empresa *",
+      "placeholder": "Ex: Google"
+    },
+    "expTitle": {
+      "label": "Cargo *",
+      "placeholder": "Ex: Desenvolvedor Web"
+    },
+    "institution": {
+      "label": "Instituição *",
+      "placeholder": "Ex: UNINTER"
+    },
+    "jobTitle": {
+      "error": "Título é obrigatório",
+      "label": "Título Profissional *",
+      "placeholder": "Ex: Desenvolvedora Web"
+    },
+    "linkedin": {
+      "label": "LinkedIn",
+      "placeholder": "https://linkedin.com/in/seuperfil"
+    },
+    "location": {
+      "label": "Localização",
+      "placeholder": "Ex: Blumenau, SC"
+    },
+    "name": {
+      "error": "Nome é obrigatório",
+      "label": "Nome Completo *",
+      "placeholder": "Ex: Maria da Silva"
+    },
+    "phone": {
+      "error": "Telefone inválido (fixo ou celular)",
+      "label": "Telefone *",
+      "placeholder": "(00) 00000-0000"
+    },
+    "profile": {
+      "error": "Limite de 400 caracteres atingido",
+      "label": "Resumo Profissional",
+      "placeholder": "Ex: Profissional com experiência em..."
+    },
+    "startDate": { "label": "Data de Início" }
+  },
+
+  "nav": {
+    "step": {
+      "1": "Pessoal",
+      "2": "Perfil",
+      "3": "Experiência",
+      "4": "Educação",
+      "5": "Habilidades"
+    }
+  },
+
+  "preview": {
+    "empty": "Preencha as informações para visualizar o currículo",
+    "label": "Visualização"
+  },
+
+  "section": {
+    "education": "Educação",
+    "experience": "Experiência Profissional",
+    "personal": "Informações Pessoais",
+    "profile": "Perfil Profissional",
+    "skills": "Habilidades e Idiomas"
+  },
+
+  "toast": {
+    "finished": "Currículo finalizado!",
+    "print": { "hint": "Desmarque \"Cabeçalhos e rodapés\" no diálogo de impressão" },
+    "saved": "Salvo automaticamente"
+  }
+}
