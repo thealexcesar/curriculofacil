@@ -22,7 +22,6 @@ function addExperience(prefill = {}) {
     <div class="field-row">
       <div class="field">
         <label>Cargo *</label>
-        <input type="text" class="exp-title" placeholder="Ex: Desenvolvedor Web" value="${prefill.title || ''}">
       </div>
       <div class="field">
         <label>Empresa *</label>
