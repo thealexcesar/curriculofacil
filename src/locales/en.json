@@ -24,6 +24,10 @@
       "placeholder": "Ex: Computer Science"
     },
     "description": { "label": "Description" },
+    "eduDescription": {
+      "label": "Description (optional)",
+      "placeholder": "Additional information, relevant projects..."
+    },
     "email": {
       "error": {
         "invalid": "Invalid e-mail",
@@ -35,6 +39,9 @@
     "expCompany": {
       "label": "Company *",
       "placeholder": "Ex: Google"
+    },
+    "expDescription": {
+      "placeholder": "Describe your main responsibilities..."
     },
     "expTitle": {
       "label": "Job Title *",
@@ -65,6 +72,7 @@
     "phone": {
       "error": "Invalid phone number",
       "label": "Phone *",
+      "note": { "placeholder": "Note (ex: Work, Messages...)" },
       "placeholder": "(00) 00000-0000"
     },
     "profile": {
@@ -99,6 +107,7 @@
   },
 
   "toast": {
+    "close": { "aria": "Close notification" },
     "finished": "Resume complete!",
     "print": { "hint": "Uncheck \"Headers and footers\" in the print dialog" },
     "saved": "Auto-saved"

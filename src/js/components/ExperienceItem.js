@@ -1,3 +1,5 @@
+import { t } from '../services/i18n.js';
+
 /**
  * @typedef {Object} ExperienceData
  * @property {string}  title       - Job title
@@ -59,7 +61,7 @@ function createExperienceItem(initialData = {}, index) {
   element.innerHTML = `
     <div class="dynamic-item-header">
       <span class="dynamic-item-title">Experiência ${index}</span>
-      <button type="button" class="btn-remove" title="Remover">
+      <button type="button" class="btn-remove" title="${t('btn.remove')}">
         <span class="material-symbols-outlined">close</span>
       </button>
     </div>
