@@ -4,8 +4,7 @@ import {initStep2Profile} from './components/ProfileSection.js';
 import {initStep3Experience} from './components/ExperienceItem.js';
 import {initStep4Education} from './components/EducationItem.js';
 import {initPreview} from './components/Preview.js';
-import {showToast} from './components/Toast.js';
-import { t, setLocale, getLocale } from './services/i18n.js';
+import {initLocale, translateDOM} from './services/i18n.js';
 
 /**
  * Application entry point.
@@ -14,14 +13,13 @@ import { t, setLocale, getLocale } from './services/i18n.js';
  * @returns {void}
  */
 document.addEventListener('DOMContentLoaded', () => {
-  setLocale(document.documentElement.lang);
+  initLocale();
+  translateDOM();
+
   initNavigation();
   initStep1Validation();
   initStep2Profile();
   initStep3Experience();
   initStep4Education();
   initPreview();
-
-  // TODO: remove — module test only
-  showToast('Módulos funcionando!', 'success', "Success", 2000);
 });
