@@ -1,15 +1,20 @@
-/**
- * Step navigation
- */
-import {showToast} from "../components/Toast.js";
-import {t} from "./i18n.js";
+import {showToast}   from '../components/Toast.js';
+import {t} from './i18n.js';
+import {createState} from './StateService.js';
 
 const TOTAL_STEPS = 5;
-let currentStep = 1;
 
+/** @type {import('./StateService.js').State<number>} */
+const currentStep = createState(1);
+
+/**
+ * Initializes step navigation buttons and step item clicks.
+ *
+ * @returns {void}
+ */
 export function initNavigation() {
-  document.getElementById('next-btn').onclick   = () => goToStep(currentStep + 1);
-  document.getElementById('prev-btn').onclick   = () => goToStep(currentStep - 1);
+  document.getElementById('next-btn').onclick   = () => goToStep(currentStep.get() + 1);
+  document.getElementById('prev-btn').onclick   = () => goToStep(currentStep.get() - 1);
   document.getElementById('finish-btn').onclick = () => showToast(t('toast.finished'), 'success');
   document.getElementById('print-btn').onclick  = () => {
     const original = document.title;
@@ -22,15 +27,28 @@ export function initNavigation() {
     el.onclick = () => goToStep(parseInt(el.dataset.step));
   });
 
-  renderStep(currentStep);
+  // subscribe — renderStep runs automatically on every set()
+  currentStep.subscribe(renderStep);
+  renderStep(currentStep.get());
 }
 
+/**
+ * Navigates to the given step if within bounds.
+ *
+ * @param {number} step
+ * @returns {void}
+ */
 function goToStep(step) {
   if (step < 1 || step > TOTAL_STEPS) return;
-  currentStep = step;
-  renderStep(currentStep);
+  currentStep.set(step); // triggers renderStep via subscriber
 }
 
+/**
+ * Renders the active step — updates sections, nav items and buttons.
+ *
+ * @param {number} step
+ * @returns {void}
+ */
 function renderStep(step) {
   document.querySelectorAll('.step-section').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.step-item').forEach(el => el.classList.remove('active'));
@@ -39,6 +57,6 @@ function renderStep(step) {
   document.querySelector(`[data-step="${step}"]`).classList.add('active');
 
   document.getElementById('prev-btn').disabled = step === 1;
-  document.getElementById('next-btn').style.display   = step === TOTAL_STEPS ? 'none'         : 'inline-flex';
-  document.getElementById('finish-btn').style.display = step === TOTAL_STEPS ? 'inline-flex'  : 'none';
+  document.getElementById('next-btn').style.display   = step === TOTAL_STEPS ? 'none' : 'inline-flex';
+  document.getElementById('finish-btn').style.display = step === TOTAL_STEPS ? 'inline-flex' : 'none';
 }
