@@ -2,7 +2,7 @@
  * Step 3 — Work experience
  */
 
-function initStep3Experience() {
+export function initStep3Experience() {
   document.getElementById('add-experience').addEventListener('click', addExperience);
 }
 
