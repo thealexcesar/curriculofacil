@@ -1,0 +1,192 @@
+[1mdiff --git a/src/js/components/EducationItem.js b/src/js/components/EducationItem.js[m
+[1mindex d091e19..2b3695a 100644[m
+[1m--- a/src/js/components/EducationItem.js[m
+[1m+++ b/src/js/components/EducationItem.js[m
+[36m@@ -1,50 +1,122 @@[m
+[32m+[m[32mimport { t } from '../services/i18n.js';[m
+[32m+[m
+ /**[m
+[31m- * Step 4 — Education[m
+[32m+[m[32m * @typedef {Object} EducationData[m
+[32m+[m[32m * @property {string} degree      - Degree or title[m
+[32m+[m[32m * @property {string} institution - Institution name[m
+[32m+[m[32m * @property {string} startDate   - Format YYYY-MM[m
+[32m+[m[32m * @property {string} [endDate]   - Format YYYY-MM[m
+[32m+[m[32m * @property {string} [description][m
+  */[m
+ [m
+[32m+[m[32m/**[m
+[32m+[m[32m * @typedef {Object} EducationItemComponent[m
+[32m+[m[32m * @property {HTMLElement}         element - Component DOM element[m
+[32m+[m[32m * @property {() => EducationData} getData - Reads current field values[m
+[32m+[m[32m * @property {() => void}          destroy - Removes component from DOM[m
+[32m+[m[32m */[m
+[32m+[m
+[32m+[m[32m/** @type {EducationItemComponent[]} */[m
+[32m+[m[32mconst items = [];[m
+[32m+[m
+[32m+[m[32m/**[m
+[32m+[m[32m * Initializes the education step.[m
+[32m+[m[32m *[m
+[32m+[m[32m * @returns {void}[m
+[32m+[m[32m */[m
+ export function initStep4Education() {[m
+[31m-  document.getElementById('add-education').addEventListener('click', addEducation);[m
+[32m+[m[32m  document.getElementById('add-education')[m
+[32m+[m[32m    .addEventListener('click', () => addEducation());[m
+ }[m
+ [m
+[32m+[m[32m/**[m
+[32m+[m[32m * Creates and appends an education item to the list.[m
+[32m+[m[32m *[m
+[32m+[m[32m * @param {Partial<EducationData>} [prefill={}][m
+[32m+[m[32m * @returns {void}[m
+[32m+[m[32m */[m
+ function addEducation(prefill = {}) {[m
+   const container = document.getElementById('education-list');[m
+[31m-  const idx = container.children.length;[m
+[32m+[m[32m  const item = createEducationItem(prefill, items.length + 1);[m
+[32m+[m[32m  items.push(item);[m
+[32m+[m[32m  container.appendChild(item.element);[m
+[32m+[m[32m}[m
+ [m
+[31m-  const div = document.createElement('div');[m
+[31m-  div.className = 'dynamic-item';[m
+[31m-  div.innerHTML = `[m
+[32m+[m[32m/**[m
+[32m+[m[32m * Factory — creates a self-contained education item component.[m
+[32m+[m[32m *[m
+[32m+[m[32m * @param {Partial<EducationData>} initialData[m
+[32m+[m[32m * @param {number} index - Display index (1, 2, 3...)[m
+[32m+[m[32m * @returns {EducationItemComponent}[m
+[32m+[m[32m */[m
+[32m+[m[32mfunction createEducationItem(initialData = {}, index) {[m
+[32m+[m[32m  const element = document.createElement('div');[m
+[32m+[m[32m  element.className = 'dynamic-item';[m
+[32m+[m[32m  element.innerHTML = `[m
+     <div class="dynamic-item-header">[m
+[31m-      <span class="dynamic-item-title">Educação ${idx + 1}</span>[m
+[31m-      <button type="button" class="btn-remove" title="Remover">[m
+[32m+[m[32m      <span class="dynamic-item-title">${t('section.education')} ${index}</span>[m
+[32m+[m[32m      <button type="button" class="btn-remove" title="${t('btn.remove')}">[m
+         <span class="material-symbols-outlined">close</span>[m
+       </button>[m
+     </div>[m
+     <div class="field-row">[m
+       <div class="field">[m
+[31m-        <label>Curso / Título *</label>[m
+[31m-        <input type="text" class="edu-degree" placeholder="Ex: Análise e Desenvolvimento de Sistemas" value="${prefill.degree || ''}">[m
+[32m+[m[32m        <label>${t('field.degree.label')}</label>[m
+[32m+[m[32m        <input type="text" class="edu-degree"[m
+[32m+[m[32m               placeholder="${t('field.degree.placeholder')}"[m
+[32m+[m[32m               value="${initialData.degree ?? ''}">[m
+       </div>[m
+       <div class="field">[m
+[31m-        <label>Instituição *</label>[m
+[31m-        <input type="text" class="edu-institution" placeholder="Ex: UNINTER" value="${prefill.institution || ''}">[m
+[32m+[m[32m        <label>${t('field.institution.label')}</label>[m
+[32m+[m[32m        <input type="text" class="edu-institution"[m
+[32m+[m[32m               placeholder="${t('field.institution.placeholder')}"[m
+[32m+[m[32m               value="${initialData.institution ?? ''}">[m
+       </div>[m
+     </div>[m
+     <div class="field-row">[m
+       <div class="field">[m
+[31m-        <label>Data de Início</label>[m
+[31m-        <input type="month" class="edu-start" value="${prefill.startDate || ''}">[m
+[32m+[m[32m        <label>${t('field.startDate.label')}</label>[m
+[32m+[m[32m        <input type="month" class="edu-start" value="${initialData.startDate ?? ''}">[m
+       </div>[m
+       <div class="field">[m
+[31m-        <label>Data de Conclusão</label>[m
+[31m-        <input type="month" class="edu-end" value="${prefill.endDate || ''}">[m
+[32m+[m[32m        <label>${t('field.endDate.label')}</label>[m
+[32m+[m[32m        <input type="month" class="edu-end" value="${initialData.endDate ?? ''}">[m
+       </div>[m
+     </div>[m
+     <div class="field">[m
+[31m-      <label>Descrição (opcional)</label>[m
+[31m-      <textarea class="edu-description" rows="2" placeholder="Informações adicionais, projetos relevantes...">${prefill.description || ''}</textarea>[m
+[32m+[m[32m      <label>${t('field.eduDescription.label')}</label>[m
+[32m+[m[32m      <textarea class="edu-description" rows="2"[m
+[32m+[m[32m        placeholder="${t('field.eduDescription.placeholder')}">${initialData.description ?? ''}</textarea>[m
+     </div>[m
+   `;[m
+ [m
+[31m-  div.querySelector('.btn-remove').addEventListener('click', () => div.remove());[m
+[31m-  container.appendChild(div);[m
+[32m+[m[32m  const removeBtn = element.querySelector('.btn-remove');[m
+[32m+[m
+[32m+[m[32m  const destroy = () => {[m
+[32m+[m[32m    items.splice(items.indexOf(item), 1);[m
+[32m+[m[32m    element.remove();[m
+[32m+[m[32m  };[m
+[32m+[m
+[32m+[m[32m  removeBtn.addEventListener('click', destroy);[m
+[32m+[m
+[32m+[m[32m  /** @returns {EducationData} */[m
+[32m+[m[32m  const getData = () => ({[m
+[32m+[m[32m    degree:      element.querySelector('.edu-degree').value.trim(),[m
+[32m+[m[32m    institution: element.querySelector('.edu-institution').value.trim(),[m
+[32m+[m[32m    startDate:   element.querySelector('.edu-start').value,[m
+[32m+[m[32m    endDate:     element.querySelector('.edu-end').value,[m
+[32m+[m[32m    description: element.querySelector('.edu-description').value.trim(),[m
+[32m+[m[32m  });[m
+[32m+[m
+[32m+[m[32m  const item = { element, getData, destroy };[m
+[32m+[m[32m  return item;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m/**[m
+[32m+[m[32m * Returns data from all education items.[m
+[32m+[m[32m *[m
+[32m+[m[32m * @returns {EducationData[]}[m
+[32m+[m[32m */[m
+[32m+[m[32mexport function getEducationData() {[m
+[32m+[m[32m  return items.map(item => item.getData());[m
+ }[m
+[1mdiff --git a/src/js/components/Toast.js b/src/js/components/Toast.js[m
+[1mindex 683184e..95b409d 100644[m
+[1m--- a/src/js/components/Toast.js[m
+[1m+++ b/src/js/components/Toast.js[m
+[36m@@ -1,3 +1,5 @@[m
+[32m+[m[32mimport {t} from '../services/i18n.js';[m
+[32m+[m
+ /** @typedef {'success' | 'error' | 'warning' | 'info'} ToastVariant */[m
+ [m
+ /**[m
+[36m@@ -41,7 +43,7 @@[m [mexport function showToast(message, variant = 'info', title = '', duration = 3000[m
+         ${title ? `<div class="toast-title">${title}</div>` : ''}[m
+         <div class="toast-message" style="color:${title ? v.muted : v.text}">${message}</div>[m
+       </div>[m
+[31m-      <button class="toast-close" title="Fechar" aria-label="Fechar notificação">[m
+[32m+[m[32m      <button class="toast-close" title="${t('btn.remove')}" aria-label="${t('toast.close.aria')}">[m
+         <span class="material-symbols-outlined" style="font-size:18px">close</span>[m
+       </button>[m
+     </div>[m
+[1mdiff --git a/src/js/services/NavigationService.js b/src/js/services/NavigationService.js[m
+[1mindex 4572b9d..5bf8b7d 100644[m
+[1m--- a/src/js/services/NavigationService.js[m
+[1m+++ b/src/js/services/NavigationService.js[m
+[36m@@ -2,6 +2,7 @@[m
+  * Step navigation[m
+  */[m
+ import {showToast} from "../components/Toast.js";[m
+[32m+[m[32mimport {t} from "./i18n";[m
+ [m
+ const TOTAL_STEPS = 5;[m
+ let currentStep = 1;[m
+[36m@@ -9,11 +10,11 @@[m [mlet currentStep = 1;[m
+ export function initNavigation() {[m
+   document.getElementById('next-btn').onclick   = () => goToStep(currentStep + 1);[m
+   document.getElementById('prev-btn').onclick   = () => goToStep(currentStep - 1);[m
+[31m-  document.getElementById('finish-btn').onclick = () => showToast('Currículo finalizado!', 'success');[m
+[32m+[m[32m  document.getElementById('finish-btn').onclick = () => showToast(t('toast.finished'), 'success');[m
+   document.getElementById('print-btn').onclick  = () => {[m
+     const original = document.title;[m
+     document.title = '';[m
+[31m-    showToast('Desmarque "Cabeçalhos e rodapés" no diálogo de impressão', 'info');[m
+[32m+[m[32m    showToast(t('toast.print.hint'), 'info');[m
+     setTimeout(() => { window.print(); setTimeout(() => document.title = original, 500); }, 1500);[m
+   };[m
+ [m

@@ -2,6 +2,7 @@
  * Step navigation
  */
 import {showToast} from "../components/Toast.js";
+import {t} from "./i18n.js";
 
 const TOTAL_STEPS = 5;
 let currentStep = 1;
@@ -9,11 +10,11 @@ let currentStep = 1;
 export function initNavigation() {
   document.getElementById('next-btn').onclick   = () => goToStep(currentStep + 1);
   document.getElementById('prev-btn').onclick   = () => goToStep(currentStep - 1);
-  document.getElementById('finish-btn').onclick = () => showToast('Currículo finalizado!', 'success');
+  document.getElementById('finish-btn').onclick = () => showToast(t('toast.finished'), 'success');
   document.getElementById('print-btn').onclick  = () => {
     const original = document.title;
     document.title = '';
-    showToast('Desmarque "Cabeçalhos e rodapés" no diálogo de impressão', 'info');
+    showToast(t('toast.print.hint'), 'info');
     setTimeout(() => { window.print(); setTimeout(() => document.title = original, 500); }, 1500);
   };
 
