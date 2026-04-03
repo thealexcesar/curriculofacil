@@ -67,3 +67,23 @@ export function t(key) {
   const resolve = (obj) => keys.reduce((acc, k) => acc?.[k], obj);
   return resolve(LOCALES[current]) ?? resolve(LOCALES[DEFAULT_LOCALE]) ?? key;
 }
+
+/**
+ * Translates all DOM elements that have data-i18n or data-i18n-placeholder attributes.
+ * Call this once after initLocale() and whenever the locale changes.
+ *
+ * Supports:
+ * - data-i18n="key"             → sets element.textContent
+ * - data-i18n-placeholder="key" → sets element.placeholder
+ *
+ * @returns {void}
+ */
+export function translateDOM() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    el.textContent = t(el.dataset.i18n);
+  });
+
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    el.placeholder = t(el.dataset.i18nPlaceholder);
+  });
+}
