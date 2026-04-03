@@ -1,3 +1,5 @@
+import {t} from '../services/i18n.js';
+
 /** @typedef {'success' | 'error' | 'warning' | 'info'} ToastVariant */
 
 /**
@@ -41,7 +43,7 @@ export function showToast(message, variant = 'info', title = '', duration = 3000
         ${title ? `<div class="toast-title">${title}</div>` : ''}
         <div class="toast-message" style="color:${title ? v.muted : v.text}">${message}</div>
       </div>
-      <button class="toast-close" title="Fechar" aria-label="Fechar notificação">
+      <button class="toast-close" title="${t('btn.remove')}" aria-label="${t('toast.close.aria')}">
         <span class="material-symbols-outlined" style="font-size:18px">close</span>
       </button>
     </div>
