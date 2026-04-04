@@ -1,10 +1,10 @@
-import {initNavigation} from './services/NavigationService.js';
-import {initStep1Validation} from './services/ValidationService.js';
-import {initStep2Profile} from './components/ProfileSection.js';
-import {initStep3Experience} from './components/ExperienceItem.js';
-import {initStep4Education} from './components/EducationItem.js';
-import {initPreview} from './components/Preview.js';
-import {initLocale, translateDOM} from './services/i18n.js';
+import {initLocale, translateDOM} from "./services/i18n.js";
+import {initNavigation} from "./services/navigation.service.js";
+import {initStep1Validation} from "./services/validation.service.js";
+import {initStep2Profile} from "./components/profile-section/profile-section.component.js";
+import {initStep3Experience} from "./components/experience/experience.component.js";
+import {initStep4Education} from "./components/education/education.component.js";
+import {initPreview} from "./components/preview/preview.component.js";
 
 /**
  * Application entry point.

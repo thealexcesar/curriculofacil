@@ -5,11 +5,7 @@
   },
 
   "btn": {
-    "add": {
-      "education": "+ Ausbildung hinzufügen",
-      "experience": "+ Erfahrung hinzufügen",
-      "phone": "+ Telefon hinzufügen"
-    },
+    "add": "{{item}} hinzufügen",
     "finish": "Fertigstellen",
     "next": "Weiter",
     "prev": "Zurück",
@@ -20,7 +16,7 @@
   "field": {
     "current": { "label": "Aktuelle Stelle" },
     "degree": {
-      "label": "Abschluss / Titel *",
+      "label": "Abschluss / Titel",
       "placeholder": "z.B.: Informatik"
     },
     "description": { "label": "Beschreibung" },
@@ -37,23 +33,23 @@
     },
     "endDate": { "label": "Enddatum" },
     "expCompany": {
-      "label": "Unternehmen *",
+      "label": "Unternehmen",
       "placeholder": "z.B.: Google"
     },
     "expDescription": {
       "placeholder": "Beschreiben Sie Ihre Hauptaufgaben..."
     },
     "expTitle": {
-      "label": "Berufsbezeichnung *",
+      "label": "Berufsbezeichnung",
       "placeholder": "z.B.: Webentwickler"
     },
     "institution": {
-      "label": "Institution *",
+      "label": "Institution",
       "placeholder": "z.B.: TU Berlin"
     },
     "jobTitle": {
       "error": "Titel ist erforderlich",
-      "label": "Professioneller Titel *",
+      "label": "Professioneller Titel",
       "placeholder": "z.B.: Full Stack Entwickler"
     },
     "linkedin": {
@@ -66,12 +62,12 @@
     },
     "name": {
       "error": "Name ist erforderlich",
-      "label": "Vollständiger Name *",
+      "label": "Vollständiger Name",
       "placeholder": "z.B.: Max Mustermann"
     },
     "phone": {
       "error": "Ungültige Telefonnummer",
-      "label": "Telefon *",
+      "label": "Telefon",
       "note": { "placeholder": "Notiz (z.B.: Arbeit, Nachrichten...)" },
       "placeholder": "+49 000 00000000"
     },

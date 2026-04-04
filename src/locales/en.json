@@ -5,11 +5,7 @@
   },
 
   "btn": {
-    "add": {
-      "education": "+ Add Education",
-      "experience": "+ Add Experience",
-      "phone": "+ Add phone"
-    },
+    "add": "Add {{item}}",
     "finish": "Finish",
     "next": "Next",
     "prev": "Previous",
@@ -20,7 +16,7 @@
   "field": {
     "current": { "label": "Current job" },
     "degree": {
-      "label": "Degree / Title *",
+      "label": "Degree / Title",
       "placeholder": "Ex: Computer Science"
     },
     "description": { "label": "Description" },
@@ -37,23 +33,23 @@
     },
     "endDate": { "label": "End Date" },
     "expCompany": {
-      "label": "Company *",
+      "label": "Company",
       "placeholder": "Ex: Google"
     },
     "expDescription": {
       "placeholder": "Describe your main responsibilities..."
     },
     "expTitle": {
-      "label": "Job Title *",
+      "label": "Job Title",
       "placeholder": "Ex: Web Developer"
     },
     "institution": {
-      "label": "Institution *",
+      "label": "Institution",
       "placeholder": "Ex: MIT"
     },
     "jobTitle": {
       "error": "Title is required",
-      "label": "Professional Title *",
+      "label": "Professional Title",
       "placeholder": "Ex: Full Stack Developer"
     },
     "linkedin": {
@@ -66,12 +62,12 @@
     },
     "name": {
       "error": "Name is required",
-      "label": "Full Name *",
+      "label": "Full Name",
       "placeholder": "Ex: John Smith"
     },
     "phone": {
       "error": "Invalid phone number",
-      "label": "Phone *",
+      "label": "Phone",
       "note": { "placeholder": "Note (ex: Work, Messages...)" },
       "placeholder": "(00) 00000-0000"
     },

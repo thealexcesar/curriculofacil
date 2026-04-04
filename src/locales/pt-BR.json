@@ -5,11 +5,7 @@
   },
 
   "btn": {
-    "add": {
-      "education": "+ Adicionar Educação",
-      "experience": "+ Adicionar Experiência",
-      "phone": "+ Adicionar telefone"
-    },
+    "add": "Adicionar {{item}}",
     "finish": "Finalizar",
     "next": "Próximo",
     "prev": "Anterior",
@@ -20,7 +16,7 @@
   "field": {
     "current": { "label": "Trabalho atual" },
     "degree": {
-      "label": "Curso / Título *",
+      "label": "Curso / Título",
       "placeholder": "Ex: Análise e Desenvolvimento de Sistemas"
     },
     "description": { "label": "Descrição" },
@@ -37,23 +33,23 @@
     },
     "endDate": { "label": "Data de Fim / Conclusão" },
     "expCompany": {
-      "label": "Empresa *",
+      "label": "Empresa",
       "placeholder": "Ex: Google"
     },
     "expDescription": {
       "placeholder": "Descreva suas principais responsabilidades..."
     },
     "expTitle": {
-      "label": "Cargo *",
+      "label": "Cargo",
       "placeholder": "Ex: Desenvolvedor Web"
     },
     "institution": {
-      "label": "Instituição *",
+      "label": "Instituição",
       "placeholder": "Ex: UNINTER"
     },
     "jobTitle": {
       "error": "Título é obrigatório",
-      "label": "Título Profissional *",
+      "label": "Título Profissional",
       "placeholder": "Ex: Desenvolvedora Web"
     },
     "linkedin": {
@@ -66,12 +62,12 @@
     },
     "name": {
       "error": "Nome é obrigatório",
-      "label": "Nome Completo *",
+      "label": "Nome Completo",
       "placeholder": "Ex: Maria da Silva"
     },
     "phone": {
       "error": "Telefone inválido (fixo ou celular)",
-      "label": "Telefone *",
+      "label": "Telefone",
       "note": { "placeholder": "Observação (ex: Trabalho, Recados...)" },
       "placeholder": "(00) 00000-0000"
     },

@@ -1,5 +1,3 @@
-import {t} from '../services/i18n.js';
-
 /** @typedef {'success' | 'error' | 'warning' | 'info'} ToastVariant */
 
 /**
@@ -10,6 +8,8 @@ import {t} from '../services/i18n.js';
  * @property {string} muted  - Secondary text color
  * @property {string} icon   - Material icon name
  */
+
+import {toastTemplate} from "./toast.template.js";
 
 /** @type {Record<ToastVariant, ToastConfig>} */
 const TOAST_VARIANTS = {
@@ -36,21 +36,7 @@ export function showToast(message, variant = 'info', title = '', duration = 3000
   toast.id = 'toast';
   toast.setAttribute('role', 'alert');
   toast.setAttribute('aria-live', 'polite');
-  toast.innerHTML = `
-    <div class="toast-inner">
-      <span class="material-symbols-outlined toast-icon" style="color:${v.border}">${v.icon}</span>
-      <div class="toast-body">
-        ${title ? `<div class="toast-title">${title}</div>` : ''}
-        <div class="toast-message" style="color:${title ? v.muted : v.text}">${message}</div>
-      </div>
-      <button class="toast-close" title="${t('btn.remove')}" aria-label="${t('toast.close.aria')}">
-        <span class="material-symbols-outlined" style="font-size:18px">close</span>
-      </button>
-    </div>
-    <div class="toast-progress">
-      <div class="toast-progress-bar" style="background:${v.border};animation-duration:${duration}ms"></div>
-    </div>
-  `;
+  toast.innerHTML = toast.innerHTML = toastTemplate(v, message, title, duration);;
 
   Object.assign(toast.style, {
     position:     'fixed',
