@@ -1,10 +1,10 @@
-import {showToast}   from '../components/Toast.js';
-import {t} from './i18n.js';
-import {createState} from './StateService.js';
+import {createState} from "./state.service.js";
+import {showToast} from "../components/toast/toast.component.js";
+import {t} from "./i18n.js";
 
 const TOTAL_STEPS = 5;
 
-/** @type {import('./StateService.js').State<number>} */
+/** @type {import('./state.service').State<number>} */
 const currentStep = createState(1);
 
 /**

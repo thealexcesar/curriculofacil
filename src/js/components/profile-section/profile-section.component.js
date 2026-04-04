@@ -2,6 +2,8 @@
  * Step 2 — Professional profile with char counter
  */
 
+import {t} from "../../services/i18n.js";
+
 const PROFILE_MAX_CHARS = 400;
 
 export function initStep2Profile() {
@@ -11,14 +13,14 @@ export function initStep2Profile() {
 
   textarea.addEventListener('input', () => {
     const len = textarea.value.length;
-    counter.textContent = len;
+    counter.textContent = String(len);
 
     if (len > PROFILE_MAX_CHARS) {
       counter.parentElement.classList.add('over');
-      hint.innerHTML  = '<span class="material-symbols-outlined">error</span> Limite de 400 caracteres atingido';
+      hint.innerHTML = `<span class="material-symbols-outlined">error</span> ${t('field.profile.error')}`;
       hint.className  = 'field-hint error';
       textarea.value  = textarea.value.slice(0, PROFILE_MAX_CHARS);
-      counter.textContent = PROFILE_MAX_CHARS;
+      counter.textContent = String(PROFILE_MAX_CHARS);
     } else {
       counter.parentElement.classList.remove('over');
       hint.innerHTML = '';
