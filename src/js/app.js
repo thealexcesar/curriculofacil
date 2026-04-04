@@ -5,6 +5,8 @@ import {initStep2Profile} from "./components/profile-section/profile-section.com
 import {initStep3Experience} from "./components/experience/experience.component.js";
 import {initStep4Education} from "./components/education/education.component.js";
 import {initPreview} from "./components/preview/preview.component.js";
+import {initStep5Skills} from "./components/skill/skill.component.js";
+import {initStep5Languages} from "./components/language/language.component.js";
 
 /**
  * Application entry point.
@@ -22,4 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initStep3Experience();
   initStep4Education();
   initPreview();
+  initStep5Skills();
+  initStep5Languages();
 });

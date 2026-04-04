@@ -52,6 +52,20 @@
       "label": "Título Profissional",
       "placeholder": "Ex: Desenvolvedora Web"
     },
+    "language": {
+      "label": "Idioma",
+      "level": {
+        "A1": "A1 - Iniciante",
+        "A2": "A2 - Básico",
+        "B1": "B1 - Intermediário",
+        "B2": "B2 - Intermediário avançado",
+        "C1": "C1 - Avançado",
+        "C2": "C2 - Fluente",
+        "native": "Nativo"
+      },
+      "levelLabel": "Nível",
+      "placeholder": "Selecionar idioma..."
+    },
     "linkedin": {
       "label": "LinkedIn",
       "placeholder": "https://linkedin.com/in/seuperfil"
@@ -76,7 +90,29 @@
       "label": "Resumo Profissional",
       "placeholder": "Ex: Profissional com experiência em..."
     },
+    "skill": {
+      "label": "Habilidades",
+      "placeholder": "Ex: JavaScript, Photoshop..."
+    },
     "startDate": { "label": "Data de Início" }
+  },
+
+  "languages": {
+    "arabic": "Árabe",
+    "dutch": "Holandês",
+    "english": "Inglês",
+    "french": "Francês",
+    "german": "Alemão",
+    "italian": "Italiano",
+    "japanese": "Japonês",
+    "korean": "Coreano",
+    "mandarin": "Mandarim",
+    "norwegian": "Norueguês",
+    "polish": "Polonês",
+    "portuguese": "Português",
+    "russian": "Russo",
+    "spanish": "Espanhol",
+    "swedish": "Sueco"
   },
 
   "nav": {
@@ -97,8 +133,10 @@
   "section": {
     "education": "Educação",
     "experience": "Experiência Profissional",
+    "language": "Idiomas",
     "personal": "Informações Pessoais",
     "profile": "Perfil Profissional",
+    "skill": "Habilidades",
     "skills": "Habilidades e Idiomas"
   },
 
