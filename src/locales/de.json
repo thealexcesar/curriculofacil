@@ -52,6 +52,20 @@
       "label": "Professioneller Titel",
       "placeholder": "z.B.: Full Stack Entwickler"
     },
+    "language": {
+      "label": "Sprache",
+      "level": {
+        "A1": "A1 — Anfänger",
+        "A2": "A2 — Grundkenntnisse",
+        "B1": "B1 — Mittelstufe",
+        "B2": "B2 — Gute Kenntnisse",
+        "C1": "C1 — Fortgeschritten",
+        "C2": "C2 — Fließend",
+        "native": "Muttersprache"
+      },
+      "levelLabel": "Niveau",
+      "placeholder": "Sprache auswählen..."
+    },
     "linkedin": {
       "label": "LinkedIn",
       "placeholder": "https://linkedin.com/in/ihrprofil"
@@ -76,6 +90,10 @@
       "label": "Berufliches Profil",
       "placeholder": "z.B.: Fachmann mit Erfahrung in..."
     },
+    "skill": {
+      "label": "Fähigkeiten",
+      "placeholder": "z.B.: JavaScript, Photoshop..."
+    },
     "startDate": { "label": "Startdatum" }
   },
 
@@ -97,8 +115,10 @@
   "section": {
     "education": "Ausbildung",
     "experience": "Berufserfahrung",
+    "language": "Sprachen",
     "personal": "Persönliche Informationen",
     "profile": "Berufliches Profil",
+    "skill": "Fähigkeiten",
     "skills": "Fähigkeiten & Sprachen"
   },
 

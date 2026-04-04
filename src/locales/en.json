@@ -52,6 +52,20 @@
       "label": "Professional Title",
       "placeholder": "Ex: Full Stack Developer"
     },
+    "language": {
+      "label": "Language",
+      "level": {
+        "A1": "A1 — Beginner",
+        "A2": "A2 — Elementary",
+        "B1": "B1 — Intermediate",
+        "B2": "B2 — Upper Intermediate",
+        "C1": "C1 — Advanced",
+        "C2": "C2 — Proficient",
+        "native": "Native"
+      },
+      "levelLabel": "Level",
+      "placeholder": "Select language..."
+    },
     "linkedin": {
       "label": "LinkedIn",
       "placeholder": "https://linkedin.com/in/yourprofile"
@@ -76,6 +90,10 @@
       "label": "Professional Summary",
       "placeholder": "Ex: Professional with experience in..."
     },
+    "skill": {
+      "label": "Skills",
+      "placeholder": "Ex: JavaScript, Photoshop..."
+    },
     "startDate": { "label": "Start Date" }
   },
 
@@ -97,8 +115,10 @@
   "section": {
     "education": "Education",
     "experience": "Work Experience",
+    "language": "Languages",
     "personal": "Personal Information",
     "profile": "Professional Profile",
+    "skill": "Skills",
     "skills": "Skills & Languages"
   },
 
