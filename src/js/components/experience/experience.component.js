@@ -35,7 +35,7 @@ export function getExperienceData() {
  * @param {Partial<ExperienceData>} [prefill={}]
  * @returns {void}
  */
-function addExperience(prefill = {}) {
+export function addExperience(prefill = {}) {
   const container = document.getElementById('experience-list');
   const item = createExperience(items.length + 1, prefill);
   items.push(item);

@@ -2,10 +2,12 @@ const STORAGE_KEY = 'curriculofacil_v1';
 
 /**
  * @typedef {Object} ResumeData
- * @property {Object} personal     - Personal info fields
- * @property {string} profile      - Professional profile text
+ * @property {Object}   personal   - Personal info fields
+ * @property {string}   profile    - Professional profile text
  * @property {Object[]} experience - Work experience items
  * @property {Object[]} education  - Education items
+ * @property {string[]} skills     - Skill chips
+ * @property {Object[]} languages  - Language rows
  */
 
 /**

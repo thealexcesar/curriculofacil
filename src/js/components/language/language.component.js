@@ -31,7 +31,7 @@ export function getLanguagesData() {
  * @param {Partial<LanguageData>} [prefill={}]
  * @returns {void}
  */
-function addLanguage(prefill = {}) {
+export function addLanguage(prefill = {}) {
   const container = document.getElementById('language-list');
   const item = createLanguage(prefill);
   items.push(item);

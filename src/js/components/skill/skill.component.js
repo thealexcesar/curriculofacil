@@ -7,6 +7,9 @@ import {skillInputTemplate, chipTemplate} from './skill.template.js';
 /** @type {string[]} */
 const skills = [];
 
+/** @type {HTMLElement|null} */
+let chipsContainer = null;
+
 /** @returns {void} */
 export function initStep5Skills() {
   const container = document.getElementById('skill-section');
@@ -18,6 +21,8 @@ export function initStep5Skills() {
     chips:  /** @type {HTMLElement} */ (container.querySelector('.skill-chips')),
   };
 
+  chipsContainer = refs.chips;
+
   refs.addBtn.addEventListener('click', () => addSkill(refs));
   refs.input.addEventListener('keydown', e => {
     if (e.key === 'Enter') { e.preventDefault(); addSkill(refs); }
@@ -27,6 +32,20 @@ export function initStep5Skills() {
 /** @returns {string[]} */
 export function getSkillsData() {
   return [...skills];
+}
+
+/**
+ * Restores skills from saved data.
+ *
+ * @param {string[]} savedSkills
+ * @returns {void}
+ */
+export function restoreSkills(savedSkills) {
+  savedSkills.forEach(value => {
+    if (!value || skills.includes(value)) return;
+    skills.push(value);
+    renderChip(value, chipsContainer);
+  });
 }
 
 /**
