@@ -34,7 +34,7 @@ export function getEducationData() {
  * @param {Partial<EducationData>} [prefill={}]
  * @returns {void}
  */
-function addEducation(prefill = {}) {
+export function addEducation(prefill = {}) {
   const container = document.getElementById('education-list');
   const item = createEducation(items.length + 1, prefill);
   items.push(item);

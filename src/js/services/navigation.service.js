@@ -21,10 +21,7 @@ export function initNavigation() {
     const filename  = t('document.filename');
     document.title  = firstName ? `${firstName}_${filename}` : filename;
     showToast(t('toast.print.hint'), 'info', '', 1000);
-    setTimeout(() => {
-      window.print();
-      document.title = t('app.title');
-    }, 1000);
+    setTimeout(() => { window.print(); document.title = t('app.title');}, 1000);
   };
 
   document.querySelectorAll('.step-item').forEach(el => {
