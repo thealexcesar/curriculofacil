@@ -54,7 +54,7 @@ export function previewTemplate({ personal, profile, experience, education, skil
         <div class="cv-item">
           <div class="cv-item-header">
             <strong class="cv-item-title">${exp.title}</strong>
-            <span class="cv-item-date">${formatDate(exp.startDate)} — ${exp.current ? t('field.experience.current') : formatDate(exp.endDate)}</span>
+            <span class="cv-item-date">${formatDate(exp.startDate)} - ${exp.current ? t('field.experience.current') : formatDate(exp.endDate)}</span>
           </div>
           ${exp.company     ? `<span class="cv-item-subtitle">${exp.company}</span>` : ''}
           ${exp.description ? `<p class="cv-item-desc">${exp.description}</p>`       : ''}
@@ -69,7 +69,7 @@ export function previewTemplate({ personal, profile, experience, education, skil
         <div class="cv-item">
           <div class="cv-item-header">
             <strong class="cv-item-title">${edu.degree}</strong>
-            <span class="cv-item-date">${formatDate(edu.startDate)}${edu.endDate ? ` — ${formatDate(edu.endDate)}` : ''}</span>
+            <span class="cv-item-date">${formatDate(edu.startDate)}${edu.endDate ? ` - ${formatDate(edu.endDate)}` : ''}</span>
           </div>
           ${edu.institution ? `<span class="cv-item-subtitle">${edu.institution}</span>` : ''}
           ${edu.description ? `<p class="cv-item-desc">${edu.description}</p>`           : ''}

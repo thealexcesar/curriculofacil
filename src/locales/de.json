@@ -13,6 +13,8 @@
     "remove": "Entfernen"
   },
 
+  "document": { "filename": "lebenslauf" },
+
   "field": {
     "current": { "label": "Aktuelle Stelle" },
     "degree": {
@@ -55,12 +57,12 @@
     "language": {
       "label": "Sprache",
       "level": {
-        "A1": "A1 — Anfänger",
-        "A2": "A2 — Grundkenntnisse",
-        "B1": "B1 — Mittelstufe",
-        "B2": "B2 — Gute Kenntnisse",
-        "C1": "C1 — Fortgeschritten",
-        "C2": "C2 — Fließend",
+        "A1": "A1 - Anfänger",
+        "A2": "A2 - Grundkenntnisse",
+        "B1": "B1 - Mittelstufe",
+        "B2": "B2 - Gute Kenntnisse",
+        "C1": "C1 - Fortgeschritten",
+        "C2": "C2 - Fließend",
         "native": "Muttersprache"
       },
       "levelLabel": "Niveau",

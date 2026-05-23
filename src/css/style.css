@@ -1,5 +1,5 @@
 /* ============================================================
-   DESIGN SYSTEM — Currículo Fácil
+   DESIGN SYSTEM - Currículo Fácil
    Light theme default. Dark theme ready (uncomment to enable).
    ============================================================ */
 
@@ -104,7 +104,7 @@
 }
 
 /* ============================================================
-   DARK THEME — uncomment + add class="theme-dark" to <html>
+   DARK THEME - uncomment + add class="theme-dark" to <html>
    ============================================================ */
 /*
 .theme-dark {
@@ -155,7 +155,7 @@ body {
 }
 
 /* ============================================================
-   TOAST — component styles (JS handles positioning/colors)
+   TOAST - component styles (JS handles positioning/colors)
    ============================================================ */
 .toast-inner {
     display: flex;
@@ -933,7 +933,7 @@ body {
 @media print {
     @page { size: A4 portrait; margin: 15mm; }
 
-    .no-print, .preview-header { display: none !important; }
+    .no-print, .preview-header, #toast { display: none !important; }
 
     html, body { background: white !important; }
 

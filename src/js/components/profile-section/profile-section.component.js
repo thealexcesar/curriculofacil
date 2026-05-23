@@ -1,5 +1,5 @@
 /**
- * Step 2 — Professional profile with char counter
+ * Step 2 - Professional profile with char counter
  */
 
 import {t} from "../../services/i18n.js";

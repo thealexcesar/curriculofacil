@@ -36,7 +36,7 @@ export function showToast(message, variant = 'info', title = '', duration = 3000
   toast.id = 'toast';
   toast.setAttribute('role', 'alert');
   toast.setAttribute('aria-live', 'polite');
-  toast.innerHTML = toast.innerHTML = toastTemplate(v, message, title, duration);;
+  toast.innerHTML = toastTemplate(v, message, title, duration);
 
   Object.assign(toast.style, {
     position:     'fixed',
@@ -71,7 +71,7 @@ export function showToast(message, variant = 'info', title = '', duration = 3000
 
   const timer = setTimeout(dismiss, duration);
 
-  // No inline onclick — addEventListener keeps module scope clean
+  // No inline onclick - addEventListener keeps module scope clean
   toast.querySelector('.toast-close').addEventListener('click', () => {
     clearTimeout(timer);
     dismiss();

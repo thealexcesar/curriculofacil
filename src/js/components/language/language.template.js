@@ -25,7 +25,7 @@ const LANGUAGES = [
   { value: 'russian',    label: t('languages.russian')    },
   { value: 'spanish',    label: t('languages.spanish')    },
   { value: 'swedish',    label: t('languages.swedish')    },
-];
+].sort((a, b) => a.label.localeCompare(b.label));
 
 const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'native'];
 
