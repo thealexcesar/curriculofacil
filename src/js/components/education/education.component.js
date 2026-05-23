@@ -42,7 +42,7 @@ function addEducation(prefill = {}) {
 }
 
 /**
- * Factory — creates a self-contained education component.
+ * Factory - creates a self-contained education component.
  *
  * @param {number}                 index
  * @param {Partial<EducationData>} [initialData={}]

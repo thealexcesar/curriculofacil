@@ -17,17 +17,21 @@ export function initNavigation() {
   document.getElementById('prev-btn').onclick   = () => goToStep(currentStep.get() - 1);
   document.getElementById('finish-btn').onclick = () => showToast(t('toast.finished'), 'success');
   document.getElementById('print-btn').onclick  = () => {
-    const original = document.title;
-    document.title = '';
-    showToast(t('toast.print.hint'), 'info');
-    setTimeout(() => { window.print(); setTimeout(() => document.title = original, 500); }, 1500);
+    const firstName = document.getElementById('name')?.value.trim().split(' ')[0].toLowerCase() ?? '';
+    const filename  = t('document.filename');
+    document.title  = firstName ? `${firstName}_${filename}` : filename;
+    showToast(t('toast.print.hint'), 'info', '', 1000);
+    setTimeout(() => {
+      window.print();
+      document.title = t('app.title');
+    }, 1000);
   };
 
   document.querySelectorAll('.step-item').forEach(el => {
     el.onclick = () => goToStep(parseInt(el.dataset.step));
   });
 
-  // subscribe — renderStep runs automatically on every set()
+  // subscribe - renderStep runs automatically on every set()
   currentStep.subscribe(renderStep);
   renderStep(currentStep.get());
 }
@@ -44,7 +48,7 @@ function goToStep(step) {
 }
 
 /**
- * Renders the active step — updates sections, nav items and buttons.
+ * Renders the active step - updates sections, nav items and buttons.
  *
  * @param {number} step
  * @returns {void}

@@ -13,6 +13,8 @@
     "remove": "Remover"
   },
 
+  "document": { "filename": "curriculo" },
+
   "field": {
     "current": { "label": "Trabalho atual" },
     "degree": {

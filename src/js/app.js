@@ -1,4 +1,4 @@
-import {initLocale, translateDOM} from "./services/i18n.js";
+import {initLocale, translateDOM, t} from "./services/i18n.js";
 import {initNavigation} from "./services/navigation.service.js";
 import {initStep1Validation} from "./services/validation.service.js";
 import {initStep2Profile} from "./components/profile-section/profile-section.component.js";

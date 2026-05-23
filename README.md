@@ -1,4 +1,4 @@
-# Currículo Fácil — Easy Resume
+# Currículo Fácil - Easy Resume
 
 A free, accessible resume builder that runs entirely in the browser.
 No login. No server. No data collection.
@@ -42,7 +42,7 @@ src/js/
 > coming soon
 
 ## Academic Context
-Built as part of Atividade Extensionista I — ADS course at UNINTER.
+Built as part of Atividade Extensionista I - ADS course at UNINTER.
 
 ## License
 MIT

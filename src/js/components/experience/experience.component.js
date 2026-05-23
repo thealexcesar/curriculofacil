@@ -43,7 +43,7 @@ function addExperience(prefill = {}) {
 }
 
 /**
- * Factory — creates a self-contained experience component.
+ * Factory - creates a self-contained experience component.
  *
  * @param {number}                  index
  * @param {Partial<ExperienceData>} [initialData={}]

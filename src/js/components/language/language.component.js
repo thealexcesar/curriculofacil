@@ -39,7 +39,7 @@ function addLanguage(prefill = {}) {
 }
 
 /**
- * Factory — creates a self-contained language component.
+ * Factory - creates a self-contained language component.
  *
  * @param {Partial<LanguageData>} [initialData={}]
  * @returns {LanguageComponent}
