@@ -94,7 +94,8 @@
       "label": "Fähigkeiten",
       "placeholder": "z.B.: JavaScript, Photoshop..."
     },
-    "startDate": { "label": "Startdatum" }
+    "startDate": { "label": "Startdatum" },
+    "experience": { "current": "Aktuell" }
   },
 
   "nav": {
