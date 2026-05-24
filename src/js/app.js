@@ -1,5 +1,5 @@
 import {initLocale, translateDOM} from "./services/i18n.js";
-import {initNavigation} from "./services/navigation.service.js";
+import {initNavigation, updateStepLocks} from "./services/navigation.service.js";
 import {initStep1Validation} from "./services/validation.service.js";
 import {initStep2Profile} from "./components/profile-section/profile-section.component.js";
 import {initStep3Experience, addExperience, getExperienceData} from "./components/experience/experience.component.js";
@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initNavigation();
   initStep1Validation();
+  updateStepLocks();
   initStep2Profile();
   initStep3Experience();
   initStep4Education();

@@ -1,10 +1,11 @@
+// src/js/services/navigation.service.js
 import {createState} from "./state.service.js";
 import {showToast} from "../components/toast/toast.component.js";
 import {t} from "./i18n.js";
 
 const TOTAL_STEPS = 5;
 
-/** @type {import('./state.service').State<number>} */
+/** @type {import('./state.service.js').State<number>} */
 const currentStep = createState(1);
 
 /**
@@ -13,10 +14,10 @@ const currentStep = createState(1);
  * @returns {void}
  */
 export function initNavigation() {
-  document.getElementById('next-btn').onclick   = () => goToStep(currentStep.get() + 1);
-  document.getElementById('prev-btn').onclick   = () => goToStep(currentStep.get() - 1);
+  document.getElementById('next-btn').onclick = () => goToStep(currentStep.get() + 1);
+  document.getElementById('prev-btn').onclick = () => goToStep(currentStep.get() - 1);
   document.getElementById('finish-btn').onclick = () => showToast(t('toast.finished'), 'success');
-  document.getElementById('print-btn').onclick  = () => {
+  document.getElementById('print-btn').onclick = () => {
     const firstName = document.getElementById('name')?.value.trim().split(' ')[0].toLowerCase() ?? '';
     const filename  = t('document.filename');
     document.title  = firstName ? `${firstName}_${filename}` : filename;
@@ -28,20 +29,35 @@ export function initNavigation() {
     el.onclick = () => goToStep(parseInt(el.dataset.step));
   });
 
-  // subscribe - renderStep runs automatically on every set()
   currentStep.subscribe(renderStep);
   renderStep(currentStep.get());
+
+  document.addEventListener('input', updateStepLocks);
 }
 
 /**
- * Navigates to the given step if within bounds.
+ * Toggles is-locked on step nav items based on step 1 validity.
+ *
+ * @returns {void}
+ */
+export function updateStepLocks() {
+  const locked = document.getElementById('next-btn').disabled;
+  document.querySelectorAll('.step-item').forEach(el => {
+    const shouldLock = parseInt(el.dataset.step) > 1 && locked;
+    shouldLock ? el.setAttribute('disabled', '') : el.removeAttribute('disabled');
+  });
+}
+
+/**
+ * Navigates to the given step if within bounds and step 1 is valid.
  *
  * @param {number} step
  * @returns {void}
  */
 function goToStep(step) {
   if (step < 1 || step > TOTAL_STEPS) return;
-  currentStep.set(step); // triggers renderStep via subscriber
+  if (step > 1 && document.getElementById('next-btn').disabled) return;
+  currentStep.set(step);
 }
 
 /**
@@ -58,6 +74,8 @@ function renderStep(step) {
   document.querySelector(`[data-step="${step}"]`).classList.add('active');
 
   document.getElementById('prev-btn').disabled = step === 1;
-  document.getElementById('next-btn').style.display   = step === TOTAL_STEPS ? 'none' : 'inline-flex';
+  document.getElementById('next-btn').style.display = step === TOTAL_STEPS ? 'none' : 'inline-flex';
   document.getElementById('finish-btn').style.display = step === TOTAL_STEPS ? 'inline-flex' : 'none';
+
+  updateStepLocks();
 }
