@@ -794,12 +794,16 @@ span[disabled] {
 }
 
 .cv-preview-wrapper {
+    position: relative;
     background: #e5e7eb;
-    padding: var(--space-3);
     overflow: hidden;
+    width: 100%;
 }
 
 .cv-preview {
+    position: absolute;
+    top: 0;
+    left: 0;
     background: white;
     width: 794px;
     min-height: 1123px;
