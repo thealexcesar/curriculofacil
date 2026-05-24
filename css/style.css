@@ -362,11 +362,7 @@ a:hover .material-symbols-outlined {
 /* ============================================================
    HEADER
    ============================================================ */
-.app-title {
-    font-size: var(--font-size-2xl);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
-}
+.app-logo { height: 48px; }
 
 .app-subtitle {
     font-size: var(--font-size-md);
