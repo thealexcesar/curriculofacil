@@ -28,6 +28,8 @@ export function setLocale(locale) {
   current = LOCALES[locale] ? locale : DEFAULT_LOCALE;
   localStorage.setItem(STORAGE_KEY, current);
   document.documentElement.lang = current;
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) metaDesc.setAttribute('content', t('meta.description'));
 }
 
 /** @returns {Locale} */

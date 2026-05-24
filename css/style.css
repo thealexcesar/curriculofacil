@@ -2,6 +2,10 @@
    DESIGN SYSTEM - Currículo Fácil
    Light theme default. Dark theme ready (uncomment to enable).
    ============================================================ */
+@font-face {
+    font-family: 'Inter';
+    font-display: swap;
+}
 
 :root {
     /* --- Brand --- */
@@ -245,6 +249,22 @@ a:hover .material-symbols-outlined {
     font-variation-settings: 'FILL' 1;
 }
 
+.fonts-loaded .material-symbols-outlined {
+    visibility: visible;
+}
+
+body:not(.fonts-loaded) .material-symbols-outlined {
+    visibility: hidden;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #e2e8f0 0%, #f8fafc 50%, #e2e8f0 100%);
+    background-size: 200% 100%;
+    animation: sk-pulse 1.5s ease-in-out infinite;
+    vertical-align: middle;
+}
+
 /* ============================================================
    SKILL CHIPS
    ============================================================ */
@@ -362,11 +382,11 @@ a:hover .material-symbols-outlined {
 /* ============================================================
    HEADER
    ============================================================ */
-.app-logo { height: 48px; }
+.app-logo { height: 48px; width: 224px; aspect-ratio: 280 / 60; }
 
 .app-subtitle {
     font-size: var(--font-size-md);
-    color: var(--color-text-muted);
+    color: var(--color-text-secondary);
     margin-top: var(--space-1);
 }
 
@@ -450,7 +470,7 @@ a:hover .material-symbols-outlined {
 
 .step-label {
     font-size: var(--font-size-xs);
-    color: var(--color-text-placeholder);
+    color: var(--color-text-muted);
     white-space: nowrap;
 }
 

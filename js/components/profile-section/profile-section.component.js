@@ -17,7 +17,7 @@ export function initStep2Profile() {
 
     if (len > PROFILE_MAX_CHARS) {
       counter.parentElement.classList.add('over');
-      hint.innerHTML = `<span class="material-symbols-outlined">error</span> ${t('field.profile.error')}`;
+      hint.innerHTML = `<span class="material-symbols-outlined" aria-hidden="true">error</span> ${t('field.profile.error')}`;
       hint.className = 'field-hint error';
       textarea.value = textarea.value.slice(0, PROFILE_MAX_CHARS);
       counter.textContent = String(PROFILE_MAX_CHARS);
