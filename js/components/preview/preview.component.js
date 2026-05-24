@@ -9,9 +9,10 @@ const CV_WIDTH_PX = 794;
 /** @returns {void} */
 export function initPreview() {
   renderPreview();
-  document.addEventListener('input',  renderPreview);
+  document.addEventListener('input', renderPreview);
   document.addEventListener('change', renderPreview);
-  window.addEventListener('resize',   scaleCvPreview);
+  window.addEventListener('resize', scaleCvPreview);
+  requestAnimationFrame(scaleCvPreview);
 }
 
 /** @returns {void} */
