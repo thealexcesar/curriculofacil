@@ -5,7 +5,7 @@
   },
   "btn": {
     "add": "Adicionar {{item}}",
-    "finish": "Finalizar e Imprimir",
+    "finish": "Finalizar",
     "next": "Próximo",
     "prev": "Anterior",
     "print": "Imprimir / PDF",
