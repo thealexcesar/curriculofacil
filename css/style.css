@@ -1024,6 +1024,44 @@ span[disabled] {
     .layout { grid-template-columns: 1fr 1fr; }
 }
 
+@media (max-width: 1023px) {
+    .view-toggle {
+        display: flex;
+        background: var(--color-surface);
+        border-radius: var(--radius-md);
+        padding: var(--space-1);
+        gap: var(--space-1);
+        margin-bottom: var(--space-4);
+        border: 1px solid var(--color-border);
+    }
+
+    .view-btn {
+        flex: 1;
+        padding: 8px;
+        border: none;
+        border-radius: var(--radius-sm);
+        background: none;
+        font-family: var(--font-family);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-medium);
+        color: var(--color-text-muted);
+        cursor: pointer;
+        transition: all var(--transition-normal);
+    }
+
+    .view-btn--active {
+        background: var(--color-primary);
+        color: var(--color-text-inverse);
+    }
+
+    .layout--show-preview .form-panel { display: none; }
+    .layout--show-preview .preview-panel { display: block; }
+    .layout--show-form .preview-panel { display: none; }
+}
+
+@media (min-width: 1024px) {
+    .view-toggle { display: none; }
+}
 /* ============================================================
    PRINT
    ============================================================ */
@@ -1043,8 +1081,11 @@ span[disabled] {
     .preview-panel { background: white !important; box-shadow: none !important; border-radius: 0 !important; }
 
     .cv-preview-wrapper { padding: 0 !important; background: white !important; height: auto !important; }
-
-    .cv-preview { width: 100% !important; padding: 0 !important; min-height: unset !important; box-shadow: none !important; transform: none !important; }
+    .cv-preview { position: relative !important; width: 100% !important; padding: 0 !important; min-height: unset !important; box-shadow: none !important; transform: none !important; }
 
     * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+    .layout--show-form .preview-panel { display: block !important; }
+    .layout--show-form .form-panel { display: none !important; }
+    .layout--show-preview .form-panel { display: none !important; }
 }

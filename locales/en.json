@@ -174,5 +174,6 @@
     "finished": "Resume complete!",
     "print": { "hint": "Uncheck \"Headers and footers\" in the print dialog" },
     "saved": "Auto-saved"
-  }
+  },
+  "toggle": { "form": "Form", "preview": "Preview" }
 }

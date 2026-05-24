@@ -13,6 +13,12 @@ export function initPreview() {
   document.addEventListener('change', renderPreview);
   window.addEventListener('resize', scaleCvPreview);
   requestAnimationFrame(scaleCvPreview);
+
+  window.addEventListener('beforeprint', () => {
+    document.querySelector('.cv-preview-wrapper').style.height = '';
+    document.getElementById('cv-preview').style.transform = '';
+  });
+  window.addEventListener('afterprint', scaleCvPreview);
 }
 
 /** @returns {void} */

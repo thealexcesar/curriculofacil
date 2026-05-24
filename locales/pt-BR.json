@@ -6,7 +6,7 @@
 
   "btn": {
     "add": "Adicionar {{item}}",
-    "finish": "Finalizar",
+    "finish": "Finalizar e Imprimir",
     "next": "Próximo",
     "prev": "Anterior",
     "print": "Imprimir / PDF",
@@ -174,5 +174,7 @@
     "finished": "Currículo finalizado!",
     "print": { "hint": "Desmarque \"Cabeçalhos e rodapés\" no diálogo de impressão" },
     "saved": "Salvo automaticamente"
-  }
+  },
+
+  "toggle": { "form": "Formulário", "preview": "Visualização" }
 }
