@@ -20,6 +20,15 @@ import {experienceTemplate} from './experience.template.js';
 /** @type {ExperienceComponent[]} */
 const items = [];
 
+/**
+ * @param {string} month - MM
+ * @param {string} year - YYYY
+ * @returns {string}
+ */
+function toYearMonth(month, year) {
+  return month && year ? `${year}-${month}` : '';
+}
+
 /** @returns {void} */
 export function initStep3Experience() {
   document.getElementById('add-experience')
@@ -29,6 +38,11 @@ export function initStep3Experience() {
 /** @returns {ExperienceData[]} */
 export function getExperienceData() {
   return items.map(item => item.getData());
+}
+
+/** @returns {void} */
+export function clearExperience() {
+  items.length = 0;
 }
 
 /**
@@ -59,17 +73,25 @@ function createExperience(index, initialData = {}) {
   const refs = {
     title: element.querySelector('.exp-title'),
     company: element.querySelector('.exp-company'),
-    start: element.querySelector('.exp-start'),
-    end: element.querySelector('.exp-end'),
+    start: {
+      month: element.querySelector('.exp-start-month'),
+      year: element.querySelector('.exp-start-year'),
+    },
+    end: {
+      month: element.querySelector('.exp-end-month'),
+      year: element.querySelector('.exp-end-year'),
+    },
     current: element.querySelector('.exp-current'),
     description: element.querySelector('.exp-description'),
     removeBtn: element.querySelector('.btn-remove'),
+    badgeToggle: element.querySelector('.exp-current + .badge-toggle'),
+    endDateSelect: element.querySelector('.exp-end-month')?.closest('.date-select').parentElement,
   };
 
   refs.current.addEventListener('change', () => {
     isCurrent = refs.current.checked;
-    refs.end.disabled = isCurrent;
-    if (isCurrent) refs.end.value = '';
+    refs.badgeToggle.classList.toggle('badge-toggle--active', isCurrent);
+    refs.endDateSelect.style.display = isCurrent ? 'none' : '';
   });
 
   const destroy = () => {
@@ -83,8 +105,8 @@ function createExperience(index, initialData = {}) {
   const getData = () => ({
     title: refs.title.value.trim(),
     company: refs.company.value.trim(),
-    startDate: refs.start.value,
-    endDate: isCurrent ? undefined : refs.end.value,
+    startDate: toYearMonth(refs.start.month.value, refs.start.year.value),
+    endDate: isCurrent ? undefined : toYearMonth(refs.end.month.value, refs.end.year.value),
     current: isCurrent,
     description: refs.description.value.trim(),
   });

@@ -340,6 +340,25 @@ a:hover .material-symbols-outlined {
     color: var(--color-success-text);
 }
 
+.badge-toggle {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.badge-toggle--active {
+    padding: 8px;
+    background: var(--color-primary-light);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
 /* ============================================================
    HEADER
    ============================================================ */
@@ -600,6 +619,12 @@ span[disabled] {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-3);
+}
+
+.date-select {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
 }
 
 /* ============================================================
