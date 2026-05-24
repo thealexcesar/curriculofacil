@@ -16,7 +16,8 @@
   "document": { "filename": "resume" },
 
   "field": {
-    "current": { "label": "Current job" },
+    "currentJob": { "label": "Current job" },
+    "inProgress": { "label": "In Progress" },
     "degree": {
       "label": "Degree / Title",
       "placeholder": "Ex: Computer Science"
@@ -76,6 +77,8 @@
       "label": "Location",
       "placeholder": "Ex: New York, NY"
     },
+    "month": { "placeholder": "Month" },
+    "year": { "placeholder": "Year" },
     "name": {
       "error": "Name is required",
       "label": "Full Name",

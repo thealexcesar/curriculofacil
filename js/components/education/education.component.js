@@ -19,6 +19,15 @@ import {educationTemplate} from './education.template.js';
 /** @type {EducationComponent[]} */
 const items = [];
 
+/**
+ * @param {string} month - MM
+ * @param {string} year - YYYY
+ * @returns {string}
+ */
+function toYearMonth(month, year) {
+  return month && year ? `${year}-${month}` : '';
+}
+
 /** @returns {void} */
 export function initStep4Education() {
   document.getElementById('add-education')
@@ -28,6 +37,11 @@ export function initStep4Education() {
 /** @returns {EducationData[]} */
 export function getEducationData() {
   return items.map(item => item.getData());
+}
+
+/** @returns {void} */
+export function clearEducation() {
+  items.length = 0;
 }
 
 /**
@@ -56,10 +70,18 @@ function createEducation(index, initialData = {}) {
   const refs = {
     degree: element.querySelector('.edu-degree'),
     institution: element.querySelector('.edu-institution'),
-    start: element.querySelector('.edu-start'),
-    end: element.querySelector('.edu-end'),
+    start: {
+      month: element.querySelector('.edu-start-month'),
+      year: element.querySelector('.edu-start-year'),
+    },
+    end: {
+      month: element.querySelector('.edu-end-month'),
+      year: element.querySelector('.edu-end-year'),
+    },
     description: element.querySelector('.edu-description'),
     removeBtn: element.querySelector('.btn-remove'),
+    inProgress: element.querySelector('.edu-inprogress'),
+    badgeToggle: element.querySelector('.edu-inprogress + .badge-toggle'),
   };
 
   const destroy = () => {
@@ -69,12 +91,19 @@ function createEducation(index, initialData = {}) {
 
   refs.removeBtn.addEventListener('click', destroy);
 
+  refs.inProgress.addEventListener('change', () => {
+    const active = refs.inProgress.checked;
+    refs.badgeToggle.classList.toggle('badge-toggle--active', active);
+    refs.end.month.closest('.date-select').style.display = active ? 'none' : 'grid';
+  }); 
+
   /** @returns {EducationData} */
   const getData = () => ({
     degree: refs.degree.value.trim(),
     institution: refs.institution.value.trim(),
-    startDate: refs.start.value,
-    endDate: refs.end.value,
+    startDate: toYearMonth(refs.start.month.value, refs.start.year.value),
+    endDate: toYearMonth(refs.end.month.value, refs.end.year.value),
+    inProgress: refs.inProgress.checked,
     description: refs.description.value.trim(),
   });
 

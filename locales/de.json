@@ -16,7 +16,8 @@
   "document": { "filename": "lebenslauf" },
 
   "field": {
-    "current": { "label": "Aktuelle Stelle" },
+    "currentJob": { "label": "Aktuelle Stelle" },
+    "inProgress": { "label": "Laufend" },
     "degree": {
       "label": "Abschluss / Titel",
       "placeholder": "z.B.: Informatik"
@@ -76,6 +77,8 @@
       "label": "Standort",
       "placeholder": "z.B.: Berlin"
     },
+    "month": { "placeholder": "Monat" },
+    "year": { "placeholder": "Jahr" },
     "name": {
       "error": "Name ist erforderlich",
       "label": "Vollständiger Name",

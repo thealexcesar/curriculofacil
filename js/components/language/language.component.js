@@ -28,6 +28,11 @@ export function getLanguagesData() {
   return items.map(item => item.getData());
 }
 
+/** @returns {void} */
+export function clearLanguages() {
+  items.length = 0;
+}
+
 /**
  * @param {Partial<LanguageData>} [prefill={}]
  * @returns {void}

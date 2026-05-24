@@ -16,7 +16,8 @@
   "document": { "filename": "curriculo" },
 
   "field": {
-    "current": { "label": "Trabalho atual" },
+    "currentJob": { "label": "Trabalho atual" },
+    "inProgress": { "label": "Cursando" },
     "degree": {
       "label": "Curso / Título",
       "placeholder": "Ex: Análise e Desenvolvimento de Sistemas"
@@ -76,6 +77,8 @@
       "label": "Localização",
       "placeholder": "Ex: Blumenau, SC"
     },
+    "month": { "placeholder": "Mês" },
+    "year": { "placeholder": "Ano" },
     "name": {
       "error": "Nome é obrigatório",
       "label": "Nome Completo",

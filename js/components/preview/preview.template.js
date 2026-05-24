@@ -69,7 +69,12 @@ export function previewTemplate({ personal, profile, experience, education, skil
         <div class="cv-item">
           <div class="cv-item-header">
             <strong class="cv-item-title">${edu.degree}</strong>
-            <span class="cv-item-date">${formatDate(edu.startDate)}${edu.endDate ? ` - ${formatDate(edu.endDate)}` : ''}</span>
+            <span class="cv-item-date">
+              ${formatDate(edu.startDate)}${edu.inProgress 
+                ? ` - ${t('field.inProgress.label')}`
+                : edu.endDate ? ` - ${formatDate(edu.endDate)}` : ''
+              }
+            </span>
           </div>
           ${edu.institution ? `<span class="cv-item-subtitle">${edu.institution}</span>` : ''}
           ${edu.description ? `<p class="cv-item-desc">${edu.description}</p>` : ''}
