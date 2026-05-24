@@ -16,7 +16,18 @@ const currentStep = createState(1);
 export function initNavigation() {
   document.getElementById('next-btn').onclick = () => goToStep(currentStep.get() + 1);
   document.getElementById('prev-btn').onclick = () => goToStep(currentStep.get() - 1);
-  document.getElementById('finish-btn').onclick = () => showToast(t('toast.finished'), 'success');
+
+  document.getElementById('finish-btn').onclick = () => {
+    const firstName = document.getElementById('name')?.value.trim().split(' ')[0].toLowerCase() ?? '';
+    const filename = t('document.filename');
+    document.title = firstName ? `${firstName}_${filename}` : filename;
+    showToast(`${t('toast.finished')} - ${t('toast.print.hint')}`, 'success', '', 3000);
+    setTimeout(() => {
+      window.print();
+      document.title = t('app.title');
+    }, 3000);
+  };
+
   document.getElementById('print-btn').onclick = () => {
     const firstName = document.getElementById('name')?.value.trim().split(' ')[0].toLowerCase() ?? '';
     const filename  = t('document.filename');
@@ -72,10 +83,8 @@ function renderStep(step) {
 
   document.getElementById(`step-${step}`).classList.add('active');
   document.querySelector(`[data-step="${step}"]`).classList.add('active');
-
   document.getElementById('prev-btn').disabled = step === 1;
   document.getElementById('next-btn').style.display = step === TOTAL_STEPS ? 'none' : 'inline-flex';
   document.getElementById('finish-btn').style.display = step === TOTAL_STEPS ? 'inline-flex' : 'none';
-
   updateStepLocks();
 }

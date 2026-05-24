@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLocale();
   translateDOM();
   initLangSwitcher();
-
+  initViewToggle();
   initNavigation();
   initStep1Validation();
   updateStepLocks();
@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initStep5Languages();
 
   restoreResume();
+  document.dispatchEvent(new Event('input', { bubbles: true }));
   document.addEventListener('input',  saveAll);
   document.addEventListener('change', saveAll);
 });
@@ -121,4 +122,29 @@ function reloadDynamicComponents() {
   data.experience.forEach(exp => addExperience(exp));
   data.education.forEach(edu => addEducation(edu));
   data.languages.forEach(lang => addLanguage(lang));
+  document.dispatchEvent(new Event('input', { bubbles: true }));
+}
+
+/** @returns {void} */
+function initViewToggle() {
+  const layout = document.querySelector('.layout');
+  const btnForm = document.getElementById('toggle-form');
+  const btnPreview = document.getElementById('toggle-preview');
+
+  if (!btnForm || !btnPreview) return;
+
+  layout.classList.add('layout--show-form');
+
+  btnForm.addEventListener('click', () => {
+    layout.classList.replace('layout--show-preview', 'layout--show-form');
+    btnForm.classList.add('view-btn--active');
+    btnPreview.classList.remove('view-btn--active');
+  });
+
+  btnPreview.addEventListener('click', () => {
+    layout.classList.replace('layout--show-form', 'layout--show-preview');
+    requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
+    btnPreview.classList.add('view-btn--active');
+    btnForm.classList.remove('view-btn--active');
+  });
 }

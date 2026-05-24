@@ -174,5 +174,6 @@
     "finished": "Lebenslauf abgeschlossen!",
     "print": { "hint": "Deaktivieren Sie \"Kopf- und Fußzeilen\" im Druckdialog" },
     "saved": "Automatisch gespeichert"
-  }
+  },
+  "toggle": { "form": "Formular", "preview": "Vorschau" }
 }
