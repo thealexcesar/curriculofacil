@@ -136,7 +136,7 @@ function setValidity(input, valid, empty = false) {
  */
 function setHint(hint, valid, message) {
   if (!hint) return;
-  hint.innerHTML = valid ? '' : `<span class="material-symbols-outlined">error</span> ${message}`;
+  hint.innerHTML = valid ? '' : `<span class="material-symbols-outlined" aria-hidden="true">error</span> ${message}`;
   hint.className = valid ? 'field-hint' : 'field-hint error';
 }
 

@@ -15,7 +15,7 @@ export function phoneTemplate() {
         <img src="assets/icons/whatsapp.svg" class="whatsapp-icon" alt="WhatsApp">
       </label>
       <button type="button" class="phone-extra-remove" title="${t('btn.remove')}">
-        <span class="material-symbols-outlined">close</span>
+        <span class="material-symbols-outlined" aria-hidden="true">close</span>
       </button>
     </div>
     <input type="text" class="extra-phone-note" placeholder="${t('field.phone.note.placeholder')}">

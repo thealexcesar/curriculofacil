@@ -3,7 +3,6 @@
     "subtitle": "Create a professional resume in minutes",
     "title": "Easy Resume"
   },
-
   "btn": {
     "add": "Add {{item}}",
     "finish": "Finish",
@@ -12,9 +11,7 @@
     "print": "Print / PDF",
     "remove": "Remove"
   },
-
   "document": { "filename": "resume" },
-
   "field": {
     "currentJob": { "label": "Current job" },
     "inProgress": { "label": "In Progress" },
@@ -102,7 +99,6 @@
     "startDate": { "label": "Start Date" },
     "experience": { "current": "Present" }
   },
-
   "languages": {
     "arabic": "Arabic",
     "bengali": "Bengali",
@@ -141,9 +137,8 @@
     "ukrainian": "Ukrainian",
     "vietnamese": "Vietnamese"
   },
-
+  "meta": { "description": "Create your professional resume in minutes, for free, no sign-up required." },
   "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-
   "nav": {
     "step": {
       "1": "Personal",
@@ -153,12 +148,10 @@
       "5": "Skills"
     }
   },
-
   "preview": {
     "empty": "Fill in your information to preview the resume",
     "label": "Preview"
   },
-
   "section": {
     "education": "Education",
     "experience": "Work Experience",
@@ -168,7 +161,6 @@
     "skill": "Skills",
     "skills": "Skills & Languages"
   },
-
   "toast": {
     "close": { "aria": "Close notification" },
     "finished": "Resume complete!",

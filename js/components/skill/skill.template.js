@@ -29,7 +29,7 @@ export function chipTemplate(skill) {
     <span class="chip chip-primary">
       ${skill}
       <button type="button" class="chip-remove" title="${t('btn.remove')}">
-        <span class="material-symbols-outlined">close</span>
+        <span class="material-symbols-outlined" aria-hidden="true">close</span>
       </button>
     </span>
   `;

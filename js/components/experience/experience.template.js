@@ -11,7 +11,7 @@ export function experienceTemplate(index, data = {}, isCurrent = false) {
     <div class="dynamic-item-header">
       <span class="dynamic-item-title">${t('section.experience')} ${index}</span>
       <button type="button" class="btn-remove" title="${t('btn.remove')}">
-        <span class="material-symbols-outlined">close</span>
+        <span class="material-symbols-outlined" aria-hidden="true">close</span>
       </button>
     </div>
     <div class="field-row">

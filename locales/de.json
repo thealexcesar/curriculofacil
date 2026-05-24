@@ -3,7 +3,6 @@
     "subtitle": "Erstellen Sie in wenigen Minuten einen professionellen Lebenslauf",
     "title": "Lebenslauf Einfach"
   },
-
   "btn": {
     "add": "{{item}} hinzufügen",
     "finish": "Fertigstellen",
@@ -12,9 +11,7 @@
     "print": "Drucken / PDF",
     "remove": "Entfernen"
   },
-
   "document": { "filename": "lebenslauf" },
-
   "field": {
     "currentJob": { "label": "Aktuelle Stelle" },
     "inProgress": { "label": "Laufend" },
@@ -102,7 +99,6 @@
     "startDate": { "label": "Startdatum" },
     "experience": { "current": "Aktuell" }
   },
-
   "languages": {
     "arabic": "Arabisch",
     "bengali": "Bengalisch",
@@ -141,9 +137,8 @@
     "ukrainian": "Ukrainisch",
     "vietnamese": "Vietnamesisch"
   },
-
+  "meta": { "description": "Erstelle deinen professionellen Lebenslauf in Minuten, kostenlos, ohne Anmeldung." },
   "months": ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"],
-
   "nav": {
     "step": {
       "1": "Persönlich",
@@ -153,12 +148,10 @@
       "5": "Fähigkeiten"
     }
   },
-
   "preview": {
     "empty": "Füllen Sie die Informationen aus, um den Lebenslauf anzuzeigen",
     "label": "Vorschau"
   },
-
   "section": {
     "education": "Ausbildung",
     "experience": "Berufserfahrung",
@@ -168,7 +161,6 @@
     "skill": "Fähigkeiten",
     "skills": "Fähigkeiten & Sprachen"
   },
-
   "toast": {
     "close": { "aria": "Benachrichtigung schließen" },
     "finished": "Lebenslauf abgeschlossen!",

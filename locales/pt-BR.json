@@ -3,7 +3,6 @@
     "subtitle": "Crie um currículo profissional em minutos",
     "title": "Currículo Fácil"
   },
-
   "btn": {
     "add": "Adicionar {{item}}",
     "finish": "Finalizar e Imprimir",
@@ -12,9 +11,7 @@
     "print": "Imprimir / PDF",
     "remove": "Remover"
   },
-
   "document": { "filename": "curriculo" },
-
   "field": {
     "currentJob": { "label": "Trabalho atual" },
     "inProgress": { "label": "Cursando" },
@@ -102,7 +99,6 @@
     "startDate": { "label": "Data de Início" },
     "experience": { "current": "Atual" }
   },
-
   "languages": {
     "arabic": "Árabe",
     "bengali": "Bengali",
@@ -141,9 +137,8 @@
     "ukrainian": "Ucraniano",
     "vietnamese": "Vietnamita"
   },
-
+  "meta": { "description": "Crie seu currículo profissional em minutos, de graça, sem cadastro." },
   "months": ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"],
-
   "nav": {
     "step": {
       "1": "Pessoal",
@@ -153,12 +148,10 @@
       "5": "Habilidades"
     }
   },
-
   "preview": {
     "empty": "Preencha as informações para visualizar o currículo",
     "label": "Visualização"
   },
-
   "section": {
     "education": "Educação",
     "experience": "Experiência Profissional",
@@ -168,13 +161,11 @@
     "skill": "Habilidades",
     "skills": "Habilidades e Idiomas"
   },
-
   "toast": {
     "close": { "aria": "Fechar notificação" },
     "finished": "Currículo finalizado!",
     "print": { "hint": "Desmarque \"Cabeçalhos e rodapés\" no diálogo de impressão" },
     "saved": "Salvo automaticamente"
   },
-
   "toggle": { "form": "Formulário", "preview": "Visualização" }
 }
