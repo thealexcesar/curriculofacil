@@ -3,8 +3,12 @@
    Light theme default. Dark theme ready (uncomment to enable).
    ============================================================ */
 @font-face {
-    font-family: 'Inter';
-    font-display: swap;
+    font-family: 'Inter fallback';
+    src: local('Arial');
+    size-adjust: 96%;
+    ascent-override: 92%;
+    descent-override: 17%;
+    line-gap-override: 8%;
 }
 
 :root {
@@ -84,7 +88,7 @@
     --space-12: 48px;
 
     /* --- Typography --- */
-    --font-family: 'Inter', sans-serif;
+    --font-family: 'Inter', 'Inter fallback', sans-serif;
     --font-size-xs:   11px;
     --font-size-sm:   13px;
     --font-size-md:   14px;
