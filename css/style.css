@@ -154,6 +154,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.text-accent { color: var(--color-accent); }
 /* ============================================================
    TOAST - component styles (JS handles positioning/colors)
    ============================================================ */
@@ -339,23 +340,9 @@ a:hover .material-symbols-outlined {
     color: var(--color-success-text);
 }
 
-@media (max-width: 480px) {
-    .language-row { grid-template-columns: 1fr auto; }
-    .language-row select:last-of-type { grid-column: 1; }
-}
-
-@media (min-width: 1024px) {
-    .layout { grid-template-columns: 1fr 1fr; }
-}
-
 /* ============================================================
    HEADER
    ============================================================ */
-.app-header {
-    text-align: center;
-    margin-bottom: var(--space-6);
-}
-
 .app-title {
     font-size: var(--font-size-2xl);
     font-weight: var(--font-weight-bold);
@@ -366,6 +353,49 @@ a:hover .material-symbols-outlined {
     font-size: var(--font-size-md);
     color: var(--color-text-muted);
     margin-top: var(--space-1);
+}
+
+.app-header {
+    position: relative;
+    text-align: center;
+    margin-bottom: var(--space-6);
+}
+
+.app-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lang-switcher {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    gap: var(--space-1);
+}
+
+.lang-btn {
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 4px 8px;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.lang-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.lang-btn.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-text-inverse);
 }
 
 /* ============================================================
@@ -764,10 +794,6 @@ span[disabled] {
     font-size: 16px;
 }
 
-@media (max-width: 480px) {
-    .field-row { grid-template-columns: 1fr; }
-}
-
 /* ============================================================
    PREVIEW PANEL
    ============================================================ */
@@ -950,6 +976,27 @@ span[disabled] {
 .cv-lang-level {
     color: var(--color-text-secondary);
     font-size: 8.5pt;
+}
+
+.lang-short { display: none; }
+.lang-full  { display: inline; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 480px) {
+    .field-row { grid-template-columns: 1fr; }
+    .language-row { grid-template-columns: 1fr auto; }
+    .language-row select:last-of-type { grid-column: 1; }
+}
+
+@media (max-width: 640px) {
+    .lang-short { display: inline; }
+    .lang-full { display: none; }
+}
+
+@media (min-width: 1024px) {
+    .layout { grid-template-columns: 1fr 1fr; }
 }
 
 /* ============================================================
