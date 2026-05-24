@@ -13,65 +13,65 @@
 <div class="app">
 
   <header class="app-header no-print">
-    <h1 class="app-title">Currículo Fácil</h1>
-    <p class="app-subtitle">Crie um currículo profissional em minutos</p>
+    <h1 class="app-title" data-i18n="app.title"></h1>
+    <p class="app-subtitle" data-i18n="app.subtitle"></p>
   </header>
 
   <nav class="steps-nav no-print">
     <div class="step-item" data-step="1">
       <span class="step-number">1</span>
-      <span class="step-label">Pessoal</span>
+      <span class="step-label" data-i18n="nav.step.1"></span>
     </div>
     <div class="step-line"></div>
     <div class="step-item" data-step="2">
       <span class="step-number">2</span>
-      <span class="step-label">Perfil</span>
+      <span class="step-label" data-i18n="nav.step.2"></span>
     </div>
     <div class="step-line"></div>
     <div class="step-item" data-step="3">
       <span class="step-number">3</span>
-      <span class="step-label">Experiência</span>
+      <span class="step-label" data-i18n="nav.step.3"></span>
     </div>
     <div class="step-line"></div>
     <div class="step-item" data-step="4">
       <span class="step-number">4</span>
-      <span class="step-label">Educação</span>
+      <span class="step-label" data-i18n="nav.step.4"></span>
     </div>
     <div class="step-line"></div>
     <div class="step-item" data-step="5">
       <span class="step-number">5</span>
-      <span class="step-label">Habilidades</span>
+      <span class="step-label" data-i18n="nav.step.5"></span>
     </div>
   </nav>
 
   <div class="layout">
-
     <div class="form-panel no-print">
+
       <section id="step-1" class="step-section active">
-        <h2 class="section-title">Informações Pessoais</h2>
+        <h2 class="section-title" data-i18n="section.personal"></h2>
 
         <div class="field">
-          <label for="name">Nome Completo *</label>
-          <input type="text" id="name" placeholder="Ex: Maria da Silva" autocomplete="name">
+          <label for="name" data-i18n="field.name.label"></label>
+          <input type="text" id="name" data-i18n-placeholder="field.name.placeholder" autocomplete="name">
           <span class="field-hint" id="name-hint"></span>
         </div>
 
         <div class="field">
-          <label for="job-title">Título Profissional *</label>
-          <input type="text" id="job-title" placeholder="Ex: Desenvolvedora Web" autocomplete="organization-title">
+          <label for="job-title" data-i18n="field.jobTitle.label"></label>
+          <input type="text" id="job-title" data-i18n-placeholder="field.jobTitle.placeholder" autocomplete="organization-title">
           <span class="field-hint" id="job-title-hint"></span>
         </div>
 
         <div class="field-row">
           <div class="field">
-            <label for="email">Email *</label>
-            <input type="email" id="email" placeholder="seu@email.com" autocomplete="email">
+            <label for="email" data-i18n="field.email.label"></label>
+            <input type="email" id="email" data-i18n-placeholder="field.email.label" autocomplete="email">
             <span class="field-hint" id="email-hint"></span>
           </div>
           <div class="field">
-            <label>Telefone *</label>
+            <label data-i18n="field.phone.label"></label>
             <div class="phone-entry">
-              <input type="tel" id="phone" placeholder="(00) 00000-0000" autocomplete="tel">
+              <input type="tel" id="phone" data-i18n-placeholder="field.phone.placeholder" autocomplete="tel">
               <label class="checkbox-label" title="WhatsApp">
                 <input type="checkbox" id="phone-whatsapp">
                 <img src="assets/icons/whatsapp.svg" class="whatsapp-icon" alt="WhatsApp">
@@ -80,57 +80,97 @@
             <span class="field-hint" id="phone-hint"></span>
             <div id="extra-phones"></div>
             <button type="button" class="btn-add-small" id="add-phone">
-              <span class="material-symbols-outlined">add</span> Adicionar telefone
+              <span class="material-symbols-outlined">add</span>
+              <span data-i18n="btn.add" data-i18n-item="field.phone.label"></span>
             </button>
           </div>
         </div>
 
         <div class="field">
-          <label for="location">Localização</label>
-          <input type="text" id="location" placeholder="Ex: Blumenau, SC" autocomplete="address-level2">
+          <label for="location" data-i18n="field.location.label"></label>
+          <input type="text" id="location" data-i18n-placeholder="field.location.placeholder" autocomplete="address-level2">
         </div>
 
         <div class="field">
-          <label for="linkedin">LinkedIn</label>
-          <input type="text" id="linkedin" placeholder="https://linkedin.com/in/seuperfil" autocomplete="off">
+          <label for="linkedin" data-i18n="field.linkedin.label"></label>
+          <input type="text" id="linkedin" data-i18n-placeholder="field.linkedin.placeholder" autocomplete="off">
         </div>
       </section>
+
       <section id="step-2" class="step-section">
-        <h2 class="section-title">Perfil Profissional</h2>
+        <h2 class="section-title" data-i18n="section.profile"></h2>
+        <div class="field">
+          <label for="profile" data-i18n="field.profile.label"></label>
+          <textarea id="profile" rows="8" data-i18n-placeholder="field.profile.placeholder"></textarea>
+          <div class="char-counter">
+            <span id="profile-count">0</span>/400
+          </div>
+          <span class="field-hint" id="profile-hint"></span>
+        </div>
       </section>
+
       <section id="step-3" class="step-section">
-        <h2 class="section-title">Experiência Profissional</h2>
+        <h2 class="section-title" data-i18n="section.experience"></h2>
+        <div id="experience-list"></div>
+        <button type="button" class="btn-add-small" id="add-experience">
+          <span class="material-symbols-outlined">add</span>
+          <span data-i18n="btn.add" data-i18n-item="section.experience"></span>
+        </button>
       </section>
+
       <section id="step-4" class="step-section">
-        <h2 class="section-title">Educação</h2>
+        <h2 class="section-title" data-i18n="section.education"></h2>
+        <div id="education-list"></div>
+        <button type="button" class="btn-add-small" id="add-education">
+          <span class="material-symbols-outlined">add</span>
+          <span data-i18n="btn.add" data-i18n-item="section.education"></span>
+        </button>
       </section>
+
       <section id="step-5" class="step-section">
-        <h2 class="section-title">Habilidades e Idiomas</h2>
+        <h2 class="section-title" data-i18n="section.skills"></h2>
+
+        <div id="skill-section">
+          <h3 class="section-subtitle" data-i18n="section.skill"></h3>
+        </div>
+
+        <div id="language-section">
+          <h3 class="section-subtitle" data-i18n="section.language"></h3>
+          <div id="language-list"></div>
+          <button type="button" class="btn-add-small" id="add-language">
+            <span class="material-symbols-outlined">add</span>
+            <span data-i18n="btn.add" data-i18n-item="section.language"></span>
+          </button>
+        </div>
       </section>
 
       <div class="form-nav">
         <button class="btn btn-secondary" id="prev-btn" disabled>
-          <span class="material-symbols-outlined">arrow_back</span> Anterior
+          <span class="material-symbols-outlined">arrow_back</span>
+          <span data-i18n="btn.prev"></span>
         </button>
         <button class="btn btn-primary" id="next-btn">
-          Próximo <span class="material-symbols-outlined">arrow_forward</span>
+          <span data-i18n="btn.next"></span>
+          <span class="material-symbols-outlined">arrow_forward</span>
         </button>
         <button class="btn btn-success" id="finish-btn" style="display:none">
-          <span class="material-symbols-outlined">check</span> Finalizar
+          <span class="material-symbols-outlined">check</span>
+          <span data-i18n="btn.finish"></span>
         </button>
       </div>
     </div>
 
     <div class="preview-panel">
       <div class="preview-header no-print">
-        <span class="preview-label">Visualização</span>
+        <span class="preview-label" data-i18n="preview.label"></span>
         <button class="btn btn-primary btn-sm" id="print-btn">
-          <span class="material-symbols-outlined">print</span> Imprimir / PDF
+          <span class="material-symbols-outlined">print</span>
+          <span data-i18n="btn.print"></span>
         </button>
       </div>
       <div class="cv-preview-wrapper">
         <div id="cv-preview" class="cv-preview">
-          <p class="preview-empty">Preencha as informações para visualizar o currículo</p>
+          <p class="preview-empty" data-i18n="preview.empty"></p>
         </div>
       </div>
     </div>
@@ -138,12 +178,6 @@
   </div>
 </div>
 
-<script src="js/toast.js"></script>
-<script src="js/navigation.js"></script>
-<script src="js/state.js"></script>
-<script src="js/storage.js"></script>
-<script src="js/preview.js"></script>
-<script src="js/validation.js"></script>
-<script src="js/app.js"></script>
+<script type="module" src="js/app.js"></script>
 </body>
 </html>

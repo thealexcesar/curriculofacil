@@ -1,0 +1,134 @@
+{
+  "app": {
+    "subtitle": "Create a professional resume in minutes",
+    "title": "Easy Resume"
+  },
+
+  "btn": {
+    "add": "Add {{item}}",
+    "finish": "Finish",
+    "next": "Next",
+    "prev": "Previous",
+    "print": "Print / PDF",
+    "remove": "Remove"
+  },
+
+  "document": { "filename": "resume" },
+
+  "field": {
+    "current": { "label": "Current job" },
+    "degree": {
+      "label": "Degree / Title",
+      "placeholder": "Ex: Computer Science"
+    },
+    "description": { "label": "Description" },
+    "eduDescription": {
+      "label": "Description (optional)",
+      "placeholder": "Additional information, relevant projects..."
+    },
+    "email": {
+      "error": {
+        "invalid": "Invalid e-mail",
+        "required": "E-mail is required"
+      },
+      "label": "E-mail"
+    },
+    "endDate": { "label": "End Date" },
+    "expCompany": {
+      "label": "Company",
+      "placeholder": "Ex: Google"
+    },
+    "expDescription": {
+      "placeholder": "Describe your main responsibilities..."
+    },
+    "expTitle": {
+      "label": "Job Title",
+      "placeholder": "Ex: Web Developer"
+    },
+    "institution": {
+      "label": "Institution",
+      "placeholder": "Ex: MIT"
+    },
+    "jobTitle": {
+      "error": "Title is required",
+      "label": "Professional Title",
+      "placeholder": "Ex: Full Stack Developer"
+    },
+    "language": {
+      "label": "Language",
+      "level": {
+        "A1": "A1 - Beginner",
+        "A2": "A2 - Elementary",
+        "B1": "B1 - Intermediate",
+        "B2": "B2 - Upper Intermediate",
+        "C1": "C1 - Advanced",
+        "C2": "C2 - Proficient",
+        "native": "Native"
+      },
+      "levelLabel": "Level",
+      "placeholder": "Select language..."
+    },
+    "linkedin": {
+      "label": "LinkedIn",
+      "placeholder": "https://linkedin.com/in/yourprofile"
+    },
+    "location": {
+      "label": "Location",
+      "placeholder": "Ex: New York, NY"
+    },
+    "name": {
+      "error": "Name is required",
+      "label": "Full Name",
+      "placeholder": "Ex: John Smith"
+    },
+    "phone": {
+      "error": "Invalid phone number",
+      "label": "Phone",
+      "note": { "placeholder": "Note (ex: Work, Messages...)" },
+      "placeholder": "(00) 00000-0000"
+    },
+    "profile": {
+      "error": "400 character limit reached",
+      "label": "Professional Summary",
+      "placeholder": "Ex: Professional with experience in..."
+    },
+    "skill": {
+      "label": "Skills",
+      "placeholder": "Ex: JavaScript, Photoshop..."
+    },
+    "startDate": { "label": "Start Date" },
+    "experience": { "current": "Present" }
+  },
+
+  "nav": {
+    "step": {
+      "1": "Personal",
+      "2": "Profile",
+      "3": "Experience",
+      "4": "Education",
+      "5": "Skills"
+    }
+  },
+
+  "preview": {
+    "empty": "Fill in your information to preview the resume",
+    "label": "Preview"
+  },
+
+  "section": {
+    "education": "Education",
+    "experience": "Work Experience",
+    "language": "Languages",
+    "personal": "Personal Information",
+    "profile": "Professional Profile",
+    "skill": "Skills",
+    "skills": "Skills & Languages"
+  },
+
+  "toast": {
+    "close": { "aria": "Close notification" },
+    "finished": "Resume complete!",
+    "print": { "hint": "Uncheck \"Headers and footers\" in the print dialog" },
+    "saved": "Auto-saved"
+  }
+}

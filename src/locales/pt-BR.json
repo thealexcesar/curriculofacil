@@ -1,0 +1,152 @@
+{
+  "app": {
+    "subtitle": "Crie um currículo profissional em minutos",
+    "title": "Currículo Fácil"
+  },
+
+  "btn": {
+    "add": "Adicionar {{item}}",
+    "finish": "Finalizar",
+    "next": "Próximo",
+    "prev": "Anterior",
+    "print": "Imprimir / PDF",
+    "remove": "Remover"
+  },
+
+  "document": { "filename": "curriculo" },
+
+  "field": {
+    "current": { "label": "Trabalho atual" },
+    "degree": {
+      "label": "Curso / Título",
+      "placeholder": "Ex: Análise e Desenvolvimento de Sistemas"
+    },
+    "description": { "label": "Descrição" },
+    "eduDescription": {
+      "label": "Descrição (opcional)",
+      "placeholder": "Informações adicionais, projetos relevantes..."
+    },
+    "email": {
+      "error": {
+        "invalid": "E-mail inválido",
+        "required": "E-mail é obrigatório"
+      },
+      "label": "E-mail"
+    },
+    "endDate": { "label": "Data de Fim / Conclusão" },
+    "expCompany": {
+      "label": "Empresa",
+      "placeholder": "Ex: Google"
+    },
+    "expDescription": {
+      "placeholder": "Descreva suas principais responsabilidades..."
+    },
+    "expTitle": {
+      "label": "Cargo",
+      "placeholder": "Ex: Desenvolvedor Web"
+    },
+    "institution": {
+      "label": "Instituição",
+      "placeholder": "Ex: UNINTER"
+    },
+    "jobTitle": {
+      "error": "Título é obrigatório",
+      "label": "Título Profissional",
+      "placeholder": "Ex: Desenvolvedora Web"
+    },
+    "language": {
+      "label": "Idioma",
+      "level": {
+        "A1": "A1 - Iniciante",
+        "A2": "A2 - Básico",
+        "B1": "B1 - Intermediário",
+        "B2": "B2 - Intermediário avançado",
+        "C1": "C1 - Avançado",
+        "C2": "C2 - Fluente",
+        "native": "Nativo"
+      },
+      "levelLabel": "Nível",
+      "placeholder": "Selecionar idioma..."
+    },
+    "linkedin": {
+      "label": "LinkedIn",
+      "placeholder": "https://linkedin.com/in/seuperfil"
+    },
+    "location": {
+      "label": "Localização",
+      "placeholder": "Ex: Blumenau, SC"
+    },
+    "name": {
+      "error": "Nome é obrigatório",
+      "label": "Nome Completo",
+      "placeholder": "Ex: Maria da Silva"
+    },
+    "phone": {
+      "error": "Telefone inválido (fixo ou celular)",
+      "label": "Telefone",
+      "note": { "placeholder": "Observação (ex: Trabalho, Recados...)" },
+      "placeholder": "(00) 00000-0000"
+    },
+    "profile": {
+      "error": "Limite de 400 caracteres atingido",
+      "label": "Resumo Profissional",
+      "placeholder": "Ex: Profissional com experiência em..."
+    },
+    "skill": {
+      "label": "Habilidades",
+      "placeholder": "Ex: JavaScript, Photoshop..."
+    },
+    "startDate": { "label": "Data de Início" },
+    "experience": { "current": "Atual" }
+  },
+
+  "languages": {
+    "arabic": "Árabe",
+    "dutch": "Holandês",
+    "english": "Inglês",
+    "french": "Francês",
+    "german": "Alemão",
+    "italian": "Italiano",
+    "japanese": "Japonês",
+    "korean": "Coreano",
+    "mandarin": "Mandarim",
+    "norwegian": "Norueguês",
+    "polish": "Polonês",
+    "portuguese": "Português",
+    "russian": "Russo",
+    "spanish": "Espanhol",
+    "swedish": "Sueco"
+  },
+
+  "nav": {
+    "step": {
+      "1": "Pessoal",
+      "2": "Perfil",
+      "3": "Experiência",
+      "4": "Educação",
+      "5": "Habilidades"
+    }
+  },
+
+  "preview": {
+    "empty": "Preencha as informações para visualizar o currículo",
+    "label": "Visualização"
+  },
+
+  "section": {
+    "education": "Educação",
+    "experience": "Experiência Profissional",
+    "language": "Idiomas",
+    "personal": "Informações Pessoais",
+    "profile": "Perfil Profissional",
+    "skill": "Habilidades",
+    "skills": "Habilidades e Idiomas"
+  },
+
+  "toast": {
+    "close": { "aria": "Fechar notificação" },
+    "finished": "Currículo finalizado!",
+    "print": { "hint": "Desmarque \"Cabeçalhos e rodapés\" no diálogo de impressão" },
+    "saved": "Salvo automaticamente"
+  }
+}
