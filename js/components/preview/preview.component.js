@@ -3,6 +3,7 @@ import { getExperienceData } from '../experience/experience.component.js';
 import { getEducationData } from '../education/education.component.js';
 import { getSkillsData } from '../skill/skill.component.js';
 import { getLanguagesData } from '../language/language.component.js';
+import { getExtraPhonesData } from '../phone/phone.component.js';
 
 const CV_WIDTH_PX = 794;
 
@@ -37,6 +38,7 @@ function collectData() {
       jobTitle: document.getElementById('job-title')?.value.trim() ?? '',
       email: document.getElementById('email')?.value.trim() ?? '',
       phone: document.getElementById('phone')?.value.trim() ?? '',
+      phoneWhatsapp: document.getElementById('phone-whatsapp')?.checked ?? false,
       location: document.getElementById('location')?.value.trim() ?? '',
       linkedin: document.getElementById('linkedin')?.value.trim() ?? '',
     },
@@ -45,6 +47,7 @@ function collectData() {
     education: getEducationData(),
     skills: getSkillsData(),
     languages: getLanguagesData(),
+    extraPhones: getExtraPhonesData(),
   };
 }
 

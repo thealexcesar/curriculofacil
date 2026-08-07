@@ -29,7 +29,8 @@
         "invalid": "Ungültige E-Mail",
         "required": "E-Mail ist erforderlich"
       },
-      "label": "E-Mail"
+      "label": "E-Mail",
+      "placeholder": "ihre.email@beispiel.de"
     },
     "endDate": { "label": "Enddatum" },
     "expCompany": {
@@ -98,6 +99,9 @@
     },
     "startDate": { "label": "Startdatum" },
     "experience": { "current": "Aktuell" }
+  },
+  "footer": {
+    "ods": "Im Einklang mit dem UN-Nachhaltigkeitsziel 8 (Menschenwürdige Arbeit und Wirtschaftswachstum) - ein kostenloser Lebenslauf-Ersteller ohne Anmeldung."
   },
   "languages": {
     "arabic": "Arabisch",

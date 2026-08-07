@@ -6,6 +6,7 @@ import { t } from '../../services/i18n.js';
  * @property {string} jobTitle
  * @property {string} email
  * @property {string} phone
+ * @property {boolean} [phoneWhatsapp]
  * @property {string} location
  * @property {string} linkedin
  */
@@ -18,16 +19,22 @@ import { t } from '../../services/i18n.js';
  * @property {import('../education/education.component.js').EducationData[]} education
  * @property {string[]} skills
  * @property {import('../language/language.component.js').LanguageData[]} languages
+ * @property {import('../phone/phone.component.js').PhoneData[]} [extraPhones]
  */
 
 /**
  * @param {PreviewData} data
  * @returns {string}
  */
-export function previewTemplate({ personal, profile, experience, education, skills, languages }) {
+export function previewTemplate({ personal, profile, experience, education, skills, languages, extraPhones = [] }) {
   if (!personal.name && !personal.jobTitle) {
     return `<p class="preview-empty">${t('preview.empty')}</p>`;
   }
+
+  const phones = [
+    personal.phone ? { phone: personal.phone, whatsapp: personal.phoneWhatsapp } : null,
+    ...extraPhones,
+  ].filter(Boolean);
 
   return `
     <header class="cv-header">
@@ -35,7 +42,7 @@ export function previewTemplate({ personal, profile, experience, education, skil
       ${personal.jobTitle ? `<p class="cv-job-title">${personal.jobTitle}</p>` : ''}
       <div class="cv-contact">
         ${personal.email ? `<span>${personal.email}</span>` : ''}
-        ${personal.phone ? `<span>${personal.phone}</span>` : ''}
+        ${phones.map(p => `<span>${p.phone}${p.whatsapp ? ' (WhatsApp)' : ''}${p.note ? ` - ${p.note}` : ''}</span>`).join('')}
         ${personal.location ? `<span>${personal.location}</span>` : ''}
         ${personal.linkedin ? `<span>${personal.linkedin}</span>` : ''}
       </div>

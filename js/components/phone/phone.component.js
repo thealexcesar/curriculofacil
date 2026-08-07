@@ -15,11 +15,38 @@
 import {phoneTemplate}   from './phone.template.js';
 import {applyPhoneMask}  from '../../utils/masks.js';
 
-/** @returns {PhoneComponent} */
-export function createPhone() {
+/** @type {PhoneComponent[]} */
+const items = [];
+
+/** @returns {PhoneData[]} */
+export function getExtraPhonesData() {
+  return items.map(item => item.getData()).filter(p => p.phone);
+}
+
+/** @returns {void} */
+export function clearExtraPhones() {
+  items.length = 0;
+}
+
+/**
+ * @param {Partial<PhoneData>} [prefill={}]
+ * @returns {void}
+ */
+export function addExtraPhone(prefill = {}) {
+  const container = document.getElementById('extra-phones');
+  const item = createPhone(prefill);
+  items.push(item);
+  container.appendChild(item.element);
+}
+
+/**
+ * @param {Partial<PhoneData>} [prefill={}]
+ * @returns {PhoneComponent}
+ */
+function createPhone(prefill = {}) {
   const element = document.createElement('div');
   element.className = 'phone-extra';
-  element.innerHTML = phoneTemplate();
+  element.innerHTML = phoneTemplate(prefill);
 
   const refs = {
     phone: element.querySelector('.extra-phone-input'),
@@ -32,7 +59,10 @@ export function createPhone() {
     refs.phone.value = applyPhoneMask(refs.phone.value);
   });
 
-  const destroy = () => element.remove();
+  const destroy = () => {
+    items.splice(items.indexOf(item), 1);
+    element.remove();
+  };
   refs.removeBtn.addEventListener('click', destroy);
 
   /** @returns {PhoneData} */
@@ -42,5 +72,6 @@ export function createPhone() {
     note: refs.note.value.trim(),
   });
 
-  return { element, getData, destroy };
+  const item = { element, getData, destroy };
+  return item;
 }

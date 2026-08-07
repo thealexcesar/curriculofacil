@@ -1,7 +1,7 @@
 import {t} from "./i18n.js";
 import {applyPhoneMask, isValidPhone} from "../utils/masks.js";
 import {toTitleCase} from "../utils/string-helpers.js";
-import {createPhone} from "../components/phone/phone.component.js";
+import {addExtraPhone} from "../components/phone/phone.component.js";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -14,7 +14,6 @@ export function initStep1Validation() {
     phone: document.getElementById('phone'),
     linkedin: document.getElementById('linkedin'),
     nextBtn: document.getElementById('next-btn'),
-    extraPhones: document.getElementById('extra-phones'),
   };
 
   const hints = {
@@ -52,9 +51,7 @@ export function initStep1Validation() {
   fields.linkedin.addEventListener('focus', () => { if (!fields.linkedin.value) fields.linkedin.value = 'https://linkedin.com/in/'; });
   fields.linkedin.addEventListener('blur', () => { if (fields.linkedin.value === 'https://linkedin.com/in/') fields.linkedin.value = ''; });
 
-  document.getElementById('add-phone').addEventListener('click', () => {
-    fields.extraPhones.appendChild(createPhone().element);
-  });
+  document.getElementById('add-phone').addEventListener('click', () => addExtraPhone());
 
   update();
 }
@@ -136,7 +133,7 @@ function setValidity(input, valid, empty = false) {
  */
 function setHint(hint, valid, message) {
   if (!hint) return;
-  hint.innerHTML = valid ? '' : `<span class="material-symbols-outlined" aria-hidden="true">error</span> ${message}`;
+  hint.innerHTML = valid ? '' : `<svg class="icon" aria-hidden="true"><use href="#icon-error"></use></svg> ${message}`;
   hint.className = valid ? 'field-hint' : 'field-hint error';
 }
 

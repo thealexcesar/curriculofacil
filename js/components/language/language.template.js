@@ -78,7 +78,7 @@ export function languageTemplate(data = {}) {
         ${levelOptions}
       </select>
       <button type="button" class="btn-remove" title="${t('btn.remove')}">
-        <span class="material-symbols-outlined" aria-hidden="true">close</span>
+        <svg class="icon" aria-hidden="true"><use href="#icon-close"></use></svg>
       </button>
     </div>
   `;

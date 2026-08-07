@@ -174,8 +174,8 @@ body {
 }
 
 .toast-icon {
-    font-size: 22px;
-    line-height: 1;
+    width: 22px;
+    height: 22px;
     flex-shrink: 0;
     margin-top: 1px;
 }
@@ -240,33 +240,21 @@ body {
 }
 
 /* ============================================================
-   ICONS
+   ICONS - inline SVG sprite, see index.html
    ============================================================ */
-.material-symbols-outlined {
-    font-variation-settings: 'FILL' 0;
-    transition: font-variation-settings var(--transition-bounce);
-}
-
-*:hover > .material-symbols-outlined,
-button:hover .material-symbols-outlined,
-a:hover .material-symbols-outlined {
-    font-variation-settings: 'FILL' 1;
-}
-
-.fonts-loaded .material-symbols-outlined {
-    visibility: visible;
-}
-
-body:not(.fonts-loaded) .material-symbols-outlined {
-    visibility: hidden;
-    display: inline-block;
+.icon {
     width: 24px;
     height: 24px;
-    border-radius: 4px;
-    background: linear-gradient(90deg, #e2e8f0 0%, #f8fafc 50%, #e2e8f0 100%);
-    background-size: 200% 100%;
-    animation: sk-pulse 1.5s ease-in-out infinite;
-    vertical-align: middle;
+    fill: currentColor;
+    flex-shrink: 0;
+    pointer-events: none;
+    transition: transform var(--transition-fast);
+}
+
+*:hover > .icon,
+button:hover .icon,
+a:hover .icon {
+    transform: scale(1.1);
 }
 
 /* ============================================================
@@ -324,7 +312,7 @@ body:not(.fonts-loaded) .material-symbols-outlined {
 
 .chip-remove:hover { opacity: 1; }
 
-.chip-remove .material-symbols-outlined { font-size: 14px; }
+.chip-remove .icon { width: 14px; height: 14px; }
 
 /* ============================================================
    LANGUAGE ROWS
@@ -603,7 +591,7 @@ span[disabled] {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     font-family: var(--font-family);
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-lg); /* 16px min - prevents iOS Safari auto-zoom on focus */
     color: var(--color-text);
     background: var(--color-surface);
     transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
@@ -630,9 +618,9 @@ span[disabled] {
 
 .field-hint.error { color: var(--color-danger-text); }
 
-.field-hint .material-symbols-outlined {
-    font-size: 14px;
-    font-variation-settings: 'FILL' 1;
+.field-hint .icon {
+    width: 14px;
+    height: 14px;
 }
 
 .field-row {
@@ -765,8 +753,9 @@ span[disabled] {
     color: var(--color-danger);
 }
 
-.phone-extra-remove .material-symbols-outlined {
-    font-size: 16px;
+.phone-extra-remove .icon {
+    width: 16px;
+    height: 16px;
 }
 
 .btn-add-small {
@@ -789,8 +778,9 @@ span[disabled] {
     color: var(--color-primary);
 }
 
-.btn-add-small .material-symbols-outlined {
-    font-size: 16px;
+.btn-add-small .icon {
+    width: 16px;
+    height: 16px;
 }
 
 /* ============================================================
@@ -835,8 +825,9 @@ span[disabled] {
     color: var(--color-danger);
 }
 
-.btn-remove .material-symbols-outlined {
-    font-size: 16px;
+.btn-remove .icon {
+    width: 16px;
+    height: 16px;
 }
 
 /* ============================================================
@@ -1025,6 +1016,22 @@ span[disabled] {
 
 .lang-short { display: none; }
 .lang-full  { display: inline; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.app-footer {
+    text-align: center;
+    margin-top: var(--space-8);
+    padding-top: var(--space-4);
+}
+
+.app-footer p {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    max-width: 480px;
+    margin: 0 auto;
+}
 
 /* ============================================================
    RESPONSIVE

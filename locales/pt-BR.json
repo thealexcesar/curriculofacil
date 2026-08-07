@@ -29,7 +29,8 @@
         "invalid": "E-mail inválido",
         "required": "E-mail é obrigatório"
       },
-      "label": "E-mail"
+      "label": "E-mail",
+      "placeholder": "seuemail@exemplo.com"
     },
     "endDate": { "label": "Data de Fim / Conclusão" },
     "expCompany": {
@@ -98,6 +99,9 @@
     },
     "startDate": { "label": "Data de Início" },
     "experience": { "current": "Atual" }
+  },
+  "footer": {
+    "ods": "Alinhado ao ODS 8 da ONU (Trabalho Decente e Crescimento Econômico) - currículo profissional gratuito, sem cadastro."
   },
   "languages": {
     "arabic": "Árabe",

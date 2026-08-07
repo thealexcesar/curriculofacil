@@ -7,6 +7,7 @@ import {initStep4Education, addEducation, getEducationData, clearEducation} from
 import {initPreview} from "./components/preview/preview.component.js";
 import {initStep5Skills, restoreSkills, getSkillsData} from "./components/skill/skill.component.js";
 import {initStep5Languages, addLanguage, getLanguagesData, clearLanguages} from "./components/language/language.component.js";
+import {addExtraPhone, getExtraPhonesData, clearExtraPhones} from "./components/phone/phone.component.js";
 import {saveResume, loadResume} from "./services/storage.service.js";
 
 /**
@@ -68,6 +69,7 @@ function saveAll() {
       jobTitle: document.getElementById('job-title')?.value.trim() ?? '',
       email: document.getElementById('email')?.value.trim() ?? '',
       phone: document.getElementById('phone')?.value.trim() ?? '',
+      phoneWhatsapp: document.getElementById('phone-whatsapp')?.checked ?? false,
       location: document.getElementById('location')?.value.trim() ?? '',
       linkedin: document.getElementById('linkedin')?.value.trim() ?? '',
     },
@@ -76,6 +78,7 @@ function saveAll() {
     education: getEducationData(),
     skills: getSkillsData(),
     languages: getLanguagesData(),
+    extraPhones: getExtraPhonesData(),
   });
 }
 
@@ -84,13 +87,14 @@ function restoreResume() {
   const data = loadResume();
   if (!Object.keys(data).length) return;
 
-  const { personal, profile, experience, education, skills, languages } = data;
+  const { personal, profile, experience, education, skills, languages, extraPhones } = data;
 
   if (personal) {
     if (personal.name) document.getElementById('name').value = personal.name;
     if (personal.jobTitle) document.getElementById('job-title').value = personal.jobTitle;
     if (personal.email) document.getElementById('email').value = personal.email;
     if (personal.phone) document.getElementById('phone').value = personal.phone;
+    if (personal.phoneWhatsapp) document.getElementById('phone-whatsapp').checked = true;
     if (personal.location) document.getElementById('location').value = personal.location;
     if (personal.linkedin) document.getElementById('linkedin').value = personal.linkedin;
   }
@@ -100,6 +104,7 @@ function restoreResume() {
   experience?.forEach(exp => addExperience(exp));
   education?.forEach(edu => addEducation(edu));
   languages?.forEach(lang => addLanguage(lang));
+  extraPhones?.forEach(phone => addExtraPhone(phone));
   if (skills?.length) restoreSkills(skills);
 }
 
@@ -109,19 +114,23 @@ function reloadDynamicComponents() {
     experience: getExperienceData(),
     education: getEducationData(),
     languages: getLanguagesData(),
+    extraPhones: getExtraPhonesData(),
   };
 
   clearExperience();
   clearEducation();
   clearLanguages();
+  clearExtraPhones();
 
   document.getElementById('experience-list').innerHTML = '';
   document.getElementById('education-list').innerHTML = '';
   document.getElementById('language-list').innerHTML = '';
+  document.getElementById('extra-phones').innerHTML = '';
 
   data.experience.forEach(exp => addExperience(exp));
   data.education.forEach(edu => addEducation(edu));
   data.languages.forEach(lang => addLanguage(lang));
+  data.extraPhones.forEach(phone => addExtraPhone(phone));
   document.dispatchEvent(new Event('input', { bubbles: true }));
 }
 

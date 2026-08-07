@@ -29,7 +29,8 @@
         "invalid": "Invalid e-mail",
         "required": "E-mail is required"
       },
-      "label": "E-mail"
+      "label": "E-mail",
+      "placeholder": "youremail@example.com"
     },
     "endDate": { "label": "End Date" },
     "expCompany": {
@@ -98,6 +99,9 @@
     },
     "startDate": { "label": "Start Date" },
     "experience": { "current": "Present" }
+  },
+  "footer": {
+    "ods": "Aligned with UN SDG 8 (Decent Work and Economic Growth) - a free, sign-up-free resume builder."
   },
   "languages": {
     "arabic": "Arabic",

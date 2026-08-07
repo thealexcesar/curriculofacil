@@ -10,13 +10,13 @@ import {t} from '../../services/i18n.js';
 export function toastTemplate(v, message, title, duration) {
   return `
     <div class="toast-inner">
-      <span class="material-symbols-outlined toast-icon" aria-hidden="true" style="color:${v.border}">${v.icon}</span>
+      <svg class="icon toast-icon" aria-hidden="true" style="color:${v.border}"><use href="#icon-${v.icon}"></use></svg>
       <div class="toast-body">
         ${title ? `<div class="toast-title">${title}</div>` : ''}
         <div class="toast-message" style="color:${title ? v.muted : v.text}">${message}</div>
       </div>
       <button class="toast-close" title="${t('btn.remove')}" aria-label="${t('toast.close.aria')}">
-        <span class="material-symbols-outlined" aria-hidden="true" style="font-size:18px">close</span>
+        <svg class="icon" aria-hidden="true" style="width:18px;height:18px"><use href="#icon-close"></use></svg>
       </button>
     </div>
     <div class="toast-progress">
