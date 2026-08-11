@@ -1034,7 +1034,7 @@ span[disabled] {
 
 .template-btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
 
-.template-btn--active {
+.template-btn.template-btn--active {
     background: var(--color-primary);
     border-color: var(--color-primary);
     color: var(--color-text-inverse);
@@ -1347,7 +1347,7 @@ span[disabled] {
     .preview-header { padding: var(--space-3) var(--space-4); }
     .preview-header-actions { width: 100%; }
     .preview-header-actions .btn { flex: 1; }
-    .color-swatch { width: 24px; height: 24px; }
+    .color-swatch { width: 28px; height: 28px; }
     .color-swatches { flex-wrap: nowrap; gap: 5px; }
 }
 

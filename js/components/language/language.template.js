@@ -72,7 +72,7 @@ export function languageTemplate(data = {}) {
         <option value="other" ${isCustom ? 'selected' : ''}>${t('languages.other')}</option>
       </select>
       <input type="text" class="lang-name-custom" placeholder="${t('field.language.placeholder')}"
-        value="${isCustom ? data.name : ''}" ${isCustom ? '' : 'style="display:none"'}>
+        value="${isCustom ? data.name : ''}" spellcheck="true" autocorrect="on" ${isCustom ? '' : 'style="display:none"'}>
       <select class="lang-level">
         <option value="" disabled ${!data.level ? 'selected' : ''}>${t('field.language.levelLabel')}</option>
         ${levelOptions}

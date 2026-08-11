@@ -19,6 +19,6 @@ export function phoneTemplate(data = {}) {
         <svg class="icon" aria-hidden="true"><use href="#icon-close"></use></svg>
       </button>
     </div>
-    <input type="text" class="extra-phone-note" placeholder="${t('field.phone.note.placeholder')}" value="${data.note ?? ''}">
+    <input type="text" class="extra-phone-note" placeholder="${t('field.phone.note.placeholder')}" value="${data.note ?? ''}" spellcheck="true" autocorrect="on">
   `;
 }
