@@ -1,15 +1,35 @@
 {
+  "a11y": {
+    "fontSize": { "aria": "A+ Textgröße erhöhen" },
+    "voiceInput": { "aria": "Per Sprache diktieren" }
+  },
   "app": {
     "subtitle": "Erstellen Sie in wenigen Minuten einen professionellen Lebenslauf",
     "title": "Lebenslauf Einfach"
   },
   "btn": {
     "add": "{{item}} hinzufügen",
+    "export": "Daten herunterladen",
     "finish": "Fertigstellen",
+    "import": "Daten importieren",
     "next": "Weiter",
     "prev": "Zurück",
     "print": "Drucken / PDF",
-    "remove": "Entfernen"
+    "remove": "Entfernen",
+    "whatsappShare": "Per WhatsApp teilen"
+  },
+  "coverLetter": {
+    "body": { "label": "Text des Anschreibens" },
+    "company": {
+      "label": "Unternehmen / Empfänger",
+      "placeholder": "z.B.: Google"
+    },
+    "draft": "Sehr geehrte Damen und Herren,\n\nmein Name ist {{name}} und ich interessiere mich sehr für die Stelle als {{jobTitle}} bei {{company}}.\n\n{{profile}}\n\nÜber die Möglichkeit eines persönlichen Gesprächs würde ich mich sehr freuen.\n\nMit freundlichen Grüßen,\n{{name}}",
+    "draftFallbackCompany": "Ihrem Unternehmen",
+    "draftFallbackRole": "ausgeschriebene Stelle",
+    "empty": "Das Anschreiben erscheint hier",
+    "title": "Anschreiben",
+    "toggle": "Anschreiben"
   },
   "document": { "filename": "lebenslauf" },
   "field": {
@@ -152,6 +172,7 @@
       "5": "Fähigkeiten"
     }
   },
+  "progress": { "aria": "Fortschritt beim Ausfüllen des Lebenslaufs" },
   "preview": {
     "empty": "Füllen Sie die Informationen aus, um den Lebenslauf anzuzeigen",
     "label": "Vorschau"
@@ -167,9 +188,41 @@
   },
   "toast": {
     "close": { "aria": "Benachrichtigung schließen" },
+    "exported": "Daten erfolgreich heruntergeladen",
     "finished": "Lebenslauf abgeschlossen!",
+    "imported": "Daten erfolgreich importiert",
+    "importError": "Ungültige Datei - Import fehlgeschlagen",
     "print": { "hint": "Deaktivieren Sie \"Kopf- und Fußzeilen\" im Druckdialog" },
-    "saved": "Automatisch gespeichert"
+    "saved": "Automatisch gespeichert",
+    "shareEmpty": "Füllen Sie zuerst Ihren Lebenslauf aus"
   },
-  "toggle": { "form": "Formular", "preview": "Vorschau" }
+  "template": {
+    "classic": "Klassisch",
+    "color": {
+      "blue": "Blaue Farbe",
+      "brown": "Braune Farbe",
+      "charcoal": "Graphitfarbe",
+      "green": "Grüne Farbe",
+      "indigo": "Indigofarbe",
+      "navy": "Marineblaue Farbe",
+      "plum": "Pflaumenfarbe",
+      "rust": "Rostfarbe",
+      "slate": "Schieferfarbe",
+      "teal": "Dunkles Petrol",
+      "wine": "Weinrote Farbe"
+    },
+    "label": "Lebenslauf-Vorlage:",
+    "modern": "Modern"
+  },
+  "tips": {
+    "profile": "Konzentrieren Sie sich auf das, was Sie am besten können. Vermeiden Sie Klischees wie \"proaktiv\" oder \"dynamisch\" - nutzen Sie stattdessen konkrete Beispiele.",
+    "expDescription": "Beginnen Sie mit einem Tätigkeitsverb: organisiert, betreut, verkauft, geleitet...",
+    "eduDescription": "Erwähnen Sie relevante Projekte, Abschlussarbeiten oder Erfolge, falls vorhanden."
+  },
+  "toggle": { "form": "Formular", "preview": "Vorschau" },
+  "voice": {
+    "permissionDenied": "Erlauben Sie den Mikrofonzugriff im Browser, um per Sprache zu diktieren.",
+    "noSpeech": "Wir konnten Sie nicht hören. Sprechen Sie gleich nach dem Klick auf das Mikrofon.",
+    "error": "Ihre Sprache konnte nicht erkannt werden. Bitte versuchen Sie es erneut."
+  }
 }

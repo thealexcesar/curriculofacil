@@ -15,6 +15,7 @@
  */
 
 import {educationTemplate} from './education.template.js';
+import {attachVoiceInput} from '../../services/voice-input.service.js';
 
 /** @type {EducationComponent[]} */
 const items = [];
@@ -83,6 +84,8 @@ function createEducation(index, initialData = {}) {
     inProgress: element.querySelector('.edu-inprogress'),
     badgeToggle: element.querySelector('.edu-inprogress + .badge-toggle'),
   };
+
+  attachVoiceInput(refs.description);
 
   const destroy = () => {
     items.splice(items.indexOf(item), 1);

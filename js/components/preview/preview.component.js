@@ -1,14 +1,27 @@
 import { previewTemplate } from './preview.template.js';
-import { getExperienceData } from '../experience/experience.component.js';
-import { getEducationData } from '../education/education.component.js';
-import { getSkillsData } from '../skill/skill.component.js';
-import { getLanguagesData } from '../language/language.component.js';
-import { getExtraPhonesData } from '../phone/phone.component.js';
+import { collectResumeData } from '../../services/resume-data.service.js';
 
 const CV_WIDTH_PX = 794;
+const TEMPLATE_STORAGE_KEY = 'curriculofacil_template';
+const COLOR_STORAGE_KEY = 'curriculofacil_template_color';
+
+/** @type {Record<string, {accent: string, dark: string, light: string}>} */
+const COLOR_PALETTES = {
+  blue:     { accent: '#1e3a8a', dark: '#16296b', light: '#eff6ff' },
+  charcoal: { accent: '#1f2937', dark: '#111827', light: '#f9fafb' },
+  navy:     { accent: '#0f172a', dark: '#020617', light: '#eff6ff' },
+  indigo:   { accent: '#312e81', dark: '#1e1b4b', light: '#eef2ff' },
+  plum:     { accent: '#6b21a8', dark: '#581c87', light: '#faf5ff' },
+  wine:     { accent: '#7f1d1d', dark: '#661616', light: '#fef2f2' },
+  rust:     { accent: '#7c2d12', dark: '#5c2109', light: '#fff7ed' },
+  teal:     { accent: '#134e4a', dark: '#042f2e', light: '#f0fdfa' },
+  green:    { accent: '#166534', dark: '#14532d', light: '#f0fdf4' },
+};
 
 /** @returns {void} */
 export function initPreview() {
+  initTemplateSwitcher();
+  initColorSwatches();
   renderPreview();
   document.addEventListener('input', renderPreview);
   document.addEventListener('change', renderPreview);
@@ -23,32 +36,79 @@ export function initPreview() {
 }
 
 /** @returns {void} */
+function initTemplateSwitcher() {
+  const buttons = document.querySelectorAll('.template-btn');
+  if (!buttons.length) return;
+
+  const saved = localStorage.getItem(TEMPLATE_STORAGE_KEY) ?? 'classic';
+  applyTemplate(saved, buttons);
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const template = btn.dataset.template;
+      localStorage.setItem(TEMPLATE_STORAGE_KEY, template);
+      applyTemplate(template, buttons);
+    });
+  });
+}
+
+/**
+ * @param {string} template - 'classic' or 'modern'
+ * @param {NodeListOf<HTMLElement>} buttons
+ * @returns {void}
+ */
+function applyTemplate(template, buttons) {
+  const preview = document.getElementById('cv-preview');
+  if (preview) preview.classList.toggle('theme-modern', template === 'modern');
+
+  buttons.forEach(btn => {
+    btn.classList.toggle('template-btn--active', btn.dataset.template === template);
+  });
+}
+
+/** @returns {void} */
+function initColorSwatches() {
+  const swatches = document.querySelectorAll('.color-swatch');
+  if (!swatches.length) return;
+
+  const saved = localStorage.getItem(COLOR_STORAGE_KEY) ?? 'blue';
+  applyColor(saved, swatches);
+
+  swatches.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const color = btn.dataset.color;
+      localStorage.setItem(COLOR_STORAGE_KEY, color);
+      applyColor(color, swatches);
+    });
+  });
+}
+
+/**
+ * @param {string} colorKey
+ * @param {NodeListOf<HTMLElement>} swatches
+ * @returns {void}
+ */
+function applyColor(colorKey, swatches) {
+  const palette = COLOR_PALETTES[colorKey] ?? COLOR_PALETTES.blue;
+  const preview = document.getElementById('cv-preview');
+
+  if (preview) {
+    preview.style.setProperty('--cv-accent', palette.accent);
+    preview.style.setProperty('--cv-accent-dark', palette.dark);
+    preview.style.setProperty('--cv-accent-light', palette.light);
+  }
+
+  swatches.forEach(btn => {
+    btn.classList.toggle('color-swatch--active', btn.dataset.color === colorKey);
+  });
+}
+
+/** @returns {void} */
 function renderPreview() {
   const preview = document.getElementById('cv-preview');
   if (!preview) return;
-  preview.innerHTML = previewTemplate(collectData());
+  preview.innerHTML = previewTemplate(collectResumeData());
   scaleCvPreview();
-}
-
-/** @returns {import('./preview.template.js').PreviewData} */
-function collectData() {
-  return {
-    personal: {
-      name: document.getElementById('name')?.value.trim() ?? '',
-      jobTitle: document.getElementById('job-title')?.value.trim() ?? '',
-      email: document.getElementById('email')?.value.trim() ?? '',
-      phone: document.getElementById('phone')?.value.trim() ?? '',
-      phoneWhatsapp: document.getElementById('phone-whatsapp')?.checked ?? false,
-      location: document.getElementById('location')?.value.trim() ?? '',
-      linkedin: document.getElementById('linkedin')?.value.trim() ?? '',
-    },
-    profile: document.getElementById('profile')?.value.trim() ?? '',
-    experience: getExperienceData(),
-    education: getEducationData(),
-    skills: getSkillsData(),
-    languages: getLanguagesData(),
-    extraPhones: getExtraPhonesData(),
-  };
 }
 
 /** @returns {void} */

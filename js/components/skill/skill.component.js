@@ -34,6 +34,12 @@ export function getSkillsData() {
   return [...skills];
 }
 
+/** @returns {void} */
+export function clearSkills() {
+  skills.length = 0;
+  if (chipsContainer) chipsContainer.innerHTML = '';
+}
+
 /**
  * Restores skills from saved data.
  *

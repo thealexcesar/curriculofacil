@@ -17,11 +17,11 @@ export function experienceTemplate(index, data = {}, isCurrent = false) {
     <div class="field-row">
       <div class="field">
         <label>${t('field.expTitle.label')} *</label>
-        <input type="text" class="exp-title" placeholder="${t('field.expTitle.placeholder')}" value="${data.title ?? ''}">
+        <input type="text" class="exp-title" placeholder="${t('field.expTitle.placeholder')}" value="${data.title ?? ''}" spellcheck="true" autocorrect="on">
       </div>
       <div class="field">
         <label>${t('field.expCompany.label')} *</label>
-        <input type="text" class="exp-company" placeholder="${t('field.expCompany.placeholder')}" value="${data.company ?? ''}">
+        <input type="text" class="exp-company" placeholder="${t('field.expCompany.placeholder')}" value="${data.company ?? ''}" spellcheck="true" autocorrect="on">
       </div>
     </div>
     <div class="field-row">
@@ -42,7 +42,11 @@ export function experienceTemplate(index, data = {}, isCurrent = false) {
     </div>
     <div class="field">
       <label>${t('field.description.label')}</label>
-      <textarea class="exp-description" rows="3" placeholder="${t('field.expDescription.placeholder')}">${data.description ?? ''}</textarea>
+      <p class="field-tip">
+        <svg class="icon" aria-hidden="true"><use href="#icon-info"></use></svg>
+        <span>${t('tips.expDescription')}</span>
+      </p>
+      <textarea class="exp-description" rows="3" placeholder="${t('field.expDescription.placeholder')}" spellcheck="true" autocorrect="on">${data.description ?? ''}</textarea>
     </div>
   `;
 }

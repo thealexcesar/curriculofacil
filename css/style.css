@@ -54,7 +54,7 @@
     /* --- Text --- */
     --color-text:             #111827;
     --color-text-secondary:   #4b5563;
-    --color-text-muted:       #6b7280;
+    --color-text-muted:       #5c626e;
     --color-text-placeholder: #9ca3af;
     --color-text-inverse:     #ffffff;
 
@@ -109,6 +109,19 @@
     --transition-normal: 0.2s ease;
     --transition-slow:   0.3s ease;
     --transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ============================================================
+   LARGE TEXT - accessibility toggle, class="text-large" on <html>
+   ============================================================ */
+:root.text-large {
+    --font-size-xs:   13px;
+    --font-size-sm:   15px;
+    --font-size-md:   18px;
+    --font-size-lg:   19px;
+    --font-size-xl:   21px;
+    --font-size-2xl:  25px;
+    --font-size-3xl:  32px;
 }
 
 /* ============================================================
@@ -394,12 +407,40 @@ a:hover .icon {
     align-items: center;
 }
 
-.lang-switcher {
+.header-controls {
     position: absolute;
     top: 0;
     right: 0;
     display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.lang-switcher {
+    display: flex;
     gap: var(--space-1);
+}
+
+.font-size-btn {
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 4px 8px;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.font-size-btn:hover,
+.font-size-btn[aria-pressed="true"] {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.font-size-btn[aria-pressed="true"] {
+    background: var(--color-primary-light);
 }
 
 .lang-btn {
@@ -493,6 +534,52 @@ span[disabled] {
 }
 
 /* ============================================================
+   PROGRESS
+   ============================================================ */
+.progress-wrap {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+}
+
+.progress-track {
+    flex: 1;
+    height: 6px;
+    background: var(--color-border);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 100%;
+    background: var(--color-accent);
+    border-radius: var(--radius-full);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-slow);
+}
+
+.progress-label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-muted);
+    min-width: 32px;
+    text-align: right;
+}
+
+.data-actions {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+}
+
+.data-actions .btn-add-small {
+    margin-top: 0;
+}
+
+/* ============================================================
    FORM PANEL
    ============================================================ */
 .form-panel {
@@ -563,6 +650,13 @@ span[disabled] {
 
 .btn-sm { padding: 8px 14px; font-size: var(--font-size-sm); }
 
+.btn-whatsapp {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+}
+.btn-whatsapp:hover:not(:disabled) { border-color: #25D366; color: #128C4A; }
+
 /* ============================================================
    FIELDS
    ============================================================ */
@@ -617,6 +711,51 @@ span[disabled] {
 }
 
 .field-hint.error { color: var(--color-danger-text); }
+
+.voice-btn {
+    position: absolute;
+    bottom: 8px;
+    right: 6px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    padding: 6px;
+    display: flex;
+    transition: color var(--transition-normal), border-color var(--transition-normal);
+}
+
+.voice-btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
+
+.voice-btn .icon { width: 16px; height: 16px; }
+
+.voice-btn.is-listening {
+    border-color: var(--color-danger);
+    color: var(--color-danger);
+    animation: voice-pulse 1s ease-in-out infinite;
+}
+
+@keyframes voice-pulse {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.45; }
+}
+
+.field-tip {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-1);
+}
+
+.field-tip .icon {
+    width: 14px;
+    height: 14px;
+    color: var(--color-info);
+    flex-shrink: 0;
+}
 
 .field-hint .icon {
     width: 14px;
@@ -842,11 +981,84 @@ span[disabled] {
 
 .preview-header {
     display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
     justify-content: space-between;
     align-items: center;
     padding: var(--space-3) var(--space-6);
     background: var(--color-surface);
     border-bottom: 1px solid var(--color-border);
+}
+
+.preview-header-actions {
+    display: flex;
+    gap: var(--space-2);
+}
+
+.template-switcher {
+    padding: var(--space-3) var(--space-6);
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.template-switcher-label {
+    display: block;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-2);
+}
+
+.template-switcher-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.template-btn {
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 4px 10px;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.template-btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
+
+.template-btn--active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-text-inverse);
+}
+
+.color-swatches {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: var(--space-2);
+}
+
+.color-swatch {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-full);
+    border: 2px solid transparent;
+    outline-offset: 2px;
+    cursor: pointer;
+    padding: 0;
+    transition: transform var(--transition-fast);
+}
+
+.color-swatch:hover { transform: scale(1.15); }
+
+.color-swatch--active {
+    border-color: var(--color-text);
 }
 
 .preview-label {
@@ -872,6 +1084,19 @@ span[disabled] {
     padding: 57px 66px;
     font-size: 10pt;
     line-height: 1.5;
+    color: var(--color-text);
+    box-shadow: var(--shadow-md);
+    --cv-accent: var(--color-primary);
+    --cv-accent-dark: var(--color-primary);
+    --cv-accent-light: var(--color-primary-light);
+}
+
+.cl-preview {
+    background: white;
+    min-height: 400px;
+    padding: 48px 56px;
+    font-size: 10.5pt;
+    line-height: 1.6;
     color: var(--color-text);
     box-shadow: var(--shadow-md);
 }
@@ -902,7 +1127,7 @@ span[disabled] {
 
 .cv-job-title {
     font-size: 11pt;
-    color: var(--color-primary);
+    color: var(--cv-accent);
     font-weight: var(--font-weight-semibold);
     margin: 0 0 8px;
 }
@@ -924,7 +1149,7 @@ span[disabled] {
     font-weight: var(--font-weight-bold);
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    color: var(--color-primary);
+    color: var(--cv-accent);
     border-bottom: 1px solid var(--color-border);
     padding-bottom: 3px;
     margin: 0 0 10px;
@@ -1018,6 +1243,81 @@ span[disabled] {
 .lang-full  { display: inline; }
 
 /* ============================================================
+   CV THEME - MODERN (second visual model)
+   Reuses the same .cv-* markup/structure as the classic theme, so
+   print pagination behavior stays identical and already-tested -
+   but the layout treatment of each block is genuinely different,
+   not just a color swap. No dark full-bleed fills, so it stays
+   cheap to print on a home/library printer.
+   ============================================================ */
+.cv-preview.theme-modern .cv-header {
+    background: var(--cv-accent-light);
+    border-bottom: none;
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-bottom: 20px;
+}
+
+.cv-preview.theme-modern .cv-name {
+    color: var(--cv-accent-dark);
+    letter-spacing: -0.01em;
+}
+
+.cv-preview.theme-modern .cv-job-title {
+    color: var(--color-text);
+    font-weight: var(--font-weight-semibold);
+}
+
+.cv-preview.theme-modern .cv-section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text);
+    background: none;
+    border-bottom: 2px solid var(--cv-accent);
+    padding: 0 0 4px;
+}
+
+.cv-preview.theme-modern .cv-section-title::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    background: var(--cv-accent);
+    border-radius: 2px;
+}
+
+.cv-preview.theme-modern .cv-item {
+    padding-left: 12px;
+    border-left: 3px solid var(--cv-accent-light);
+}
+
+.cv-preview.theme-modern .cv-skill {
+    background: var(--cv-accent-light);
+    border: none;
+    color: var(--cv-accent-dark);
+    border-radius: var(--radius-full);
+}
+
+/* ============================================================
+   COVER LETTER
+   ============================================================ */
+.cover-letter-toggle {
+    margin-top: var(--space-6);
+    width: 100%;
+    justify-content: center;
+}
+
+.cover-letter-panel {
+    display: none;
+    margin-top: var(--space-6);
+}
+
+.cover-letter-panel--open {
+    display: block;
+}
+
+/* ============================================================
    FOOTER
    ============================================================ */
 .app-footer {
@@ -1040,6 +1340,11 @@ span[disabled] {
     .field-row { grid-template-columns: 1fr; }
     .language-row { grid-template-columns: 1fr auto; }
     .language-row select:last-of-type { grid-column: 1; }
+    .preview-header { padding: var(--space-3) var(--space-4); }
+    .preview-header-actions { width: 100%; }
+    .preview-header-actions .btn { flex: 1; }
+    .color-swatch { width: 36px; height: 36px; }
+    .color-swatches { gap: 10px; }
 }
 
 @media (max-width: 640px) {
@@ -1115,4 +1420,11 @@ span[disabled] {
     .layout--show-form .preview-panel { display: block !important; }
     .layout--show-form .form-panel { display: none !important; }
     .layout--show-preview .form-panel { display: none !important; }
+
+    /* Cover letter prints as its own isolated document - the .form-panel,
+       .preview-panel and .layout rules above already apply to it generically
+       since it reuses the same classes as the resume. */
+    body[data-print-target="letter"] .app > *:not(#cover-letter-panel) { display: none !important; }
+    body[data-print-target="letter"] #cover-letter-panel { display: block !important; }
+    body[data-print-target="letter"] .cl-preview { box-shadow: none !important; }
 }

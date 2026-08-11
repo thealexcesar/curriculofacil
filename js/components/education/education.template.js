@@ -16,11 +16,11 @@ export function educationTemplate(index, data = {}) {
     <div class="field-row">
       <div class="field">
         <label>${t('field.degree.label')} *</label>
-        <input type="text" class="edu-degree" placeholder="${t('field.degree.placeholder')}" value="${data.degree ?? ''}">
+        <input type="text" class="edu-degree" placeholder="${t('field.degree.placeholder')}" value="${data.degree ?? ''}" spellcheck="true" autocorrect="on">
       </div>
       <div class="field">
         <label>${t('field.institution.label')} *</label>
-        <input type="text" class="edu-institution" placeholder="${t('field.institution.placeholder')}" value="${data.institution ?? ''}">
+        <input type="text" class="edu-institution" placeholder="${t('field.institution.placeholder')}" value="${data.institution ?? ''}" spellcheck="true" autocorrect="on">
       </div>
     </div>
     <div class="field-row">
@@ -39,7 +39,11 @@ export function educationTemplate(index, data = {}) {
     </div>
     <div class="field">
       <label>${t('field.eduDescription.label')}</label>
-      <textarea class="edu-description" rows="2" placeholder="${t('field.eduDescription.placeholder')}">${data.description ?? ''}</textarea>
+      <p class="field-tip">
+        <svg class="icon" aria-hidden="true"><use href="#icon-info"></use></svg>
+        <span>${t('tips.eduDescription')}</span>
+      </p>
+      <textarea class="edu-description" rows="2" placeholder="${t('field.eduDescription.placeholder')}" spellcheck="true" autocorrect="on">${data.description ?? ''}</textarea>
     </div>
   `;
 }

@@ -17,8 +17,15 @@ Built as part of **Atividade Extensionista I** — Systems Analysis and Developm
 ## Features
 
 - 5-step guided form
-- Real-time A4 CV preview
+- Real-time A4 CV preview, in a Classic or Modern template with a 9-color picker
 - Export / Print as PDF
+- Export / import resume data as a JSON file
+- Cover letter with an auto-generated draft, printed separately from the resume
+- Voice dictation for long text fields (native Web Speech API)
+- Native spellcheck on all free-text fields
+- Share a text summary of the resume via WhatsApp / the system share sheet
+- Fill-in progress bar
+- Text size toggle for accessibility
 - Auto-save to localStorage
 - i18n: 🇧🇷 pt-BR · 🇺🇸 en · 🇩🇪 de
 - Mobile toggle: Form / Preview
@@ -34,7 +41,7 @@ Built as part of **Atividade Extensionista I** — Systems Analysis and Developm
 HTML · CSS (custom properties) · Vanilla JS (ES Modules)
 ```
 
-No build tools. No frameworks. No dependencies. Runs directly on GitHub Pages.
+No build tools. No frameworks. No npm dependencies. Runs directly on GitHub Pages.
 
 ---
 
@@ -50,6 +57,7 @@ curriculofacil/
 ├── js/
 │   ├── app.js
 │   ├── components/
+│   │   ├── cover-letter/
 │   │   ├── education/
 │   │   ├── experience/
 │   │   ├── language/
@@ -59,11 +67,17 @@ curriculofacil/
 │   │   ├── skill/
 │   │   └── toast/
 │   ├── services/
+│   │   ├── accessibility.service.js
+│   │   ├── data-transfer.service.js
 │   │   ├── i18n.js
 │   │   ├── navigation.service.js
+│   │   ├── progress.service.js
+│   │   ├── resume-data.service.js
+│   │   ├── share.service.js
 │   │   ├── state.service.js
 │   │   ├── storage.service.js
-│   │   └── validation.service.js
+│   │   ├── validation.service.js
+│   │   └── voice-input.service.js
 │   └── utils/
 │       ├── masks.js
 │       └── string-helpers.js
@@ -71,6 +85,7 @@ curriculofacil/
 │   ├── pt-BR.json
 │   ├── en.json
 │   └── de.json
+├── package.json
 └── index.html
 ```
 
@@ -97,10 +112,12 @@ Reactive state via `createState()` with `.subscribe()`. i18n via `t('key')` for 
 
 | Metric | Score |
 |---|---|
-| Performance | ~90 |
-| Accessibility | 92 |
-| Best Practices | 100 |
+| Performance | 95 |
+| Accessibility | 94 |
+| Best Practices | 78 |
 | SEO | 100 |
+
+_Best Practices is dragged down by missing security headers (CSP, HSTS) that only apply once deployed over HTTPS — not meaningful on `localhost`._
 
 ---
 

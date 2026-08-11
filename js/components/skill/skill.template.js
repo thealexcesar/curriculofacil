@@ -9,7 +9,7 @@ import {t} from "../../services/i18n.js";
 export function skillInputTemplate() {
   return `
     <div class="skill-input-row">
-      <input type="text" class="skill-input" placeholder="${t('field.skill.placeholder')}">
+      <input type="text" class="skill-input" placeholder="${t('field.skill.placeholder')}" spellcheck="true" autocorrect="on">
       <button type="button" class="btn btn-sm btn-primary skill-add-btn">
         ${t('btn.add', { item: t('field.skill.label') })}
       </button>

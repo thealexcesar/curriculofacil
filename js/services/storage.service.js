@@ -8,6 +8,8 @@ const STORAGE_KEY = 'curriculofacil_v1';
  * @property {Object[]} education  - Education items
  * @property {string[]} skills     - Skill chips
  * @property {Object[]} languages  - Language rows
+ * @property {Object[]} extraPhones - Additional phone entries
+ * @property {Object}   coverLetter - Cover letter company + body
  */
 
 /**

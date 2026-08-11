@@ -16,6 +16,7 @@
  */
 
 import {experienceTemplate} from './experience.template.js';
+import {attachVoiceInput} from '../../services/voice-input.service.js';
 
 /** @type {ExperienceComponent[]} */
 const items = [];
@@ -87,6 +88,8 @@ function createExperience(index, initialData = {}) {
     badgeToggle: element.querySelector('.exp-current + .badge-toggle'),
     endDateSelect: element.querySelector('.exp-end-month')?.closest('.date-select').parentElement,
   };
+
+  attachVoiceInput(refs.description);
 
   refs.current.addEventListener('change', () => {
     isCurrent = refs.current.checked;

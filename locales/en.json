@@ -1,15 +1,35 @@
 {
+  "a11y": {
+    "fontSize": { "aria": "A+ Increase text size" },
+    "voiceInput": { "aria": "Dictate by voice" }
+  },
   "app": {
     "subtitle": "Create a professional resume in minutes",
     "title": "Easy Resume"
   },
   "btn": {
     "add": "Add {{item}}",
+    "export": "Download data",
     "finish": "Finish",
+    "import": "Import data",
     "next": "Next",
     "prev": "Previous",
     "print": "Print / PDF",
-    "remove": "Remove"
+    "remove": "Remove",
+    "whatsappShare": "Share on WhatsApp"
+  },
+  "coverLetter": {
+    "body": { "label": "Letter text" },
+    "company": {
+      "label": "Company / Recipient",
+      "placeholder": "Ex: Google"
+    },
+    "draft": "Dear Hiring Manager,\n\nMy name is {{name}} and I am very interested in the {{jobTitle}} position at {{company}}.\n\n{{profile}}\n\nI would welcome the opportunity to discuss this further and thank you for your consideration.\n\nSincerely,\n{{name}}",
+    "draftFallbackCompany": "your company",
+    "draftFallbackRole": "advertised position",
+    "empty": "The letter will appear here",
+    "title": "Cover Letter",
+    "toggle": "Cover Letter"
   },
   "document": { "filename": "resume" },
   "field": {
@@ -152,6 +172,7 @@
       "5": "Skills"
     }
   },
+  "progress": { "aria": "Resume completion progress" },
   "preview": {
     "empty": "Fill in your information to preview the resume",
     "label": "Preview"
@@ -167,9 +188,41 @@
   },
   "toast": {
     "close": { "aria": "Close notification" },
+    "exported": "Data downloaded successfully",
     "finished": "Resume complete!",
+    "imported": "Data imported successfully",
+    "importError": "Invalid file - could not import",
     "print": { "hint": "Uncheck \"Headers and footers\" in the print dialog" },
-    "saved": "Auto-saved"
+    "saved": "Auto-saved",
+    "shareEmpty": "Fill in your resume before sharing"
   },
-  "toggle": { "form": "Form", "preview": "Preview" }
+  "template": {
+    "classic": "Classic",
+    "color": {
+      "blue": "Blue color",
+      "brown": "Brown color",
+      "charcoal": "Charcoal color",
+      "green": "Green color",
+      "indigo": "Indigo color",
+      "navy": "Navy color",
+      "plum": "Plum color",
+      "rust": "Rust color",
+      "slate": "Slate color",
+      "teal": "Dark teal color",
+      "wine": "Wine color"
+    },
+    "label": "Resume template:",
+    "modern": "Modern"
+  },
+  "tips": {
+    "profile": "Focus on what you do best. Skip cliches like \"proactive\" or \"dynamic\" - use concrete examples instead.",
+    "expDescription": "Start with an action verb: organized, managed, sold, led...",
+    "eduDescription": "Mention relevant projects, thesis or achievements, if any."
+  },
+  "toggle": { "form": "Form", "preview": "Preview" },
+  "voice": {
+    "permissionDenied": "Allow microphone access in your browser to dictate by voice.",
+    "noSpeech": "We couldn't hear you. Start speaking right after clicking the mic.",
+    "error": "Couldn't recognize your voice. Please try again."
+  }
 }

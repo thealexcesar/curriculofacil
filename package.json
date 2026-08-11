@@ -1,0 +1,11 @@
+{
+  "name": "curriculofacil",
+  "version": "0.7.0-beta",
+  "private": true,
+  "description": "Build your professional resume in minutes — free, no sign-up, no server.",
+  "homepage": "https://thealexcesar.github.io/curriculofacil/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thealexcesar/curriculofacil.git"
+  }
+}

@@ -67,6 +67,7 @@ export function t(key, params = {}) {
  * - data-i18n="key"                          → sets element.textContent
  * - data-i18n-item="key"                     → resolves item param for data-i18n interpolation
  * - data-i18n-placeholder="key"              → sets element.placeholder
+ * - data-i18n-aria="key"                     → sets element.aria-label
  *
  * @returns {void}
  */
@@ -78,5 +79,9 @@ export function translateDOM() {
 
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
     el.placeholder = t(el.dataset.i18nPlaceholder);
+  });
+
+  document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+    el.setAttribute('aria-label', t(el.dataset.i18nAria));
   });
 }

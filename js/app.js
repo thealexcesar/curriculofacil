@@ -5,10 +5,16 @@ import {initStep2Profile} from "./components/profile-section/profile-section.com
 import {initStep3Experience, addExperience, getExperienceData, clearExperience} from "./components/experience/experience.component.js";
 import {initStep4Education, addEducation, getEducationData, clearEducation} from "./components/education/education.component.js";
 import {initPreview} from "./components/preview/preview.component.js";
-import {initStep5Skills, restoreSkills, getSkillsData} from "./components/skill/skill.component.js";
+import {initStep5Skills} from "./components/skill/skill.component.js";
 import {initStep5Languages, addLanguage, getLanguagesData, clearLanguages} from "./components/language/language.component.js";
 import {addExtraPhone, getExtraPhonesData, clearExtraPhones} from "./components/phone/phone.component.js";
 import {saveResume, loadResume} from "./services/storage.service.js";
+import {collectResumeData, applyResumeData} from "./services/resume-data.service.js";
+import {initProgress} from "./services/progress.service.js";
+import {initFontSizeToggle} from "./services/accessibility.service.js";
+import {initDataTransfer} from "./services/data-transfer.service.js";
+import {initWhatsappShare} from "./services/share.service.js";
+import {initCoverLetter} from "./components/cover-letter/cover-letter.component.js";
 
 /**
  * Application entry point.
@@ -20,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLocale();
   translateDOM();
   initLangSwitcher();
+  initFontSizeToggle();
   initViewToggle();
   initNavigation();
   initStep1Validation();
@@ -30,6 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initPreview();
   initStep5Skills();
   initStep5Languages();
+  initProgress();
+  initDataTransfer();
+  initWhatsappShare();
+  initCoverLetter();
 
   restoreResume();
   document.dispatchEvent(new Event('input', { bubbles: true }));
@@ -63,49 +74,14 @@ function initLangSwitcher() {
 
 /** @returns {void} */
 function saveAll() {
-  saveResume({
-    personal: {
-      name: document.getElementById('name')?.value.trim() ?? '',
-      jobTitle: document.getElementById('job-title')?.value.trim() ?? '',
-      email: document.getElementById('email')?.value.trim() ?? '',
-      phone: document.getElementById('phone')?.value.trim() ?? '',
-      phoneWhatsapp: document.getElementById('phone-whatsapp')?.checked ?? false,
-      location: document.getElementById('location')?.value.trim() ?? '',
-      linkedin: document.getElementById('linkedin')?.value.trim() ?? '',
-    },
-    profile: document.getElementById('profile')?.value.trim() ?? '',
-    experience: getExperienceData(),
-    education: getEducationData(),
-    skills: getSkillsData(),
-    languages: getLanguagesData(),
-    extraPhones: getExtraPhonesData(),
-  });
+  saveResume(collectResumeData());
 }
 
 /** @returns {void} */
 function restoreResume() {
   const data = loadResume();
   if (!Object.keys(data).length) return;
-
-  const { personal, profile, experience, education, skills, languages, extraPhones } = data;
-
-  if (personal) {
-    if (personal.name) document.getElementById('name').value = personal.name;
-    if (personal.jobTitle) document.getElementById('job-title').value = personal.jobTitle;
-    if (personal.email) document.getElementById('email').value = personal.email;
-    if (personal.phone) document.getElementById('phone').value = personal.phone;
-    if (personal.phoneWhatsapp) document.getElementById('phone-whatsapp').checked = true;
-    if (personal.location) document.getElementById('location').value = personal.location;
-    if (personal.linkedin) document.getElementById('linkedin').value = personal.linkedin;
-  }
-
-  if (profile) document.getElementById('profile').value = profile;
-
-  experience?.forEach(exp => addExperience(exp));
-  education?.forEach(edu => addEducation(edu));
-  languages?.forEach(lang => addLanguage(lang));
-  extraPhones?.forEach(phone => addExtraPhone(phone));
-  if (skills?.length) restoreSkills(skills);
+  applyResumeData(data);
 }
 
 /** @returns {void} */

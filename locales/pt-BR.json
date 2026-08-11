@@ -1,15 +1,35 @@
 {
+  "a11y": {
+    "fontSize": { "aria": "A+ Aumentar tamanho do texto" },
+    "voiceInput": { "aria": "Ditar por voz" }
+  },
   "app": {
     "subtitle": "Crie um currículo profissional em minutos",
     "title": "Currículo Fácil"
   },
   "btn": {
     "add": "Adicionar {{item}}",
+    "export": "Baixar dados",
     "finish": "Finalizar",
+    "import": "Importar dados",
     "next": "Próximo",
     "prev": "Anterior",
     "print": "Imprimir / PDF",
-    "remove": "Remover"
+    "remove": "Remover",
+    "whatsappShare": "Enviar pelo WhatsApp"
+  },
+  "coverLetter": {
+    "body": { "label": "Texto da carta" },
+    "company": {
+      "label": "Empresa / Destinatário",
+      "placeholder": "Ex: Google"
+    },
+    "draft": "Prezado(a) recrutador(a),\n\nMeu nome é {{name}} e tenho grande interesse na vaga de {{jobTitle}} na {{company}}.\n\n{{profile}}\n\nFico à disposição para uma conversa e agradeço desde já a atenção.\n\nAtenciosamente,\n{{name}}",
+    "draftFallbackCompany": "sua empresa",
+    "draftFallbackRole": "posição anunciada",
+    "empty": "A carta aparecerá aqui",
+    "title": "Carta de Apresentação",
+    "toggle": "Carta de Apresentação"
   },
   "document": { "filename": "curriculo" },
   "field": {
@@ -152,6 +172,7 @@
       "5": "Habilidades"
     }
   },
+  "progress": { "aria": "Progresso de preenchimento do currículo" },
   "preview": {
     "empty": "Preencha as informações para visualizar o currículo",
     "label": "Visualização"
@@ -167,9 +188,41 @@
   },
   "toast": {
     "close": { "aria": "Fechar notificação" },
+    "exported": "Dados baixados com sucesso",
     "finished": "Currículo finalizado!",
+    "imported": "Dados importados com sucesso",
+    "importError": "Arquivo inválido - não foi possível importar",
     "print": { "hint": "Desmarque \"Cabeçalhos e rodapés\" no diálogo de impressão" },
-    "saved": "Salvo automaticamente"
+    "saved": "Salvo automaticamente",
+    "shareEmpty": "Preencha seu currículo antes de compartilhar"
   },
-  "toggle": { "form": "Formulário", "preview": "Visualização" }
+  "template": {
+    "classic": "Clássico",
+    "color": {
+      "blue": "Cor azul",
+      "brown": "Cor marrom",
+      "charcoal": "Cor grafite",
+      "green": "Cor verde",
+      "indigo": "Cor índigo",
+      "navy": "Cor azul-marinho",
+      "plum": "Cor ameixa",
+      "rust": "Cor ferrugem",
+      "slate": "Cor ardósia",
+      "teal": "Cor teal escuro",
+      "wine": "Cor vinho"
+    },
+    "label": "Modelo do currículo:",
+    "modern": "Moderno"
+  },
+  "tips": {
+    "profile": "Foque no que você faz de melhor. Evite clichês como \"proativo\" e \"dinâmico\" - prefira exemplos concretos.",
+    "expDescription": "Comece com um verbo de ação: organizei, atendi, vendi, liderei...",
+    "eduDescription": "Cite projetos, TCC ou conquistas relevantes, se tiver."
+  },
+  "toggle": { "form": "Formulário", "preview": "Visualização" },
+  "voice": {
+    "permissionDenied": "Permita o acesso ao microfone no navegador para ditar por voz.",
+    "noSpeech": "Não conseguimos te ouvir. Fale assim que clicar no microfone.",
+    "error": "Não foi possível reconhecer sua voz. Tente novamente."
+  }
 }
