@@ -8,12 +8,20 @@
  * transcribe it, so recognition also fails (silently, without a
  * permission prompt) when that endpoint is unreachable - e.g. no
  * internet access, or a firewall/proxy blocking it.
+ *
+ * Also a no-op on iOS/iPadOS, regardless of which browser app is used:
+ * Apple requires every iOS browser to run on WebKit under the hood, and
+ * WebKit's speech recognition repeatedly fails to reuse a granted mic
+ * permission there - a platform bug with no code-level fix.
  */
 
 import {t} from './i18n.js';
 import {showToast} from '../components/toast/toast.component.js';
 
 const SpeechRecognitionCtor = window.SpeechRecognition ?? window.webkitSpeechRecognition;
+
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
+  || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
 /** Error codes that don't need a toast - purely user-driven, not failures. */
 const SILENT_ERRORS = new Set(['aborted']);
@@ -36,7 +44,7 @@ const LOCALE_TO_SPEECH_LANG = {
  * @returns {void}
  */
 export function attachVoiceInput(textarea) {
-  if (!SpeechRecognitionCtor || !textarea) return;
+  if (!SpeechRecognitionCtor || !textarea || isIOS) return;
 
   const field = textarea.closest('.field');
   if (!field) return;
