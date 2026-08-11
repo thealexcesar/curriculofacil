@@ -62,7 +62,7 @@
     },
     "expTitle": {
       "label": "Berufsbezeichnung",
-      "placeholder": "z.B.: Webentwickler"
+      "placeholder": "z.B.: IT-Support-Mitarbeiter"
     },
     "institution": {
       "label": "Institution",
@@ -71,7 +71,7 @@
     "jobTitle": {
       "error": "Titel ist erforderlich",
       "label": "Professioneller Titel",
-      "placeholder": "z.B.: Full Stack Entwickler"
+      "placeholder": "z.B.: IT-Support-Mitarbeiter"
     },
     "language": {
       "label": "Sprache",
@@ -200,7 +200,6 @@
     "classic": "Klassisch",
     "color": {
       "blue": "Blaue Farbe",
-      "brown": "Braune Farbe",
       "charcoal": "Graphitfarbe",
       "green": "Grüne Farbe",
       "indigo": "Indigofarbe",

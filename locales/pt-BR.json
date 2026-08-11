@@ -37,7 +37,7 @@
     "inProgress": { "label": "Cursando" },
     "degree": {
       "label": "Curso / Título",
-      "placeholder": "Ex: Análise e Desenvolvimento de Sistemas"
+      "placeholder": "Ex: Ciência da Computação"
     },
     "description": { "label": "Descrição" },
     "eduDescription": {
@@ -62,16 +62,16 @@
     },
     "expTitle": {
       "label": "Cargo",
-      "placeholder": "Ex: Desenvolvedor Web"
+      "placeholder": "Ex: Analista de Suporte Técnico"
     },
     "institution": {
       "label": "Instituição",
-      "placeholder": "Ex: UNINTER"
+      "placeholder": "Ex: UFSC"
     },
     "jobTitle": {
       "error": "Título é obrigatório",
       "label": "Título Profissional",
-      "placeholder": "Ex: Desenvolvedora Web"
+      "placeholder": "Ex: Analista de Suporte Técnico"
     },
     "language": {
       "label": "Idioma",
@@ -200,7 +200,6 @@
     "classic": "Clássico",
     "color": {
       "blue": "Cor azul",
-      "brown": "Cor marrom",
       "charcoal": "Cor grafite",
       "green": "Cor verde",
       "indigo": "Cor índigo",

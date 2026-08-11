@@ -62,7 +62,7 @@
     },
     "expTitle": {
       "label": "Job Title",
-      "placeholder": "Ex: Web Developer"
+      "placeholder": "Ex: IT Support Analyst"
     },
     "institution": {
       "label": "Institution",
@@ -71,7 +71,7 @@
     "jobTitle": {
       "error": "Title is required",
       "label": "Professional Title",
-      "placeholder": "Ex: Full Stack Developer"
+      "placeholder": "Ex: IT Support Analyst"
     },
     "language": {
       "label": "Language",
@@ -200,7 +200,6 @@
     "classic": "Classic",
     "color": {
       "blue": "Blue color",
-      "brown": "Brown color",
       "charcoal": "Charcoal color",
       "green": "Green color",
       "indigo": "Indigo color",
