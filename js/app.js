@@ -44,7 +44,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initCoverLetter();
 
   restoreResume();
-  document.dispatchEvent(new Event('input', { bubbles: true }));
+  // Dispatched on each field (not just document) so listeners bound directly
+  // to a specific input - like the Step 1 "next" button validation - see the
+  // restored values too. An event fired on document alone only bubbles up
+  // from document, it never reaches child elements' own listeners.
+  document.querySelectorAll('.form-panel input, .form-panel textarea, .form-panel select').forEach(field => {
+    field.dispatchEvent(new Event('input', { bubbles: true }));
+  });
   const debouncedSave = debounce(saveAll, 150);
   document.addEventListener('input',  debouncedSave);
   document.addEventListener('change', debouncedSave);

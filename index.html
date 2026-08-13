@@ -64,6 +64,8 @@
     <p class="app-subtitle" data-i18n="app.subtitle"></p>
   </header>
 
+  <p class="steps-caption no-print" id="steps-caption" aria-live="polite"></p>
+
   <nav class="steps-nav no-print">
     <div class="step-item" data-step="1">
       <span class="step-number">1</span>
@@ -129,33 +131,32 @@
 
         <div class="field">
           <label for="job-title" data-i18n="field.jobTitle.label"></label>
-          <input type="text" id="job-title" list="profession-suggestions" data-i18n-placeholder="field.jobTitle.placeholder" autocomplete="organization-title" spellcheck="true" autocorrect="on">
-          <datalist id="profession-suggestions"></datalist>
+          <input type="text" id="job-title" autocomplete="off" data-i18n-placeholder="field.jobTitle.placeholder" spellcheck="true" autocorrect="on" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="job-title-suggestions">
+          <ul class="autocomplete-list" id="job-title-suggestions" role="listbox" hidden></ul>
           <span class="field-hint" id="job-title-hint"></span>
         </div>
 
-        <div class="field-row">
-          <div class="field">
-            <label for="email" data-i18n="field.email.label"></label>
-            <input type="email" id="email" data-i18n-placeholder="field.email.placeholder" autocomplete="email">
-            <span class="field-hint" id="email-hint"></span>
+        <div class="field">
+          <label for="email" data-i18n="field.email.label"></label>
+          <input type="email" id="email" data-i18n-placeholder="field.email.placeholder" autocomplete="email">
+          <span class="field-hint" id="email-hint"></span>
+        </div>
+
+        <div class="field">
+          <label data-i18n="field.phone.label"></label>
+          <div class="phone-entry">
+            <input type="tel" id="phone" data-i18n-placeholder="field.phone.placeholder" autocomplete="tel">
+            <label class="checkbox-label" title="WhatsApp">
+              <input type="checkbox" id="phone-whatsapp">
+              <img src="assets/icons/whatsapp.svg" class="whatsapp-icon" alt="WhatsApp">
+            </label>
           </div>
-          <div class="field">
-            <label data-i18n="field.phone.label"></label>
-            <div class="phone-entry">
-              <input type="tel" id="phone" data-i18n-placeholder="field.phone.placeholder" autocomplete="tel">
-              <label class="checkbox-label" title="WhatsApp">
-                <input type="checkbox" id="phone-whatsapp">
-                <img src="assets/icons/whatsapp.svg" class="whatsapp-icon" alt="WhatsApp">
-              </label>
-            </div>
-            <span class="field-hint" id="phone-hint"></span>
-            <div id="extra-phones"></div>
-            <button type="button" class="btn-add-small" id="add-phone">
-              <svg class="icon" aria-hidden="true"><use href="#icon-add"></use></svg>
-              <span data-i18n="btn.add" data-i18n-item="field.phone.label"></span>
-            </button>
-          </div>
+          <span class="field-hint" id="phone-hint"></span>
+          <div id="extra-phones"></div>
+          <button type="button" class="btn-add-small" id="add-phone">
+            <svg class="icon" aria-hidden="true"><use href="#icon-add"></use></svg>
+            <span data-i18n="btn.add" data-i18n-item="field.phone.label"></span>
+          </button>
         </div>
 
         <div class="field">

@@ -137,7 +137,7 @@
     },
     "skill": {
       "label": "Habilidades",
-      "placeholder": "Ex: Excel, Atendimento ao cliente, Organização..."
+      "placeholder": "Ex: Excel, Vendas, Organização..."
     },
     "startDate": { "label": "Data de Início" },
     "experience": { "current": "Atual" }
