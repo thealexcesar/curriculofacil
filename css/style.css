@@ -378,7 +378,6 @@ a:hover .icon {
     border: 1px solid var(--color-border);
     color: var(--color-text-muted);
     cursor: pointer;
-    transition: all var(--transition-normal);
 }
 
 .badge-toggle--active {
@@ -420,11 +419,6 @@ a:hover .icon {
     gap: var(--space-2);
 }
 
-.lang-switcher {
-    display: flex;
-    gap: var(--space-1);
-}
-
 .font-size-btn {
     background: none;
     border: 1px solid var(--color-border);
@@ -434,7 +428,6 @@ a:hover .icon {
     font-weight: var(--font-weight-semibold);
     color: var(--color-text-secondary);
     cursor: pointer;
-    transition: all var(--transition-normal);
 }
 
 .font-size-btn:hover,
@@ -445,29 +438,6 @@ a:hover .icon {
 
 .font-size-btn[aria-pressed="true"] {
     background: var(--color-primary-light);
-}
-
-.lang-btn {
-    background: none;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    padding: 4px 8px;
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-text-secondary);
-    cursor: pointer;
-    transition: all var(--transition-normal);
-}
-
-.lang-btn:hover {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-}
-
-.lang-btn.active {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
-    color: var(--color-text-inverse);
 }
 
 /* ============================================================
@@ -502,7 +472,6 @@ a:hover .icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all var(--transition-normal);
 }
 
 .step-label {
@@ -772,6 +741,42 @@ span[disabled] {
     gap: var(--space-3);
 }
 
+.field-collapsible {
+    margin-bottom: var(--space-4);
+}
+
+.field-collapsible summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    padding: 10px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    list-style: none;
+}
+
+.field-collapsible summary::-webkit-details-marker { display: none; }
+
+.field-collapsible summary:hover { border-color: var(--color-primary); color: var(--color-primary); }
+
+.field-collapsible-chevron {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    transition: transform var(--transition-normal);
+}
+
+.field-collapsible[open] .field-collapsible-chevron { transform: rotate(180deg); }
+
+.field-collapsible-content {
+    padding: var(--space-4) 2px 0;
+}
+
 .date-select {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -812,7 +817,6 @@ span[disabled] {
     background: var(--color-surface);
     cursor: pointer;
     flex-shrink: 0;
-    transition: all var(--transition-normal);
     position: relative;
 }
 
@@ -888,7 +892,6 @@ span[disabled] {
     align-items: center;
     padding: 2px;
     flex-shrink: 0;
-    transition: all var(--transition-normal);
 }
 
 .phone-extra-remove:hover {
@@ -913,7 +916,6 @@ span[disabled] {
     font-size: var(--font-size-sm);
     color: var(--color-text-muted);
     cursor: pointer;
-    transition: all var(--transition-normal);
 }
 
 .btn-add-small:hover {
@@ -960,7 +962,6 @@ span[disabled] {
     display: flex;
     align-items: center;
     padding: 2px;
-    transition: all var(--transition-normal);
 }
 
 .btn-remove:hover {
@@ -1029,7 +1030,6 @@ span[disabled] {
     font-weight: var(--font-weight-medium);
     color: var(--color-text-muted);
     cursor: pointer;
-    transition: all var(--transition-normal);
 }
 
 .template-btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
@@ -1232,6 +1232,30 @@ span[disabled] {
     gap: 4px;
 }
 
+.cv-documents {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 24px;
+    margin: 0;
+}
+
+.cv-documents div {
+    display: flex;
+    gap: 4px;
+    font-size: 9pt;
+}
+
+.cv-documents dt {
+    color: var(--color-text-secondary);
+}
+
+.cv-documents dt::after { content: ':'; }
+
+.cv-documents dd {
+    margin: 0;
+    color: var(--color-text);
+}
+
 .cv-languages li {
     display: flex;
     justify-content: space-between;
@@ -1242,9 +1266,6 @@ span[disabled] {
     color: var(--color-text-secondary);
     font-size: 8.5pt;
 }
-
-.lang-short { display: none; }
-.lang-full  { display: inline; }
 
 /* ============================================================
    CV THEME - MODERN (second visual model)
@@ -1351,11 +1372,6 @@ span[disabled] {
     .color-swatches { flex-wrap: nowrap; gap: 5px; }
 }
 
-@media (max-width: 640px) {
-    .lang-short { display: inline; }
-    .lang-full { display: none; }
-}
-
 @media (min-width: 1024px) {
     .layout { grid-template-columns: 1fr 1fr; }
 }
@@ -1382,8 +1398,7 @@ span[disabled] {
         font-weight: var(--font-weight-medium);
         color: var(--color-text-muted);
         cursor: pointer;
-        transition: all var(--transition-normal);
-    }
+        }
 
     .view-btn--active {
         background: var(--color-primary);

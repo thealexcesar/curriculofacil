@@ -35,6 +35,15 @@
   "field": {
     "currentJob": { "label": "Aktuelle Stelle" },
     "inProgress": { "label": "Laufend" },
+    "cnhCategory": {
+      "label": "Führerschein (Klasse)",
+      "none": "Habe keinen / möchte nicht angeben"
+    },
+    "cpf": {
+      "label": "CPF (Steuer-ID)",
+      "placeholder": "000.000.000-00"
+    },
+    "extraDocs": { "toggle": "Weitere Dokumente (Ausweis, CPF, Wählerausweis)" },
     "degree": {
       "label": "Abschluss / Titel",
       "placeholder": "z.B.: Informatik"
@@ -113,9 +122,22 @@
       "label": "Berufliches Profil",
       "placeholder": "z.B.: Fachmann mit Erfahrung in..."
     },
+    "rg": {
+      "label": "RG (Ausweisnummer)",
+      "placeholder": "z.B.: 12.345.678-9"
+    },
+    "rgIssuer": {
+      "label": "Ausstellende Behörde",
+      "placeholder": "z.B.: SSP/SC"
+    },
+    "rgIssueDate": { "label": "Ausstellungsdatum" },
+    "voterId": {
+      "label": "Wählerausweis (Título de Eleitor)",
+      "placeholder": "z.B.: 1234 5678 9012"
+    },
     "skill": {
       "label": "Fähigkeiten",
-      "placeholder": "z.B.: JavaScript, Photoshop..."
+      "placeholder": "z.B.: Excel, Kundenservice, Organisation..."
     },
     "startDate": { "label": "Startdatum" },
     "experience": { "current": "Aktuell" }
@@ -178,6 +200,7 @@
     "label": "Vorschau"
   },
   "section": {
+    "documents": "Dokumente",
     "education": "Ausbildung",
     "experience": "Berufserfahrung",
     "language": "Sprachen",

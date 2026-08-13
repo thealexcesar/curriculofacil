@@ -9,6 +9,12 @@ import { t } from '../../services/i18n.js';
  * @property {boolean} [phoneWhatsapp]
  * @property {string} location
  * @property {string} linkedin
+ * @property {string} [cnhCategory]
+ * @property {string} [rg]
+ * @property {string} [rgIssuer]
+ * @property {string} [rgIssueDate]
+ * @property {string} [cpf]
+ * @property {string} [voterId]
  */
 
 /**
@@ -45,8 +51,21 @@ export function previewTemplate({ personal, profile, experience, education, skil
         ${phones.map(p => `<span>${p.phone}${p.whatsapp ? ' (WhatsApp)' : ''}${p.note ? ` - ${p.note}` : ''}</span>`).join('')}
         ${personal.location ? `<span>${personal.location}</span>` : ''}
         ${personal.linkedin ? `<span>${personal.linkedin}</span>` : ''}
+        ${personal.cnhCategory ? `<span>${t('field.cnhCategory.label')}: ${personal.cnhCategory}</span>` : ''}
       </div>
     </header>
+
+    ${hasDocuments(personal) ? `
+    <section class="cv-section">
+      <h2 class="cv-section-title">${t('section.documents')}</h2>
+      <dl class="cv-documents">
+        ${personal.rg ? `<div><dt>${t('field.rg.label')}</dt><dd>${personal.rg}</dd></div>` : ''}
+        ${personal.rgIssuer ? `<div><dt>${t('field.rgIssuer.label')}</dt><dd>${personal.rgIssuer}</dd></div>` : ''}
+        ${personal.rgIssueDate ? `<div><dt>${t('field.rgIssueDate.label')}</dt><dd>${formatFullDate(personal.rgIssueDate)}</dd></div>` : ''}
+        ${personal.cpf ? `<div><dt>${t('field.cpf.label')}</dt><dd>${personal.cpf}</dd></div>` : ''}
+        ${personal.voterId ? `<div><dt>${t('field.voterId.label')}</dt><dd>${personal.voterId}</dd></div>` : ''}
+      </dl>
+    </section>` : ''}
 
     ${profile ? `
     <section class="cv-section">
@@ -125,4 +144,24 @@ function formatDate(yyyyMm) {
   const [year, month] = yyyyMm.split('-');
   const months = t('months');
   return `${months[parseInt(month, 10) - 1]}/${year}`;
+}
+
+/**
+ * Formats YYYY-MM-DD to "DD/MM/YYYY".
+ *
+ * @param {string} [yyyyMmDd]
+ * @returns {string}
+ */
+function formatFullDate(yyyyMmDd) {
+  if (!yyyyMmDd) return '';
+  const [year, month, day] = yyyyMmDd.split('-');
+  return `${day}/${month}/${year}`;
+}
+
+/**
+ * @param {PersonalData} personal
+ * @returns {boolean}
+ */
+function hasDocuments(personal) {
+  return Boolean(personal.rg || personal.rgIssuer || personal.rgIssueDate || personal.cpf || personal.voterId);
 }

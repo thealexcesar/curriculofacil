@@ -1,5 +1,5 @@
 import {t} from "./i18n.js";
-import {applyPhoneMask, isValidPhone} from "../utils/masks.js";
+import {applyPhoneMask, isValidPhone, applyCpfMask} from "../utils/masks.js";
 import {toTitleCase} from "../utils/string-helpers.js";
 import {addExtraPhone} from "../components/phone/phone.component.js";
 
@@ -13,6 +13,7 @@ export function initStep1Validation() {
     email: document.getElementById('email'),
     phone: document.getElementById('phone'),
     linkedin: document.getElementById('linkedin'),
+    cpf: document.getElementById('cpf'),
     nextBtn: document.getElementById('next-btn'),
   };
 
@@ -47,6 +48,8 @@ export function initStep1Validation() {
     validatePhone(fields.phone, hints.phone);
     update();
   });
+
+  on(fields.cpf, () => { fields.cpf.value = applyCpfMask(fields.cpf.value); });
 
   fields.linkedin.addEventListener('focus', () => { if (!fields.linkedin.value) fields.linkedin.value = 'https://linkedin.com/in/'; });
   fields.linkedin.addEventListener('blur', () => { if (fields.linkedin.value === 'https://linkedin.com/in/') fields.linkedin.value = ''; });

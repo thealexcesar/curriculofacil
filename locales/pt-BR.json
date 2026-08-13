@@ -35,6 +35,15 @@
   "field": {
     "currentJob": { "label": "Trabalho atual" },
     "inProgress": { "label": "Cursando" },
+    "cnhCategory": {
+      "label": "CNH (categoria)",
+      "none": "Não possuo / prefiro não informar"
+    },
+    "cpf": {
+      "label": "CPF",
+      "placeholder": "000.000.000-00"
+    },
+    "extraDocs": { "toggle": "Outros documentos (RG, CPF, título de eleitor)" },
     "degree": {
       "label": "Curso / Título",
       "placeholder": "Ex: Ciência da Computação"
@@ -113,9 +122,22 @@
       "label": "Resumo Profissional",
       "placeholder": "Ex: Profissional com experiência em..."
     },
+    "rg": {
+      "label": "RG",
+      "placeholder": "Ex: 12.345.678-9"
+    },
+    "rgIssuer": {
+      "label": "Órgão expedidor",
+      "placeholder": "Ex: SSP/SC"
+    },
+    "rgIssueDate": { "label": "Data de expedição" },
+    "voterId": {
+      "label": "Título de eleitor",
+      "placeholder": "Ex: 1234 5678 9012"
+    },
     "skill": {
       "label": "Habilidades",
-      "placeholder": "Ex: JavaScript, Photoshop..."
+      "placeholder": "Ex: Excel, Atendimento ao cliente, Organização..."
     },
     "startDate": { "label": "Data de Início" },
     "experience": { "current": "Atual" }
@@ -178,6 +200,7 @@
     "label": "Visualização"
   },
   "section": {
+    "documents": "Documentos",
     "education": "Educação",
     "experience": "Experiência Profissional",
     "language": "Idiomas",

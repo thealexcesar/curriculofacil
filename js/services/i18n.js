@@ -13,11 +13,15 @@ const LOCALES = { 'pt-BR': ptBR, en, de };
 /** @type {Locale} */
 let current = DEFAULT_LOCALE;
 
-/** @returns {void} */
+/**
+ * App is pt-BR only for now (Brazilian documents like CPF/RG/CNH don't
+ * translate meaningfully) - always sets the default locale, ignoring any
+ * saved preference or browser language.
+ *
+ * @returns {void}
+ */
 export function initLocale() {
-  const saved = localStorage.getItem(STORAGE_KEY);
-  const fromHtml = document.documentElement.lang;
-  setLocale(saved ?? fromHtml ?? DEFAULT_LOCALE);
+  setLocale(DEFAULT_LOCALE);
 }
 
 /**

@@ -37,6 +37,7 @@
   <symbol id="icon-download" viewBox="0 0 24 24"><path d="M19 9H15V3H9V9H5L12 16L19 9ZM5 18V20H19V18H5Z"/></symbol>
   <symbol id="icon-upload" viewBox="0 0 24 24"><path d="M9 16H15V10H19L12 3L5 10H9V16ZM5 18H19V20H5V18Z"/></symbol>
   <symbol id="icon-mic" viewBox="0 0 24 24"><path d="M12 14C13.66 14 15 12.66 15 11V5C15 3.34 13.66 2 12 2C10.34 2 9 3.34 9 5V11C9 12.66 10.34 14 12 14ZM17 11C17 14.53 14.39 16.44 12 16.44C9.61 16.44 7 14.53 7 11H5C5 14.72 7.82 17.71 11 18.35V21H13V18.35C16.18 17.71 19 14.72 19 11H17Z"/></symbol>
+  <symbol id="icon-expand_more" viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17L7.41 8.59L6 10L12 16L18 10L16.59 8.59Z"/></symbol>
 </svg>
 
 <div class="app">
@@ -58,20 +59,6 @@
       </svg>
       <div class="header-controls">
         <button class="font-size-btn" id="font-size-toggle" data-i18n-aria="a11y.fontSize.aria" aria-pressed="false">A+</button>
-        <div class="lang-switcher">
-          <button class="lang-btn" data-lang="pt-BR" data-i18n-lang="languages.portuguese">
-            <span class="lang-short">PT</span>
-            <span class="lang-full"></span>
-          </button>
-          <button class="lang-btn" data-lang="en" data-i18n-lang="languages.english">
-            <span class="lang-short">EN</span>
-            <span class="lang-full"></span>
-          </button>
-          <button class="lang-btn" data-lang="de" data-i18n-lang="languages.german">
-            <span class="lang-short">DE</span>
-            <span class="lang-full"></span>
-          </button>
-        </div>
       </div>
     </div>
     <p class="app-subtitle" data-i18n="app.subtitle"></p>
@@ -142,7 +129,8 @@
 
         <div class="field">
           <label for="job-title" data-i18n="field.jobTitle.label"></label>
-          <input type="text" id="job-title" data-i18n-placeholder="field.jobTitle.placeholder" autocomplete="organization-title" spellcheck="true" autocorrect="on">
+          <input type="text" id="job-title" list="profession-suggestions" data-i18n-placeholder="field.jobTitle.placeholder" autocomplete="organization-title" spellcheck="true" autocorrect="on">
+          <datalist id="profession-suggestions"></datalist>
           <span class="field-hint" id="job-title-hint"></span>
         </div>
 
@@ -179,6 +167,52 @@
           <label for="linkedin" data-i18n="field.linkedin.label"></label>
           <input type="text" id="linkedin" data-i18n-placeholder="field.linkedin.placeholder" autocomplete="off">
         </div>
+
+        <div class="field">
+          <label for="cnh-category" data-i18n="field.cnhCategory.label"></label>
+          <select id="cnh-category">
+            <option value="" data-i18n="field.cnhCategory.none"></option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="AB">AB</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+          </select>
+        </div>
+
+        <details class="field-collapsible">
+          <summary>
+            <span data-i18n="field.extraDocs.toggle"></span>
+            <svg class="icon field-collapsible-chevron" aria-hidden="true"><use href="#icon-expand_more"></use></svg>
+          </summary>
+          <div class="field-collapsible-content">
+            <div class="field-row">
+              <div class="field">
+                <label for="rg" data-i18n="field.rg.label"></label>
+                <input type="text" id="rg" data-i18n-placeholder="field.rg.placeholder" autocomplete="off">
+              </div>
+              <div class="field">
+                <label for="rg-issuer" data-i18n="field.rgIssuer.label"></label>
+                <input type="text" id="rg-issuer" data-i18n-placeholder="field.rgIssuer.placeholder" autocomplete="off">
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="rg-issue-date" data-i18n="field.rgIssueDate.label"></label>
+                <input type="date" id="rg-issue-date">
+              </div>
+              <div class="field">
+                <label for="cpf" data-i18n="field.cpf.label"></label>
+                <input type="text" id="cpf" data-i18n-placeholder="field.cpf.placeholder" autocomplete="off" inputmode="numeric">
+              </div>
+            </div>
+            <div class="field">
+              <label for="voter-id" data-i18n="field.voterId.label"></label>
+              <input type="text" id="voter-id" data-i18n-placeholder="field.voterId.placeholder" autocomplete="off" inputmode="numeric">
+            </div>
+          </div>
+        </details>
       </section>
 
       <section id="step-2" class="step-section">

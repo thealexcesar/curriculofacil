@@ -1,5 +1,6 @@
 import { previewTemplate } from './preview.template.js';
 import { collectResumeData } from '../../services/resume-data.service.js';
+import { debounce } from '../../utils/debounce.js';
 
 const CV_WIDTH_PX = 794;
 const TEMPLATE_STORAGE_KEY = 'curriculofacil_template';
@@ -23,8 +24,9 @@ export function initPreview() {
   initTemplateSwitcher();
   initColorSwatches();
   renderPreview();
-  document.addEventListener('input', renderPreview);
-  document.addEventListener('change', renderPreview);
+  const debouncedRender = debounce(renderPreview, 150);
+  document.addEventListener('input', debouncedRender);
+  document.addEventListener('change', debouncedRender);
   window.addEventListener('resize', scaleCvPreview);
   requestAnimationFrame(scaleCvPreview);
 
