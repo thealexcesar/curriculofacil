@@ -218,6 +218,18 @@
 
       <section id="step-2" class="step-section">
         <h2 class="section-title" data-i18n="section.profile"></h2>
+        <div class="profession-suggestion" id="profession-suggestion" hidden>
+          <p class="profession-suggestion-title">
+            <svg class="icon" aria-hidden="true"><use href="#icon-info"></use></svg>
+            <span id="profession-suggestion-label"></span>
+          </p>
+          <p class="profession-suggestion-preview" id="profession-suggestion-preview"></p>
+          <div class="profession-suggestion-actions">
+            <button type="button" class="btn btn-primary btn-sm" id="profession-suggestion-use"></button>
+            <button type="button" class="btn btn-outline btn-sm" id="profession-suggestion-dismiss" data-i18n="btn.dismiss"></button>
+          </div>
+        </div>
+
         <div class="field">
           <label for="profile" data-i18n="field.profile.label"></label>
           <p class="field-tip">

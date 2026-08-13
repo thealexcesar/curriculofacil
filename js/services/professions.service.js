@@ -1,19 +1,91 @@
 /**
- * Autocomplete suggestions for the job title field, sourced from the
- * official CBO (Classificação Brasileira de Ocupações) - public domain
- * data, see data/professions.json.
+ * Profession data - sourced from the official CBO (Classificação Brasileira
+ * de Ocupações) - public domain. Two files:
  *
- * A native <datalist> was tried first but its suggestion popup is
- * unreliably positioned by Chromium inside CSS Grid layouts (the popup
- * can render disconnected from the input) - a long-standing browser
- * bug with no CSS-level fix, so this is a small hand-rolled dropdown
- * instead. Typing a profession not on the list is always allowed;
- * the list is just a suggestion, never a restriction.
+ * - data/professions.json: every one of the ~2.460 CBO titles (name only),
+ *   for the autocomplete below.
+ * - data/profession-suggestions.json: the actual ready-to-use résumé
+ *   content (`desc` / `habilidades` / `frases`), hand-written since there's
+ *   no dataset for that part. `specific` has a few professions with their
+ *   own tailored content; `categories` has one generic-but-still-useful
+ *   entry per broad category, as a fallback for everything else.
+ *
+ * Category matching runs live against whatever text the user typed (see
+ * classify() below) - not just against the fixed CBO list - so a close-
+ * enough or free-typed title (e.g. "Analista de Desenvolvimento de
+ * Sistemas") still gets a suggestion via keyword stems, not just an exact
+ * CBO string. Keywords are short stems on purpose, to catch inflections
+ * ("desenvolv" matches desenvolvedor, desenvolvimento, desenvolvendo...).
+ *
+ * Also home to the job-title autocomplete (a hand-rolled dropdown - a
+ * native <datalist> was tried first, but its suggestion popup is
+ * unreliably positioned by Chromium inside CSS Grid layouts, with no
+ * CSS-level fix).
  */
 
 import professions from '../../data/professions.json' with { type: 'json' };
+import suggestions from '../../data/profession-suggestions.json' with { type: 'json' };
+import {normalize} from '../utils/string-helpers.js';
+import {initCombobox} from '../utils/combobox.js';
 
-const MAX_RESULTS = 8;
+/** @type {[string, string[]][]} First matching category wins. */
+const CATEGORY_KEYWORDS = [
+  ['Tecnologia', ['program', 'desenvolv', 'software', 'sistema', 'banco de dados',
+    'rede de computador', 'informat', 'suporte tecnico', 'telecomunica', 'devops',
+    'tecnologia da informa']],
+  ['Saúde', ['enferm', 'medic', 'saude', 'terapeut', 'fisioterap', 'odont', 'farmac',
+    'socorr', 'hospital', 'fonoaudi', 'nutri', 'psicolog', 'veterinar',
+    'cuidador de idos', 'radiolog', 'laboratorio clinico']],
+  ['Comércio e Vendas', ['vend', 'comerci', 'balconista', 'caixa', 'promotor de vend']],
+  ['Administração e Escritório', ['administra', 'secretari', 'recepcion', 'escritorio',
+    'financeir', 'contab', 'recursos humanos', 'arquivist', 'escritur']],
+  ['Construção e Manutenção', ['pedreiro', 'construc', 'eletricist', 'encanador',
+    'mecanic', 'manutenc', 'montador', 'marcenei', 'pintor', 'soldador',
+    'instalador', 'carpintei', 'telhad']],
+  ['Alimentação', ['cozinh', 'garcom', 'confeit', 'padeiro', 'acougueiro', 'chef',
+    'aliment', 'barman', 'docei', 'sorvet']],
+  ['Educação', ['professor', 'educad', 'instrutor', 'pedagog', 'docente', 'ensino']],
+  ['Transporte e Logística', ['motorist', 'entregador', 'estoque', 'almoxarif',
+    'logistic', 'transport', 'condutor', 'carregador']],
+  ['Serviços Gerais e Cuidados', ['diarista', 'limpeza', 'porteiro', 'seguranc',
+    'vigilante', 'cuidador', 'baba', 'jardin', 'zelador', 'faxineir', 'domestic']],
+  ['Indústria e Produção', ['operador', 'produc', 'industrial', 'fabric', 'textil',
+    'confecc', 'extrusor', 'tecel', 'tingidor', 'fundic', 'usinagem', 'torneiro',
+    'caldeireiro']],
+];
+
+/**
+ * @param {string} normalizedText
+ * @returns {string|undefined}
+ */
+function classify(normalizedText) {
+  const found = CATEGORY_KEYWORDS.find(([, keywords]) => keywords.some(kw => normalizedText.includes(kw)));
+  return found?.[0];
+}
+
+/**
+ * Looks up résumé suggestion content for a typed job title. Tries an exact
+ * profession match first (most specific), then a broad category guessed
+ * from keywords in the text itself. Returns undefined if nothing matches -
+ * most titles won't, and that's fine, it's a bonus not a requirement.
+ *
+ * @param {string} title
+ * @returns {{desc: string, habilidades: string[], frases: string[], matchedBy: 'specific'|'category', label: string}|undefined}
+ */
+export function findProfessionSuggestion(title) {
+  const normalized = normalize(title.trim());
+  if (!normalized) return undefined;
+
+  const exact = Object.keys(suggestions.specific).find(name => normalize(name) === normalized);
+  if (exact) return { ...suggestions.specific[exact], matchedBy: 'specific', label: exact };
+
+  const category = classify(normalized);
+  if (category && suggestions.categories[category]) {
+    return { ...suggestions.categories[category], matchedBy: 'category', label: category };
+  }
+
+  return undefined;
+}
 
 /** @returns {void} */
 export function initProfessionAutocomplete() {
@@ -21,110 +93,9 @@ export function initProfessionAutocomplete() {
   const list = document.getElementById('job-title-suggestions');
   if (!input || !list) return;
 
-  let activeIndex = -1;
-
-  input.addEventListener('input', () => {
-    render(matches(input.value));
-  });
-
-  input.addEventListener('keydown', event => {
-    if (list.hidden) return;
-
-    const items = Array.from(list.children);
-    if (event.key === 'ArrowDown') {
-      event.preventDefault();
-      setActive(items, Math.min(activeIndex + 1, items.length - 1));
-    } else if (event.key === 'ArrowUp') {
-      event.preventDefault();
-      setActive(items, Math.max(activeIndex - 1, 0));
-    } else if (event.key === 'Enter' && activeIndex >= 0) {
-      event.preventDefault();
-      choose(items[activeIndex].textContent);
-    } else if (event.key === 'Escape') {
-      close();
-    }
-  });
-
-  input.addEventListener('blur', () => {
-    // Delay so a click on an option (which also blurs the input) still registers.
-    setTimeout(close, 150);
-  });
-
-  /**
-   * @param {string} query
-   * @returns {string[]}
-   */
-  function matches(query) {
+  initCombobox(input, list, query => {
     const normalized = normalize(query.trim());
     if (!normalized) return [];
-    return professions.filter(p => normalize(p).includes(normalized)).slice(0, MAX_RESULTS);
-  }
-
-  /**
-   * @param {string[]} results
-   * @returns {void}
-   */
-  function render(results) {
-    const wasHidden = list.hidden;
-    activeIndex = -1;
-    list.innerHTML = results
-      .map(name => `<li role="option" class="autocomplete-option">${name}</li>`)
-      .join('');
-    list.hidden = results.length === 0;
-    input.setAttribute('aria-expanded', String(results.length > 0));
-
-    // The keyboard covers the bottom half of the screen on mobile, and it's
-    // already open by the time the list first appears (input focus happens
-    // before typing) - nudge just enough to keep the list visible above it,
-    // without a jarring full scroll if it's already in view.
-    if (wasHidden && !list.hidden) {
-      list.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-    }
-
-    list.querySelectorAll('.autocomplete-option').forEach(option => {
-      option.addEventListener('mousedown', event => {
-        event.preventDefault(); // keep focus on input so the blur-close doesn't race the click
-        choose(option.textContent);
-      });
-    });
-  }
-
-  /**
-   * @param {HTMLElement[]} items
-   * @param {number} index
-   * @returns {void}
-   */
-  function setActive(items, index) {
-    items.forEach(item => item.classList.remove('autocomplete-option--active'));
-    activeIndex = index;
-    items[index]?.classList.add('autocomplete-option--active');
-    items[index]?.scrollIntoView({ block: 'nearest' });
-  }
-
-  /**
-   * @param {string} name
-   * @returns {void}
-   */
-  function choose(name) {
-    input.value = name;
-    input.dispatchEvent(new Event('input', { bubbles: true }));
-    close();
-    input.focus();
-  }
-
-  /** @returns {void} */
-  function close() {
-    list.hidden = true;
-    list.innerHTML = '';
-    input.setAttribute('aria-expanded', 'false');
-    activeIndex = -1;
-  }
-}
-
-/**
- * @param {string} str
- * @returns {string}
- */
-function normalize(str) {
-  return str.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+    return professions.filter(p => normalize(p.title).includes(normalized)).map(p => p.title);
+  });
 }

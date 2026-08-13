@@ -15,6 +15,7 @@ import {initDataTransfer} from "./services/data-transfer.service.js";
 import {initWhatsappShare} from "./services/share.service.js";
 import {initCoverLetter} from "./components/cover-letter/cover-letter.component.js";
 import {initProfessionAutocomplete} from "./services/professions.service.js";
+import {initClearableInputs} from "./services/clearable-inputs.service.js";
 import {debounce} from "./utils/debounce.js";
 
 /**
@@ -31,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
   initStep1Validation();
   initProfessionAutocomplete();
+  initClearableInputs();
   updateStepLocks();
   initStep2Profile();
   initStep3Experience();

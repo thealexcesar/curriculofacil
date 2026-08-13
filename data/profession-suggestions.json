@@ -1,0 +1,276 @@
+{
+  "specific": {
+    "Auxiliar de produção": {
+      "desc": "Profissional com experiência em linha de produção, seguindo procedimentos de qualidade e segurança. Atenção a detalhes, ritmo constante de trabalho e facilidade para seguir instruções técnicas.",
+      "habilidades": ["Operação de máquinas", "Controle de qualidade", "Trabalho em equipe", "Cumprimento de metas de produção", "Uso de EPI"],
+      "frases": [
+        "Operei máquinas de linha de produção seguindo normas de segurança e qualidade.",
+        "Identifiquei e reportei falhas no processo produtivo, reduzindo retrabalho.",
+        "Cumpri metas diárias de produção trabalhando em equipe com outros setores."
+      ]
+    },
+    "Cuidador de idosos": {
+      "desc": "Profissional dedicado ao cuidado e bem-estar de pessoas idosas, com experiência em auxílio nas atividades diárias, administração de medicamentos e acompanhamento em consultas. Paciência, empatia e responsabilidade no dia a dia.",
+      "habilidades": ["Auxílio em atividades diárias", "Administração de medicamentos", "Primeiros socorros", "Acompanhamento em consultas", "Paciência e empatia"],
+      "frases": [
+        "Auxiliei idosos em higiene pessoal, alimentação e locomoção diariamente.",
+        "Administrei medicamentos nos horários corretos, seguindo orientação médica.",
+        "Acompanhei consultas médicas e mantive a família informada sobre a saúde do paciente."
+      ]
+    },
+    "Diarista": {
+      "desc": "Profissional responsável pela limpeza e organização de ambientes residenciais e comerciais. Comprometimento com pontualidade, cuidado com os materiais e atenção aos detalhes.",
+      "habilidades": ["Limpeza e organização", "Uso de produtos de limpeza", "Organização de ambientes", "Pontualidade", "Confiabilidade"],
+      "frases": [
+        "Realizei limpeza completa de ambientes residenciais, mantendo padrão de organização.",
+        "Organizei armários e espaços seguindo preferências dos moradores.",
+        "Zelei pela conservação de móveis e objetos durante a limpeza."
+      ]
+    },
+    "Operador de caixa": {
+      "desc": "Profissional com experiência em atendimento ao cliente e operação de caixa registradora. Agilidade, honestidade no manuseio de dinheiro e boa comunicação com o público.",
+      "habilidades": ["Operação de caixa", "Atendimento ao cliente", "Conferência de valores", "Agilidade", "Organização"],
+      "frases": [
+        "Atendi clientes no caixa, realizando cobranças e conferência de valores com precisão.",
+        "Resolvi dúvidas e reclamações de clientes de forma cordial e rápida.",
+        "Fechei o caixa diariamente conferindo valores e emitindo relatórios."
+      ]
+    },
+    "Atendente de telemarketing": {
+      "desc": "Profissional com experiência em atendimento ao cliente por telefone, focado em resolver problemas com agilidade e cordialidade. Boa comunicação e paciência para lidar com o público.",
+      "habilidades": ["Atendimento ao cliente", "Comunicação clara", "Resolução de problemas", "Paciência", "Uso de sistemas de atendimento"],
+      "frases": [
+        "Atendi chamados diariamente, resolvendo dúvidas e reclamações de clientes.",
+        "Registrei ocorrências em sistema, garantindo o acompanhamento correto de cada caso.",
+        "Recebi elogios de clientes pela qualidade do atendimento prestado."
+      ]
+    },
+    "Vendedor": {
+      "desc": "Profissional com experiência em vendas e atendimento ao cliente, com foco em entender as necessidades do cliente e oferecer o produto certo. Boa comunicação e facilidade para trabalhar com metas.",
+      "habilidades": ["Vendas", "Atendimento ao cliente", "Negociação", "Conhecimento de produtos", "Trabalho com metas"],
+      "frases": [
+        "Atingi e superei metas mensais de vendas através de atendimento personalizado.",
+        "Orientei clientes na escolha de produtos, aumentando a satisfação e recompra.",
+        "Organizei vitrine e estoque para facilitar a exposição dos produtos."
+      ]
+    },
+    "Auxiliar administrativo": {
+      "desc": "Profissional organizado, com experiência em rotinas administrativas como arquivamento, atendimento telefônico e apoio a outros setores. Atenção a detalhes e domínio de ferramentas de escritório.",
+      "habilidades": ["Excel", "Arquivamento e organização", "Atendimento telefônico", "Redação de documentos", "Organização de agenda"],
+      "frases": [
+        "Organizei arquivos físicos e digitais, facilitando o acesso a documentos da equipe.",
+        "Atendi ligações e e-mails, direcionando solicitações aos setores responsáveis.",
+        "Apoiei o setor financeiro no lançamento de notas e controle de planilhas."
+      ]
+    },
+    "Recepcionista": {
+      "desc": "Profissional com experiência em recepção e atendimento ao público, responsável por organizar agendas, receber visitantes e prestar as primeiras informações. Boa comunicação e apresentação pessoal.",
+      "habilidades": ["Atendimento ao público", "Organização de agenda", "Atendimento telefônico", "Boa comunicação", "Organização"],
+      "frases": [
+        "Recebi e direcionei visitantes e clientes conforme a necessidade de cada um.",
+        "Organizei a agenda de atendimentos, evitando conflitos de horário.",
+        "Atendi ligações e transferi chamadas para os setores corretos."
+      ]
+    },
+    "Motorista": {
+      "desc": "Profissional com CNH válida e experiência em condução segura para entregas e transporte. Conhecimento de rotas, pontualidade e cuidado com a carga transportada.",
+      "habilidades": ["Direção defensiva", "Conhecimento de rotas", "Pontualidade", "Cuidado com a carga", "Uso de aplicativos de navegação"],
+      "frases": [
+        "Realizei entregas diárias cumprindo prazos e mantendo a integridade da carga.",
+        "Planejei rotas para otimizar tempo e economizar combustível.",
+        "Mantive o veículo em boas condições, reportando manutenções necessárias."
+      ]
+    },
+    "Cozinheiro": {
+      "desc": "Profissional com experiência em preparo de alimentos, seguindo normas de higiene e segurança alimentar. Organização, agilidade e capacidade de trabalhar sob pressão em horários de pico.",
+      "habilidades": ["Preparo de alimentos", "Normas de higiene e segurança alimentar", "Organização de cozinha", "Trabalho sob pressão", "Controle de estoque de insumos"],
+      "frases": [
+        "Preparei pratos seguindo receitas e padrões de qualidade do estabelecimento.",
+        "Segui normas de higiene e segurança alimentar em todas as etapas do preparo.",
+        "Organizei o estoque de insumos, evitando desperdícios e faltas."
+      ]
+    },
+    "Garçom": {
+      "desc": "Profissional com experiência em atendimento em restaurantes e bares, com foco em agilidade e simpatia no atendimento à mesa. Boa memória, organização e trabalho em equipe.",
+      "habilidades": ["Atendimento à mesa", "Organização", "Trabalho em equipe", "Agilidade", "Conhecimento de cardápio"],
+      "frases": [
+        "Atendi mesas com agilidade, anotando pedidos e esclarecendo dúvidas sobre o cardápio.",
+        "Trabalhei em equipe com a cozinha para garantir a qualidade do atendimento.",
+        "Recebi boas avaliações de clientes pela simpatia e atenção no atendimento."
+      ]
+    },
+    "Auxiliar de estoque": {
+      "desc": "Profissional com experiência em controle de estoque, recebimento e conferência de mercadorias. Organização, atenção a detalhes e conhecimento em planilhas de controle.",
+      "habilidades": ["Controle de estoque", "Conferência de mercadorias", "Organização", "Excel", "Uso de leitor de código de barras"],
+      "frases": [
+        "Conferi e organizei mercadorias recebidas, conferindo notas fiscais e quantidades.",
+        "Realizei inventários periódicos, identificando divergências no estoque.",
+        "Organizei o armazém otimizando o espaço e facilitando a localização de itens."
+      ]
+    },
+    "Porteiro": {
+      "desc": "Profissional com experiência em controle de acesso e segurança patrimonial. Atenção, responsabilidade e capacidade de agir com calma em situações de emergência.",
+      "habilidades": ["Controle de acesso", "Uso de sistemas de segurança e câmeras", "Atenção e observação", "Comunicação clara", "Responsabilidade"],
+      "frases": [
+        "Controlei entrada e saída de pessoas e veículos, seguindo normas do condomínio.",
+        "Monitorei câmeras de segurança, identificando e reportando situações suspeitas.",
+        "Registrei ocorrências em livro de ronda, mantendo a comunicação com a equipe."
+      ]
+    },
+    "Babá": {
+      "desc": "Profissional dedicada ao cuidado de crianças, com experiência em alimentação, higiene, brincadeiras educativas e acompanhamento escolar. Paciência, responsabilidade e atenção constante.",
+      "habilidades": ["Cuidado infantil", "Primeiros socorros", "Atividades educativas", "Paciência", "Responsabilidade"],
+      "frases": [
+        "Cuidei da alimentação, higiene e segurança de crianças durante o período de trabalho.",
+        "Planejei brincadeiras educativas adequadas para cada idade.",
+        "Acompanhei tarefas escolares, auxiliando no desenvolvimento das crianças."
+      ]
+    },
+    "Costureira": {
+      "desc": "Profissional com experiência em costura, ajustes e confecção de peças de roupa. Atenção a detalhes, precisão e conhecimento de diferentes tipos de tecido e máquinas.",
+      "habilidades": ["Costura reta e overloque", "Ajustes e reparos", "Leitura de moldes", "Atenção a detalhes", "Conhecimento de tecidos"],
+      "frases": [
+        "Realizei ajustes e reparos em peças de roupa conforme solicitação do cliente.",
+        "Confeccionei peças seguindo moldes e especificações de medida.",
+        "Operei máquinas de costura reta e overloque com precisão."
+      ]
+    },
+    "Pedreiro": {
+      "desc": "Profissional com experiência em obras de construção civil, incluindo alvenaria, revestimento e leitura de projetos simples. Atenção à segurança e capacidade de trabalhar em equipe.",
+      "habilidades": ["Alvenaria", "Revestimento e acabamento", "Leitura de projetos simples", "Uso de EPI", "Trabalho em equipe"],
+      "frases": [
+        "Executei serviços de alvenaria seguindo projeto e orientação do mestre de obras.",
+        "Realizei acabamentos e revestimentos com atenção ao nível e ao esquadro.",
+        "Segui normas de segurança do trabalho, utilizando EPIs corretamente."
+      ]
+    },
+    "Analista de Suporte Técnico": {
+      "desc": "Profissional de suporte técnico com experiência em atendimento a usuários, diagnóstico e resolução de problemas de hardware e software. Comunicação clara e paciência para explicar soluções técnicas.",
+      "habilidades": ["Suporte técnico N1/N2", "Diagnóstico de problemas", "Atendimento ao usuário", "Redes básicas", "Documentação de chamados"],
+      "frases": [
+        "Atendi chamados de suporte técnico, resolvendo a maioria no primeiro contato.",
+        "Diagnostiquei e solucionei problemas de hardware e software em computadores e periféricos.",
+        "Documentei soluções em base de conhecimento, agilizando atendimentos futuros."
+      ]
+    },
+    "Auxiliar financeiro": {
+      "desc": "Profissional com experiência em rotinas financeiras, como contas a pagar e receber, conciliação bancária e emissão de boletos. Organização e atenção a números.",
+      "habilidades": ["Contas a pagar e receber", "Conciliação bancária", "Excel", "Emissão de boletos e notas fiscais", "Organização financeira"],
+      "frases": [
+        "Realizei lançamentos de contas a pagar e receber, mantendo o fluxo de caixa atualizado.",
+        "Conciliei extratos bancários, identificando e corrigindo divergências.",
+        "Emiti boletos e notas fiscais dentro do prazo estabelecido."
+      ]
+    },
+    "Técnico de enfermagem": {
+      "desc": "Profissional de enfermagem com experiência em cuidados básicos de saúde, administração de medicamentos e apoio à equipe médica. Responsabilidade e capacidade de trabalhar sob pressão.",
+      "habilidades": ["Administração de medicamentos", "Aferição de sinais vitais", "Curativos", "Apoio à equipe médica", "Registro de prontuário"],
+      "frases": [
+        "Administrei medicamentos e realizei curativos seguindo prescrição médica.",
+        "Aferi sinais vitais e registrei informações no prontuário do paciente.",
+        "Apoiei a equipe médica em procedimentos, mantendo o ambiente organizado e higienizado."
+      ]
+    },
+    "Auxiliar de sala": {
+      "desc": "Profissional da educação com experiência em apoio pedagógico e acompanhamento de alunos em sala de aula. Paciência, comunicação clara e capacidade de adaptar explicações a diferentes ritmos de aprendizagem.",
+      "habilidades": ["Apoio pedagógico", "Planejamento de aulas", "Comunicação com pais e responsáveis", "Paciência", "Adaptação de conteúdo"],
+      "frases": [
+        "Auxiliei o professor titular no acompanhamento individual de alunos com dificuldades.",
+        "Preparei materiais e atividades pedagógicas adequadas à faixa etária.",
+        "Mantive comunicação constante com pais sobre o desenvolvimento dos alunos."
+      ]
+    }
+  },
+  "categories": {
+    "Tecnologia": {
+      "desc": "Profissional da área de tecnologia, com experiência prática e facilidade para aprender novas ferramentas e resolver problemas técnicos. Atenção a detalhes e raciocínio lógico no dia a dia de trabalho.",
+      "habilidades": ["Resolução de problemas técnicos", "Aprendizado rápido de novas ferramentas", "Trabalho em equipe", "Documentação de processos", "Atenção a detalhes"],
+      "frases": [
+        "Resolvi problemas técnicos do dia a dia, buscando sempre a causa raiz.",
+        "Aprendi novas ferramentas e sistemas com rapidez para atender às demandas da equipe.",
+        "Documentei processos e soluções, facilitando o trabalho de outros colegas."
+      ]
+    },
+    "Saúde": {
+      "desc": "Profissional da área da saúde, com experiência em cuidado e atenção a pacientes, seguindo protocolos e orientações técnicas. Responsabilidade, empatia e capacidade de trabalhar sob pressão.",
+      "habilidades": ["Cuidado ao paciente", "Cumprimento de protocolos", "Trabalho em equipe", "Empatia", "Responsabilidade"],
+      "frases": [
+        "Prestei atendimento a pacientes seguindo protocolos e orientações da equipe responsável.",
+        "Mantive registros organizados e atualizados sobre os atendimentos realizados.",
+        "Trabalhei em equipe multidisciplinar, colaborando para o bem-estar do paciente."
+      ]
+    },
+    "Comércio e Vendas": {
+      "desc": "Profissional com experiência em comércio e atendimento ao público, com foco em oferecer um bom atendimento e alcançar resultados. Boa comunicação e facilidade para lidar com pessoas.",
+      "habilidades": ["Atendimento ao cliente", "Vendas", "Organização de produtos", "Comunicação", "Trabalho com metas"],
+      "frases": [
+        "Atendi clientes diariamente, buscando entender suas necessidades e oferecer boas soluções.",
+        "Organizei produtos e ambiente de trabalho para facilitar o atendimento.",
+        "Contribuí para o resultado da equipe através de um atendimento atencioso."
+      ]
+    },
+    "Administração e Escritório": {
+      "desc": "Profissional organizado, com experiência em rotinas de escritório e apoio administrativo. Atenção a detalhes, boa comunicação e domínio de ferramentas básicas de informática.",
+      "habilidades": ["Organização", "Excel", "Atendimento telefônico", "Redação de documentos", "Rotinas administrativas"],
+      "frases": [
+        "Organizei documentos e arquivos, facilitando o acesso da equipe às informações.",
+        "Apoiei rotinas administrativas do setor, contribuindo para o bom andamento do trabalho.",
+        "Atendi ligações e e-mails, direcionando solicitações às pessoas responsáveis."
+      ]
+    },
+    "Construção e Manutenção": {
+      "desc": "Profissional com experiência prática em obras e serviços de manutenção. Atenção à segurança, capacidade de trabalhar em equipe e habilidade manual.",
+      "habilidades": ["Uso de ferramentas e EPI", "Leitura de projetos simples", "Trabalho em equipe", "Atenção à segurança", "Habilidade manual"],
+      "frases": [
+        "Executei serviços seguindo orientação técnica e normas de segurança do trabalho.",
+        "Trabalhei em equipe para cumprir prazos de obra e manutenção.",
+        "Utilizei ferramentas e equipamentos de proteção corretamente em todas as atividades."
+      ]
+    },
+    "Alimentação": {
+      "desc": "Profissional com experiência na área de alimentação, seguindo normas de higiene e organização. Agilidade e capacidade de trabalhar sob pressão em horários de maior movimento.",
+      "habilidades": ["Normas de higiene e segurança alimentar", "Organização", "Trabalho sob pressão", "Trabalho em equipe", "Atendimento ao cliente"],
+      "frases": [
+        "Segui normas de higiene e segurança alimentar em todas as etapas do trabalho.",
+        "Mantive a organização do ambiente mesmo em horários de maior movimento.",
+        "Trabalhei em equipe para garantir agilidade e qualidade no atendimento."
+      ]
+    },
+    "Educação": {
+      "desc": "Profissional da área de educação, com experiência em apoio a alunos e atividades pedagógicas. Paciência, comunicação clara e capacidade de adaptação a diferentes públicos.",
+      "habilidades": ["Apoio pedagógico", "Comunicação clara", "Paciência", "Planejamento de atividades", "Adaptação de conteúdo"],
+      "frases": [
+        "Auxiliei alunos em atividades pedagógicas, respeitando o ritmo de cada um.",
+        "Preparei materiais e atividades adequados ao público atendido.",
+        "Mantive comunicação constante com a equipe e responsáveis pelos alunos."
+      ]
+    },
+    "Transporte e Logística": {
+      "desc": "Profissional com experiência em transporte, entregas ou controle de estoque. Pontualidade, organização e cuidado com prazos e materiais.",
+      "habilidades": ["Pontualidade", "Organização", "Conhecimento de rotas", "Controle de estoque", "Cuidado com a carga"],
+      "frases": [
+        "Cumpri prazos de entrega e transporte com atenção à segurança e ao cuidado com a carga.",
+        "Organizei materiais e mercadorias, facilitando o controle do estoque.",
+        "Planejei deslocamentos para otimizar tempo e recursos."
+      ]
+    },
+    "Serviços Gerais e Cuidados": {
+      "desc": "Profissional com experiência em serviços gerais, limpeza, segurança ou cuidados, com atenção, responsabilidade e comprometimento com a rotina de trabalho.",
+      "habilidades": ["Organização", "Atenção e responsabilidade", "Pontualidade", "Trabalho em equipe", "Cuidado com pessoas e ambientes"],
+      "frases": [
+        "Realizei atividades diárias com atenção e responsabilidade, seguindo orientações da equipe.",
+        "Mantive ambientes organizados e seguros durante todo o período de trabalho.",
+        "Cumpri horários e rotinas com pontualidade e comprometimento."
+      ]
+    },
+    "Indústria e Produção": {
+      "desc": "Profissional com experiência em ambiente industrial, seguindo procedimentos de produção, qualidade e segurança. Atenção a detalhes e capacidade de manter ritmo constante de trabalho.",
+      "habilidades": ["Operação de máquinas e equipamentos", "Controle de qualidade", "Uso de EPI", "Trabalho em equipe", "Cumprimento de metas"],
+      "frases": [
+        "Operei equipamentos seguindo normas de segurança e procedimentos de qualidade.",
+        "Identifiquei e reportei problemas no processo produtivo.",
+        "Cumpri metas de produção trabalhando em equipe com outros setores."
+      ]
+    }
+  }
+}

@@ -9,6 +9,7 @@
   },
   "btn": {
     "add": "Adicionar {{item}}",
+    "dismiss": "Dispensar",
     "export": "Baixar dados",
     "finish": "Finalizar",
     "import": "Importar dados",
@@ -46,7 +47,7 @@
     "extraDocs": { "toggle": "Outros documentos (RG, CPF, título de eleitor)" },
     "degree": {
       "label": "Curso / Título",
-      "placeholder": "Ex: Ciência da Computação"
+      "placeholder": "Ex: Administração"
     },
     "description": { "label": "Descrição" },
     "eduDescription": {
@@ -75,7 +76,7 @@
     },
     "institution": {
       "label": "Instituição",
-      "placeholder": "Ex: UFSC"
+      "placeholder": "Ex: USP"
     },
     "jobTitle": {
       "error": "Título é obrigatório",
@@ -147,41 +148,15 @@
   },
   "languages": {
     "arabic": "Árabe",
-    "bengali": "Bengali",
-    "catalan": "Catalão",
-    "chinese": "Chinês",
-    "czech": "Tcheco",
-    "danish": "Dinamarquês",
-    "dutch": "Holandês",
+    "chinese": "Chinês (Mandarim)",
     "english": "Inglês",
-    "esperanto": "Esperanto",
-    "farsi": "Persa (Farsi)",
-    "finnish": "Finlandês",
     "french": "Francês",
     "german": "Alemão",
-    "greek": "Grego",
-    "hebrew": "Hebraico",
-    "hindi": "Hindi",
-    "hungarian": "Húngaro",
-    "indonesian": "Indonésio",
     "italian": "Italiano",
     "japanese": "Japonês",
-    "korean": "Coreano",
-    "malay": "Malaio",
-    "mandarin": "Mandarim",
-    "norwegian": "Norueguês",
-    "other": "Outro",
-    "polish": "Polonês",
     "portuguese": "Português",
-    "romanian": "Romeno",
     "russian": "Russo",
-    "spanish": "Espanhol",
-    "swahili": "Suaíli",
-    "swedish": "Sueco",
-    "thai": "Tailandês",
-    "turkish": "Turco",
-    "ukrainian": "Ucraniano",
-    "vietnamese": "Vietnamita"
+    "spanish": "Espanhol"
   },
   "meta": { "description": "Crie seu currículo profissional em minutos, de graça, sem cadastro." },
   "months": ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"],
@@ -198,6 +173,10 @@
   "preview": {
     "empty": "Preencha as informações para visualizar o currículo",
     "label": "Visualização"
+  },
+  "professionSuggestion": {
+    "label": "Temos uma sugestão pronta para \"{{profession}}\"",
+    "use": "Usar este texto"
   },
   "section": {
     "documents": "Documentos",

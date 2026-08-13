@@ -123,7 +123,7 @@ export function previewTemplate({ personal, profile, experience, education, skil
         <ul class="cv-languages">
           ${languages.map(l => `
             <li>
-              <span class="cv-lang-name">${l.custom ? l.name : t('languages.' + l.name)}</span>
+              <span class="cv-lang-name">${l.name}</span>
               <span class="cv-lang-level">${l.level}</span>
             </li>
           `).join('')}
