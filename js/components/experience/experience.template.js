@@ -17,7 +17,10 @@ export function experienceTemplate(index, data = {}, isCurrent = false) {
     <div class="field-row">
       <div class="field">
         <label>${t('field.expTitle.label')} *</label>
-        <input type="text" class="exp-title" placeholder="${t('field.expTitle.placeholder')}" value="${data.title ?? ''}" spellcheck="true" autocorrect="on">
+        <div class="autocomplete-wrap">
+          <input type="text" class="exp-title" placeholder="${t('field.expTitle.placeholder')}" value="${data.title ?? ''}" spellcheck="true" autocorrect="on" autocomplete="off">
+          <ul class="autocomplete-list exp-title-suggestions" role="listbox" hidden></ul>
+        </div>
       </div>
       <div class="field">
         <label>${t('field.expCompany.label')} *</label>
@@ -46,7 +49,8 @@ export function experienceTemplate(index, data = {}, isCurrent = false) {
         <svg class="icon" aria-hidden="true"><use href="#icon-info"></use></svg>
         <span>${t('tips.expDescription')}</span>
       </p>
-      <textarea class="exp-description" rows="3" placeholder="${t('field.expDescription.placeholder')}" spellcheck="true" autocorrect="on">${data.description ?? ''}</textarea>
+      <textarea class="exp-description" rows="3" placeholder="${t('field.expDescription.placeholder')}" spellcheck="true" autocorrect="on"></textarea>
+      <button type="button" class="btn-add-small exp-suggest-phrase">${t('btn.suggestPhrase')}</button>
     </div>
   `;
 }

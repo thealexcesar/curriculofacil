@@ -16,7 +16,16 @@
  * items, restored data) - no per-component wiring needed.
  */
 
-const CLEARABLE_SELECTOR = '.field > input[type="text"], .field > input[type="email"], .field > input[type="tel"], .field > input[type="url"], .field > textarea';
+const CLEARABLE_SELECTOR = [
+  '.field > input[type="text"]',
+  '.field > input[type="email"]',
+  '.field > input[type="tel"]',
+  '.field > input[type="url"]',
+  '.field > textarea',
+  // Fields with an autocomplete dropdown wrap their input in an extra
+  // element for positioning, so they aren't direct children of .field.
+  '.field > .autocomplete-wrap > input[type="text"]',
+].join(', ');
 
 /** @returns {void} */
 export function initClearableInputs() {

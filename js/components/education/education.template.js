@@ -16,7 +16,10 @@ export function educationTemplate(index, data = {}) {
     <div class="field-row">
       <div class="field">
         <label>${t('field.degree.label')} *</label>
-        <input type="text" class="edu-degree" placeholder="${t('field.degree.placeholder')}" value="${data.degree ?? ''}" spellcheck="true" autocorrect="on">
+        <div class="autocomplete-wrap">
+          <input type="text" class="edu-degree" placeholder="${t('field.degree.placeholder')}" value="${data.degree ?? ''}" spellcheck="true" autocorrect="on" autocomplete="off">
+          <ul class="autocomplete-list edu-degree-suggestions" role="listbox" hidden></ul>
+        </div>
       </div>
       <div class="field">
         <label>${t('field.institution.label')} *</label>

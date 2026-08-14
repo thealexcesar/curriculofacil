@@ -10,6 +10,7 @@
   "btn": {
     "add": "Adicionar {{item}}",
     "dismiss": "Dispensar",
+    "suggestPhrase": "Sugerir frase",
     "export": "Baixar dados",
     "finish": "Finalizar",
     "import": "Importar dados",
@@ -101,6 +102,14 @@
       "label": "LinkedIn",
       "placeholder": "https://linkedin.com/in/seuperfil"
     },
+    "instagram": {
+      "label": "Instagram / Portfólio (opcional)",
+      "placeholder": "@seuperfil ou link do portfólio"
+    },
+    "facebook": {
+      "label": "Facebook (opcional)",
+      "placeholder": "facebook.com/seuperfil"
+    },
     "location": {
       "label": "Localização",
       "placeholder": "Ex: Blumenau, SC"
@@ -136,6 +145,10 @@
       "label": "Título de eleitor",
       "placeholder": "Ex: 1234 5678 9012"
     },
+    "professionalRegistry": {
+      "label": "Registro profissional (se tiver)",
+      "placeholder": "Ex: CREA-SC 12345"
+    },
     "skill": {
       "label": "Habilidades",
       "placeholder": "Ex: Excel, Vendas, Organização..."
@@ -169,6 +182,14 @@
       "5": "Habilidades"
     }
   },
+  "photo": {
+    "choose": "Escolher foto",
+    "change": "Alterar",
+    "remove": "Remover",
+    "hint": "Opcional. Rosto e ombros, fundo neutro, roupa lisa e sorriso leve. Fica salva só no seu aparelho.",
+    "tooLarge": "Imagem muito grande. Escolha uma foto menor.",
+    "error": "Não foi possível carregar essa imagem. Tente outra."
+  },
   "progress": { "aria": "Progresso de preenchimento do currículo" },
   "preview": {
     "empty": "Preencha as informações para visualizar o currículo",
@@ -179,6 +200,7 @@
     "use": "Usar este texto"
   },
   "section": {
+    "contact": "Contato",
     "documents": "Documentos",
     "education": "Educação",
     "experience": "Experiência Profissional",
@@ -212,8 +234,9 @@
       "teal": "Cor teal escuro",
       "wine": "Cor vinho"
     },
-    "label": "Modelo do currículo:",
-    "modern": "Moderno"
+    "label": "Modelo:",
+    "modern": "Moderno",
+    "sidebar": "Executivo"
   },
   "tips": {
     "profile": "Foque no que você faz de melhor. Evite clichês como \"proativo\" e \"dinâmico\" - prefira exemplos concretos.",

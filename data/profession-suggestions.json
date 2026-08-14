@@ -749,10 +749,86 @@
 "Realizei manutenção básica dos equipamentos, evitando paradas na operação.",
 "Segui normas de segurança durante todas as atividades no campo."
 ]
+},
+"Engenheiro Civil":{
+"desc":"Engenheiro civil com experiência em projeto, acompanhamento e execução de obras. Conhecimento de normas técnicas, leitura de projetos estruturais e gestão de equipes em campo.",
+"habilidades":[
+"Leitura e elaboração de projetos",
+"Acompanhamento de obras",
+"Normas técnicas (ABNT)",
+"Gestão de equipes",
+"Orçamento e cronograma de obra"
+],
+"frases":[
+"Acompanhei a execução de obras, garantindo conformidade com projeto e normas técnicas.",
+"Elaborei orçamentos e cronogramas, otimizando prazos e recursos da obra.",
+"Coordenei equipes de campo, assegurando qualidade e segurança na execução."
+]
+},
+"Engenheiro Mecânico":{
+"desc":"Engenheiro mecânico com experiência em projeto, manutenção e otimização de máquinas e equipamentos. Conhecimento técnico, atenção a detalhes e foco em eficiência de processos.",
+"habilidades":[
+"Projeto e análise mecânica",
+"Manutenção de equipamentos",
+"Normas técnicas",
+"Softwares de desenho (CAD)",
+"Resolução de problemas"
+],
+"frases":[
+"Desenvolvi e analisei projetos mecânicos seguindo normas técnicas e de segurança.",
+"Planejei manutenções preventivas, reduzindo paradas não programadas de equipamentos.",
+"Propus melhorias em processos, aumentando a eficiência da linha de produção."
+]
+},
+"Engenheiro Eletricista":{
+"desc":"Engenheiro eletricista com experiência em projeto, instalação e manutenção de sistemas elétricos. Conhecimento de normas técnicas e atenção à segurança em todas as etapas do trabalho.",
+"habilidades":[
+"Projeto de sistemas elétricos",
+"Normas técnicas (NR-10)",
+"Manutenção elétrica",
+"Softwares de desenho (CAD)",
+"Gestão de projetos"
+],
+"frases":[
+"Desenvolvi projetos elétricos residenciais, comerciais e industriais seguindo normas técnicas.",
+"Supervisionei instalações elétricas, garantindo segurança e conformidade.",
+"Realizei manutenção e diagnóstico de sistemas elétricos complexos."
+]
+},
+"Engenheiro de Produção":{
+"desc":"Engenheiro de produção com experiência em otimização de processos produtivos, controle de qualidade e gestão de indicadores. Visão analítica e foco em eficiência e redução de custos.",
+"habilidades":[
+"Otimização de processos",
+"Controle de qualidade",
+"Gestão de indicadores (KPIs)",
+"Planejamento da produção",
+"Análise de dados"
+],
+"frases":[
+"Analisei processos produtivos, identificando oportunidades de melhoria e redução de custos.",
+"Implementei indicadores de desempenho para acompanhamento da produção.",
+"Coordenei ações de melhoria contínua junto às equipes de produção."
+]
+},
+"Engenheiro Eletrônico":{
+"desc":"Engenheiro eletrônico com experiência em projeto e desenvolvimento de circuitos e sistemas eletrônicos. Conhecimento técnico, atenção a detalhes e capacidade de resolver problemas complexos.",
+"habilidades":[
+"Projeto de circuitos eletrônicos",
+"Testes e depuração",
+"Automação e controle",
+"Softwares de simulação",
+"Resolução de problemas"
+],
+"frases":[
+"Desenvolvi e testei circuitos eletrônicos seguindo especificações do projeto.",
+"Identifiquei e corrigi falhas em sistemas eletrônicos, garantindo funcionamento adequado.",
+"Colaborei em projetos de automação, contribuindo para eficiência dos processos."
+]
 }
 },
 "categories":{
-"Tecnologia":{
+"Tecnologia":[
+{
 "desc":"Profissional da área de tecnologia, com experiência prática e facilidade para aprender novas ferramentas e resolver problemas técnicos. Atenção a detalhes e raciocínio lógico no dia a dia de trabalho.",
 "habilidades":[
 "Resolução de problemas técnicos",
@@ -767,7 +843,69 @@
 "Documentei processos e soluções, facilitando o trabalho de outros colegas."
 ]
 },
-"Saúde":{
+{
+"desc":"Profissional de tecnologia com experiência em suporte a sistemas e resolução de problemas técnicos do dia a dia. Raciocínio lógico, organização e facilidade para se adaptar a novas ferramentas.",
+"habilidades":[
+"Diagnóstico e resolução de problemas",
+"Organização",
+"Adaptação a novas ferramentas",
+"Comunicação técnica",
+"Trabalho em equipe"
+],
+"frases":[
+"Diagnostiquei e resolvi problemas técnicos, minimizando impacto nas atividades da equipe.",
+"Testei e validei soluções antes de disponibilizá-las para uso.",
+"Apoiei colegas menos experientes no uso de sistemas e ferramentas."
+]
+},
+{
+"desc":"Profissional de tecnologia com foco em desempenho e qualidade, atuando na implementação e manutenção de soluções técnicas. Curiosidade, organização e disposição para aprender continuamente.",
+"habilidades":[
+"Implementação de soluções técnicas",
+"Manutenção de sistemas",
+"Organização",
+"Curiosidade técnica",
+"Comunicação com a equipe"
+],
+"frases":[
+"Implementei soluções técnicas alinhadas às necessidades da equipe e dos usuários.",
+"Mantive sistemas atualizados e funcionando de forma estável.",
+"Busquei constantemente aprender novas ferramentas e boas práticas do mercado."
+]
+},
+{
+"desc":"Profissional de tecnologia com experiência prática em rotinas técnicas e atendimento a demandas internas. Organização, proatividade na resolução de problemas e boa comunicação com a equipe.",
+"habilidades":[
+"Atendimento a demandas técnicas",
+"Organização de rotinas",
+"Comunicação com a equipe",
+"Resolução de problemas",
+"Uso de ferramentas digitais"
+],
+"frases":[
+"Atendi demandas técnicas internas, priorizando por urgência e impacto.",
+"Organizei rotinas de trabalho para atender múltiplas solicitações com qualidade.",
+"Contribuí com ideias para melhorar processos e ferramentas usadas pela equipe."
+]
+},
+{
+"desc":"Profissional de tecnologia com interesse em boas práticas e melhoria contínua de processos técnicos. Facilidade para trabalhar em equipe e comunicar informações técnicas de forma clara.",
+"habilidades":[
+"Boas práticas técnicas",
+"Melhoria contínua",
+"Trabalho em equipe",
+"Comunicação clara",
+"Organização"
+],
+"frases":[
+"Apliquei boas práticas técnicas no desenvolvimento das atividades do dia a dia.",
+"Sugeri melhorias em processos, contribuindo para a eficiência da equipe.",
+"Comuniquei informações técnicas de forma clara para públicos não técnicos."
+]
+}
+],
+"Saúde":[
+{
 "desc":"Profissional da área da saúde, com experiência em cuidado e atenção a pacientes, seguindo protocolos e orientações técnicas. Responsabilidade, empatia e capacidade de trabalhar sob pressão.",
 "habilidades":[
 "Cuidado ao paciente",
@@ -782,7 +920,69 @@
 "Trabalhei em equipe multidisciplinar, colaborando para o bem-estar do paciente."
 ]
 },
-"Comércio e Vendas":{
+{
+"desc":"Profissional da área da saúde com experiência no atendimento humanizado a pacientes e familiares. Atenção, paciência e capacidade de trabalhar em equipe multidisciplinar.",
+"habilidades":[
+"Atendimento humanizado",
+"Trabalho em equipe multidisciplinar",
+"Paciência",
+"Atenção a detalhes",
+"Cumprimento de protocolos"
+],
+"frases":[
+"Prestei atendimento humanizado a pacientes e familiares em diferentes situações.",
+"Segui protocolos institucionais em todas as atividades realizadas.",
+"Colaborei com equipe multidisciplinar para garantir a qualidade do cuidado."
+]
+},
+{
+"desc":"Profissional da área da saúde com experiência em rotinas de cuidado e registro de informações. Organização, atenção a detalhes e comprometimento com a segurança do paciente.",
+"habilidades":[
+"Registro de informações",
+"Organização de rotinas",
+"Segurança do paciente",
+"Atenção a detalhes",
+"Comunicação com a equipe"
+],
+"frases":[
+"Registrei informações de atendimento de forma precisa e organizada.",
+"Segui rotinas de cuidado priorizando sempre a segurança do paciente.",
+"Comuniquei mudanças no quadro do paciente à equipe responsável."
+]
+},
+{
+"desc":"Profissional da área da saúde com experiência em apoio a procedimentos e cuidados diários. Responsabilidade, calma sob pressão e boa comunicação com pacientes e equipe.",
+"habilidades":[
+"Apoio a procedimentos",
+"Calma sob pressão",
+"Comunicação com pacientes",
+"Responsabilidade",
+"Trabalho em equipe"
+],
+"frases":[
+"Apoiei a realização de procedimentos seguindo orientações técnicas.",
+"Mantive a calma em situações de pressão, priorizando o bem-estar do paciente.",
+"Expliquei procedimentos de forma clara e acolhedora aos pacientes."
+]
+},
+{
+"desc":"Profissional da área da saúde com experiência em cuidados diários e acompanhamento de pacientes. Empatia, atenção redobrada e compromisso com o bem-estar de quem é atendido.",
+"habilidades":[
+"Cuidados diários",
+"Acompanhamento de pacientes",
+"Empatia",
+"Atenção redobrada",
+"Compromisso com o bem-estar"
+],
+"frases":[
+"Acompanhei pacientes em suas necessidades diárias com atenção e cuidado.",
+"Identifiquei mudanças no estado dos pacientes, comunicando a equipe rapidamente.",
+"Mantive o ambiente organizado e seguro para o cuidado dos pacientes."
+]
+}
+],
+"Comércio e Vendas":[
+{
 "desc":"Profissional com experiência em comércio e atendimento ao público, com foco em oferecer um bom atendimento e alcançar resultados. Boa comunicação e facilidade para lidar com pessoas.",
 "habilidades":[
 "Atendimento ao cliente",
@@ -797,7 +997,69 @@
 "Contribuí para o resultado da equipe através de um atendimento atencioso."
 ]
 },
-"Administração e Escritório":{
+{
+"desc":"Profissional de vendas com experiência em atendimento e relacionamento com clientes. Comunicação clara, persistência e foco em resultados.",
+"habilidades":[
+"Relacionamento com clientes",
+"Comunicação clara",
+"Persistência",
+"Foco em resultados",
+"Organização"
+],
+"frases":[
+"Construí relacionamento de confiança com clientes, favorecendo novas vendas.",
+"Identifiquei necessidades dos clientes para oferecer a melhor solução.",
+"Mantive organização de vendas e atendimentos realizados no período."
+]
+},
+{
+"desc":"Profissional de comércio com experiência em atendimento ágil e organização do ponto de venda. Simpatia, atenção aos detalhes e disposição para o trabalho em equipe.",
+"habilidades":[
+"Atendimento ágil",
+"Organização do ponto de venda",
+"Simpatia",
+"Trabalho em equipe",
+"Atenção a detalhes"
+],
+"frases":[
+"Atendi clientes com agilidade, mantendo a qualidade do atendimento.",
+"Organizei o ponto de venda, facilitando a experiência de compra.",
+"Trabalhei em equipe para atingir metas coletivas de vendas."
+]
+},
+{
+"desc":"Profissional de vendas e atendimento com experiência em identificar oportunidades e fechar negócios. Comunicação persuasiva, organização e comprometimento com metas.",
+"habilidades":[
+"Identificação de oportunidades",
+"Fechamento de vendas",
+"Comunicação persuasiva",
+"Comprometimento com metas",
+"Organização"
+],
+"frases":[
+"Identifiquei oportunidades de venda a partir das necessidades apresentadas pelo cliente.",
+"Conduzi negociações até o fechamento, respeitando o perfil de cada cliente.",
+"Acompanhei indicadores pessoais de vendas para ajustar minha abordagem."
+]
+},
+{
+"desc":"Profissional de atendimento e vendas com experiência em fidelizar clientes através de um bom relacionamento. Paciência, escuta ativa e comunicação clara.",
+"habilidades":[
+"Fidelização de clientes",
+"Escuta ativa",
+"Comunicação clara",
+"Paciência",
+"Atendimento personalizado"
+],
+"frases":[
+"Fidelizei clientes através de atendimento atencioso e personalizado.",
+"Pratiquei escuta ativa para entender de fato a necessidade do cliente.",
+"Mantive comunicação pós-venda, fortalecendo o relacionamento com clientes."
+]
+}
+],
+"Administração e Escritório":[
+{
 "desc":"Profissional organizado, com experiência em rotinas de escritório e apoio administrativo. Atenção a detalhes, boa comunicação e domínio de ferramentas básicas de informática.",
 "habilidades":[
 "Organização",
@@ -812,7 +1074,69 @@
 "Atendi ligações e e-mails, direcionando solicitações às pessoas responsáveis."
 ]
 },
-"Construção e Manutenção":{
+{
+"desc":"Profissional administrativo com experiência em organização de documentos e apoio a diferentes setores. Discrição, organização e proatividade na resolução de pendências.",
+"habilidades":[
+"Organização de documentos",
+"Apoio multissetorial",
+"Discrição",
+"Proatividade",
+"Excel"
+],
+"frases":[
+"Organizei documentos físicos e digitais, facilitando o acesso da equipe.",
+"Apoiei diferentes setores conforme demanda, mantendo a qualidade do trabalho.",
+"Resolvi pendências administrativas com proatividade e atenção a prazos."
+]
+},
+{
+"desc":"Profissional administrativo com experiência em atendimento interno e rotinas de escritório. Boa comunicação, organização e capacidade de priorizar tarefas.",
+"habilidades":[
+"Atendimento interno",
+"Priorização de tarefas",
+"Comunicação",
+"Organização",
+"Rotinas administrativas"
+],
+"frases":[
+"Atendi solicitações internas de diferentes setores com agilidade.",
+"Priorizei tarefas conforme urgência, mantendo prazos em dia.",
+"Organizei a rotina administrativa do setor de forma eficiente."
+]
+},
+{
+"desc":"Profissional administrativo com experiência em controle de informações e apoio a rotinas financeiras e operacionais. Atenção a detalhes e comprometimento com prazos.",
+"habilidades":[
+"Controle de informações",
+"Apoio financeiro e operacional",
+"Atenção a detalhes",
+"Cumprimento de prazos",
+"Organização"
+],
+"frases":[
+"Controlei informações e planilhas de apoio às rotinas do setor.",
+"Apoiei atividades financeiras e operacionais conforme necessidade da equipe.",
+"Cumpri prazos estabelecidos mesmo em períodos de maior demanda."
+]
+},
+{
+"desc":"Profissional administrativo com experiência em suporte à gestão e organização de rotinas do dia a dia. Discrição, organização e boa comunicação com toda a equipe.",
+"habilidades":[
+"Suporte à gestão",
+"Organização de rotinas",
+"Discrição",
+"Comunicação com a equipe",
+"Ferramentas de escritório"
+],
+"frases":[
+"Dei suporte à gestão em tarefas administrativas do dia a dia.",
+"Organizei rotinas e prazos, contribuindo para o bom funcionamento do setor.",
+"Mantive comunicação clara com a equipe sobre pendências e prioridades."
+]
+}
+],
+"Construção e Manutenção":[
+{
 "desc":"Profissional com experiência prática em obras e serviços de manutenção. Atenção à segurança, capacidade de trabalhar em equipe e habilidade manual.",
 "habilidades":[
 "Uso de ferramentas e EPI",
@@ -827,7 +1151,69 @@
 "Utilizei ferramentas e equipamentos de proteção corretamente em todas as atividades."
 ]
 },
-"Alimentação":{
+{
+"desc":"Profissional da área de construção e manutenção com experiência na execução de serviços técnicos. Responsabilidade, cuidado com ferramentas e atenção às normas de segurança.",
+"habilidades":[
+"Execução de serviços técnicos",
+"Cuidado com ferramentas",
+"Normas de segurança",
+"Responsabilidade",
+"Trabalho em equipe"
+],
+"frases":[
+"Executei serviços técnicos seguindo orientação e especificações do responsável.",
+"Cuidei da conservação de ferramentas e equipamentos utilizados no trabalho.",
+"Segui rigorosamente as normas de segurança em todas as atividades."
+]
+},
+{
+"desc":"Profissional com experiência em manutenção e reparos, atuando com agilidade e qualidade na execução dos serviços. Organização e cuidado com prazos de entrega.",
+"habilidades":[
+"Manutenção e reparos",
+"Agilidade",
+"Organização",
+"Cuidado com prazos",
+"Atendimento a solicitações"
+],
+"frases":[
+"Realizei manutenções e reparos com agilidade, respeitando o prazo combinado.",
+"Organizei materiais e ferramentas antes de iniciar cada serviço.",
+"Atendi solicitações de manutenção priorizando urgência e segurança."
+]
+},
+{
+"desc":"Profissional com experiência prática em obras, reformas e serviços de manutenção geral. Disposição para trabalho físico e atenção ao acabamento dos serviços.",
+"habilidades":[
+"Serviços de obra e reforma",
+"Trabalho físico",
+"Atenção ao acabamento",
+"Uso de EPI",
+"Organização do local de trabalho"
+],
+"frases":[
+"Realizei serviços de obra e reforma com atenção ao acabamento final.",
+"Mantive o local de trabalho organizado durante a execução dos serviços.",
+"Utilizei equipamentos de proteção em conformidade com normas de segurança."
+]
+},
+{
+"desc":"Profissional da construção civil e manutenção com experiência em atendimento a chamados técnicos. Praticidade, honestidade e comprometimento com a qualidade do serviço.",
+"habilidades":[
+"Atendimento a chamados técnicos",
+"Praticidade",
+"Comprometimento com qualidade",
+"Uso de ferramentas",
+"Pontualidade"
+],
+"frases":[
+"Atendi chamados técnicos com pontualidade e resolução no mesmo atendimento.",
+"Expliquei aos clientes os serviços realizados de forma honesta e clara.",
+"Entreguei serviços com qualidade, respeitando prazos combinados."
+]
+}
+],
+"Alimentação":[
+{
 "desc":"Profissional com experiência na área de alimentação, seguindo normas de higiene e organização. Agilidade e capacidade de trabalhar sob pressão em horários de maior movimento.",
 "habilidades":[
 "Normas de higiene e segurança alimentar",
@@ -842,7 +1228,69 @@
 "Trabalhei em equipe para garantir agilidade e qualidade no atendimento."
 ]
 },
-"Educação":{
+{
+"desc":"Profissional da área de alimentação com experiência em preparo e organização de produtos. Capricho, higiene e trabalho em equipe em ambiente de cozinha.",
+"habilidades":[
+"Preparo de alimentos",
+"Higiene e organização",
+"Trabalho em equipe",
+"Capricho na apresentação",
+"Agilidade"
+],
+"frases":[
+"Preparei alimentos seguindo receitas e padrões de qualidade do estabelecimento.",
+"Mantive o ambiente de trabalho higienizado durante toda a jornada.",
+"Trabalhei em equipe para garantir agilidade nos horários de maior movimento."
+]
+},
+{
+"desc":"Profissional da área de alimentação com experiência em atendimento e produção em ritmo acelerado. Organização, atenção às normas e boa disposição para o trabalho em equipe.",
+"habilidades":[
+"Atendimento e produção",
+"Organização",
+"Normas de segurança alimentar",
+"Trabalho em equipe",
+"Resistência a rotina intensa"
+],
+"frases":[
+"Atuei em produção e atendimento simultaneamente, mantendo a qualidade do serviço.",
+"Segui normas de segurança alimentar durante toda a produção.",
+"Mantive o ritmo de trabalho mesmo em horários de pico de movimento."
+]
+},
+{
+"desc":"Profissional com experiência na área de alimentação, com foco em qualidade e padronização dos produtos. Atenção a detalhes e comprometimento com a satisfação do cliente.",
+"habilidades":[
+"Padronização de produtos",
+"Atenção a detalhes",
+"Satisfação do cliente",
+"Organização",
+"Normas de higiene"
+],
+"frases":[
+"Segui padrões de qualidade estabelecidos em todas as etapas da produção.",
+"Busquei sempre a satisfação do cliente através de produtos bem preparados.",
+"Organizei insumos e produtos evitando desperdícios."
+]
+},
+{
+"desc":"Profissional da área de alimentação com experiência em rotinas de produção e apoio ao atendimento. Agilidade, capricho e disposição para aprender novas técnicas.",
+"habilidades":[
+"Rotinas de produção",
+"Apoio ao atendimento",
+"Agilidade",
+"Capricho",
+"Aprendizado de novas técnicas"
+],
+"frases":[
+"Apoiei rotinas de produção e atendimento conforme necessidade do estabelecimento.",
+"Aprendi novas técnicas de preparo, contribuindo para variedade do cardápio.",
+"Mantive agilidade sem abrir mão da qualidade dos produtos entregues."
+]
+}
+],
+"Educação":[
+{
 "desc":"Profissional da área de educação, com experiência em apoio a alunos e atividades pedagógicas. Paciência, comunicação clara e capacidade de adaptação a diferentes públicos.",
 "habilidades":[
 "Apoio pedagógico",
@@ -857,7 +1305,69 @@
 "Mantive comunicação constante com a equipe e responsáveis pelos alunos."
 ]
 },
-"Transporte e Logística":{
+{
+"desc":"Profissional da educação com experiência em planejamento e condução de atividades pedagógicas. Criatividade, organização e comprometimento com o aprendizado dos alunos.",
+"habilidades":[
+"Planejamento pedagógico",
+"Condução de atividades",
+"Criatividade",
+"Organização",
+"Comunicação com responsáveis"
+],
+"frases":[
+"Planejei atividades pedagógicas alinhadas aos objetivos de aprendizagem.",
+"Conduzi atividades em sala buscando engajar todos os alunos.",
+"Mantive comunicação constante com responsáveis sobre o desempenho dos alunos."
+]
+},
+{
+"desc":"Profissional da educação com experiência em acompanhamento individualizado de alunos. Paciência, escuta ativa e capacidade de identificar dificuldades de aprendizagem.",
+"habilidades":[
+"Acompanhamento individualizado",
+"Escuta ativa",
+"Identificação de dificuldades",
+"Paciência",
+"Adaptação de metodologia"
+],
+"frases":[
+"Acompanhei individualmente alunos com maior dificuldade de aprendizagem.",
+"Adaptei metodologias conforme o ritmo e necessidade de cada aluno.",
+"Identifiquei sinais de dificuldade e busquei apoio pedagógico adequado."
+]
+},
+{
+"desc":"Profissional da educação com experiência em organização de rotina escolar e apoio a atividades em sala. Disposição, paciência e bom relacionamento com crianças e adolescentes.",
+"habilidades":[
+"Organização de rotina escolar",
+"Apoio em sala de aula",
+"Relacionamento com alunos",
+"Paciência",
+"Disposição"
+],
+"frases":[
+"Organizei a rotina escolar, contribuindo para um ambiente de aprendizado estruturado.",
+"Apoiei atividades em sala, auxiliando o professor responsável.",
+"Construí relacionamento de confiança com alunos e responsáveis."
+]
+},
+{
+"desc":"Profissional da educação com experiência em atividades lúdicas e desenvolvimento infantil. Afeto, criatividade e atenção às necessidades de cada criança.",
+"habilidades":[
+"Atividades lúdicas",
+"Desenvolvimento infantil",
+"Criatividade",
+"Afeto e cuidado",
+"Segurança das crianças"
+],
+"frases":[
+"Planejei atividades lúdicas voltadas ao desenvolvimento infantil.",
+"Cuidei da segurança das crianças durante todas as atividades.",
+"Identifiquei o interesse de cada criança para propor atividades adequadas."
+]
+}
+],
+"Transporte e Logística":[
+{
 "desc":"Profissional com experiência em transporte, entregas ou controle de estoque. Pontualidade, organização e cuidado com prazos e materiais.",
 "habilidades":[
 "Pontualidade",
@@ -872,7 +1382,69 @@
 "Planejei deslocamentos para otimizar tempo e recursos."
 ]
 },
-"Serviços Gerais e Cuidados":{
+{
+"desc":"Profissional de logística com experiência em separação, conferência e organização de mercadorias. Agilidade e atenção a detalhes na conferência de pedidos.",
+"habilidades":[
+"Separação de mercadorias",
+"Conferência de pedidos",
+"Agilidade",
+"Atenção a detalhes",
+"Organização de estoque"
+],
+"frases":[
+"Separei e conferi pedidos com atenção, evitando erros de expedição.",
+"Organizei mercadorias no estoque otimizando o espaço disponível.",
+"Mantive agilidade na separação sem comprometer a exatidão dos pedidos."
+]
+},
+{
+"desc":"Profissional de transporte com experiência em entregas dentro do prazo e cuidado com a carga transportada. Conhecimento de rotas e responsabilidade no trânsito.",
+"habilidades":[
+"Entregas dentro do prazo",
+"Cuidado com a carga",
+"Conhecimento de rotas",
+"Responsabilidade no trânsito",
+"Uso de aplicativos de navegação"
+],
+"frases":[
+"Realizei entregas dentro do prazo, priorizando segurança no trânsito.",
+"Cuidei da carga transportada, evitando avarias durante o trajeto.",
+"Utilizei aplicativos de navegação para otimizar rotas e horários."
+]
+},
+{
+"desc":"Profissional de logística com experiência em apoio a operações de carregamento e organização de cargas. Trabalho em equipe e atenção às normas de segurança.",
+"habilidades":[
+"Carregamento e descarregamento",
+"Organização de cargas",
+"Trabalho em equipe",
+"Normas de segurança",
+"Agilidade"
+],
+"frases":[
+"Apoiei operações de carregamento seguindo normas de segurança.",
+"Organizei cargas para otimizar o transporte e reduzir riscos.",
+"Trabalhei em equipe para agilizar o fluxo de operações logísticas."
+]
+},
+{
+"desc":"Profissional de transporte e logística com experiência em cumprimento de rotas e prazos de entrega. Pontualidade, organização e comunicação clara com clientes.",
+"habilidades":[
+"Cumprimento de rotas",
+"Prazos de entrega",
+"Pontualidade",
+"Comunicação com clientes",
+"Organização"
+],
+"frases":[
+"Cumpri rotas e prazos de entrega estabelecidos pela empresa.",
+"Comuniquei clientes sobre horários e eventuais atrasos com transparência.",
+"Organizei entregas por prioridade e proximidade, otimizando o trajeto."
+]
+}
+],
+"Serviços Gerais e Cuidados":[
+{
 "desc":"Profissional com experiência em serviços gerais, limpeza, segurança ou cuidados, com atenção, responsabilidade e comprometimento com a rotina de trabalho.",
 "habilidades":[
 "Organização",
@@ -887,7 +1459,69 @@
 "Cumpri horários e rotinas com pontualidade e comprometimento."
 ]
 },
-"Indústria e Produção":{
+{
+"desc":"Profissional com experiência em cuidados e serviços gerais, com atenção às necessidades das pessoas ou ambientes atendidos. Confiabilidade e pontualidade no dia a dia.",
+"habilidades":[
+"Cuidados gerais",
+"Atenção às necessidades",
+"Confiabilidade",
+"Pontualidade",
+"Organização"
+],
+"frases":[
+"Atendi às necessidades diárias das pessoas ou ambientes sob minha responsabilidade.",
+"Mantive confiabilidade e pontualidade em todas as atividades realizadas.",
+"Organizei a rotina de trabalho conforme prioridades estabelecidas."
+]
+},
+{
+"desc":"Profissional de serviços gerais com experiência em manter ambientes organizados, limpos e seguros. Disposição para o trabalho, atenção e cuidado com os detalhes.",
+"habilidades":[
+"Organização de ambientes",
+"Limpeza",
+"Segurança do ambiente",
+"Disposição para o trabalho",
+"Atenção a detalhes"
+],
+"frases":[
+"Mantive ambientes organizados, limpos e seguros durante toda a rotina.",
+"Identifiquei e reportei situações que exigiam atenção ou manutenção.",
+"Realizei tarefas diárias com disposição e cuidado com os detalhes."
+]
+},
+{
+"desc":"Profissional de cuidados e serviços gerais com experiência em rotinas de apoio a pessoas e ambientes. Paciência, responsabilidade e boa comunicação com quem é atendido.",
+"habilidades":[
+"Apoio a pessoas e ambientes",
+"Paciência",
+"Responsabilidade",
+"Comunicação",
+"Organização de rotina"
+],
+"frases":[
+"Apoiei pessoas em suas rotinas diárias com paciência e atenção.",
+"Mantive comunicação clara com quem era atendido sobre as atividades realizadas.",
+"Organizei a rotina de trabalho conforme necessidade de cada dia."
+]
+},
+{
+"desc":"Profissional de serviços gerais com experiência em zelar pela segurança e organização de ambientes. Atenção redobrada, discrição e comprometimento com as normas do local.",
+"habilidades":[
+"Zelo pela segurança",
+"Organização de ambientes",
+"Atenção redobrada",
+"Discrição",
+"Cumprimento de normas"
+],
+"frases":[
+"Zelei pela segurança e organização do ambiente sob minha responsabilidade.",
+"Mantive discrição em todas as atividades realizadas no local de trabalho.",
+"Cumpri normas e procedimentos estabelecidos pelo local de trabalho."
+]
+}
+],
+"Indústria e Produção":[
+{
 "desc":"Profissional com experiência em ambiente industrial, seguindo procedimentos de produção, qualidade e segurança. Atenção a detalhes e capacidade de manter ritmo constante de trabalho.",
 "habilidades":[
 "Operação de máquinas e equipamentos",
@@ -901,6 +1535,144 @@
 "Identifiquei e reportei problemas no processo produtivo.",
 "Cumpri metas de produção trabalhando em equipe com outros setores."
 ]
+},
+{
+"desc":"Profissional industrial com experiência na operação de máquinas e equipamentos de produção. Disciplina, atenção às normas de segurança e foco em qualidade.",
+"habilidades":[
+"Operação de máquinas e equipamentos",
+"Normas de segurança",
+"Foco em qualidade",
+"Disciplina",
+"Trabalho em equipe"
+],
+"frases":[
+"Operei máquinas e equipamentos seguindo procedimentos padronizados de produção.",
+"Segui normas de segurança rigorosamente em todas as atividades industriais.",
+"Contribuí para a manutenção da qualidade dos produtos ao longo da produção."
+]
+},
+{
+"desc":"Profissional da área industrial com experiência em rotinas de produção e controle de qualidade. Atenção a detalhes, organização e disposição para trabalho em turnos.",
+"habilidades":[
+"Rotinas de produção",
+"Controle de qualidade",
+"Organização",
+"Disposição para turnos",
+"Atenção a detalhes"
+],
+"frases":[
+"Segui rotinas de produção conforme procedimentos estabelecidos pela empresa.",
+"Realizei controle de qualidade, identificando itens fora do padrão.",
+"Adaptei-me a diferentes turnos mantendo o mesmo padrão de desempenho."
+]
+},
+{
+"desc":"Profissional industrial com experiência em apoio a linhas de produção e cumprimento de metas. Ritmo constante, trabalho em equipe e atenção às normas de segurança.",
+"habilidades":[
+"Apoio à linha de produção",
+"Cumprimento de metas",
+"Ritmo constante",
+"Trabalho em equipe",
+"Uso de EPI"
+],
+"frases":[
+"Apoiei a linha de produção, contribuindo para o cumprimento de metas diárias.",
+"Mantive ritmo constante de trabalho mesmo em jornadas mais longas.",
+"Utilizei equipamentos de proteção individual conforme exigido pela função."
+]
+},
+{
+"desc":"Profissional industrial com experiência em identificar e reportar falhas no processo produtivo. Atenção, responsabilidade e comprometimento com a segurança da equipe.",
+"habilidades":[
+"Identificação de falhas",
+"Reporte de problemas",
+"Atenção",
+"Responsabilidade",
+"Segurança da equipe"
+],
+"frases":[
+"Identifiquei e reportei falhas no processo produtivo, evitando maiores prejuízos.",
+"Comuniquei rapidamente qualquer situação de risco à equipe responsável.",
+"Contribuí para um ambiente de trabalho seguro e organizado."
+]
 }
+],
+"Engenharia":[
+{
+"desc":"Profissional de engenharia com experiência na aplicação de conhecimentos técnicos para desenvolver, analisar e melhorar processos, produtos ou estruturas. Raciocínio lógico, atenção a detalhes e capacidade de resolver problemas complexos.",
+"habilidades":[
+"Análise técnica",
+"Resolução de problemas complexos",
+"Leitura de projetos e normas técnicas",
+"Trabalho em equipe",
+"Atenção a detalhes"
+],
+"frases":[
+"Desenvolvi e analisei projetos técnicos seguindo normas e especificações da área.",
+"Identifiquei e propus soluções para problemas técnicos do dia a dia.",
+"Colaborei com equipes multidisciplinares para entrega de projetos dentro do prazo."
+]
+},
+{
+"desc":"Profissional de engenharia com experiência em projetos técnicos, do planejamento à execução. Organização, visão analítica e compromisso com prazos e normas técnicas.",
+"habilidades":[
+"Planejamento de projetos",
+"Visão analítica",
+"Normas técnicas",
+"Cumprimento de prazos",
+"Trabalho em equipe"
+],
+"frases":[
+"Planejei e acompanhei projetos técnicos do início à conclusão.",
+"Apliquei normas técnicas em todas as etapas dos projetos conduzidos.",
+"Trabalhei em equipe multidisciplinar para garantir a qualidade das entregas."
+]
+},
+{
+"desc":"Profissional de engenharia com foco em soluções técnicas eficientes e seguras. Capacidade de análise, atenção a detalhes e comunicação clara com equipes técnicas e não técnicas.",
+"habilidades":[
+"Análise de soluções técnicas",
+"Segurança e normas",
+"Comunicação técnica",
+"Atenção a detalhes",
+"Trabalho colaborativo"
+],
+"frases":[
+"Analisei alternativas técnicas, escolhendo soluções seguras e eficientes.",
+"Comuniquei informações técnicas de forma clara para diferentes públicos.",
+"Colaborei com outras áreas para viabilizar projetos dentro do prazo."
+]
+},
+{
+"desc":"Profissional de engenharia com experiência em acompanhamento técnico e resolução de problemas em campo. Praticidade, organização e conhecimento de normas de segurança.",
+"habilidades":[
+"Acompanhamento técnico em campo",
+"Resolução de problemas",
+"Normas de segurança",
+"Organização",
+"Relacionamento com equipes"
+],
+"frases":[
+"Acompanhei atividades em campo, garantindo conformidade técnica e segurança.",
+"Resolvi problemas técnicos com agilidade, minimizando impactos no cronograma.",
+"Orientei equipes de execução quanto a especificações e normas técnicas."
+]
+},
+{
+"desc":"Profissional de engenharia com interesse em inovação e melhoria contínua de processos técnicos. Raciocínio lógico, proatividade e facilidade para aprender novas tecnologias da área.",
+"habilidades":[
+"Melhoria contínua",
+"Inovação técnica",
+"Raciocínio lógico",
+"Proatividade",
+"Aprendizado técnico contínuo"
+],
+"frases":[
+"Propus melhorias em processos técnicos, contribuindo para ganhos de eficiência.",
+"Busquei atualização constante sobre novas tecnologias da área.",
+"Apliquei raciocínio lógico na resolução de desafios técnicos do dia a dia."
+]
+}
+]
 }
 }

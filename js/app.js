@@ -16,6 +16,7 @@ import {initWhatsappShare} from "./services/share.service.js";
 import {initCoverLetter} from "./components/cover-letter/cover-letter.component.js";
 import {initProfessionAutocomplete} from "./services/professions.service.js";
 import {initClearableInputs} from "./services/clearable-inputs.service.js";
+import {initPhotoUpload} from "./services/photo.service.js";
 import {debounce} from "./utils/debounce.js";
 
 /**
@@ -33,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initStep1Validation();
   initProfessionAutocomplete();
   initClearableInputs();
+  initPhotoUpload();
   updateStepLocks();
   initStep2Profile();
   initStep3Experience();

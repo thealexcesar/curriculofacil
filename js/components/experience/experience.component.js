@@ -17,6 +17,8 @@
 
 import {experienceTemplate} from './experience.template.js';
 import {attachVoiceInput} from '../../services/voice-input.service.js';
+import {initCombobox} from '../../utils/combobox.js';
+import {suggestCargoOptions, suggestExperiencePhrase} from '../../services/professions.service.js';
 
 /** @type {ExperienceComponent[]} */
 const items = [];
@@ -73,6 +75,8 @@ function createExperience(index, initialData = {}) {
 
   const refs = {
     title: element.querySelector('.exp-title'),
+    titleSuggestions: element.querySelector('.exp-title-suggestions'),
+    suggestPhraseBtn: element.querySelector('.exp-suggest-phrase'),
     company: element.querySelector('.exp-company'),
     start: {
       month: element.querySelector('.exp-start-month'),
@@ -90,6 +94,17 @@ function createExperience(index, initialData = {}) {
   };
 
   attachVoiceInput(refs.description);
+  initCombobox(refs.title, refs.titleSuggestions, suggestCargoOptions);
+
+  refs.suggestPhraseBtn.addEventListener('click', () => {
+    const phrase = suggestExperiencePhrase();
+    if (!phrase) return;
+    // Append rather than replace - the point is to help build up a list of
+    // responsibilities, not to overwrite what the user already wrote.
+    const existing = refs.description.value.trim();
+    refs.description.value = existing ? `${existing}\n${phrase}` : phrase;
+    refs.description.dispatchEvent(new Event('input', { bubbles: true }));
+  });
 
   refs.current.addEventListener('change', () => {
     isCurrent = refs.current.checked;

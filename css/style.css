@@ -619,18 +619,14 @@ span[disabled] {
 .btn-primary  { background: var(--color-primary);   color: var(--color-text-inverse); }
 .btn-primary:hover:not(:disabled)  { background: var(--color-primary-hover); }
 
+/* Solid, fully opaque - same treatment as primary, just its own color, not
+   a faded/bordered variant. Fading a clickable (non-disabled) button reads
+   as broken to users, since fading is normally reserved for :disabled. */
 .btn-secondary { background: var(--color-secondary); color: var(--color-text-inverse); }
 .btn-secondary:hover:not(:disabled) { background: var(--color-secondary-hover); }
 
 .btn-success  { background: var(--color-success);   color: var(--color-text-inverse); }
 .btn-success:hover:not(:disabled)  { background: var(--color-success-hover); }
-
-.btn-outline {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border-strong);
-    color: var(--color-text-secondary);
-}
-.btn-outline:hover:not(:disabled) { border-color: var(--color-primary); color: var(--color-primary); }
 
 .btn-sm { padding: 8px 14px; font-size: var(--font-size-sm); }
 
@@ -728,6 +724,10 @@ span[disabled] {
 
 .field input.is-valid   { border-color: var(--color-success); }
 .field input.is-invalid { border-color: var(--color-danger); }
+
+/* Positioning context for the dropdown when the input isn't a direct child
+   of .field (dynamic experience/education items wrap theirs). */
+.autocomplete-wrap { position: relative; }
 
 .autocomplete-list {
     position: absolute;
@@ -863,6 +863,64 @@ span[disabled] {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-3);
+}
+
+/* Hidden visually but still focusable/announced by screen readers -
+   `display:none` or `hidden` would drop it from the accessibility tree,
+   and the file input still has to be reachable by keyboard. */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.photo-field {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.photo-thumb {
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    background: var(--color-surface-alt);
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-empty .icon {
+    width: 34px;
+    height: 34px;
+    color: var(--color-text-placeholder);
+}
+
+.photo-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.photo-hint {
+    flex-basis: 100%;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
 }
 
 .field-collapsible {
@@ -1027,26 +1085,24 @@ span[disabled] {
     height: 16px;
 }
 
+/* Same solid + opacity pattern as .btn-secondary, not its own border/shadow
+   treatment - one button language across the app. */
 .btn-add-small {
     display: flex;
     align-items: center;
     gap: var(--space-1);
     margin-top: var(--space-2);
     padding: var(--space-2) var(--space-3);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border-strong);
+    background: var(--color-secondary);
+    border: none;
     border-radius: var(--radius-md);
-    box-shadow: var(--shadow-xs);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
-    color: var(--color-primary-text);
+    color: var(--color-text-inverse);
     cursor: pointer;
 }
 
-.btn-add-small:hover {
-    border-color: var(--color-primary);
-    background: var(--color-primary-light);
-}
+.btn-add-small:hover { background: var(--color-secondary-hover); }
 
 .btn-add-small .icon {
     width: 16px;
@@ -1135,11 +1191,9 @@ span[disabled] {
 }
 
 .template-switcher-label {
-    display: block;
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-semibold);
     color: var(--color-text-muted);
-    margin-bottom: var(--space-2);
 }
 
 .template-switcher-row {
@@ -1249,6 +1303,32 @@ span[disabled] {
     border-bottom: 1px solid var(--color-border);
 }
 
+/* Only applied when a photo exists - without one the header keeps its
+   plain block layout and the text simply fills the full width. */
+.cv-header--with-photo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.cv-header--with-photo .cv-header-text { min-width: 0; }
+
+/* Softly rounded corners rather than a circle - the classic theme is the
+   formal/traditional one, where a squared-off photo (like an official 3x4)
+   fits better. The modern and sidebar themes override this to a circle. */
+.cv-header--with-photo .cv-photo {
+    flex-shrink: 0;
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+}
+
+.cv-preview.theme-modern .cv-header--with-photo .cv-photo {
+    border-radius: var(--radius-full);
+}
+
 .cv-name {
     font-size: 22pt;
     font-weight: var(--font-weight-bold);
@@ -1262,6 +1342,12 @@ span[disabled] {
     color: var(--cv-accent);
     font-weight: var(--font-weight-semibold);
     margin: 0 0 8px;
+}
+
+.cv-registry {
+    font-size: 9pt;
+    font-weight: var(--font-weight-normal);
+    color: var(--color-text-secondary);
 }
 
 .cv-contact {
@@ -1442,7 +1528,12 @@ span[disabled] {
 
 .cv-preview.theme-modern .cv-item {
     padding-left: 12px;
-    border-left: 3px solid var(--cv-accent-light);
+    /* Not --cv-accent-light here - the résumé is very likely printed at a
+       library or print shop in black & white (cheaper, more common than
+       color), and a pale tint has almost no luminance difference from the
+       white page - it would nearly vanish once color is gone, unlike a
+       proper dark/mid accent which still reads as a visible gray line. */
+    border-left: 3px solid var(--cv-accent);
 }
 
 .cv-preview.theme-modern .cv-skill {
@@ -1450,6 +1541,82 @@ span[disabled] {
     border: none;
     color: var(--cv-accent-dark);
     border-radius: var(--radius-full);
+}
+
+/* ============================================================
+   CV THEME - SIDEBAR ("Executivo")
+   Two-column layout: name/contact/documents/skills/languages in a
+   narrow sidebar, profile/experience/education in the main column -
+   one of the most common professional résumé formats.
+
+   preview.template.js groups the sections into two wrapper divs
+   (.cv-sidebar-group / .cv-main-group) only for this theme - each is a
+   real flex child that stacks its own content independently. An earlier
+   version tried to route the plain .cv-* siblings straight into CSS Grid
+   columns via grid-column, but Grid's auto-placement cursor advances
+   globally across every item regardless of column, so whichever column
+   had fewer sections than the other was left with visible gaps.
+   ============================================================ */
+.cv-preview.theme-sidebar {
+    display: flex;
+    align-items: stretch;
+    padding: 0;
+}
+
+.cv-preview.theme-sidebar .cv-sidebar-group {
+    flex: 0 0 210px;
+    padding: 48px 20px 32px;
+    background: var(--cv-accent-light);
+}
+
+.cv-preview.theme-sidebar .cv-photo {
+    display: block;
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: var(--radius-full);
+    margin: 0 auto 20px;
+}
+
+.cv-preview.theme-sidebar .cv-main-group {
+    flex: 1;
+    min-width: 0;
+    padding: 48px 32px 32px 28px;
+}
+
+/* Name/title now lead the main column (not squeezed into the 210px
+   sidebar), so they can be sized closer to the classic theme's own
+   header instead of the smaller size a narrow column would need. */
+.cv-preview.theme-sidebar .cv-name {
+    font-size: 20pt;
+}
+
+.cv-preview.theme-sidebar .cv-job-title {
+    font-size: 10.5pt;
+}
+
+.cv-preview.theme-sidebar .cv-contact {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    font-size: 8.5pt;
+}
+
+.cv-preview.theme-sidebar .cv-section--columns {
+    /* Skills+languages normally sit side by side (2fr 1fr) in the
+       classic layout - far too narrow a column here for that split. */
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+}
+
+.cv-preview.theme-sidebar .cv-documents {
+    flex-direction: column;
+    gap: 6px;
+}
+
+.cv-preview.theme-sidebar .cv-section-title {
+    font-size: 9pt;
+    border-bottom-color: var(--cv-accent);
 }
 
 /* ============================================================
@@ -1592,7 +1759,7 @@ span[disabled] {
     .preview-panel { background: white !important; box-shadow: none !important; border-radius: 0 !important; }
 
     .cv-preview-wrapper { padding: 0 !important; background: white !important; height: auto !important; }
-    .cv-preview { position: relative !important; width: 100% !important; padding: 0 !important; min-height: unset !important; box-shadow: none !important; transform: none !important; }
+    .cv-preview { position: relative !important; top: 0 !important; left: 0 !important; width: 100% !important; padding: 0 !important; min-height: unset !important; box-shadow: none !important; transform: none !important; }
 
     * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 

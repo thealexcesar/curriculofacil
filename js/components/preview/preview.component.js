@@ -3,6 +3,11 @@ import { collectResumeData } from '../../services/resume-data.service.js';
 import { debounce } from '../../utils/debounce.js';
 
 const CV_WIDTH_PX = 794;
+// Thin gray margin around the page so it reads as a distinct sheet of
+// paper sitting on the panel, not just "the rest of the white UI" - makes
+// it obvious where the printable A4 page starts and ends. Kept small so it
+// doesn't eat into the already-limited preview space.
+const PAGE_MARGIN_PX = 10;
 const TEMPLATE_STORAGE_KEY = 'curriculofacil_template';
 const COLOR_STORAGE_KEY = 'curriculofacil_template_color';
 
@@ -32,7 +37,10 @@ export function initPreview() {
 
   window.addEventListener('beforeprint', () => {
     document.querySelector('.cv-preview-wrapper').style.height = '';
-    document.getElementById('cv-preview').style.transform = '';
+    const cvPreview = document.getElementById('cv-preview');
+    cvPreview.style.transform = '';
+    cvPreview.style.top = '';
+    cvPreview.style.left = '';
   });
   window.addEventListener('afterprint', scaleCvPreview);
 }
@@ -50,18 +58,26 @@ function initTemplateSwitcher() {
       const template = btn.dataset.template;
       localStorage.setItem(TEMPLATE_STORAGE_KEY, template);
       applyTemplate(template, buttons);
+      // The sidebar theme groups sections into different HTML containers
+      // than classic/modern (see preview.template.js) - a class toggle
+      // alone isn't enough, the markup itself has to be regenerated.
+      renderPreview();
     });
   });
 }
 
+const THEMES = ['modern', 'sidebar'];
+
 /**
- * @param {string} template - 'classic' or 'modern'
+ * @param {string} template - 'classic', 'modern' or 'sidebar'
  * @param {NodeListOf<HTMLElement>} buttons
  * @returns {void}
  */
 function applyTemplate(template, buttons) {
   const preview = document.getElementById('cv-preview');
-  if (preview) preview.classList.toggle('theme-modern', template === 'modern');
+  if (preview) {
+    THEMES.forEach(theme => preview.classList.toggle(`theme-${theme}`, template === theme));
+  }
 
   buttons.forEach(btn => {
     btn.classList.toggle('template-btn--active', btn.dataset.template === template);
@@ -109,7 +125,8 @@ function applyColor(colorKey, swatches) {
 function renderPreview() {
   const preview = document.getElementById('cv-preview');
   if (!preview) return;
-  preview.innerHTML = previewTemplate(collectResumeData());
+  const template = localStorage.getItem(TEMPLATE_STORAGE_KEY) ?? 'classic';
+  preview.innerHTML = previewTemplate(collectResumeData(), template);
   scaleCvPreview();
 }
 
@@ -118,8 +135,10 @@ function scaleCvPreview() {
   const wrapper = document.querySelector('.cv-preview-wrapper');
   const preview = document.getElementById('cv-preview');
   if (!wrapper || !preview) return;
-  const scale = wrapper.clientWidth / CV_WIDTH_PX;
+  const scale = (wrapper.clientWidth - PAGE_MARGIN_PX * 2) / CV_WIDTH_PX;
   preview.style.transform = `scale(${scale})`;
   preview.style.transformOrigin = 'top left';
-  wrapper.style.height = `${Math.round(1123 * scale)}px`;
+  preview.style.top = `${PAGE_MARGIN_PX}px`;
+  preview.style.left = `${PAGE_MARGIN_PX}px`;
+  wrapper.style.height = `${Math.round(1123 * scale) + PAGE_MARGIN_PX * 2}px`;
 }

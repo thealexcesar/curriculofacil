@@ -38,6 +38,8 @@
   <symbol id="icon-upload" viewBox="0 0 24 24"><path d="M9 16H15V10H19L12 3L5 10H9V16ZM5 18H19V20H5V18Z"/></symbol>
   <symbol id="icon-mic" viewBox="0 0 24 24"><path d="M12 14C13.66 14 15 12.66 15 11V5C15 3.34 13.66 2 12 2C10.34 2 9 3.34 9 5V11C9 12.66 10.34 14 12 14ZM17 11C17 14.53 14.39 16.44 12 16.44C9.61 16.44 7 14.53 7 11H5C5 14.72 7.82 17.71 11 18.35V21H13V18.35C16.18 17.71 19 14.72 19 11H17Z"/></symbol>
   <symbol id="icon-expand_more" viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17L7.41 8.59L6 10L12 16L18 10L16.59 8.59Z"/></symbol>
+  <symbol id="icon-person" viewBox="0 0 24 24"><path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z"/></symbol>
+  <symbol id="icon-delete" viewBox="0 0 24 24"><path d="M6 19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7H6V19ZM19 4H15.5L14.5 3H9.5L8.5 4H5V6H19V4Z"/></symbol>
 </svg>
 
 <div class="app">
@@ -123,6 +125,27 @@
       <section id="step-1" class="step-section active">
         <h2 class="section-title" data-i18n="section.personal"></h2>
 
+        <div class="field photo-field">
+          <div class="photo-thumb">
+            <img id="photo-preview" alt="" hidden>
+            <span id="photo-empty" class="photo-empty" aria-hidden="true">
+              <svg class="icon"><use href="#icon-person"></use></svg>
+            </span>
+          </div>
+          <div class="photo-actions">
+            <button type="button" class="btn btn-secondary btn-sm" id="photo-choose">
+              <svg class="icon" aria-hidden="true"><use href="#icon-upload"></use></svg>
+              <span id="photo-choose-label"></span>
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm" id="photo-remove" hidden>
+              <svg class="icon" aria-hidden="true"><use href="#icon-delete"></use></svg>
+              <span data-i18n="photo.remove"></span>
+            </button>
+            <input type="file" id="photo-input" accept="image/*" class="visually-hidden">
+            <p class="photo-hint" data-i18n="photo.hint"></p>
+          </div>
+        </div>
+
         <div class="field">
           <label for="name" data-i18n="field.name.label"></label>
           <input type="text" id="name" data-i18n-placeholder="field.name.placeholder" autocomplete="name" spellcheck="true" autocorrect="on">
@@ -169,6 +192,17 @@
           <input type="text" id="linkedin" data-i18n-placeholder="field.linkedin.placeholder" autocomplete="off">
         </div>
 
+        <div class="field-row">
+          <div class="field">
+            <label for="instagram" data-i18n="field.instagram.label"></label>
+            <input type="text" id="instagram" data-i18n-placeholder="field.instagram.placeholder" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="facebook" data-i18n="field.facebook.label"></label>
+            <input type="text" id="facebook" data-i18n-placeholder="field.facebook.placeholder" autocomplete="off">
+          </div>
+        </div>
+
         <div class="field">
           <label for="cnh-category" data-i18n="field.cnhCategory.label"></label>
           <select id="cnh-category">
@@ -212,6 +246,10 @@
               <label for="voter-id" data-i18n="field.voterId.label"></label>
               <input type="text" id="voter-id" data-i18n-placeholder="field.voterId.placeholder" autocomplete="off" inputmode="numeric">
             </div>
+            <div class="field">
+              <label for="professional-registry" data-i18n="field.professionalRegistry.label"></label>
+              <input type="text" id="professional-registry" data-i18n-placeholder="field.professionalRegistry.placeholder" autocomplete="off">
+            </div>
           </div>
         </details>
       </section>
@@ -226,7 +264,7 @@
           <p class="profession-suggestion-preview" id="profession-suggestion-preview"></p>
           <div class="profession-suggestion-actions">
             <button type="button" class="btn btn-primary btn-sm" id="profession-suggestion-use"></button>
-            <button type="button" class="btn btn-outline btn-sm" id="profession-suggestion-dismiss" data-i18n="btn.dismiss"></button>
+            <button type="button" class="btn btn-secondary btn-sm" id="profession-suggestion-dismiss" data-i18n="btn.dismiss"></button>
           </div>
         </div>
 
@@ -314,6 +352,7 @@
           <span class="template-switcher-label" data-i18n="template.label"></span>
           <button class="template-btn template-btn--active" data-template="classic" data-i18n="template.classic"></button>
           <button class="template-btn" data-template="modern" data-i18n="template.modern"></button>
+          <button class="template-btn" data-template="sidebar" data-i18n="template.sidebar"></button>
         </div>
         <div class="color-swatches" id="color-swatches">
           <button class="color-swatch color-swatch--active" data-color="blue" style="background:#1e3a8a" data-i18n-aria="template.color.blue"></button>

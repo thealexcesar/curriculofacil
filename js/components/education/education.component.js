@@ -16,6 +16,8 @@
 
 import {educationTemplate} from './education.template.js';
 import {attachVoiceInput} from '../../services/voice-input.service.js';
+import {initCombobox} from '../../utils/combobox.js';
+import {suggestCourseOptions} from '../../services/professions.service.js';
 
 /** @type {EducationComponent[]} */
 const items = [];
@@ -70,6 +72,7 @@ function createEducation(index, initialData = {}) {
 
   const refs = {
     degree: element.querySelector('.edu-degree'),
+    degreeSuggestions: element.querySelector('.edu-degree-suggestions'),
     institution: element.querySelector('.edu-institution'),
     start: {
       month: element.querySelector('.edu-start-month'),
@@ -86,6 +89,7 @@ function createEducation(index, initialData = {}) {
   };
 
   attachVoiceInput(refs.description);
+  initCombobox(refs.degree, refs.degreeSuggestions, suggestCourseOptions);
 
   const destroy = () => {
     items.splice(items.indexOf(item), 1);
