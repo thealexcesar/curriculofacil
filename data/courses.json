@@ -1,0 +1,13 @@
+{
+  "Tecnologia": ["Análise e Desenvolvimento de Sistemas", "Ciência da Computação", "Sistemas de Informação", "Técnico em Informática", "Desenvolvimento Web", "Redes de Computadores", "Programação Full Stack", "Engenharia de Software"],
+  "Engenharia": ["Engenharia Civil", "Engenharia Mecânica", "Engenharia Elétrica", "Engenharia de Produção", "Engenharia Eletrônica", "Engenharia Química", "Técnico em Edificações", "Técnico em Mecânica"],
+  "Saúde": ["Técnico em Enfermagem", "Enfermagem", "Cuidador de Idosos", "Técnico em Radiologia", "Fisioterapia", "Nutrição", "Técnico em Análises Clínicas", "Primeiros Socorros"],
+  "Comércio e Vendas": ["Técnico em Vendas", "Técnicas de Vendas", "Marketing", "Administração de Empresas", "Atendimento ao Cliente", "Gestão Comercial", "Comércio Exterior"],
+  "Administração e Escritório": ["Administração", "Assistente Administrativo", "Secretariado", "Gestão de Recursos Humanos", "Excel Avançado", "Rotinas Administrativas", "Gestão Financeira"],
+  "Construção e Manutenção": ["Técnico em Edificações", "Eletricista Predial", "Encanador", "NR-10 Segurança em Eletricidade", "Pedreiro de Acabamento", "Técnico em Segurança do Trabalho", "Marcenaria"],
+  "Alimentação": ["Cozinheiro Profissional", "Gastronomia", "Confeitaria", "Panificação", "Boas Práticas de Manipulação de Alimentos", "Barista", "Técnico em Nutrição e Dietética"],
+  "Educação": ["Pedagogia", "Curso Normal (Magistério)", "Licenciatura em Letras", "Licenciatura em Matemática", "Educador Infantil", "Libras - Língua Brasileira de Sinais", "Psicopedagogia"],
+  "Transporte e Logística": ["Técnico em Logística", "Direção Defensiva", "Gestão da Cadeia de Suprimentos", "Transporte de Cargas", "MOPP - Produtos Perigosos", "Técnico em Transporte"],
+  "Serviços Gerais e Cuidados": ["Cuidador de Idosos", "Porteiro", "Zelador", "NR-35 Trabalho em Altura", "Segurança Patrimonial", "Babá", "Primeiros Socorros"],
+  "Indústria e Produção": ["Técnico em Produção Industrial", "Operador de Empilhadeira", "NR-12 Segurança em Máquinas", "Técnico em Mecatrônica", "Soldador", "Gestão da Qualidade", "Técnico em Automação Industrial"]
+}

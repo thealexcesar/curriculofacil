@@ -35,6 +35,15 @@
   "field": {
     "currentJob": { "label": "Current job" },
     "inProgress": { "label": "In Progress" },
+    "cnhCategory": {
+      "label": "Driver's license (category)",
+      "none": "I don't have one / prefer not to say"
+    },
+    "cpf": {
+      "label": "CPF (tax ID)",
+      "placeholder": "000.000.000-00"
+    },
+    "extraDocs": { "toggle": "Other documents (ID, CPF, voter registration)" },
     "degree": {
       "label": "Degree / Title",
       "placeholder": "Ex: Computer Science"
@@ -113,9 +122,22 @@
       "label": "Professional Summary",
       "placeholder": "Ex: Professional with experience in..."
     },
+    "rg": {
+      "label": "RG (ID number)",
+      "placeholder": "Ex: 12.345.678-9"
+    },
+    "rgIssuer": {
+      "label": "Issuing authority",
+      "placeholder": "Ex: SSP/SC"
+    },
+    "rgIssueDate": { "label": "Issue date" },
+    "voterId": {
+      "label": "Voter registration (Título de Eleitor)",
+      "placeholder": "Ex: 1234 5678 9012"
+    },
     "skill": {
       "label": "Skills",
-      "placeholder": "Ex: JavaScript, Photoshop..."
+      "placeholder": "Ex: Excel, Customer service, Organization..."
     },
     "startDate": { "label": "Start Date" },
     "experience": { "current": "Present" }
@@ -178,6 +200,7 @@
     "label": "Preview"
   },
   "section": {
+    "documents": "Documents",
     "education": "Education",
     "experience": "Work Experience",
     "language": "Languages",

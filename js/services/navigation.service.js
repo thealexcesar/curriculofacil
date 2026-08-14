@@ -83,6 +83,10 @@ function renderStep(step) {
 
   document.getElementById(`step-${step}`).classList.add('active');
   document.querySelector(`[data-step="${step}"]`).classList.add('active');
+
+  const caption = document.getElementById('steps-caption');
+  if (caption) caption.textContent = t(`nav.step.${step}`);
+
   document.getElementById('prev-btn').disabled = step === 1;
   document.getElementById('next-btn').style.display = step === TOTAL_STEPS ? 'none' : 'inline-flex';
   document.getElementById('finish-btn').style.display = step === TOTAL_STEPS ? 'inline-flex' : 'none';

@@ -13,11 +13,15 @@ const LOCALES = { 'pt-BR': ptBR, en, de };
 /** @type {Locale} */
 let current = DEFAULT_LOCALE;
 
-/** @returns {void} */
+/**
+ * App is pt-BR only for now (Brazilian documents like CPF/RG/CNH don't
+ * translate meaningfully) - always sets the default locale, ignoring any
+ * saved preference or browser language.
+ *
+ * @returns {void}
+ */
 export function initLocale() {
-  const saved = localStorage.getItem(STORAGE_KEY);
-  const fromHtml = document.documentElement.lang;
-  setLocale(saved ?? fromHtml ?? DEFAULT_LOCALE);
+  setLocale(DEFAULT_LOCALE);
 }
 
 /**
@@ -68,6 +72,7 @@ export function t(key, params = {}) {
  * - data-i18n-item="key"                     → resolves item param for data-i18n interpolation
  * - data-i18n-placeholder="key"              → sets element.placeholder
  * - data-i18n-aria="key"                     → sets element.aria-label
+ * - data-i18n-title="key"                    → sets element.title + aria-label
  *
  * @returns {void}
  */
@@ -83,5 +88,11 @@ export function translateDOM() {
 
   document.querySelectorAll('[data-i18n-aria]').forEach(el => {
     el.setAttribute('aria-label', t(el.dataset.i18nAria));
+  });
+
+  document.querySelectorAll('[data-i18n-title]').forEach(el => {
+    const text = t(el.dataset.i18nTitle);
+    el.title = text;
+    el.setAttribute('aria-label', text);
   });
 }

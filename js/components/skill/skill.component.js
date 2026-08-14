@@ -13,7 +13,9 @@ let chipsContainer = null;
 /** @returns {void} */
 export function initStep5Skills() {
   const container = document.getElementById('skill-section');
-  container.innerHTML = skillInputTemplate();
+  // insertAdjacentHTML (not innerHTML=) - #skill-section already has its
+  // own <h3> subtitle in index.html; overwriting innerHTML wiped it out.
+  container.insertAdjacentHTML('beforeend', skillInputTemplate());
 
   const refs = {
     input:  /** @type {HTMLInputElement} */ (container.querySelector('.skill-input')),
