@@ -67,11 +67,15 @@ function monthYearSelect(className, value = '', disabled = false) {
   const [year, month] = value ? value.split('-') : ['', ''];
   const months = t('months');
   const currentYear = new Date().getFullYear();
-  const years = Array.from({length: currentYear - 1950 + 6}, (_, i) => currentYear + 5 - i);
+  // Nothing past today: you can't have already worked or studied in a month
+  // that hasn't happened yet. An in-progress job/course is expressed by the
+  // "Trabalho atual" / "Cursando" toggles, not by a future end date.
+  const years = Array.from({length: currentYear - 1950 + 1}, (_, i) => currentYear - i);
 
   const monthOptions = months.map((m, i) => {
     const val = String(i + 1).padStart(2, '0');
-    return `<option value="${val}" ${month === val ? 'selected' : ''}>${m}</option>`;
+    const isFuture = Number(year) === currentYear && i > new Date().getMonth();
+    return `<option value="${val}" ${month === val ? 'selected' : ''} ${isFuture ? 'disabled' : ''}>${m}</option>`;
   }).join('');
 
   const yearOptions = years.map(y =>

@@ -145,6 +145,21 @@ export function suggestExperiencePhrase() {
 }
 
 /**
+ * Same idea as suggestExperiencePhrase, but for the education "Descrição"
+ * field - drawn from a separate pool, since a course description reads
+ * nothing like a job responsibility ("Formação com..." vs "Realizei...").
+ *
+ * @returns {string|undefined}
+ */
+export function suggestEducationPhrase() {
+  const category = getCurrentProfessionCategory();
+  const pool = category && suggestions.educationPhrases[category];
+  if (!pool?.length) return undefined;
+
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+
+/**
  * Looks up résumé suggestion content for a typed job title. Tries an exact
  * profession match first (most specific), then a broad category guessed
  * from keywords in the text itself. Returns undefined if nothing matches -

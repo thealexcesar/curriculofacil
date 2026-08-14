@@ -27,13 +27,10 @@ export function collectResumeData() {
       location: document.getElementById('location')?.value.trim() ?? '',
       linkedin: document.getElementById('linkedin')?.value.trim() ?? '',
       instagram: document.getElementById('instagram')?.value.trim() ?? '',
-      facebook: document.getElementById('facebook')?.value.trim() ?? '',
+      website: document.getElementById('website')?.value.trim() ?? '',
       cnhCategory: document.getElementById('cnh-category')?.value ?? '',
       rg: document.getElementById('rg')?.value.trim() ?? '',
-      rgIssuer: document.getElementById('rg-issuer')?.value.trim() ?? '',
-      rgIssueDate: document.getElementById('rg-issue-date')?.value ?? '',
       cpf: document.getElementById('cpf')?.value.trim() ?? '',
-      voterId: document.getElementById('voter-id')?.value.trim() ?? '',
       professionalRegistry: document.getElementById('professional-registry')?.value.trim() ?? '',
       photo: getPhoto(),
     },
@@ -72,13 +69,10 @@ export function applyResumeData(data) {
     document.getElementById('location').value = personal.location ?? '';
     document.getElementById('linkedin').value = personal.linkedin ?? '';
     document.getElementById('instagram').value = personal.instagram ?? '';
-    document.getElementById('facebook').value = personal.facebook ?? '';
+    document.getElementById('website').value = personal.website ?? '';
     document.getElementById('cnh-category').value = personal.cnhCategory ?? '';
     document.getElementById('rg').value = personal.rg ?? '';
-    document.getElementById('rg-issuer').value = personal.rgIssuer ?? '';
-    document.getElementById('rg-issue-date').value = personal.rgIssueDate ?? '';
     document.getElementById('cpf').value = personal.cpf ?? '';
-    document.getElementById('voter-id').value = personal.voterId ?? '';
     document.getElementById('professional-registry').value = personal.professionalRegistry ?? '';
     setPhoto(personal.photo ?? '');
   }

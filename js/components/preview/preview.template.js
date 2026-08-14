@@ -10,13 +10,10 @@ import { t } from '../../services/i18n.js';
  * @property {string} location
  * @property {string} linkedin
  * @property {string} [instagram]
- * @property {string} [facebook]
+ * @property {string} [website]
  * @property {string} [cnhCategory]
  * @property {string} [rg]
- * @property {string} [rgIssuer]
- * @property {string} [rgIssueDate]
  * @property {string} [cpf]
- * @property {string} [voterId]
  * @property {string} [professionalRegistry]
  * @property {string} [photo] - Optional, base64 data URL (see photo.service.js)
  */
@@ -61,7 +58,7 @@ export function previewTemplate({ personal, profile, experience, education, skil
       ${personal.location ? `<span>${personal.location}</span>` : ''}
       ${personal.linkedin ? `<span>${personal.linkedin}</span>` : ''}
       ${personal.instagram ? `<span>${personal.instagram}</span>` : ''}
-      ${personal.facebook ? `<span>${personal.facebook}</span>` : ''}
+      ${personal.website ? `<span>${personal.website}</span>` : ''}
       ${personal.cnhCategory ? `<span>${t('field.cnhCategory.label')}: ${personal.cnhCategory}</span>` : ''}
     </div>`;
 
@@ -82,10 +79,7 @@ export function previewTemplate({ personal, profile, experience, education, skil
       <h2 class="cv-section-title">${t('section.documents')}</h2>
       <dl class="cv-documents">
         ${personal.rg ? `<div><dt>${t('field.rg.label')}</dt><dd>${personal.rg}</dd></div>` : ''}
-        ${personal.rgIssuer ? `<div><dt>${t('field.rgIssuer.label')}</dt><dd>${personal.rgIssuer}</dd></div>` : ''}
-        ${personal.rgIssueDate ? `<div><dt>${t('field.rgIssueDate.label')}</dt><dd>${formatFullDate(personal.rgIssueDate)}</dd></div>` : ''}
         ${personal.cpf ? `<div><dt>${t('field.cpf.label')}</dt><dd>${personal.cpf}</dd></div>` : ''}
-        ${personal.voterId ? `<div><dt>${t('field.voterId.label')}</dt><dd>${personal.voterId}</dd></div>` : ''}
       </dl>
     </section>` : '';
 
@@ -100,11 +94,9 @@ export function previewTemplate({ personal, profile, experience, education, skil
       <h2 class="cv-section-title">${t('section.experience')}</h2>
       ${experience.map(exp => `
         <div class="cv-item">
-          <div class="cv-item-header">
-            <strong class="cv-item-title">${exp.title}</strong>
-            <span class="cv-item-date">${formatDate(exp.startDate)} - ${exp.current ? t('field.experience.current') : formatDate(exp.endDate)}</span>
-          </div>
+          <strong class="cv-item-title">${exp.title}</strong>
           ${exp.company ? `<span class="cv-item-subtitle">${exp.company}</span>` : ''}
+          <span class="cv-item-date">${formatDate(exp.startDate)} - ${exp.current ? t('field.experience.current') : formatDate(exp.endDate)}</span>
           ${exp.description ? `<p class="cv-item-desc">${exp.description}</p>` : ''}
         </div>
       `).join('')}
@@ -115,16 +107,14 @@ export function previewTemplate({ personal, profile, experience, education, skil
       <h2 class="cv-section-title">${t('section.education')}</h2>
       ${education.map(edu => `
         <div class="cv-item">
-          <div class="cv-item-header">
-            <strong class="cv-item-title">${edu.degree}</strong>
-            <span class="cv-item-date">
-              ${formatDate(edu.startDate)}${edu.inProgress
-                ? ` - ${t('field.inProgress.label')}`
-                : edu.endDate ? ` - ${formatDate(edu.endDate)}` : ''
-              }
-            </span>
-          </div>
+          <strong class="cv-item-title">${edu.degree}</strong>
           ${edu.institution ? `<span class="cv-item-subtitle">${edu.institution}</span>` : ''}
+          <span class="cv-item-date">
+            ${formatDate(edu.startDate)}${edu.inProgress
+              ? ` - ${t('field.inProgress.label')}`
+              : edu.endDate ? ` - ${formatDate(edu.endDate)}` : ''
+            }
+          </span>
           ${edu.description ? `<p class="cv-item-desc">${edu.description}</p>` : ''}
         </div>
       `).join('')}
@@ -166,7 +156,7 @@ export function previewTemplate({ personal, profile, experience, education, skil
     // column's own heading, contact details sit with the rest of the
     // at-a-glance sidebar info instead of floating above it.
     const hasContact = Boolean(personal.email || phones.length || personal.location || personal.linkedin
-      || personal.instagram || personal.facebook || personal.cnhCategory);
+      || personal.instagram || personal.website || personal.cnhCategory);
     const contactWithTitle = hasContact ? `<h2 class="cv-section-title">${t('section.contact')}</h2>${contactBlock}` : '';
     return `
       <div class="cv-sidebar-group">${photo}${contactWithTitle}${documents}${columns}</div>
@@ -190,22 +180,11 @@ function formatDate(yyyyMm) {
   return `${months[parseInt(month, 10) - 1]}/${year}`;
 }
 
-/**
- * Formats YYYY-MM-DD to "DD/MM/YYYY".
- *
- * @param {string} [yyyyMmDd]
- * @returns {string}
- */
-function formatFullDate(yyyyMmDd) {
-  if (!yyyyMmDd) return '';
-  const [year, month, day] = yyyyMmDd.split('-');
-  return `${day}/${month}/${year}`;
-}
 
 /**
  * @param {PersonalData} personal
  * @returns {boolean}
  */
 function hasDocuments(personal) {
-  return Boolean(personal.rg || personal.rgIssuer || personal.rgIssueDate || personal.cpf || personal.voterId);
+  return Boolean(personal.rg || personal.cpf);
 }

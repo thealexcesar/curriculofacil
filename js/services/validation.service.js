@@ -13,6 +13,7 @@ export function initStep1Validation() {
     email: document.getElementById('email'),
     phone: document.getElementById('phone'),
     linkedin: document.getElementById('linkedin'),
+    instagram: document.getElementById('instagram'),
     cpf: document.getElementById('cpf'),
     nextBtn: document.getElementById('next-btn'),
   };
@@ -51,8 +52,12 @@ export function initStep1Validation() {
 
   on(fields.cpf, () => { fields.cpf.value = applyCpfMask(fields.cpf.value); });
 
-  fields.linkedin.addEventListener('focus', () => { if (!fields.linkedin.value) fields.linkedin.value = 'https://linkedin.com/in/'; });
-  fields.linkedin.addEventListener('blur', () => { if (fields.linkedin.value === 'https://linkedin.com/in/') fields.linkedin.value = ''; });
+  // All three social fields behave the same way: the site part is filled in
+  // for the user, who only types their own handle. No "https://" - on a
+  // printed résumé nobody clicks the link, they retype it, so the shortest
+  // form that still finds the profile is the useful one.
+  prefillOnFocus(fields.linkedin, 'linkedin.com/in/');
+  prefillOnFocus(fields.instagram, 'instagram.com/');
 
   document.getElementById('add-phone').addEventListener('click', () => addExtraPhone());
 
@@ -148,4 +153,20 @@ function setHint(hint, valid, message) {
 function on(input, handler) {
   input.addEventListener('input', handler);
   input.addEventListener('blur', handler);
+}
+
+/**
+ * Drops a site prefix into an empty field when it's focused, so the user
+ * only types their handle - and clears it again on blur if they left
+ * without typing anything, so an untouched field doesn't end up saved
+ * holding just the prefix.
+ *
+ * @private
+ * @param {HTMLInputElement|null} input
+ * @param {string}                prefix
+ */
+function prefillOnFocus(input, prefix) {
+  if (!input) return;
+  input.addEventListener('focus', () => { if (!input.value) input.value = prefix; });
+  input.addEventListener('blur', () => { if (input.value === prefix) input.value = ''; });
 }

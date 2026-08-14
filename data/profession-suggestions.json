@@ -1674,5 +1674,73 @@
 ]
 }
 ]
+},
+"educationPhrases":{
+"Tecnologia":[
+"Desenvolvi projetos práticos ao longo do curso, aplicando o conteúdo em situações reais.",
+"Curso com foco em lógica de programação, banco de dados e desenvolvimento de sistemas.",
+"Participei de projeto integrador em equipe, do levantamento de requisitos à entrega.",
+"Busquei cursos complementares na área para acompanhar as tecnologias mais usadas no mercado."
+],
+"Engenharia":[
+"Formação com base sólida em cálculo, normas técnicas e desenvolvimento de projetos.",
+"Participei de projetos acadêmicos aplicando conceitos técnicos a problemas reais.",
+"Realizei trabalho de conclusão voltado à otimização de processos da área.",
+"Cursei disciplinas com foco em segurança, qualidade e leitura de projetos técnicos."
+],
+"Saúde":[
+"Formação com carga horária prática em ambiente assistencial.",
+"Realizei estágio supervisionado com acompanhamento direto de pacientes.",
+"Curso com foco em protocolos de segurança, higiene e atendimento humanizado.",
+"Participei de atividades práticas em laboratório e simulações de atendimento."
+],
+"Comércio e Vendas":[
+"Curso voltado a técnicas de negociação, atendimento e fidelização de clientes.",
+"Desenvolvi atividades práticas de simulação de vendas e atendimento ao público.",
+"Formação com foco em rotinas comerciais e organização de ponto de venda.",
+"Estudei estratégias de abordagem e fechamento adaptadas a diferentes perfis de cliente."
+],
+"Administração e Escritório":[
+"Formação com foco em rotinas administrativas, organização e controle de documentos.",
+"Estudei ferramentas de escritório, com ênfase em planilhas e controles internos.",
+"Participei de atividades práticas simulando rotinas de departamento pessoal e financeiro.",
+"Curso voltado à gestão de processos e atendimento interno entre setores."
+],
+"Construção e Manutenção":[
+"Curso com aulas práticas em oficina e uso de ferramentas do dia a dia da profissão.",
+"Formação com ênfase em normas de segurança do trabalho e uso correto de EPI.",
+"Aprendi leitura de projetos e execução de serviços seguindo especificações técnicas.",
+"Realizei atividades práticas supervisionadas em obra e manutenção predial."
+],
+"Alimentação":[
+"Curso com aulas práticas em cozinha profissional e produção em escala.",
+"Formação com ênfase em boas práticas de higiene e segurança alimentar.",
+"Aprendi técnicas de preparo, montagem de pratos e controle de insumos.",
+"Participei de atividades práticas simulando o ritmo de um serviço real."
+],
+"Educação":[
+"Formação com estágio supervisionado em sala de aula.",
+"Curso voltado ao desenvolvimento infantil e planejamento de atividades pedagógicas.",
+"Estudei metodologias de ensino adaptadas a diferentes ritmos de aprendizagem.",
+"Participei de projetos práticos envolvendo alunos e comunidade escolar."
+],
+"Transporte e Logística":[
+"Curso com foco em roteirização, controle de cargas e prazos de entrega.",
+"Formação com ênfase em direção defensiva e normas de segurança no transporte.",
+"Estudei rotinas de armazenagem, separação de pedidos e controle de estoque.",
+"Participei de atividades práticas com sistemas de controle logístico."
+],
+"Serviços Gerais e Cuidados":[
+"Curso com foco em cuidados diários, segurança e bem-estar das pessoas atendidas.",
+"Formação com aulas práticas e orientações de primeiros socorros.",
+"Estudei rotinas de organização, higiene e conservação de ambientes.",
+"Participei de atividades práticas supervisionadas na área de cuidados."
+],
+"Indústria e Produção":[
+"Curso com aulas práticas em operação de máquinas e equipamentos industriais.",
+"Formação com ênfase em normas de segurança e controle de qualidade.",
+"Estudei processos produtivos, indicadores de produção e redução de desperdícios.",
+"Participei de atividades práticas simulando rotinas de linha de produção."
+]
 }
 }

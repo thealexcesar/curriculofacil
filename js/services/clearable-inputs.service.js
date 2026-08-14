@@ -8,9 +8,8 @@
  * (phone entry, skill input, language row) aren't wrapped here, that would
  * fight their existing inline controls.
  *
- * Textareas with voice dictation already have a mic button at the bottom
- * right (see voice-input.service.js) - the clear button sits at the top
- * right instead, so the two never overlap.
+ * The button sits at the top right of a textarea (rather than centered
+ * like on a single-line input), where it stays out of the way of the text.
  *
  * A MutationObserver picks up fields added later (new experience/education
  * items, restored data) - no per-component wiring needed.

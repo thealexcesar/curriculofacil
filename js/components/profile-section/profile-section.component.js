@@ -5,7 +5,6 @@
  */
 
 import {t} from "../../services/i18n.js";
-import {attachVoiceInput} from "../../services/voice-input.service.js";
 import {findProfessionSuggestion} from "../../services/professions.service.js";
 
 const PROFILE_MAX_CHARS = 400;
@@ -14,8 +13,6 @@ export function initStep2Profile() {
   const textarea = document.getElementById('profile');
   const counter = document.getElementById('profile-count');
   const hint = document.getElementById('profile-hint');
-
-  attachVoiceInput(textarea);
 
   textarea.addEventListener('input', () => {
     const len = textarea.value.length;

@@ -15,9 +15,8 @@
  */
 
 import {educationTemplate} from './education.template.js';
-import {attachVoiceInput} from '../../services/voice-input.service.js';
 import {initCombobox} from '../../utils/combobox.js';
-import {suggestCourseOptions} from '../../services/professions.service.js';
+import {suggestCourseOptions, suggestEducationPhrase} from '../../services/professions.service.js';
 
 /** @type {EducationComponent[]} */
 const items = [];
@@ -83,13 +82,22 @@ function createEducation(index, initialData = {}) {
       year: element.querySelector('.edu-end-year'),
     },
     description: element.querySelector('.edu-description'),
+    suggestPhraseBtn: element.querySelector('.edu-suggest-phrase'),
     removeBtn: element.querySelector('.btn-remove'),
     inProgress: element.querySelector('.edu-inprogress'),
     badgeToggle: element.querySelector('.edu-inprogress + .badge-toggle'),
   };
-
-  attachVoiceInput(refs.description);
   initCombobox(refs.degree, refs.degreeSuggestions, suggestCourseOptions);
+
+  refs.suggestPhraseBtn.addEventListener('click', () => {
+    const phrase = suggestEducationPhrase();
+    if (!phrase) return;
+    // Append rather than replace - the point is to help build the text up,
+    // not to wipe out what the user already wrote.
+    const existing = refs.description.value.trim();
+    refs.description.value = existing ? `${existing}\n${phrase}` : phrase;
+    refs.description.dispatchEvent(new Event('input', { bubbles: true }));
+  });
 
   const destroy = () => {
     items.splice(items.indexOf(item), 1);

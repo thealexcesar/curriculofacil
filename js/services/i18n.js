@@ -72,6 +72,7 @@ export function t(key, params = {}) {
  * - data-i18n-item="key"                     → resolves item param for data-i18n interpolation
  * - data-i18n-placeholder="key"              → sets element.placeholder
  * - data-i18n-aria="key"                     → sets element.aria-label
+ * - data-i18n-title="key"                    → sets element.title + aria-label
  *
  * @returns {void}
  */
@@ -87,5 +88,11 @@ export function translateDOM() {
 
   document.querySelectorAll('[data-i18n-aria]').forEach(el => {
     el.setAttribute('aria-label', t(el.dataset.i18nAria));
+  });
+
+  document.querySelectorAll('[data-i18n-title]').forEach(el => {
+    const text = t(el.dataset.i18nTitle);
+    el.title = text;
+    el.setAttribute('aria-label', text);
   });
 }

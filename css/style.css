@@ -771,35 +771,6 @@ span[disabled] {
 
 .field-hint.error { color: var(--color-danger-text); }
 
-.voice-btn {
-    position: absolute;
-    bottom: 8px;
-    right: 6px;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-full);
-    color: var(--color-text-muted);
-    cursor: pointer;
-    padding: 6px;
-    display: flex;
-    transition: color var(--transition-normal), border-color var(--transition-normal);
-}
-
-.voice-btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
-
-.voice-btn .icon { width: 16px; height: 16px; }
-
-.voice-btn.is-listening {
-    border-color: var(--color-danger);
-    color: var(--color-danger);
-    animation: voice-pulse 1s ease-in-out infinite;
-}
-
-@keyframes voice-pulse {
-    0%, 100% { opacity: 1; }
-    50%      { opacity: 0.45; }
-}
-
 .field-tip {
     position: relative;
     padding-left: 20px;
@@ -916,6 +887,28 @@ span[disabled] {
     align-items: center;
     gap: var(--space-2);
 }
+
+/* Deliberately lighter than a real .btn: the photo is optional, so these
+   shouldn't compete visually with the actual form actions. */
+.photo-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    background: none;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+}
+
+.photo-btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
+
+.photo-btn--danger:hover { border-color: var(--color-danger); color: var(--color-danger-text); }
+
+.photo-btn .icon { width: 15px; height: 15px; }
 
 .photo-hint {
     flex-basis: 100%;
@@ -1203,6 +1196,11 @@ span[disabled] {
     gap: var(--space-2);
 }
 
+/* Keeps the three template buttons together as one unit: without this the
+   row wraps between them, dropping the last button to its own line while
+   empty space is left beside the label. */
+.template-switcher-row .template-btn { flex: 1 1 auto; text-align: center; }
+
 .template-btn {
     background: none;
     border: 1px solid var(--color-border);
@@ -1222,30 +1220,72 @@ span[disabled] {
     color: var(--color-text-inverse);
 }
 
-.color-swatches {
+.color-row {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    gap: 8px;
-    margin-top: var(--space-2);
+    gap: var(--space-3);
+    margin-top: var(--space-3);
 }
 
-.color-swatch {
-    width: 28px;
-    height: 28px;
-    border-radius: var(--radius-full);
-    border: 2px solid transparent;
-    outline-offset: 2px;
+.color-hue {
+    display: block;
+    flex: 1;
+    --picked-color: var(--color-primary);
+}
+
+.color-reset {
+    display: flex;
+    flex-shrink: 0;
+    padding: 5px;
+    background: none;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-muted);
     cursor: pointer;
-    padding: 0;
-    transition: transform var(--transition-fast);
 }
 
-.color-swatch:hover { transform: scale(1.15); }
+.color-reset:hover { border-color: var(--color-primary); color: var(--color-primary); }
 
-.color-swatch--active {
-    border-color: var(--color-text);
+.color-reset .icon { width: 16px; height: 16px; }
+
+.color-hue input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 14px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-border-strong);
+    cursor: pointer;
+    /* Neutral gray occupies the first stop (the default accent), then the
+       full hue wheel - so "no color" and every color live on one control. */
+    background: linear-gradient(to right,
+        #4b5563 0%, #4b5563 7%,
+        #b91c1c 8%, #b45309, #4d7c0f, #15803d, #0f766e,
+        #0369a1, #1d4ed8, #6d28d9, #a21caf, #b91c1c);
 }
+
+/* Large thumb: this is the one control here that gets dragged, so it needs
+   a comfortable touch target on a phone. */
+.color-hue input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 26px;
+    height: 26px;
+    border-radius: var(--radius-full);
+    background: var(--picked-color);
+    border: 3px solid var(--color-surface);
+    box-shadow: 0 0 0 1px var(--color-border-strong);
+}
+
+.color-hue input[type="range"]::-moz-range-thumb {
+    width: 26px;
+    height: 26px;
+    border-radius: var(--radius-full);
+    background: var(--picked-color);
+    border: 3px solid var(--color-surface);
+    box-shadow: 0 0 0 1px var(--color-border-strong);
+}
+
+.color-hue--active input[type="range"] { border-color: var(--color-text); }
 
 .preview-label {
     font-size: var(--font-size-md);
@@ -1267,11 +1307,17 @@ span[disabled] {
     background: white;
     width: 794px;
     min-height: 1123px;
-    padding: 57px 66px;
+    /* Page margins as variables so @media print can zero them in one place
+       (there the real margin comes from @page) without every theme having
+       to fight a blanket `padding: 0 !important` override. */
+    --cv-pad-y: 57px;
+    --cv-pad-x: 66px;
+    --cv-band-space: 74px;
+    padding: var(--cv-pad-y) var(--cv-pad-x);
     font-size: var(--cv-preview-font-size);
     line-height: 1.5;
     color: var(--color-text);
-    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-border);
     --cv-accent: var(--color-primary);
     --cv-accent-dark: var(--color-primary);
     --cv-accent-light: var(--color-primary-light);
@@ -1280,11 +1326,102 @@ span[disabled] {
 .cl-preview {
     background: white;
     min-height: 400px;
-    padding: 48px 56px;
+    padding: 52px 60px;
     font-size: var(--cl-preview-font-size);
     line-height: 1.6;
     color: var(--color-text);
-    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-border);
+    /* Inherits whatever accent the résumé is set to, so the two documents
+       print as a matching pair. */
+    --cv-accent: var(--color-primary);
+}
+
+/* Letterhead, not a résumé header: the name is small and quiet at the top
+   of the page, the way it sits on headed notepaper. Blowing it up like the
+   résumé's own name makes the page read as a second CV rather than a
+   letter, and pushes the actual message down. */
+.cl-header {
+    margin-bottom: 34px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.cl-header .cv-name {
+    font-size: 12pt;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.02em;
+}
+
+.cl-header .cv-job-title {
+    font-size: 9pt;
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-normal);
+    margin-bottom: 6px;
+}
+
+.cl-header .cv-contact { font-size: 8.5pt; }
+
+.cl-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-bottom: 24px;
+    font-size: 9.5pt;
+}
+
+.cl-recipient { font-weight: var(--font-weight-semibold); }
+
+.cl-date { color: var(--color-text-secondary); }
+
+.cl-body {
+    white-space: pre-wrap;
+    text-align: justify;
+}
+
+.cl-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.cl-extras {
+    border: none;
+    margin-bottom: var(--space-5);
+}
+
+.cl-extras-legend {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-1);
+    padding: 0;
+}
+
+.cl-extras-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+}
+
+.cl-extra-btn {
+    padding: 6px 12px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-full);
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    text-align: left;
+    cursor: pointer;
+}
+
+.cl-extra-btn:hover:not(:disabled) { border-color: var(--color-primary); color: var(--color-primary); }
+
+.cl-extra-btn--added {
+    border-color: var(--color-success);
+    color: var(--color-success-text);
+    cursor: default;
 }
 
 .preview-empty {
@@ -1295,11 +1432,18 @@ span[disabled] {
 }
 
 /* ============================================================
-   CV CONTENT
+   CV CONTENT - shared base for all three themes
+
+   Design language (from the reference résumés this was modelled on):
+   no shadows anywhere inside the page, hairline rules instead of boxes,
+   uppercase letter-spaced section titles, and the accent color used only
+   at small deliberate points (a rule, a dot, the name) rather than as
+   large filled areas - which also keeps it cheap and legible when
+   printed in black & white at a print shop.
    ============================================================ */
 .cv-header {
-    margin-bottom: 20px;
-    padding-bottom: 12px;
+    margin-bottom: 22px;
+    padding-bottom: 14px;
     border-bottom: 1px solid var(--color-border);
 }
 
@@ -1309,39 +1453,32 @@ span[disabled] {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
+    gap: 22px;
 }
 
 .cv-header--with-photo .cv-header-text { min-width: 0; }
 
-/* Softly rounded corners rather than a circle - the classic theme is the
-   formal/traditional one, where a squared-off photo (like an official 3x4)
-   fits better. The modern and sidebar themes override this to a circle. */
 .cv-header--with-photo .cv-photo {
     flex-shrink: 0;
-    width: 90px;
-    height: 90px;
+    width: 88px;
+    height: 88px;
     object-fit: cover;
     border-radius: var(--radius-md);
 }
 
-.cv-preview.theme-modern .cv-header--with-photo .cv-photo {
-    border-radius: var(--radius-full);
-}
-
 .cv-name {
-    font-size: 22pt;
+    font-size: 21pt;
     font-weight: var(--font-weight-bold);
     color: var(--color-text);
-    margin: 0 0 2px;
-    line-height: 1.2;
+    margin: 0 0 3px;
+    line-height: 1.15;
 }
 
 .cv-job-title {
-    font-size: 11pt;
+    font-size: 10.5pt;
     color: var(--cv-accent);
     font-weight: var(--font-weight-semibold);
-    margin: 0 0 8px;
+    margin: 0 0 10px;
 }
 
 .cv-registry {
@@ -1359,18 +1496,18 @@ span[disabled] {
 }
 
 .cv-section {
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 }
 
 .cv-section-title {
-    font-size: 10pt;
+    font-size: 9pt;
     font-weight: var(--font-weight-bold);
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--cv-accent);
+    letter-spacing: 0.12em;
+    color: var(--color-text);
     border-bottom: 1px solid var(--color-border);
-    padding-bottom: 3px;
-    margin: 0 0 10px;
+    padding-bottom: 4px;
+    margin: 0 0 11px;
 }
 
 .cv-section--columns {
@@ -1383,18 +1520,17 @@ span[disabled] {
     font-size: 9.5pt;
     color: var(--color-text);
     margin: 0;
-    text-align: justify;
+    line-height: 1.55;
 }
 
 .cv-item {
-    margin-bottom: 10px;
+    margin-bottom: 13px;
 }
 
-.cv-item-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 8px;
+.cv-item:last-child { margin-bottom: 0; }
+
+.cv-item-title {
+    display: block;
 }
 
 .cv-item-title {
@@ -1403,11 +1539,15 @@ span[disabled] {
     color: var(--color-text);
 }
 
+/* Date sits on its own line under the company rather than pushed to the
+   far right edge - across a wide entry it ended up marooned away from the
+   job title, reading as a stray floating label instead of part of the
+   same entry. */
 .cv-item-date {
+    display: block;
     font-size: 8.5pt;
     color: var(--color-text-secondary);
-    white-space: nowrap;
-    flex-shrink: 0;
+    margin-top: 1px;
 }
 
 .cv-item-subtitle {
@@ -1420,20 +1560,20 @@ span[disabled] {
 .cv-item-desc {
     font-size: 9pt;
     color: var(--color-text);
-    margin: 4px 0 0;
+    margin: 5px 0 0;
+    line-height: 1.5;
 }
 
 .cv-skills {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    gap: 5px;
 }
 
 .cv-skill {
-    background: var(--color-surface-alt);
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
-    padding: 2px 7px;
+    border: 1px solid var(--color-border-strong);
+    border-radius: 3px;
+    padding: 2px 8px;
     font-size: 8.5pt;
 }
 
@@ -1443,13 +1583,13 @@ span[disabled] {
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 5px;
 }
 
 .cv-documents {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px 24px;
+    gap: 5px 24px;
     margin: 0;
 }
 
@@ -1482,72 +1622,146 @@ span[disabled] {
 }
 
 /* ============================================================
-   CV THEME - MODERN (second visual model)
-   Reuses the same .cv-* markup/structure as the classic theme, so
-   print pagination behavior stays identical and already-tested -
-   but the layout treatment of each block is genuinely different,
-   not just a color swap. No dark full-bleed fills, so it stays
-   cheap to print on a home/library printer.
+   CV THEME - CLASSIC (refinements over the shared base)
+   Traditional single column. The only accent is the rule under the
+   name - everything else stays black on white, which is what makes
+   it read as the conservative option.
    ============================================================ */
+.cv-preview.theme-classic .cv-header {
+    border-bottom-width: 2px;
+    border-bottom-color: var(--cv-accent);
+}
+
+.cv-preview.theme-classic .cv-name {
+    letter-spacing: 0.01em;
+}
+
+/* ============================================================
+   CV THEME - MODERN
+   Genuinely different structure, not a recolor: a full-bleed accent
+   band across the top of the page, oversized uppercase name, and a
+   timeline rail down the experience/education entries with a dot per
+   item. Same .cv-* markup as the other themes, so print pagination
+   behaves identically.
+   ============================================================ */
+.cv-preview.theme-modern {
+    /* Room for the top band, which is drawn as a ::before rather than a
+       real element so the markup stays shared across themes. */
+    padding-top: var(--cv-band-space);
+    position: relative;
+}
+
+.cv-preview.theme-modern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 14px;
+    background: var(--cv-accent);
+}
+
 .cv-preview.theme-modern .cv-header {
-    background: var(--cv-accent-light);
     border-bottom: none;
-    border-radius: 8px;
-    padding: 18px 20px;
-    margin-bottom: 20px;
+    padding-bottom: 0;
+    margin-bottom: 26px;
 }
 
 .cv-preview.theme-modern .cv-name {
-    color: var(--cv-accent-dark);
-    letter-spacing: -0.01em;
+    font-size: 25pt;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1.05;
 }
 
 .cv-preview.theme-modern .cv-job-title {
-    color: var(--color-text);
-    font-weight: var(--font-weight-semibold);
+    font-size: 10pt;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: 14px;
 }
 
-.cv-preview.theme-modern .cv-section-title {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--color-text);
-    background: none;
-    border-bottom: 2px solid var(--cv-accent);
-    padding: 0 0 4px;
-}
-
-.cv-preview.theme-modern .cv-section-title::before {
+/* Short accent rule under the name - one of the "small deliberate
+   points" the accent color is allowed to appear at. Bound to
+   .cv-header-text only: the template always emits that wrapper, so
+   also targeting .cv-header drew the rule twice. */
+.cv-preview.theme-modern .cv-header-text::after {
     content: '';
-    width: 8px;
-    height: 8px;
-    flex-shrink: 0;
+    display: block;
+    width: 54px;
+    height: 3px;
     background: var(--cv-accent);
-    border-radius: 2px;
+    margin-top: 10px;
+}
+
+.cv-preview.theme-modern .cv-header--with-photo .cv-photo {
+    border-radius: var(--radius-full);
+}
+
+/* Keeps the hairline rule under each heading (the shared base style) -
+   without it the headings float unanchored while the header carries the
+   only rule on the page. */
+.cv-preview.theme-modern .cv-section-title {
+    letter-spacing: 0.16em;
+    margin-bottom: 14px;
+}
+
+/* Timeline rail: the vertical line belongs to the section, the dots to
+   each item, so entries can be added or removed without the rail
+   breaking up. */
+.cv-preview.theme-modern .cv-section--experience,
+.cv-preview.theme-modern .cv-section--education {
+    position: relative;
+    padding-left: 20px;
+}
+
+.cv-preview.theme-modern .cv-section--experience::before,
+.cv-preview.theme-modern .cv-section--education::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 26px;
+    bottom: 4px;
+    width: 1px;
+    background: var(--color-border-strong);
+}
+
+.cv-preview.theme-modern .cv-section--experience .cv-section-title,
+.cv-preview.theme-modern .cv-section--education .cv-section-title {
+    margin-left: -20px;
 }
 
 .cv-preview.theme-modern .cv-item {
-    padding-left: 12px;
-    /* Not --cv-accent-light here - the résumé is very likely printed at a
-       library or print shop in black & white (cheaper, more common than
-       color), and a pale tint has almost no luminance difference from the
-       white page - it would nearly vanish once color is gone, unlike a
-       proper dark/mid accent which still reads as a visible gray line. */
-    border-left: 3px solid var(--cv-accent);
+    position: relative;
+}
+
+.cv-preview.theme-modern .cv-section--experience .cv-item::before,
+.cv-preview.theme-modern .cv-section--education .cv-item::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 5px;
+    width: 9px;
+    height: 9px;
+    border-radius: var(--radius-full);
+    background: var(--cv-accent);
 }
 
 .cv-preview.theme-modern .cv-skill {
-    background: var(--cv-accent-light);
-    border: none;
-    color: var(--cv-accent-dark);
+    border-color: var(--cv-accent);
     border-radius: var(--radius-full);
+    padding: 2px 10px;
 }
 
 /* ============================================================
    CV THEME - SIDEBAR ("Executivo")
-   Two-column layout: name/contact/documents/skills/languages in a
-   narrow sidebar, profile/experience/education in the main column -
-   one of the most common professional résumé formats.
+   Two-column layout: contact/documents/skills/languages in a narrow
+   sidebar, name/profile/experience/education in the main column - one
+   of the most common professional résumé formats. Separated by a
+   hairline rule rather than a filled panel, so it costs nothing extra
+   to print and stays readable in black & white.
 
    preview.template.js groups the sections into two wrapper divs
    (.cv-sidebar-group / .cv-main-group) only for this theme - each is a
@@ -1560,45 +1774,66 @@ span[disabled] {
 .cv-preview.theme-sidebar {
     display: flex;
     align-items: stretch;
-    padding: 0;
+    /* Horizontal page margin stays on the page itself; the two columns
+       only own the space between them. Vertical padding moves into the
+       columns so the divider rule runs the full height. */
+    padding: 0 var(--cv-pad-x);
 }
 
 .cv-preview.theme-sidebar .cv-sidebar-group {
-    flex: 0 0 210px;
-    padding: 48px 20px 32px;
-    background: var(--cv-accent-light);
-}
-
-.cv-preview.theme-sidebar .cv-photo {
-    display: block;
-    width: 110px;
-    height: 110px;
-    object-fit: cover;
-    border-radius: var(--radius-full);
-    margin: 0 auto 20px;
+    flex: 0 0 196px;
+    padding: 52px 24px 40px 0;
+    border-right: 1px solid var(--color-border);
 }
 
 .cv-preview.theme-sidebar .cv-main-group {
     flex: 1;
     min-width: 0;
-    padding: 48px 32px 32px 28px;
+    padding: 52px 0 40px 26px;
 }
 
-/* Name/title now lead the main column (not squeezed into the 210px
-   sidebar), so they can be sized closer to the classic theme's own
-   header instead of the smaller size a narrow column would need. */
+.cv-preview.theme-sidebar .cv-photo {
+    display: block;
+    width: 104px;
+    height: 104px;
+    object-fit: cover;
+    border-radius: var(--radius-full);
+    margin: 0 auto 22px;
+}
+
+.cv-preview.theme-sidebar .cv-header {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 24px;
+}
+
 .cv-preview.theme-sidebar .cv-name {
-    font-size: 20pt;
+    font-size: 23pt;
 }
 
 .cv-preview.theme-sidebar .cv-job-title {
-    font-size: 10.5pt;
+    font-size: 10pt;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: 0;
+}
+
+/* Accent rule under the name, matching the modern theme's treatment. */
+.cv-preview.theme-sidebar .cv-main-group .cv-header::after {
+    content: '';
+    display: block;
+    width: 54px;
+    height: 3px;
+    background: var(--cv-accent);
+    margin-top: 12px;
 }
 
 .cv-preview.theme-sidebar .cv-contact {
     flex-direction: column;
     align-items: flex-start;
-    gap: 5px;
+    gap: 6px;
     font-size: 8.5pt;
 }
 
@@ -1606,7 +1841,7 @@ span[disabled] {
     /* Skills+languages normally sit side by side (2fr 1fr) in the
        classic layout - far too narrow a column here for that split. */
     grid-template-columns: 1fr;
-    row-gap: 16px;
+    row-gap: 18px;
 }
 
 .cv-preview.theme-sidebar .cv-documents {
@@ -1615,8 +1850,26 @@ span[disabled] {
 }
 
 .cv-preview.theme-sidebar .cv-section-title {
-    font-size: 9pt;
-    border-bottom-color: var(--cv-accent);
+    font-size: 8.5pt;
+    letter-spacing: 0.14em;
+    border-bottom: none;
+    padding-bottom: 0;
+    color: var(--cv-accent);
+}
+
+/* A short accent tick above each sidebar heading instead of a full
+   underline - keeps the narrow column from looking striped. */
+.cv-preview.theme-sidebar .cv-sidebar-group .cv-section-title::before {
+    content: '';
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--cv-accent);
+    margin-bottom: 6px;
+}
+
+.cv-preview.theme-sidebar .cv-skill {
+    border-color: var(--color-border-strong);
 }
 
 /* ============================================================
@@ -1666,8 +1919,6 @@ span[disabled] {
     .skill-input-row { flex-direction: column; }
     .skill-input-row input { width: 100%; }
     .skill-add-btn { width: 100%; justify-content: center; }
-    .color-swatch { width: 28px; height: 28px; }
-    .color-swatches { flex-wrap: nowrap; gap: 5px; }
 
     /* Circles + text labels dropped entirely for a segmented progress bar
        instead (Typeform/Google Forms-style) - a row of 5 bars, filled up to
@@ -1758,8 +2009,27 @@ span[disabled] {
 
     .preview-panel { background: white !important; box-shadow: none !important; border-radius: 0 !important; }
 
-    .cv-preview-wrapper { padding: 0 !important; background: white !important; height: auto !important; }
-    .cv-preview { position: relative !important; top: 0 !important; left: 0 !important; width: 100% !important; padding: 0 !important; min-height: unset !important; box-shadow: none !important; transform: none !important; }
+    /* `!important` here is deliberate and limited to the properties that
+       scaleCvPreview() writes as inline styles (height/transform/top/left) -
+       inline styles can't be overridden any other way. Everything else is
+       plain cascade: these rules come later in the file than the on-screen
+       ones, at equal specificity. */
+    .cv-preview-wrapper { height: auto !important; padding: 0; background: white; }
+    .cv-preview {
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
+        position: relative;
+        width: 100%;
+        min-height: unset;
+        border: none;
+        /* Page margin comes from @page in print, so the on-screen page
+           padding is zeroed at the source - each theme's own padding rules
+           keep working off these without needing overrides. */
+        --cv-pad-y: 0px;
+        --cv-pad-x: 0px;
+        --cv-band-space: 34px;
+    }
 
     * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 

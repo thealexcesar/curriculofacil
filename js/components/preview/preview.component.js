@@ -1,6 +1,7 @@
 import { previewTemplate } from './preview.template.js';
 import { collectResumeData } from '../../services/resume-data.service.js';
 import { debounce } from '../../utils/debounce.js';
+import { paletteFromSlider, NEUTRAL_POSITION } from '../../utils/color.js';
 
 const CV_WIDTH_PX = 794;
 // Thin gray margin around the page so it reads as a distinct sheet of
@@ -10,19 +11,6 @@ const CV_WIDTH_PX = 794;
 const PAGE_MARGIN_PX = 10;
 const TEMPLATE_STORAGE_KEY = 'curriculofacil_template';
 const COLOR_STORAGE_KEY = 'curriculofacil_template_color';
-
-/** @type {Record<string, {accent: string, dark: string, light: string}>} */
-const COLOR_PALETTES = {
-  blue:     { accent: '#1e3a8a', dark: '#16296b', light: '#eff6ff' },
-  charcoal: { accent: '#1f2937', dark: '#111827', light: '#f9fafb' },
-  navy:     { accent: '#0f172a', dark: '#020617', light: '#eff6ff' },
-  indigo:   { accent: '#312e81', dark: '#1e1b4b', light: '#eef2ff' },
-  plum:     { accent: '#6b21a8', dark: '#581c87', light: '#faf5ff' },
-  wine:     { accent: '#7f1d1d', dark: '#661616', light: '#fef2f2' },
-  rust:     { accent: '#7c2d12', dark: '#5c2109', light: '#fff7ed' },
-  teal:     { accent: '#134e4a', dark: '#042f2e', light: '#f0fdfa' },
-  green:    { accent: '#166534', dark: '#14532d', light: '#f0fdf4' },
-};
 
 /** @returns {void} */
 export function initPreview() {
@@ -66,7 +54,7 @@ function initTemplateSwitcher() {
   });
 }
 
-const THEMES = ['modern', 'sidebar'];
+const THEMES = ['classic', 'modern', 'sidebar'];
 
 /**
  * @param {string} template - 'classic', 'modern' or 'sidebar'
@@ -86,39 +74,45 @@ function applyTemplate(template, buttons) {
 
 /** @returns {void} */
 function initColorSwatches() {
-  const swatches = document.querySelectorAll('.color-swatch');
-  if (!swatches.length) return;
+  const hueInput = /** @type {HTMLInputElement} */ (document.getElementById('custom-hue'));
+  const resetBtn = document.getElementById('color-reset');
+  if (!hueInput) return;
 
-  const saved = localStorage.getItem(COLOR_STORAGE_KEY) ?? 'blue';
-  applyColor(saved, swatches);
+  const saved = Number(localStorage.getItem(COLOR_STORAGE_KEY) ?? NEUTRAL_POSITION);
+  hueInput.value = String(saved);
+  applyColor(saved);
 
-  swatches.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const color = btn.dataset.color;
-      localStorage.setItem(COLOR_STORAGE_KEY, color);
-      applyColor(color, swatches);
-    });
+  hueInput.addEventListener('input', () => {
+    localStorage.setItem(COLOR_STORAGE_KEY, hueInput.value);
+    applyColor(Number(hueInput.value));
+  });
+
+  resetBtn?.addEventListener('click', () => {
+    hueInput.value = String(NEUTRAL_POSITION);
+    localStorage.setItem(COLOR_STORAGE_KEY, String(NEUTRAL_POSITION));
+    applyColor(NEUTRAL_POSITION);
   });
 }
 
 /**
- * @param {string} colorKey
- * @param {NodeListOf<HTMLElement>} swatches
+ * @param {number} position - Slider position: 0 = neutral gray, 1-360 = hues
  * @returns {void}
  */
-function applyColor(colorKey, swatches) {
-  const palette = COLOR_PALETTES[colorKey] ?? COLOR_PALETTES.blue;
-  const preview = document.getElementById('cv-preview');
+function applyColor(position) {
+  const palette = paletteFromSlider(position);
 
+  const preview = document.getElementById('cv-preview');
   if (preview) {
     preview.style.setProperty('--cv-accent', palette.accent);
     preview.style.setProperty('--cv-accent-dark', palette.dark);
     preview.style.setProperty('--cv-accent-light', palette.light);
   }
 
-  swatches.forEach(btn => {
-    btn.classList.toggle('color-swatch--active', btn.dataset.color === colorKey);
-  });
+  // Shows the picked color in the slider's own thumb.
+  document.querySelector('.color-hue')?.style.setProperty('--picked-color', palette.accent);
+  // Nothing to restore while it's already on the default.
+  const resetBtn = document.getElementById('color-reset');
+  if (resetBtn) resetBtn.hidden = position === NEUTRAL_POSITION;
 }
 
 /** @returns {void} */

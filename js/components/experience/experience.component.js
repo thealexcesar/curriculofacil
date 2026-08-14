@@ -16,7 +16,6 @@
  */
 
 import {experienceTemplate} from './experience.template.js';
-import {attachVoiceInput} from '../../services/voice-input.service.js';
 import {initCombobox} from '../../utils/combobox.js';
 import {suggestCargoOptions, suggestExperiencePhrase} from '../../services/professions.service.js';
 
@@ -92,8 +91,6 @@ function createExperience(index, initialData = {}) {
     badgeToggle: element.querySelector('.exp-current + .badge-toggle'),
     endDateSelect: element.querySelector('.exp-end-month')?.closest('.date-select').parentElement,
   };
-
-  attachVoiceInput(refs.description);
   initCombobox(refs.title, refs.titleSuggestions, suggestCargoOptions);
 
   refs.suggestPhraseBtn.addEventListener('click', () => {
