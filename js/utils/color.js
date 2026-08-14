@@ -114,10 +114,11 @@ function hslToHex(h, s, l) {
  * slider's first stop means "no color" is reachable from the same control
  * instead of needing a separate swatch. */
 export const NEUTRAL_POSITION = 0;
-/** A true graphite rather than near-black: at 7.56:1 it still has plenty
- * of contrast headroom over the 4.5:1 minimum, but reads unmistakably as
- * gray instead of just looking like the body text. */
-const NEUTRAL_ACCENT = '#4b5563';
+/** Dark graphite (10.31:1) - still clearly gray rather than black, but
+ * dark enough to carry a formal document. A mid gray reads as washed-out
+ * text, especially printed on a cheap or low-toner printer where
+ * mid-tones fade. */
+const NEUTRAL_ACCENT = '#374151';
 
 /**
  * Builds the accent/dark/light trio the résumé themes expect from a single

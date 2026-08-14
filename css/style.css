@@ -1259,7 +1259,7 @@ span[disabled] {
     /* Neutral gray occupies the first stop (the default accent), then the
        full hue wheel - so "no color" and every color live on one control. */
     background: linear-gradient(to right,
-        #4b5563 0%, #4b5563 7%,
+        #374151 0%, #374151 7%,
         #b91c1c 8%, #b45309, #4d7c0f, #15803d, #0f766e,
         #0369a1, #1d4ed8, #6d28d9, #a21caf, #b91c1c);
 }
