@@ -21,17 +21,18 @@ Built as part of **Atividade Extensionista I** — Systems Analysis and Developm
 - Export / Print as PDF
 - Export / import resume data as a JSON file
 - Cover letter with an auto-generated draft, printed separately from the resume
+- Personal documents: CNH category, plus a collapsible block for RG, CPF and título de eleitor
+- Profession-based résumé suggestions - autocomplete over ~2,460 CBO occupations, with a ready-to-edit summary/skills/bullet-point suggestion for common professions (or their broad category as a fallback)
+- One-click "×" to clear any text field or textarea, instead of deleting character by character
 - Voice dictation for long text fields (native Web Speech API)
 - Native spellcheck on all free-text fields
 - Share a text summary of the resume via WhatsApp / the system share sheet
 - Fill-in progress bar
 - Text size toggle for accessibility
 - Auto-save to localStorage
-- i18n: 🇧🇷 pt-BR · 🇺🇸 en · 🇩🇪 de
+- pt-BR only - the personal documents are Brazil-specific and don't translate meaningfully
 - Mobile toggle: Form / Preview
 - "Current job" and "In progress" badge toggles
-- Country dial code selector for phone fields
-- Skeleton shimmer while fonts load
 
 ---
 
@@ -42,52 +43,6 @@ HTML · CSS (custom properties) · Vanilla JS (ES Modules)
 ```
 
 No build tools. No frameworks. No npm dependencies. Runs directly on GitHub Pages.
-
----
-
-## Project Structure
-
-```
-curriculofacil/
-├── assets/icons/
-│   ├── favicon.svg
-│   ├── logo.svg
-│   └── whatsapp.svg
-├── css/style.css
-├── js/
-│   ├── app.js
-│   ├── components/
-│   │   ├── cover-letter/
-│   │   ├── education/
-│   │   ├── experience/
-│   │   ├── language/
-│   │   ├── phone/
-│   │   ├── preview/
-│   │   ├── profile-section/
-│   │   ├── skill/
-│   │   └── toast/
-│   ├── services/
-│   │   ├── accessibility.service.js
-│   │   ├── data-transfer.service.js
-│   │   ├── i18n.js
-│   │   ├── navigation.service.js
-│   │   ├── progress.service.js
-│   │   ├── resume-data.service.js
-│   │   ├── share.service.js
-│   │   ├── state.service.js
-│   │   ├── storage.service.js
-│   │   ├── validation.service.js
-│   │   └── voice-input.service.js
-│   └── utils/
-│       ├── masks.js
-│       └── string-helpers.js
-├── locales/
-│   ├── pt-BR.json
-│   ├── en.json
-│   └── de.json
-├── package.json
-└── index.html
-```
 
 ---
 

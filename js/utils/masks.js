@@ -27,3 +27,21 @@ export function isValidPhone(value) {
   const digits = value.replace(/\D/g, '');
   return digits.length === 10 || digits.length === 11;
 }
+
+/**
+ * Applies Brazilian CPF mask (000.000.000-00) to a raw string.
+ *
+ * @param {string} value - Raw input value
+ * @returns {string} Formatted CPF string
+ *
+ * @example
+ * applyCpfMask('12345678900') // → '123.456.789-00'
+ */
+export function applyCpfMask(value) {
+  const digits = value.replace(/\D/g, '').slice(0, 11);
+  if (digits.length === 0) return '';
+  if (digits.length <= 3) return digits;
+  if (digits.length <= 6) return `${digits.slice(0, 3)}.${digits.slice(3)}`;
+  if (digits.length <= 9) return `${digits.slice(0, 3)}.${digits.slice(3, 6)}.${digits.slice(6)}`;
+  return `${digits.slice(0, 3)}.${digits.slice(3, 6)}.${digits.slice(6, 9)}-${digits.slice(9)}`;
+}

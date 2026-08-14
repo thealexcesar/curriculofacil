@@ -4,48 +4,16 @@ import {t} from "../../services/i18n.js";
 
 /**
  * @typedef {Object} LanguageData
- * @property {string} name - Language name or custom text if other
+ * @property {string} name - Language name, typed or picked from suggestions
  * @property {LanguageLevel} level - CEFR level or 'native'
- * @property {boolean} [custom] - True when user typed a custom language
  */
 
-const LANGUAGES = [
-  { value: 'arabic', label: t('languages.arabic') },
-  { value: 'bengali', label: t('languages.bengali') },
-  { value: 'catalan', label: t('languages.catalan') },
-  { value: 'chinese', label: t('languages.chinese') },
-  { value: 'czech', label: t('languages.czech') },
-  { value: 'danish', label: t('languages.danish') },
-  { value: 'dutch', label: t('languages.dutch') },
-  { value: 'english', label: t('languages.english') },
-  { value: 'esperanto', label: t('languages.esperanto') },
-  { value: 'farsi', label: t('languages.farsi') },
-  { value: 'finnish', label: t('languages.finnish') },
-  { value: 'french', label: t('languages.french') },
-  { value: 'german', label: t('languages.german') },
-  { value: 'greek', label: t('languages.greek') },
-  { value: 'hebrew', label: t('languages.hebrew') },
-  { value: 'hindi', label: t('languages.hindi') },
-  { value: 'hungarian', label: t('languages.hungarian') },
-  { value: 'indonesian', label: t('languages.indonesian') },
-  { value: 'italian', label: t('languages.italian') },
-  { value: 'japanese', label: t('languages.japanese') },
-  { value: 'korean', label: t('languages.korean') },
-  { value: 'malay', label: t('languages.malay') },
-  { value: 'mandarin', label: t('languages.mandarin') },
-  { value: 'norwegian', label: t('languages.norwegian') },
-  { value: 'polish', label: t('languages.polish') },
-  { value: 'portuguese', label: t('languages.portuguese') },
-  { value: 'romanian', label: t('languages.romanian') },
-  { value: 'russian', label: t('languages.russian') },
-  { value: 'spanish', label: t('languages.spanish') },
-  { value: 'swahili', label: t('languages.swahili') },
-  { value: 'swedish', label: t('languages.swedish') },
-  { value: 'thai', label: t('languages.thai') },
-  { value: 'turkish', label: t('languages.turkish') },
-  { value: 'ukrainian', label: t('languages.ukrainian') },
-  { value: 'vietnamese', label: t('languages.vietnamese') },
-].sort((a, b) => a.label.localeCompare(b.label));
+/** The suggestion list is intentionally short - most common languages for
+ * a Brazilian résumé. Anything else can still be typed freely. */
+export const LANGUAGE_SUGGESTIONS = [
+  'portuguese', 'english', 'spanish', 'german', 'french',
+  'italian', 'chinese', 'japanese', 'russian', 'arabic',
+].map(key => t(`languages.${key}`));
 
 const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'native'];
 
@@ -54,25 +22,17 @@ const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'native'];
  * @returns {string}
  */
 export function languageTemplate(data = {}) {
-  const isCustom = data.custom === true;
-
-  const languageOptions = LANGUAGES
-    .map(({ value, label }) => `<option value="${value}" ${!isCustom && data.name === value ? 'selected' : ''}>${label}</option>`)
-    .join('');
-
   const levelOptions = LEVELS
     .map(lvl => `<option value="${lvl}" ${data.level === lvl ? 'selected' : ''}>${t(`field.language.level.${lvl}`)}</option>`)
     .join('');
 
   return `
     <div class="language-row">
-      <select class="lang-name" ${isCustom ? 'style="display:none"' : ''}>
-        <option value="" disabled ${!data.name ? 'selected' : ''}>${t('field.language.placeholder')}</option>
-        ${languageOptions}
-        <option value="other" ${isCustom ? 'selected' : ''}>${t('languages.other')}</option>
-      </select>
-      <input type="text" class="lang-name-custom" placeholder="${t('field.language.placeholder')}"
-        value="${isCustom ? data.name : ''}" spellcheck="true" autocorrect="on" ${isCustom ? '' : 'style="display:none"'}>
+      <div class="lang-name-wrap">
+        <input type="text" class="lang-name" placeholder="${t('field.language.placeholder')}"
+          value="${data.name ?? ''}" autocomplete="off" spellcheck="true" autocorrect="on">
+        <ul class="autocomplete-list lang-name-suggestions" role="listbox" hidden></ul>
+      </div>
       <select class="lang-level">
         <option value="" disabled ${!data.level ? 'selected' : ''}>${t('field.language.levelLabel')}</option>
         ${levelOptions}

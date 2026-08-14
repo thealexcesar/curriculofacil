@@ -2,6 +2,7 @@ import {getExperienceData} from "../components/experience/experience.component.j
 import {getEducationData} from "../components/education/education.component.js";
 import {getSkillsData} from "../components/skill/skill.component.js";
 import {isValidPhone} from "../utils/masks.js";
+import {debounce} from "../utils/debounce.js";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const TOTAL_CHECKS = 6;
@@ -9,8 +10,9 @@ const TOTAL_CHECKS = 6;
 /** @returns {void} */
 export function initProgress() {
   updateProgress();
-  document.addEventListener('input', updateProgress);
-  document.addEventListener('change', updateProgress);
+  const debouncedUpdate = debounce(updateProgress, 150);
+  document.addEventListener('input', debouncedUpdate);
+  document.addEventListener('change', debouncedUpdate);
 }
 
 /** @returns {void} */

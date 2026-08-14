@@ -9,6 +9,7 @@ import {getEducationData, addEducation, clearEducation} from "../components/educ
 import {getSkillsData, restoreSkills, clearSkills} from "../components/skill/skill.component.js";
 import {getLanguagesData, addLanguage, clearLanguages} from "../components/language/language.component.js";
 import {getExtraPhonesData, addExtraPhone, clearExtraPhones} from "../components/phone/phone.component.js";
+import {getPhoto, setPhoto} from "./photo.service.js";
 
 /**
  * Reads the full resume state from the live DOM and in-memory components.
@@ -25,6 +26,13 @@ export function collectResumeData() {
       phoneWhatsapp: document.getElementById('phone-whatsapp')?.checked ?? false,
       location: document.getElementById('location')?.value.trim() ?? '',
       linkedin: document.getElementById('linkedin')?.value.trim() ?? '',
+      instagram: document.getElementById('instagram')?.value.trim() ?? '',
+      website: document.getElementById('website')?.value.trim() ?? '',
+      cnhCategory: document.getElementById('cnh-category')?.value ?? '',
+      rg: document.getElementById('rg')?.value.trim() ?? '',
+      cpf: document.getElementById('cpf')?.value.trim() ?? '',
+      professionalRegistry: document.getElementById('professional-registry')?.value.trim() ?? '',
+      photo: getPhoto(),
     },
     profile: document.getElementById('profile')?.value.trim() ?? '',
     experience: getExperienceData(),
@@ -60,6 +68,13 @@ export function applyResumeData(data) {
     document.getElementById('phone-whatsapp').checked = Boolean(personal.phoneWhatsapp);
     document.getElementById('location').value = personal.location ?? '';
     document.getElementById('linkedin').value = personal.linkedin ?? '';
+    document.getElementById('instagram').value = personal.instagram ?? '';
+    document.getElementById('website').value = personal.website ?? '';
+    document.getElementById('cnh-category').value = personal.cnhCategory ?? '';
+    document.getElementById('rg').value = personal.rg ?? '';
+    document.getElementById('cpf').value = personal.cpf ?? '';
+    document.getElementById('professional-registry').value = personal.professionalRegistry ?? '';
+    setPhoto(personal.photo ?? '');
   }
 
   document.getElementById('profile').value = profile ?? '';

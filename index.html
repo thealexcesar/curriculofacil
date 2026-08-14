@@ -36,7 +36,11 @@
   <symbol id="icon-info" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12S6.48 22 12 22 22 17.52 22 12 17.52 2 12 2ZM13 17H11V11H13V17ZM13 9H11V7H13V9Z"/></symbol>
   <symbol id="icon-download" viewBox="0 0 24 24"><path d="M19 9H15V3H9V9H5L12 16L19 9ZM5 18V20H19V18H5Z"/></symbol>
   <symbol id="icon-upload" viewBox="0 0 24 24"><path d="M9 16H15V10H19L12 3L5 10H9V16ZM5 18H19V20H5V18Z"/></symbol>
-  <symbol id="icon-mic" viewBox="0 0 24 24"><path d="M12 14C13.66 14 15 12.66 15 11V5C15 3.34 13.66 2 12 2C10.34 2 9 3.34 9 5V11C9 12.66 10.34 14 12 14ZM17 11C17 14.53 14.39 16.44 12 16.44C9.61 16.44 7 14.53 7 11H5C5 14.72 7.82 17.71 11 18.35V21H13V18.35C16.18 17.71 19 14.72 19 11H17Z"/></symbol>
+  <symbol id="icon-expand_more" viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17L7.41 8.59L6 10L12 16L18 10L16.59 8.59Z"/></symbol>
+  <symbol id="icon-person" viewBox="0 0 24 24"><path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z"/></symbol>
+  <symbol id="icon-delete" viewBox="0 0 24 24"><path d="M6 19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7H6V19ZM19 4H15.5L14.5 3H9.5L8.5 4H5V6H19V4Z"/></symbol>
+  <symbol id="icon-refresh" viewBox="0 0 24 24"><path d="M17.65 6.35A8 8 0 1 0 19.73 14H17.65A6 6 0 1 1 12 6C13.66 6 15.14 6.69 16.22 7.78L13 11H20V4L17.65 6.35Z"/></symbol>
+  <symbol id="icon-copy" viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3V17H4V3H16V1ZM19 5H8C6.9 5 6 5.9 6 7V21C6 22.1 6.9 23 8 23H19C20.1 23 21 22.1 21 21V7C21 5.9 20.1 5 19 5ZM19 21H8V7H19V21Z"/></symbol>
 </svg>
 
 <div class="app">
@@ -58,24 +62,12 @@
       </svg>
       <div class="header-controls">
         <button class="font-size-btn" id="font-size-toggle" data-i18n-aria="a11y.fontSize.aria" aria-pressed="false">A+</button>
-        <div class="lang-switcher">
-          <button class="lang-btn" data-lang="pt-BR" data-i18n-lang="languages.portuguese">
-            <span class="lang-short">PT</span>
-            <span class="lang-full"></span>
-          </button>
-          <button class="lang-btn" data-lang="en" data-i18n-lang="languages.english">
-            <span class="lang-short">EN</span>
-            <span class="lang-full"></span>
-          </button>
-          <button class="lang-btn" data-lang="de" data-i18n-lang="languages.german">
-            <span class="lang-short">DE</span>
-            <span class="lang-full"></span>
-          </button>
-        </div>
       </div>
     </div>
     <p class="app-subtitle" data-i18n="app.subtitle"></p>
   </header>
+
+  <p class="steps-caption no-print" id="steps-caption" aria-live="polite"></p>
 
   <nav class="steps-nav no-print">
     <div class="step-item" data-step="1">
@@ -134,6 +126,27 @@
       <section id="step-1" class="step-section active">
         <h2 class="section-title" data-i18n="section.personal"></h2>
 
+        <div class="field photo-field">
+          <div class="photo-thumb">
+            <img id="photo-preview" alt="" hidden>
+            <span id="photo-empty" class="photo-empty" aria-hidden="true">
+              <svg class="icon"><use href="#icon-person"></use></svg>
+            </span>
+          </div>
+          <div class="photo-actions">
+            <button type="button" class="photo-btn" id="photo-choose">
+              <svg class="icon" aria-hidden="true"><use href="#icon-upload"></use></svg>
+              <span id="photo-choose-label"></span>
+            </button>
+            <button type="button" class="photo-btn photo-btn--danger" id="photo-remove" hidden>
+              <svg class="icon" aria-hidden="true"><use href="#icon-delete"></use></svg>
+              <span data-i18n="photo.remove"></span>
+            </button>
+            <input type="file" id="photo-input" accept="image/*" class="visually-hidden">
+            <p class="photo-hint" data-i18n="photo.hint"></p>
+          </div>
+        </div>
+
         <div class="field">
           <label for="name" data-i18n="field.name.label"></label>
           <input type="text" id="name" data-i18n-placeholder="field.name.placeholder" autocomplete="name" spellcheck="true" autocorrect="on">
@@ -142,32 +155,32 @@
 
         <div class="field">
           <label for="job-title" data-i18n="field.jobTitle.label"></label>
-          <input type="text" id="job-title" data-i18n-placeholder="field.jobTitle.placeholder" autocomplete="organization-title" spellcheck="true" autocorrect="on">
+          <input type="text" id="job-title" autocomplete="off" data-i18n-placeholder="field.jobTitle.placeholder" spellcheck="true" autocorrect="on" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="job-title-suggestions">
+          <ul class="autocomplete-list" id="job-title-suggestions" role="listbox" hidden></ul>
           <span class="field-hint" id="job-title-hint"></span>
         </div>
 
-        <div class="field-row">
-          <div class="field">
-            <label for="email" data-i18n="field.email.label"></label>
-            <input type="email" id="email" data-i18n-placeholder="field.email.placeholder" autocomplete="email">
-            <span class="field-hint" id="email-hint"></span>
+        <div class="field">
+          <label for="email" data-i18n="field.email.label"></label>
+          <input type="email" id="email" data-i18n-placeholder="field.email.placeholder" autocomplete="email">
+          <span class="field-hint" id="email-hint"></span>
+        </div>
+
+        <div class="field">
+          <label data-i18n="field.phone.label"></label>
+          <div class="phone-entry">
+            <input type="tel" id="phone" data-i18n-placeholder="field.phone.placeholder" autocomplete="tel">
+            <label class="checkbox-label" title="WhatsApp">
+              <input type="checkbox" id="phone-whatsapp">
+              <img src="assets/icons/whatsapp.svg" class="whatsapp-icon" alt="WhatsApp">
+            </label>
           </div>
-          <div class="field">
-            <label data-i18n="field.phone.label"></label>
-            <div class="phone-entry">
-              <input type="tel" id="phone" data-i18n-placeholder="field.phone.placeholder" autocomplete="tel">
-              <label class="checkbox-label" title="WhatsApp">
-                <input type="checkbox" id="phone-whatsapp">
-                <img src="assets/icons/whatsapp.svg" class="whatsapp-icon" alt="WhatsApp">
-              </label>
-            </div>
-            <span class="field-hint" id="phone-hint"></span>
-            <div id="extra-phones"></div>
-            <button type="button" class="btn-add-small" id="add-phone">
-              <svg class="icon" aria-hidden="true"><use href="#icon-add"></use></svg>
-              <span data-i18n="btn.add" data-i18n-item="field.phone.label"></span>
-            </button>
-          </div>
+          <span class="field-hint" id="phone-hint"></span>
+          <div id="extra-phones"></div>
+          <button type="button" class="btn-add-small" id="add-phone">
+            <svg class="icon" aria-hidden="true"><use href="#icon-add"></use></svg>
+            <span data-i18n="btn.add" data-i18n-item="field.phone.label"></span>
+          </button>
         </div>
 
         <div class="field">
@@ -179,10 +192,74 @@
           <label for="linkedin" data-i18n="field.linkedin.label"></label>
           <input type="text" id="linkedin" data-i18n-placeholder="field.linkedin.placeholder" autocomplete="off">
         </div>
+
+        <div class="field">
+          <label for="instagram" data-i18n="field.instagram.label"></label>
+          <input type="text" id="instagram" data-i18n-placeholder="field.instagram.placeholder" autocomplete="off">
+        </div>
+
+        <div class="field">
+          <label for="website" data-i18n="field.website.label"></label>
+          <input type="text" id="website" data-i18n-placeholder="field.website.placeholder" autocomplete="off">
+        </div>
+
+        <div class="field">
+          <label for="cnh-category" data-i18n="field.cnhCategory.label"></label>
+          <select id="cnh-category">
+            <option value="" data-i18n="field.cnhCategory.none"></option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="AB">AB</option>
+            <option value="AC">AC</option>
+            <option value="AD">AD</option>
+            <option value="AE">AE</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="professional-registry" data-i18n="field.professionalRegistry.label"></label>
+          <input type="text" id="professional-registry" data-i18n-placeholder="field.professionalRegistry.placeholder" autocomplete="off">
+        </div>
+
+        <details class="field-collapsible">
+          <summary>
+            <span data-i18n="field.extraDocs.toggle"></span>
+            <svg class="icon field-collapsible-chevron" aria-hidden="true"><use href="#icon-expand_more"></use></svg>
+          </summary>
+          <div class="field-collapsible-content">
+            <p class="field-tip">
+              <svg class="icon" aria-hidden="true"><use href="#icon-info"></use></svg>
+              <span data-i18n="field.extraDocs.hint"></span>
+            </p>
+            <div class="field">
+              <label for="rg" data-i18n="field.rg.label"></label>
+              <input type="text" id="rg" data-i18n-placeholder="field.rg.placeholder" autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="cpf" data-i18n="field.cpf.label"></label>
+              <input type="text" id="cpf" data-i18n-placeholder="field.cpf.placeholder" autocomplete="off" inputmode="numeric">
+            </div>
+          </div>
+        </details>
       </section>
 
       <section id="step-2" class="step-section">
         <h2 class="section-title" data-i18n="section.profile"></h2>
+        <div class="profession-suggestion" id="profession-suggestion" hidden>
+          <p class="profession-suggestion-title">
+            <svg class="icon" aria-hidden="true"><use href="#icon-info"></use></svg>
+            <span id="profession-suggestion-label"></span>
+          </p>
+          <p class="profession-suggestion-preview" id="profession-suggestion-preview"></p>
+          <div class="profession-suggestion-actions">
+            <button type="button" class="btn btn-primary btn-sm" id="profession-suggestion-use"></button>
+            <button type="button" class="btn btn-secondary btn-sm" id="profession-suggestion-dismiss" data-i18n="btn.dismiss"></button>
+          </div>
+        </div>
+
         <div class="field">
           <label for="profile" data-i18n="field.profile.label"></label>
           <p class="field-tip">
@@ -267,17 +344,16 @@
           <span class="template-switcher-label" data-i18n="template.label"></span>
           <button class="template-btn template-btn--active" data-template="classic" data-i18n="template.classic"></button>
           <button class="template-btn" data-template="modern" data-i18n="template.modern"></button>
+          <button class="template-btn" data-template="sidebar" data-i18n="template.sidebar"></button>
         </div>
-        <div class="color-swatches" id="color-swatches">
-          <button class="color-swatch color-swatch--active" data-color="blue" style="background:#1e3a8a" data-i18n-aria="template.color.blue"></button>
-          <button class="color-swatch" data-color="charcoal" style="background:#1f2937" data-i18n-aria="template.color.charcoal"></button>
-          <button class="color-swatch" data-color="navy" style="background:#0f172a" data-i18n-aria="template.color.navy"></button>
-          <button class="color-swatch" data-color="indigo" style="background:#312e81" data-i18n-aria="template.color.indigo"></button>
-          <button class="color-swatch" data-color="plum" style="background:#6b21a8" data-i18n-aria="template.color.plum"></button>
-          <button class="color-swatch" data-color="wine" style="background:#7f1d1d" data-i18n-aria="template.color.wine"></button>
-          <button class="color-swatch" data-color="rust" style="background:#7c2d12" data-i18n-aria="template.color.rust"></button>
-          <button class="color-swatch" data-color="teal" style="background:#134e4a" data-i18n-aria="template.color.teal"></button>
-          <button class="color-swatch" data-color="green" style="background:#166534" data-i18n-aria="template.color.green"></button>
+        <div class="color-row">
+          <label class="color-hue">
+            <span class="visually-hidden" data-i18n="template.color.custom"></span>
+            <input type="range" id="custom-hue" min="0" max="359" value="224" data-i18n-title="template.color.custom">
+          </label>
+          <button type="button" class="color-reset" id="color-reset" data-i18n-title="template.color.reset" hidden>
+            <svg class="icon" aria-hidden="true"><use href="#icon-refresh"></use></svg>
+          </button>
         </div>
       </div>
       <div class="cv-preview-wrapper">
@@ -306,10 +382,25 @@
           <textarea id="cl-body" rows="14" spellcheck="true" autocorrect="on"></textarea>
         </div>
 
-        <button type="button" class="btn btn-primary" id="cl-print-btn">
-          <svg class="icon" aria-hidden="true"><use href="#icon-print"></use></svg>
-          <span data-i18n="btn.print"></span>
-        </button>
+        <fieldset class="cl-extras">
+          <legend class="cl-extras-legend" data-i18n="coverLetter.extras.legend"></legend>
+          <p class="field-tip">
+            <svg class="icon" aria-hidden="true"><use href="#icon-info"></use></svg>
+            <span data-i18n="coverLetter.extras.hint"></span>
+          </p>
+          <div class="cl-extras-list" id="cl-extras-list"></div>
+        </fieldset>
+
+        <div class="cl-actions">
+          <button type="button" class="btn btn-primary" id="cl-copy-btn">
+            <svg class="icon" aria-hidden="true"><use href="#icon-copy"></use></svg>
+            <span data-i18n="coverLetter.copy"></span>
+          </button>
+          <button type="button" class="btn btn-secondary" id="cl-print-btn">
+            <svg class="icon" aria-hidden="true"><use href="#icon-print"></use></svg>
+            <span data-i18n="btn.print"></span>
+          </button>
+        </div>
       </div>
 
       <div class="preview-panel">

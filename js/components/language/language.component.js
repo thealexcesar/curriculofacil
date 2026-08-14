@@ -1,8 +1,7 @@
 /**
  * @typedef {Object} LanguageData
- * @property {string} name - Language name or custom text
+ * @property {string} name - Language name, typed or picked from suggestions
  * @property {string} level - CEFR level or 'native'
- * @property {boolean} [custom] - True when user typed a custom language
  */
 
 /**
@@ -12,7 +11,9 @@
  * @property {() => void} destroy - Removes from DOM
  */
 
-import {languageTemplate} from './language.template.js';
+import {languageTemplate, LANGUAGE_SUGGESTIONS} from './language.template.js';
+import {initCombobox} from '../../utils/combobox.js';
+import {normalize} from '../../utils/string-helpers.js';
 
 /** @type {LanguageComponent[]} */
 const items = [];
@@ -25,7 +26,7 @@ export function initStep5Languages() {
 
 /** @returns {LanguageData[]} */
 export function getLanguagesData() {
-  return items.map(item => item.getData());
+  return items.map(item => item.getData()).filter(lang => lang.name);
 }
 
 /** @returns {void} */
@@ -55,17 +56,16 @@ function createLanguage(initialData = {}) {
   element.innerHTML = languageTemplate(initialData);
 
   const refs = {
-    select: /** @type {HTMLSelectElement} */ (element.querySelector('.lang-name')),
-    custom: /** @type {HTMLInputElement} */ (element.querySelector('.lang-name-custom')),
+    name: /** @type {HTMLInputElement} */ (element.querySelector('.lang-name')),
+    nameSuggestions: /** @type {HTMLElement} */ (element.querySelector('.lang-name-suggestions')),
     level: /** @type {HTMLSelectElement} */ (element.querySelector('.lang-level')),
     removeBtn: /** @type {HTMLButtonElement} */ (element.querySelector('.btn-remove')),
   };
 
-  refs.select.addEventListener('change', () => {
-    const isOther = refs.select.value === 'other';
-    refs.select.style.display = isOther ? 'none' : '';
-    refs.custom.style.display = isOther ? '' : 'none';
-    if (isOther) refs.custom.focus();
+  initCombobox(refs.name, refs.nameSuggestions, query => {
+    const normalized = normalize(query.trim());
+    if (!normalized) return LANGUAGE_SUGGESTIONS;
+    return LANGUAGE_SUGGESTIONS.filter(name => normalize(name).includes(normalized));
   });
 
   const destroy = () => {
@@ -76,14 +76,10 @@ function createLanguage(initialData = {}) {
   refs.removeBtn.addEventListener('click', destroy);
 
   /** @returns {LanguageData} */
-  const getData = () => {
-    const isCustom = refs.select.style.display === 'none';
-    return {
-      name: isCustom ? refs.custom.value.trim() : refs.select.value,
-      level: refs.level.value,
-      custom: isCustom,
-    };
-  };
+  const getData = () => ({
+    name: refs.name.value.trim(),
+    level: refs.level.value,
+  });
 
   const item = { element, getData, destroy };
   return item;

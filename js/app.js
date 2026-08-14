@@ -1,13 +1,12 @@
-import {initLocale, t, translateDOM, setLocale, getLocale} from "./services/i18n.js";
+import {initLocale, translateDOM} from "./services/i18n.js";
 import {initNavigation, updateStepLocks} from "./services/navigation.service.js";
 import {initStep1Validation} from "./services/validation.service.js";
 import {initStep2Profile} from "./components/profile-section/profile-section.component.js";
-import {initStep3Experience, addExperience, getExperienceData, clearExperience} from "./components/experience/experience.component.js";
-import {initStep4Education, addEducation, getEducationData, clearEducation} from "./components/education/education.component.js";
+import {initStep3Experience} from "./components/experience/experience.component.js";
+import {initStep4Education} from "./components/education/education.component.js";
 import {initPreview} from "./components/preview/preview.component.js";
 import {initStep5Skills} from "./components/skill/skill.component.js";
-import {initStep5Languages, addLanguage, getLanguagesData, clearLanguages} from "./components/language/language.component.js";
-import {addExtraPhone, getExtraPhonesData, clearExtraPhones} from "./components/phone/phone.component.js";
+import {initStep5Languages} from "./components/language/language.component.js";
 import {saveResume, loadResume} from "./services/storage.service.js";
 import {collectResumeData, applyResumeData} from "./services/resume-data.service.js";
 import {initProgress} from "./services/progress.service.js";
@@ -15,6 +14,10 @@ import {initFontSizeToggle} from "./services/accessibility.service.js";
 import {initDataTransfer} from "./services/data-transfer.service.js";
 import {initWhatsappShare} from "./services/share.service.js";
 import {initCoverLetter} from "./components/cover-letter/cover-letter.component.js";
+import {initProfessionAutocomplete} from "./services/professions.service.js";
+import {initClearableInputs} from "./services/clearable-inputs.service.js";
+import {initPhotoUpload} from "./services/photo.service.js";
+import {debounce} from "./utils/debounce.js";
 
 /**
  * Application entry point.
@@ -25,11 +28,13 @@ import {initCoverLetter} from "./components/cover-letter/cover-letter.component.
 document.addEventListener('DOMContentLoaded', () => {
   initLocale();
   translateDOM();
-  initLangSwitcher();
   initFontSizeToggle();
   initViewToggle();
   initNavigation();
   initStep1Validation();
+  initProfessionAutocomplete();
+  initClearableInputs();
+  initPhotoUpload();
   updateStepLocks();
   initStep2Profile();
   initStep3Experience();
@@ -43,34 +48,17 @@ document.addEventListener('DOMContentLoaded', () => {
   initCoverLetter();
 
   restoreResume();
-  document.dispatchEvent(new Event('input', { bubbles: true }));
-  document.addEventListener('input',  saveAll);
-  document.addEventListener('change', saveAll);
-});
-
-function initLangSwitcher() {
-  const buttons = document.querySelectorAll('.lang-btn');
-
-  const update = () => {
-    const current = getLocale();
-    buttons.forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.lang === current);
-      const full = btn.querySelector('.lang-full');
-      if (full) full.textContent = t(btn.getAttribute('data-i18n-lang'));
-    });
-  };
-
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      setLocale(btn.dataset.lang);
-      translateDOM();
-      reloadDynamicComponents();
-      update();
-    });
+  // Dispatched on each field (not just document) so listeners bound directly
+  // to a specific input - like the Step 1 "next" button validation - see the
+  // restored values too. An event fired on document alone only bubbles up
+  // from document, it never reaches child elements' own listeners.
+  document.querySelectorAll('.form-panel input, .form-panel textarea, .form-panel select').forEach(field => {
+    field.dispatchEvent(new Event('input', { bubbles: true }));
   });
-
-  update();
-}
+  const debouncedSave = debounce(saveAll, 150);
+  document.addEventListener('input',  debouncedSave);
+  document.addEventListener('change', debouncedSave);
+});
 
 /** @returns {void} */
 function saveAll() {
@@ -82,32 +70,6 @@ function restoreResume() {
   const data = loadResume();
   if (!Object.keys(data).length) return;
   applyResumeData(data);
-}
-
-/** @returns {void} */
-function reloadDynamicComponents() {
-  const data = {
-    experience: getExperienceData(),
-    education: getEducationData(),
-    languages: getLanguagesData(),
-    extraPhones: getExtraPhonesData(),
-  };
-
-  clearExperience();
-  clearEducation();
-  clearLanguages();
-  clearExtraPhones();
-
-  document.getElementById('experience-list').innerHTML = '';
-  document.getElementById('education-list').innerHTML = '';
-  document.getElementById('language-list').innerHTML = '';
-  document.getElementById('extra-phones').innerHTML = '';
-
-  data.experience.forEach(exp => addExperience(exp));
-  data.education.forEach(edu => addEducation(edu));
-  data.languages.forEach(lang => addLanguage(lang));
-  data.extraPhones.forEach(phone => addExtraPhone(phone));
-  document.dispatchEvent(new Event('input', { bubbles: true }));
 }
 
 /** @returns {void} */
