@@ -74,7 +74,9 @@ export function applyResumeData(data) {
     document.getElementById('rg').value = personal.rg ?? '';
     document.getElementById('cpf').value = personal.cpf ?? '';
     document.getElementById('professional-registry').value = personal.professionalRegistry ?? '';
-    setPhoto(personal.photo ?? '');
+    // Exports written after the photo was moved to the end of the file
+    // carry it at the top level; older ones keep it inside `personal`.
+    setPhoto(personal.photo ?? data.photo ?? '');
   }
 
   document.getElementById('profile').value = profile ?? '';
