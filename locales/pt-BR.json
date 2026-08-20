@@ -38,13 +38,14 @@
     "to": "À",
     "extras": {
       "legend": "Quer acrescentar algo?",
-      "hint": "Toque para incluir na carta. Só marque o que for verdade — isso vira compromisso.",
-      "availability": "Tenho disponibilidade de horário, inclusive para turnos e fins de semana.",
-      "immediateStart": "Estou disponível para começar imediatamente.",
-      "travel": "Tenho disponibilidade para viagens quando necessário.",
-      "relocation": "Tenho disponibilidade para mudança de cidade.",
-      "learning": "Tenho facilidade para aprender e me adaptar a novas rotinas.",
-      "ownTransport": "Tenho condução própria para o deslocamento até o trabalho."
+      "hint": "Toque para incluir na carta, toque de novo para tirar. Só marque o que for verdade — isso vira compromisso.",
+      "immediateStart": "Começo imediatamente, assim que precisarem.",
+      "travel": "Faço viagens a trabalho quando necessário.",
+      "relocation": "Aceito mudar de cidade pela vaga.",
+      "learning": "Aprendo com facilidade e me adapto rápido a novas rotinas.",
+      "ownTransport": "Conto com condução própria para o deslocamento.",
+      "shifts": "Tenho disponibilidade para trabalhar em turnos.",
+      "weekends": "Posso trabalhar aos fins de semana."
     },
     "copy": "Copiar carta",
     "copied": "Carta copiada! Agora é só colar no WhatsApp ou no e-mail.",

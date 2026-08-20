@@ -1437,11 +1437,17 @@ span[disabled] {
 
 .cl-extra-btn:hover:not(:disabled) { border-color: var(--color-primary); color: var(--color-primary); }
 
+/* Still a live button, not a finished state: clicking it again takes the
+   sentence back out of the letter. Hence no `cursor: default` and no
+   disabled styling - both would say "there is nothing left to do here". */
 .cl-extra-btn--added {
+    background: var(--color-success-light);
     border-color: var(--color-success);
     color: var(--color-success-text);
-    cursor: default;
+    font-weight: var(--font-weight-medium);
 }
+
+.cl-extra-btn--added:hover { border-color: var(--color-danger); color: var(--color-danger-text); }
 
 .preview-empty {
     text-align: center;
