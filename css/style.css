@@ -44,6 +44,10 @@
     --color-info-light:       #eff6ff;
     --color-info-text:        #1d4ed8;
 
+    /* --- WhatsApp brand --- */
+    --color-whatsapp:         #25D366;
+    --color-whatsapp-hover:   #1EBE5D;
+
     /* --- Neutrals --- */
     --color-bg:               #f3f4f6;
     --color-surface:          #ffffff;
@@ -630,12 +634,17 @@ span[disabled] {
 
 .btn-sm { padding: 8px 14px; font-size: var(--font-size-sm); }
 
+/* Filled brand green, like every other .btn variant - not an outlined
+   button. The icon comes from the inline sprite rather than
+   assets/icons/whatsapp.svg, because that file has fill="#25D366" baked in
+   and would vanish against this background; the sprite symbol inherits
+   currentColor and turns white here. */
 .btn-whatsapp {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    color: var(--color-text);
+    background: var(--color-whatsapp);
+    color: var(--color-text-inverse);
 }
-.btn-whatsapp:hover:not(:disabled) { border-color: #25D366; color: #128C4A; }
+.btn-whatsapp:hover:not(:disabled) { background: var(--color-whatsapp-hover); }
+.btn-whatsapp .icon { width: 18px; height: 18px; }
 
 /* ============================================================
    FIELDS
