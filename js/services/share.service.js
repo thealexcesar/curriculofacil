@@ -3,12 +3,20 @@ import {showToast} from "../components/toast/toast.component.js";
 import {t} from "./i18n.js";
 
 /**
- * Shares a plain-text summary of the resume (name, title, contact, profile)
- * via the native Web Share sheet, falling back to a wa.me deep link on
- * browsers without navigator.share. There is no backend and no PDF library
- * in this project, so the actual print/PDF file cannot be attached - this
- * shares the resume as text, which is exactly what most WhatsApp job
- * applications look like anyway.
+ * Shares the cover letter as plain text via the native Web Share sheet,
+ * falling back to a wa.me deep link on browsers without navigator.share.
+ * Either way the text lands in WhatsApp's compose box, where the user can
+ * edit it before sending.
+ *
+ * The letter is what belongs in a message - it is addressed to someone and
+ * reads as one. A bare dump of name/title/contact/profile, which is what
+ * this used to send, reads like a database row pasted into a chat.
+ *
+ * The résumé summary stays as the fallback for when no letter has been
+ * written yet, so the button never sends nothing.
+ *
+ * There is no backend and no PDF library here, so the PDF itself cannot be
+ * attached - see notes on the print flow.
  *
  * @returns {void}
  */
@@ -18,7 +26,8 @@ export function initWhatsappShare() {
 
 /** @returns {Promise<void>} */
 async function share() {
-  const text = buildShareText(collectResumeData());
+  const data = collectResumeData();
+  const text = buildLetterText(data) || buildShareText(data);
 
   if (!text) {
     showToast(t('toast.shareEmpty'), 'warning');
@@ -35,6 +44,24 @@ async function share() {
   }
 
   window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+}
+
+/**
+ * The cover letter, addressed and signed, ready to paste into a chat.
+ * Mirrors what the "Copiar carta" button produces, so the two routes out of
+ * the app carry the same text.
+ *
+ * @param {import('./storage.service.js').ResumeData} data
+ * @returns {string} '' when no letter has been written
+ */
+function buildLetterText(data) {
+  const body = data.coverLetter?.body?.trim();
+  if (!body) return '';
+
+  const company = data.coverLetter.company?.trim();
+  return [company ? `${t('coverLetter.to')} ${company}` : '', body]
+    .filter(Boolean)
+    .join('\n\n');
 }
 
 /**
