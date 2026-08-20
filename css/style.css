@@ -839,7 +839,13 @@ span[disabled] {
 /* Hidden visually but still focusable/announced by screen readers -
    `display:none` or `hidden` would drop it from the accessibility tree,
    and the file input still has to be reachable by keyboard. */
-.visually-hidden {
+/* The class is doubled to raise specificity to (0,2,0), which beats
+   `.field input` (0,1,1). Without that, the hidden file inputs inside a
+   .field - the photo picker, the JSON import - kept `width: 100%` from that
+   rule while still being absolutely positioned, so they hung ~59px past the
+   right edge of a 375px viewport and gave the whole page a horizontal
+   scrollbar. `.a.a` matches exactly the same elements as `.a`. */
+.visually-hidden.visually-hidden {
     position: absolute;
     width: 1px;
     height: 1px;
