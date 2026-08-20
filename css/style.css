@@ -1257,11 +1257,15 @@ span[disabled] {
     border: 1px solid var(--color-border-strong);
     cursor: pointer;
     /* Neutral gray occupies the first stop (the default accent), then the
-       full hue wheel - so "no color" and every color live on one control. */
+       full hue wheel - so "no color" and every color live on one control.
+       The stops are the actual output of paletteFromSlider() at every 30
+       degrees, not hand-picked: a brighter track would promise colors the
+       picker cannot produce, since each hue is darkened until it clears the
+       contrast target. Regenerate these if that target changes. */
     background: linear-gradient(to right,
         #374151 0%, #374151 7%,
-        #b91c1c 8%, #b45309, #4d7c0f, #15803d, #0f766e,
-        #0369a1, #1d4ed8, #6d28d9, #a21caf, #b91c1c);
+        #ba2c2c 8%, #915922, #6b6b19, #47741b, #1c781c, #1b7447,
+        #1b7474, #296bae, #2c2cba, #732cba, #ae29ae, #ba2c73, #ba2c2e);
 }
 
 /* Large thumb: this is the one control here that gets dragged, so it needs

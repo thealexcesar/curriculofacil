@@ -5,16 +5,28 @@
  * to clear WCAG AA (4.5:1 against white) and still read when the résumé is
  * printed in black & white. Rather than let any color through and correct
  * it afterwards (a pale yellow silently becoming dark olive is confusing),
- * the custom picker only exposes the hue: saturation and lightness are
- * pinned to a range where every possible result is already dark enough.
+ * the custom picker only exposes the hue: saturation is fixed, and lightness
+ * is searched per hue down to the first value dark enough to be readable.
  */
 
 const AA_CONTRAST = 4.5;
 
-/** Fixed saturation/lightness for custom hues - deep and slightly muted,
- * in the same register as the hand-picked presets. */
+/** Fixed saturation for custom hues - deep and slightly muted, in the same
+ * register as the hand-picked presets. */
 const CUSTOM_SATURATION = 0.62;
-const CUSTOM_LIGHTNESS = 0.26;
+
+/** Contrast every hue is darkened to, with margin over AA_CONTRAST so the
+ * sweep test isn't riding on the last decimal. Lightness used to be pinned
+ * at yellow's worst case (5.67:1) for all hues, which cost every other hue
+ * color it didn't need to give up - blue landed near 9.8:1, headroom paid
+ * for in dullness. */
+const TARGET_CONTRAST = 5.5;
+
+/** The search starts at the brightest lightness and steps down, so each hue
+ * stops at the first value that is dark enough rather than at the darkest
+ * one any hue needs. */
+const LIGHTNESS_START = 0.45;
+const LIGHTNESS_STEP = 0.01;
 
 /**
  * @param {string} hex - '#rrggbb'
@@ -121,10 +133,31 @@ export const NEUTRAL_POSITION = 0;
 const NEUTRAL_ACCENT = '#374151';
 
 /**
+ * Darkest-but-no-darker accent for a hue: the first lightness stepping down
+ * from LIGHTNESS_START that reaches TARGET_CONTRAST against white. The loop
+ * always terminates well before the floor, since lightness approaching 0
+ * approaches black (21:1); the guard is only there so a future change to
+ * TARGET_CONTRAST above 21 can't spin.
+ *
+ * @param {number} hue - 0-360
+ * @returns {string} '#rrggbb'
+ */
+function accentForHue(hue) {
+  let lightness = LIGHTNESS_START;
+  let accent = hslToHex(hue, CUSTOM_SATURATION, lightness);
+
+  while (contrastRatio(accent, '#ffffff') < TARGET_CONTRAST && lightness > LIGHTNESS_STEP) {
+    lightness -= LIGHTNESS_STEP;
+    accent = hslToHex(hue, CUSTOM_SATURATION, lightness);
+  }
+
+  return accent;
+}
+
+/**
  * Builds the accent/dark/light trio the résumé themes expect from a single
- * slider position. Saturation and lightness are fixed, so every position
- * already clears the contrast minimum - nothing has to be silently
- * corrected after the fact.
+ * slider position. Every position is darkened until it clears the contrast
+ * target, so nothing has to be silently corrected after the fact.
  *
  * @param {number} position - 0 for neutral gray, 1-360 for hues
  * @returns {{accent: string, dark: string, light: string}}
@@ -132,7 +165,7 @@ const NEUTRAL_ACCENT = '#374151';
 export function paletteFromSlider(position) {
   const accent = position === NEUTRAL_POSITION
     ? NEUTRAL_ACCENT
-    : hslToHex(position - 1, CUSTOM_SATURATION, CUSTOM_LIGHTNESS);
+    : accentForHue(position - 1);
 
   return {
     accent,
