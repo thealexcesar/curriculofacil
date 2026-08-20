@@ -49,7 +49,7 @@ export function experienceTemplate(index, data = {}, isCurrent = false) {
         <svg class="icon" aria-hidden="true"><use href="#icon-info"></use></svg>
         <span>${t('tips.expDescription')}</span>
       </p>
-      <textarea class="exp-description" rows="3" placeholder="${t('field.expDescription.placeholder')}" spellcheck="true" autocorrect="on"></textarea>
+      <textarea class="exp-description" rows="3" placeholder="${t('field.expDescription.placeholder')}" spellcheck="true" autocorrect="on">${data.description ?? ''}</textarea>
       <button type="button" class="btn-add-small exp-suggest-phrase">${t('btn.suggestPhrase')}</button>
     </div>
   `;
