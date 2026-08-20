@@ -4,6 +4,7 @@ import { debounce } from '../../utils/debounce.js';
 import { paletteFromSlider, NEUTRAL_POSITION } from '../../utils/color.js';
 
 const CV_WIDTH_PX = 794;
+const A4_HEIGHT_PX = 1123;
 // Thin gray margin around the page so it reads as a distinct sheet of
 // paper sitting on the panel, not just "the rest of the white UI" - makes
 // it obvious where the printable A4 page starts and ends. Kept small so it
@@ -134,5 +135,9 @@ function scaleCvPreview() {
   preview.style.transformOrigin = 'top left';
   preview.style.top = `${PAGE_MARGIN_PX}px`;
   preview.style.left = `${PAGE_MARGIN_PX}px`;
-  wrapper.style.height = `${Math.round(1123 * scale) + PAGE_MARGIN_PX * 2}px`;
+  // .cv-preview-wrapper clips its overflow, so a résumé that runs past one
+  // page would be cut off on screen while still printing in full. Size the
+  // wrapper from the rendered content, with one A4 page as the floor.
+  const pageHeight = Math.max(preview.scrollHeight, A4_HEIGHT_PX);
+  wrapper.style.height = `${Math.round(pageHeight * scale) + PAGE_MARGIN_PX * 2}px`;
 }
