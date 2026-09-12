@@ -34,3 +34,30 @@
 - [ ] Merge `develop` → `main`
 - [ ] Push pro remoto
 - [ ] Conferir/configurar o build automático do GitHub Pages (hoje não tem `.github/workflows/` — o deploy provavelmente é direto por branch, não por Actions; a confirmar em Settings → Pages)
+
+## ✅ Domínio e SEO — feito
+
+- [x] Domínio `curriculo.facil.cc` ativo no Cloudflare (CNAME) + GitHub Pages, com HTTPS funcionando
+- [x] `<h1>` real na página (antes só existia texto dentro do SVG do logo)
+- [x] Dados estruturados JSON-LD (`WebApplication`)
+- [x] `robots.txt` e `sitemap.xml`
+- [x] `canonical`, `og:url` e `homepage` do `package.json` apontando pra `curriculo.facil.cc`
+
+## 📈 SEO - backlog
+
+- [ ] Conteúdo real e visível na página (texto explicando o que é / pra quem serve, não só dentro do formulário) - maior impacto de conteúdo
+- [ ] Bloco de perguntas frequentes com dados estruturados (`FAQPage`) - chance de rich snippet no Google
+- [ ] `og:image` (1200x630) para preview em WhatsApp/LinkedIn (hoje o link compartilhado não tem imagem)
+- [ ] Rodar Lighthouse e corrigir Core Web Vitals (performance pesa no ranking)
+- [ ] `hreflang` para as versões en/de (já existem em `locales/`)
+- [ ] Cadastrar `curriculo.facil.cc` no Google Search Console (propriedade de domínio via TXT no Cloudflare) + solicitar indexação manual da URL
+- [ ] Enforce HTTPS no GitHub Pages (liberar assim que o DNS check terminar)
+- [ ] Divulgar o link (LinkedIn, grupos de RH/emprego, fórum da UNINTER) - backlinks pesam mais que qualquer ajuste de código pra ranking
+
+## 🎓 Plano de ação - Apresentação UNINTER (Atividade Extensionista II)
+
+- [ ] Agendar a oficina presencial (CRAS do Garcia, SINE ou escola estadual/municipal) em Blumenau - SC
+- [ ] Montar o diagrama de metodologia/fluxo com cronograma e dias de duração de cada etapa (item M da nota, até 20 pontos)
+- [ ] Planejar a coleta de evidências: fotos, lista de presença, depoimentos, declaração da instituição parceira (item R, até 20 pontos)
+- [ ] Redigir o Trabalho Final (máx. 10 páginas): proposta ajustada + metodologia + resultados obtidos + considerações finais
+- [ ] Usar `curriculo.facil.cc` como link ao vivo, mostrando a plataforma funcionando durante a oficina e na apresentação

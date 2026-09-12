@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://thealexcesar.github.io/curriculofacil/sitemap.xml
+Sitemap: https://curriculo.facil.cc/sitemap.xml
