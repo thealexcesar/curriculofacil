@@ -2,7 +2,7 @@
 
 > Build your professional resume in minutes — free, no sign-up, no server.
 
-🔗 **[Live Demo](https://thealexcesar.github.io/curriculofacil/)**
+🔗 **[Live Demo](https://curriculo.facil.cc/)**
 
 ---
 
