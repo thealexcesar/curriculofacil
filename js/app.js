@@ -12,7 +12,7 @@ import {collectResumeData, applyResumeData} from "./services/resume-data.service
 import {initProgress} from "./services/progress.service.js";
 import {initFontSizeToggle} from "./services/accessibility.service.js";
 import {initDataTransfer} from "./services/data-transfer.service.js";
-import {initWhatsappShare} from "./services/share.service.js";
+import {initFeedbackShare} from "./services/share.service.js";
 import {initCoverLetter} from "./components/cover-letter/cover-letter.component.js";
 import {initProfessionAutocomplete} from "./services/professions.service.js";
 import {initClearableInputs} from "./services/clearable-inputs.service.js";
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initStep5Languages();
   initProgress();
   initDataTransfer();
-  initWhatsappShare();
+  initFeedbackShare();
   initCoverLetter();
 
   restoreResume();

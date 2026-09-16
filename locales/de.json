@@ -15,8 +15,7 @@
     "next": "Weiter",
     "prev": "Zurück",
     "print": "Drucken / PDF",
-    "remove": "Entfernen",
-    "whatsappShare": "Per WhatsApp teilen"
+    "remove": "Entfernen"
   },
   "coverLetter": {
     "body": { "label": "Text des Anschreibens" },
@@ -216,8 +215,7 @@
     "imported": "Daten erfolgreich importiert",
     "importError": "Ungültige Datei - Import fehlgeschlagen",
     "print": { "hint": "Deaktivieren Sie \"Kopf- und Fußzeilen\" im Druckdialog" },
-    "saved": "Automatisch gespeichert",
-    "shareEmpty": "Füllen Sie zuerst Ihren Lebenslauf aus"
+    "saved": "Automatisch gespeichert"
   },
   "template": {
     "classic": "Klassisch",

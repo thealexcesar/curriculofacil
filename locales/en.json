@@ -15,8 +15,7 @@
     "next": "Next",
     "prev": "Previous",
     "print": "Print / PDF",
-    "remove": "Remove",
-    "whatsappShare": "Share on WhatsApp"
+    "remove": "Remove"
   },
   "coverLetter": {
     "body": { "label": "Letter text" },
@@ -216,8 +215,7 @@
     "imported": "Data imported successfully",
     "importError": "Invalid file - could not import",
     "print": { "hint": "Uncheck \"Headers and footers\" in the print dialog" },
-    "saved": "Auto-saved",
-    "shareEmpty": "Fill in your resume before sharing"
+    "saved": "Auto-saved"
   },
   "template": {
     "classic": "Classic",

@@ -19,7 +19,7 @@
     "prev": "Anterior",
     "print": "Imprimir / PDF",
     "remove": "Remover",
-    "whatsappShare": "Enviar pelo WhatsApp"
+    "whatsappFeedback": "Feedback"
   },
   "coverLetter": {
     "body": {
@@ -257,6 +257,7 @@
   },
   "preview": {
     "empty": "Preencha as informações para visualizar o currículo",
+    "feedbackHint": "Seu feedback ajuda a melhorar o app pra quem também tá procurando emprego.",
     "label": "Visualização"
   },
   "professionSuggestion": {
@@ -285,8 +286,7 @@
     "print": {
       "hint": "Desmarque \"Cabeçalhos e rodapés\" no diálogo de impressão"
     },
-    "saved": "Salvo automaticamente",
-    "shareEmpty": "Preencha seu currículo antes de compartilhar"
+    "saved": "Salvo automaticamente"
   },
   "template": {
     "classic": "Clássico",
