@@ -8,6 +8,7 @@ export function initDataTransfer() {
 
   const fileInput = /** @type {HTMLInputElement} */ (document.getElementById('import-file-input'));
   document.getElementById('import-data')?.addEventListener('click', () => fileInput?.click());
+  document.getElementById('welcome-import-btn')?.addEventListener('click', () => fileInput?.click());
   fileInput?.addEventListener('change', handleImport);
 }
 
@@ -55,6 +56,7 @@ function handleImport(event) {
       const data = JSON.parse(/** @type {string} */ (reader.result));
       applyResumeData(data);
       document.dispatchEvent(new Event('input', {bubbles: true}));
+      document.dispatchEvent(new Event('resume-imported'));
       showToast(t('toast.imported'), 'success');
     } catch {
       showToast(t('toast.importError'), 'error');

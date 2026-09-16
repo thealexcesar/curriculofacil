@@ -73,25 +73,36 @@ function applyTemplate(template, buttons) {
   });
 }
 
-/** @returns {void} */
+/**
+ * Two hue sliders exist - one on the welcome screen, one in the preview
+ * panel's template switcher - kept in sync the same way the template
+ * buttons are: every instance found in the page reflects the one saved
+ * value.
+ *
+ * @returns {void}
+ */
 function initColorSwatches() {
-  const hueInput = /** @type {HTMLInputElement} */ (document.getElementById('custom-hue'));
-  const resetBtn = document.getElementById('color-reset');
-  if (!hueInput) return;
+  const hueInputs = /** @type {NodeListOf<HTMLInputElement>} */ (document.querySelectorAll('.custom-hue-input'));
+  if (!hueInputs.length) return;
 
   const saved = Number(localStorage.getItem(COLOR_STORAGE_KEY) ?? NEUTRAL_POSITION);
-  hueInput.value = String(saved);
+  hueInputs.forEach(input => { input.value = String(saved); });
   applyColor(saved);
 
-  hueInput.addEventListener('input', () => {
-    localStorage.setItem(COLOR_STORAGE_KEY, hueInput.value);
-    applyColor(Number(hueInput.value));
+  hueInputs.forEach(input => {
+    input.addEventListener('input', () => {
+      hueInputs.forEach(other => { other.value = input.value; });
+      localStorage.setItem(COLOR_STORAGE_KEY, input.value);
+      applyColor(Number(input.value));
+    });
   });
 
-  resetBtn?.addEventListener('click', () => {
-    hueInput.value = String(NEUTRAL_POSITION);
-    localStorage.setItem(COLOR_STORAGE_KEY, String(NEUTRAL_POSITION));
-    applyColor(NEUTRAL_POSITION);
+  document.querySelectorAll('.color-reset').forEach(resetBtn => {
+    resetBtn.addEventListener('click', () => {
+      hueInputs.forEach(input => { input.value = String(NEUTRAL_POSITION); });
+      localStorage.setItem(COLOR_STORAGE_KEY, String(NEUTRAL_POSITION));
+      applyColor(NEUTRAL_POSITION);
+    });
   });
 }
 
@@ -109,11 +120,27 @@ function applyColor(position) {
     preview.style.setProperty('--cv-accent-light', palette.light);
   }
 
-  // Shows the picked color in the slider's own thumb.
-  document.querySelector('.color-hue')?.style.setProperty('--picked-color', palette.accent);
+  // The welcome screen's own primary color (Começar, checkmarks, active
+  // template thumb) previews the same accent - scoped to #welcome-screen
+  // only, so the rest of the app stays on the fixed brand blue. At the
+  // neutral position the override is removed instead of set to the résumé's
+  // neutral gray, or the welcome screen would turn gray by default before
+  // anyone touches the slider.
+  const welcomeScreen = document.getElementById('welcome-screen');
+  if (welcomeScreen) {
+    if (position === NEUTRAL_POSITION) {
+      welcomeScreen.style.removeProperty('--color-primary');
+      welcomeScreen.style.removeProperty('--color-primary-hover');
+    } else {
+      welcomeScreen.style.setProperty('--color-primary', palette.accent);
+      welcomeScreen.style.setProperty('--color-primary-hover', palette.dark);
+    }
+  }
+
+  // Shows the picked color in every slider's own thumb.
+  document.querySelectorAll('.color-hue').forEach(el => { el.style.setProperty('--picked-color', palette.accent); });
   // Nothing to restore while it's already on the default.
-  const resetBtn = document.getElementById('color-reset');
-  if (resetBtn) resetBtn.hidden = position === NEUTRAL_POSITION;
+  document.querySelectorAll('.color-reset').forEach(btn => { btn.hidden = position === NEUTRAL_POSITION; });
 }
 
 /** @returns {void} */

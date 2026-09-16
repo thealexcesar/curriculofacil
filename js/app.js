@@ -13,6 +13,7 @@ import {initProgress} from "./services/progress.service.js";
 import {initFontSizeToggle} from "./services/accessibility.service.js";
 import {initDataTransfer} from "./services/data-transfer.service.js";
 import {initFeedbackShare} from "./services/share.service.js";
+import {initWelcomeScreen} from "./components/welcome/welcome.component.js";
 import {initCoverLetter} from "./components/cover-letter/cover-letter.component.js";
 import {initProfessionAutocomplete} from "./services/professions.service.js";
 import {initClearableInputs} from "./services/clearable-inputs.service.js";
@@ -28,6 +29,7 @@ import {debounce} from "./utils/debounce.js";
 document.addEventListener('DOMContentLoaded', () => {
   initLocale();
   translateDOM();
+  initWelcomeScreen();
   initFontSizeToggle();
   initViewToggle();
   initNavigation();

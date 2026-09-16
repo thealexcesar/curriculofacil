@@ -397,9 +397,125 @@ a:hover .icon {
 }
 
 /* ============================================================
+   WELCOME SCREEN
+   ============================================================ */
+.welcome-screen {
+    display: none;
+    justify-content: center;
+    padding: var(--space-6) var(--space-4);
+}
+
+.welcome-screen.active { display: flex; }
+
+.app-content { display: none; }
+
+.app-content.active { display: block; }
+
+.welcome-card {
+    max-width: 640px;
+    width: 100%;
+    text-align: center;
+    padding: var(--space-8) var(--space-6);
+}
+
+.welcome-tagline {
+    font-size: var(--font-size-2xl);
+    color: var(--color-text);
+    margin-bottom: var(--space-6);
+}
+
+.welcome-points {
+    list-style: none;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-bottom: var(--space-6);
+}
+
+.welcome-points li {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    padding-left: var(--space-5);
+    position: relative;
+}
+
+.welcome-points li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+}
+
+.welcome-template-picker {
+    text-align: left;
+    margin-bottom: var(--space-5);
+}
+
+.welcome-template-label {
+    display: block;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-2);
+}
+
+.welcome-template-options {
+    display: flex;
+    gap: var(--space-2);
+}
+
+.welcome-template-options .template-btn {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2);
+}
+
+.template-thumb {
+    width: 100%;
+    max-width: 72px;
+    height: auto;
+}
+
+.template-thumb .thumb-page { fill: var(--color-surface); stroke: var(--color-border); }
+.template-thumb .thumb-line { fill: var(--color-border-strong); }
+.template-thumb .thumb-line-strong { fill: var(--color-text-secondary); }
+.template-thumb .thumb-accent { fill: var(--color-border-strong); }
+.template-thumb .thumb-accent-text { fill: var(--color-surface); opacity: 0.9; }
+
+.template-btn.template-btn--active .template-thumb .thumb-accent { fill: var(--color-primary); }
+
+.welcome-color-picker {
+    text-align: left;
+    margin-bottom: var(--space-6);
+}
+
+.welcome-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.welcome-start-btn,
+.welcome-import-btn {
+    width: 100%;
+    justify-content: center;
+}
+
+/* ============================================================
    HEADER
    ============================================================ */
 .app-logo { height: 48px; width: 224px; aspect-ratio: 280 / 60; }
+
+.logo-home-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    line-height: 0;
+}
 
 .app-subtitle {
     font-size: var(--font-size-md);
@@ -1993,6 +2109,10 @@ span[disabled] {
 }
 
 @media (max-width: 1023px) {
+    .welcome-screen { padding: var(--space-4); }
+    .welcome-card { padding: var(--space-5) var(--space-4); }
+    .app-header { margin-bottom: var(--space-3); }
+
     .view-toggle {
         display: flex;
         background: var(--color-surface);
@@ -2078,7 +2198,9 @@ span[disabled] {
     /* Cover letter prints as its own isolated document - the .form-panel,
        .preview-panel and .layout rules above already apply to it generically
        since it reuses the same classes as the resume. */
-    body[data-print-target="letter"] .app > *:not(#cover-letter-panel) { display: none !important; }
+    body[data-print-target="letter"] .app > header,
+    body[data-print-target="letter"] .app > #welcome-screen,
+    body[data-print-target="letter"] #app-content > *:not(#cover-letter-panel) { display: none !important; }
     body[data-print-target="letter"] #cover-letter-panel { display: block !important; }
     body[data-print-target="letter"] .cl-preview { box-shadow: none !important; }
 }
