@@ -401,7 +401,8 @@ a:hover .icon {
    ============================================================ */
 .welcome-screen {
     display: none;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .welcome-screen.active { display: flex; }
@@ -501,6 +502,24 @@ a:hover .icon {
 .welcome-import-btn {
     width: 100%;
     justify-content: center;
+}
+
+.welcome-faq {
+    max-width: 640px;
+    width: 100%;
+    text-align: left;
+    margin-top: var(--space-6);
+    padding: var(--space-4);
+}
+
+.welcome-faq-title {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-3);
+}
+
+.welcome-faq .field-collapsible-content p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
 }
 
 /* ============================================================
