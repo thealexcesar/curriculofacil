@@ -402,7 +402,6 @@ a:hover .icon {
 .welcome-screen {
     display: none;
     justify-content: center;
-    padding: var(--space-6) var(--space-4);
 }
 
 .welcome-screen.active { display: flex; }
@@ -415,13 +414,13 @@ a:hover .icon {
     max-width: 640px;
     width: 100%;
     text-align: center;
-    padding: var(--space-8) var(--space-6);
+    padding: var(--space-4);
 }
 
 .welcome-tagline {
     font-size: var(--font-size-2xl);
     color: var(--color-text);
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-4);
 }
 
 .welcome-points {
@@ -430,7 +429,7 @@ a:hover .icon {
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-4);
 }
 
 .welcome-points li {
@@ -449,7 +448,7 @@ a:hover .icon {
 
 .welcome-template-picker {
     text-align: left;
-    margin-bottom: var(--space-5);
+    margin-bottom: var(--space-4);
 }
 
 .welcome-template-label {
@@ -515,12 +514,6 @@ a:hover .icon {
     padding: 0;
     cursor: pointer;
     line-height: 0;
-}
-
-.app-subtitle {
-    font-size: var(--font-size-md);
-    color: var(--color-text-secondary);
-    margin-top: var(--space-1);
 }
 
 .app-header {
@@ -2109,7 +2102,6 @@ span[disabled] {
 }
 
 @media (max-width: 1023px) {
-    .welcome-screen { padding: var(--space-4); }
     .welcome-card { padding: var(--space-5) var(--space-4); }
     .app-header { margin-bottom: var(--space-3); }
 
