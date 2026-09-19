@@ -1523,7 +1523,6 @@ body.drag-over-import::after {
        to fight a blanket `padding: 0 !important` override. */
     --cv-pad-y: 57px;
     --cv-pad-x: 66px;
-    --cv-band-space: 74px;
     padding: var(--cv-pad-y) var(--cv-pad-x);
     font-size: var(--cv-preview-font-size);
     line-height: 1.5;
@@ -1864,23 +1863,6 @@ body.drag-over-import::after {
    item. Same .cv-* markup as the other themes, so print pagination
    behaves identically.
    ============================================================ */
-.cv-preview.theme-modern {
-    /* Room for the top band, which is drawn as a ::before rather than a
-       real element so the markup stays shared across themes. */
-    padding-top: var(--cv-band-space);
-    position: relative;
-}
-
-.cv-preview.theme-modern::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 14px;
-    background: var(--cv-accent);
-}
-
 .cv-preview.theme-modern .cv-header {
     border-bottom: none;
     padding-bottom: 0;
@@ -1898,7 +1880,7 @@ body.drag-over-import::after {
     font-size: 10pt;
     text-transform: uppercase;
     letter-spacing: 0.18em;
-    color: var(--color-text-secondary);
+    color: var(--cv-accent);
     font-weight: var(--font-weight-medium);
     margin-bottom: 14px;
 }
@@ -2251,7 +2233,6 @@ body.drag-over-import::after {
            keep working off these without needing overrides. */
         --cv-pad-y: 0px;
         --cv-pad-x: 0px;
-        --cv-band-space: 34px;
     }
 
     * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
