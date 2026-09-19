@@ -75,9 +75,9 @@ Reactive state via `createState()` with `.subscribe()`. i18n via `t('key')` for 
 
 | Metric | Score |
 |---|---|
-| Performance | 95 |
-| Accessibility | 94 |
-| Best Practices | 78 |
+| Performance | 100 |
+| Accessibility | 98 |
+| Best Practices | 100 |
 | SEO | 100 |
 
 _Best Practices is dragged down by missing security headers (CSP, HSTS) that only apply once deployed over HTTPS — not meaningful on `localhost`._
