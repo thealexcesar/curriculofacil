@@ -39,20 +39,24 @@ function initTemplateSwitcher() {
   const buttons = document.querySelectorAll('.template-btn');
   if (!buttons.length) return;
 
-  const saved = localStorage.getItem(TEMPLATE_STORAGE_KEY) ?? 'classic';
+  const saved = localStorage.getItem(TEMPLATE_STORAGE_KEY) ?? 'modern';
   applyTemplate(saved, buttons);
 
   buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const template = btn.dataset.template;
-      localStorage.setItem(TEMPLATE_STORAGE_KEY, template);
-      applyTemplate(template, buttons);
-      // The sidebar theme groups sections into different HTML containers
-      // than classic/modern (see preview.template.js) - a class toggle
-      // alone isn't enough, the markup itself has to be regenerated.
-      renderPreview();
-    });
+    btn.addEventListener('click', () => setTemplate(btn.dataset.template));
   });
+}
+
+/**
+ * @param {string} template - 'classic', 'modern' or 'sidebar'
+ * @returns {void}
+ */
+function setTemplate(template) {
+  const buttons = document.querySelectorAll('.template-btn');
+  localStorage.setItem(TEMPLATE_STORAGE_KEY, template);
+  applyTemplate(template, buttons);
+  /** Sidebar groups sections into different containers than classic/modern - needs a re-render, not just a class toggle. */
+  renderPreview();
 }
 
 const THEMES = ['classic', 'modern', 'sidebar'];

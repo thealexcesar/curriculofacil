@@ -166,6 +166,10 @@
           <span>Importar dados salvos</span>
         </button>
       </div>
+      <p class="field-tip field-tip-warning welcome-import-hint no-print">
+        <svg class="icon" aria-hidden="true"><use href="#icon-warning"></use></svg>
+        <span data-i18n="btn.importHint"></span>
+      </p>
     </div>
 
     <div class="welcome-faq">
@@ -312,16 +316,16 @@
   </div>
 
   <div class="data-actions no-print">
-    <button type="button" class="btn-add-small" id="export-data">
-      <svg class="icon" aria-hidden="true"><use href="#icon-download"></use></svg>
-      <span data-i18n="btn.export"></span>
-    </button>
     <button type="button" class="btn-add-small" id="import-data">
       <svg class="icon" aria-hidden="true"><use href="#icon-upload"></use></svg>
       <span data-i18n="btn.import"></span>
     </button>
-    <input type="file" id="import-file-input" accept="application/json" hidden>
+    <input type="file" id="import-file-input" accept=".json,.pdf,.txt,.md" hidden>
   </div>
+  <p class="field-tip field-tip-warning data-actions-hint no-print">
+    <svg class="icon" aria-hidden="true"><use href="#icon-warning"></use></svg>
+    <span data-i18n="btn.importHint"></span>
+  </p>
 
   <div class="view-toggle no-print">
     <button class="view-btn view-btn--active" id="toggle-form" data-i18n="toggle.form"></button>
@@ -541,6 +545,10 @@
             <svg class="icon" aria-hidden="true"><use href="#icon-print"></use></svg>
             <span data-i18n="btn.print"></span>
           </button>
+          <button class="btn btn-secondary btn-sm" id="export-data" data-i18n-title="btn.exportHint">
+            <svg class="icon" aria-hidden="true"><use href="#icon-download"></use></svg>
+            <span data-i18n="btn.export"></span>
+          </button>
           <button class="btn btn-whatsapp btn-sm" id="feedback-share-btn">
             <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
             <span data-i18n="btn.whatsappFeedback"></span>
@@ -551,8 +559,8 @@
       <div class="template-switcher no-print">
         <div class="template-switcher-row">
           <span class="template-switcher-label" data-i18n="template.label"></span>
-          <button class="template-btn template-btn--active" data-template="classic" data-i18n="template.classic"></button>
-          <button class="template-btn" data-template="modern" data-i18n="template.modern"></button>
+          <button class="template-btn" data-template="classic" data-i18n="template.classic"></button>
+          <button class="template-btn template-btn--active" data-template="modern" data-i18n="template.modern"></button>
           <button class="template-btn" data-template="sidebar" data-i18n="template.sidebar"></button>
         </div>
         <div class="color-row">

@@ -11,9 +11,11 @@
     "add": "Adicionar {{item}}",
     "dismiss": "Dispensar",
     "suggestPhrase": "Sugerir frase",
-    "export": "Baixar dados",
+    "export": "Backup",
+    "exportHint": "Arquivo pra guardar e reimportar depois - não é o currículo pronto (isso é o Imprimir).",
     "finish": "Finalizar",
     "import": "Importar dados",
+    "importHint": ".json, .pdf, .txt, .md. PDF ainda é experimental - confira os dados.",
     "next": "Próximo",
     "prev": "Anterior",
     "print": "Imprimir / PDF",
@@ -247,9 +249,11 @@
     "choose": "Escolher foto",
     "change": "Alterar",
     "remove": "Remover",
-    "hint": "Opcional. Rosto e ombros, fundo neutro, roupa lisa e sorriso leve. Fica salva só no seu aparelho.",
+    "hint": "Opcional. Rosto e ombros, fundo neutro, roupa lisa e sorriso leve. Dá pra arrastar a imagem até aqui também. Fica salva só no seu aparelho.",
     "tooLarge": "Imagem muito grande. Escolha uma foto menor.",
-    "error": "Não foi possível carregar essa imagem. Tente outra."
+    "invalidType": "Isso não é uma imagem. Escolha um arquivo de foto (JPG, PNG...).",
+    "error": "Não foi possível carregar essa imagem. Tente outra.",
+    "notSaved": "Sua foto é grande demais para salvar junto com o currículo neste navegador. O resto dos dados foi salvo, mas escolha uma foto menor se quiser que ela fique salva também."
   },
   "progress": {
     "aria": "Progresso de preenchimento do currículo"
@@ -278,10 +282,13 @@
     "close": {
       "aria": "Fechar notificação"
     },
-    "exported": "Dados baixados com sucesso",
+    "exported": "Arquivo de backup gerado - confirme a pasta se o navegador perguntar onde salvar",
     "finished": "Currículo finalizado!",
     "imported": "Dados importados com sucesso",
     "importError": "Arquivo inválido - não foi possível importar",
+    "pdfImported": "Preenchemos o que deu pra identificar no arquivo. Confira e complete o resto à mão.",
+    "pdfImportEmpty": "Não conseguimos identificar nada nesse arquivo. Preencha os campos manualmente.",
+    "pdfImportError": "Não foi possível ler esse arquivo. Tente outro.",
     "print": {
       "hint": "Desmarque \"Cabeçalhos e rodapés\" no diálogo de impressão"
     },

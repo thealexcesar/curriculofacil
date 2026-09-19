@@ -1,4 +1,4 @@
-import {initLocale, translateDOM} from "./services/i18n.js";
+import {initLocale, translateDOM, t} from "./services/i18n.js";
 import {initNavigation, updateStepLocks} from "./services/navigation.service.js";
 import {initStep1Validation} from "./services/validation.service.js";
 import {initStep2Profile} from "./components/profile-section/profile-section.component.js";
@@ -19,6 +19,7 @@ import {initProfessionAutocomplete} from "./services/professions.service.js";
 import {initClearableInputs} from "./services/clearable-inputs.service.js";
 import {initPhotoUpload} from "./services/photo.service.js";
 import {debounce} from "./utils/debounce.js";
+import {showToast} from "./components/toast/toast.component.js";
 
 /**
  * Application entry point.
@@ -62,9 +63,17 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('change', debouncedSave);
 });
 
+let photoDroppedWarned = false;
+
 /** @returns {void} */
 function saveAll() {
-  saveResume(collectResumeData());
+  const droppedPhoto = saveResume(collectResumeData());
+  if (droppedPhoto && !photoDroppedWarned) {
+    photoDroppedWarned = true;
+    showToast(t('photo.notSaved'), 'error');
+  } else if (!droppedPhoto) {
+    photoDroppedWarned = false;
+  }
 }
 
 /** @returns {void} */

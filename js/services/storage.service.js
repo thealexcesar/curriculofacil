@@ -13,14 +13,25 @@ const STORAGE_KEY = 'curriculofacil_v1';
  */
 
 /**
- * Saves resume data to localStorage.
+ * Saves resume data to localStorage. The photo (a base64 data URL) is by far
+ * the biggest field - if it pushes the save past the browser's per-origin
+ * quota, it's dropped so the rest of the resume still saves instead of
+ * silently losing everything.
  *
  * @param {Partial<ResumeData>} data
- * @returns {void}
+ * @returns {boolean} true if the photo had to be dropped to fit the save
  */
 export function saveResume(data) {
   const existing = loadResume();
-  localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...existing, ...data }));
+  const merged = { ...existing, ...data };
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
+    return false;
+  } catch {
+    const { photo, ...personal } = merged.personal ?? {};
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...merged, personal }));
+    return true;
+  }
 }
 
 /**

@@ -37,29 +37,15 @@ export function initPhotoUpload() {
   const input = /** @type {HTMLInputElement} */ (document.getElementById('photo-input'));
   const chooseBtn = document.getElementById('photo-choose');
   const removeBtn = document.getElementById('photo-remove');
-  if (!input || !chooseBtn || !removeBtn) return;
+  const dropZone = document.querySelector('.photo-field');
+  if (!input || !chooseBtn || !removeBtn || !dropZone) return;
 
   chooseBtn.addEventListener('click', () => input.click());
 
-  input.addEventListener('change', async () => {
+  input.addEventListener('change', () => {
     const file = input.files?.[0];
-    if (!file) return;
-
-    if (file.size > MAX_INPUT_BYTES) {
-      showToast(t('photo.tooLarge'), 'error');
-      input.value = '';
-      return;
-    }
-
-    try {
-      setPhoto(await downscaleToDataUrl(file));
-      document.dispatchEvent(new Event('input', { bubbles: true }));
-    } catch {
-      showToast(t('photo.error'), 'error');
-    } finally {
-      // Clear so picking the same file again still fires a change event.
-      input.value = '';
-    }
+    input.value = ''; // clear so picking the same file again still fires change
+    if (file) processFile(file);
   });
 
   removeBtn.addEventListener('click', () => {
@@ -67,7 +53,47 @@ export function initPhotoUpload() {
     document.dispatchEvent(new Event('input', { bubbles: true }));
   });
 
+  ['dragenter', 'dragover'].forEach(type => {
+    dropZone.addEventListener(type, event => {
+      event.preventDefault();
+      dropZone.classList.add('photo-field--dragover');
+    });
+  });
+
+  ['dragleave', 'dragend', 'drop'].forEach(type => {
+    dropZone.addEventListener(type, () => dropZone.classList.remove('photo-field--dragover'));
+  });
+
+  dropZone.addEventListener('drop', event => {
+    event.preventDefault();
+    const file = event.dataTransfer?.files?.[0];
+    if (file) processFile(file);
+  });
+
   renderPhotoState();
+}
+
+/**
+ * @param {File} file
+ * @returns {Promise<void>}
+ */
+async function processFile(file) {
+  if (!file.type.startsWith('image/')) {
+    showToast(t('photo.invalidType'), 'error');
+    return;
+  }
+
+  if (file.size > MAX_INPUT_BYTES) {
+    showToast(t('photo.tooLarge'), 'error');
+    return;
+  }
+
+  try {
+    setPhoto(await downscaleToDataUrl(file));
+    document.dispatchEvent(new Event('input', { bubbles: true }));
+  } catch {
+    showToast(t('photo.error'), 'error');
+  }
 }
 
 /** @returns {void} */
