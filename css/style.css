@@ -965,6 +965,23 @@ span[disabled] {
     color: var(--color-info);
 }
 
+.field-tip-warning {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-1);
+    color: var(--color-warning-text);
+    background: var(--color-warning-light);
+    padding: var(--space-2);
+    border-radius: var(--radius-sm);
+}
+
+.field-tip-warning .icon {
+    position: static;
+    flex-shrink: 0;
+    margin-top: 4px;
+    color: var(--color-warning);
+}
+
 .field-hint .icon {
     width: 14px;
     height: 14px;
@@ -1064,6 +1081,9 @@ span[disabled] {
 
 .field-collapsible {
     margin-bottom: var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
 }
 
 .field-collapsible summary {
@@ -1072,8 +1092,6 @@ span[disabled] {
     justify-content: space-between;
     gap: var(--space-2);
     padding: 10px 12px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
     color: var(--color-text-secondary);
@@ -1083,7 +1101,12 @@ span[disabled] {
 
 .field-collapsible summary::-webkit-details-marker { display: none; }
 
-.field-collapsible summary:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.field-collapsible summary:hover {
+    color: var(--color-primary);
+    background: var(--color-surface-alt);
+}
+
+.field-collapsible[open] summary { border-bottom: 1px solid var(--color-border); }
 
 .field-collapsible-chevron {
     width: 18px;
@@ -1095,7 +1118,7 @@ span[disabled] {
 .field-collapsible[open] .field-collapsible-chevron { transform: rotate(180deg); }
 
 .field-collapsible-content {
-    padding: var(--space-4) 2px 0;
+    padding: var(--space-4) 12px;
 }
 
 .date-select {

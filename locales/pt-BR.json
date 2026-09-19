@@ -71,7 +71,7 @@
     },
     "extraDocs": {
       "toggle": "Documentos pessoais (RG, CPF)",
-      "hint": "Só preencha se a empresa pedir. Normalmente esses dados não são necessários no currículo, só depois, na contratação."
+      "hint": "Cuidado: currículo não precisa de RG nem CPF. Só preencha se a empresa pedir depois, na contratação. Vaga que já exige esses dados na candidatura pode ser golpe para roubar seus dados pessoais."
     },
     "degree": {
       "label": "Curso / Título",
