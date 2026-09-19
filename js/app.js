@@ -79,8 +79,10 @@ function saveAll() {
 /** @returns {void} */
 function restoreResume() {
   const data = loadResume();
+  console.log('[restore] dado carregado do localStorage:', data);
   if (!Object.keys(data).length) return;
   applyResumeData(data);
+  console.log('[restore] valor de #name depois de aplicar:', document.getElementById('name').value);
 }
 
 /** @returns {void} */

@@ -152,7 +152,9 @@ function renderPreview() {
   const preview = document.getElementById('cv-preview');
   if (!preview) return;
   const template = localStorage.getItem(TEMPLATE_STORAGE_KEY) ?? 'classic';
-  preview.innerHTML = previewTemplate(collectResumeData(), template);
+  const data = collectResumeData();
+  console.log('[renderPreview] rodando com personal:', data.personal);
+  preview.innerHTML = previewTemplate(data, template);
   scaleCvPreview();
 }
 

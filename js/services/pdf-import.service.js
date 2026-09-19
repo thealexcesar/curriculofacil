@@ -72,7 +72,8 @@ async function extractLines(file) {
     const page = await pdf.getPage(i);
     const lines = linesFromTextContent(await page.getTextContent());
     if (i === 1) firstPageLines = lines;
-    allLines.push(...lines.map(l => l.text));
+    /** "Page N of M" page-footer artifacts, not part of the résumé's actual content. */
+    allLines.push(...lines.map(l => l.text).filter(text => !/^page\s+\d+\s+of\s+\d+$/i.test(text)));
   }
   return {firstPageLines, allLines, isLinkedIn: await isLinkedInPdf(pdf)};
 }

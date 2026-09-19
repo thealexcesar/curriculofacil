@@ -1926,6 +1926,8 @@ body.drag-over-import::after {
 .cv-preview.theme-modern .cv-section-title {
     letter-spacing: 0.16em;
     margin-bottom: 14px;
+    /*color: var(--cv-accent);*/
+    border-bottom-color: var(--cv-accent);
 }
 
 /* Timeline rail: the vertical line belongs to the section, the dots to
@@ -1993,10 +1995,8 @@ body.drag-over-import::after {
    ============================================================ */
 .cv-preview.theme-sidebar {
     display: flex;
-    align-items: stretch;
-    /* Horizontal page margin stays on the page itself; the two columns
-       only own the space between them. Vertical padding moves into the
-       columns so the divider rule runs the full height. */
+    /** flex-start, not stretch: a short sidebar (just contact + skills) next to a long main column otherwise stretches its divider rule across a lot of empty space, reading as an unfinished box. */
+    align-items: flex-start;
     padding: 0 var(--cv-pad-x);
 }
 
