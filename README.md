@@ -1,52 +1,62 @@
-# Currículo Fácil
+# 📄 Currículo Fácil
 
-> Build your professional resume in minutes — free, no sign-up, no server.
+> Build a professional resume in minutes — free, no sign-up, no server.
 
-🔗 **[Live Demo](https://curriculo.facil.cc/)**
+[![Live Demo](https://img.shields.io/badge/demo-curriculo.facil.cc-1e3a8a?style=flat-square)](https://curriculo.facil.cc/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
+[![No backend](https://img.shields.io/badge/backend-none-16a34a?style=flat-square)](#-why-curr%C3%ADculo-f%C3%A1cil)
+[![Releases](https://img.shields.io/badge/releases-tags-6b7280?style=flat-square)](https://github.com/thealexcesar/curriculofacil/tags)
 
----
-
-## About
-
-Currículo Fácil is a browser-only SPA. No data is sent to any server — everything is saved locally on the user's device.
-
-Built as part of **Atividade Extensionista I** — Systems Analysis and Development, UNINTER.
+**[curriculo.facil.cc →](https://curriculo.facil.cc/)**
 
 ---
 
-## Features
+## 🎯 Why Currículo Fácil?
 
-- 5-step guided form
-- Real-time A4 CV preview, in a Classic or Modern template with a 9-color picker
-- Export / Print as PDF
-- Export / import resume data as a JSON file
-- Cover letter with an auto-generated draft, printed separately from the resume
-- Personal documents: CNH category, plus a collapsible block for RG, CPF and título de eleitor
-- Profession-based résumé suggestions - autocomplete over ~2,460 CBO occupations, with a ready-to-edit summary/skills/bullet-point suggestion for common professions (or their broad category as a fallback)
-- One-click "×" to clear any text field or textarea, instead of deleting character by character
-- Voice dictation for long text fields (native Web Speech API)
-- Native spellcheck on all free-text fields
-- Share a text summary of the resume via WhatsApp / the system share sheet
-- Fill-in progress bar
-- Text size toggle for accessibility
-- Auto-save to localStorage
-- pt-BR only - the personal documents are Brazil-specific and don't translate meaningfully
-- Mobile toggle: Form / Preview
-- "Current job" and "In progress" badge toggles
+- 🔒 **Your data never leaves your device.** No account, no upload, no tracking — everything is saved locally in the browser.
+- ⚡ **From blank page to finished PDF in minutes.** A guided 5-step form instead of a scary empty document.
+- 🆓 **Completely free, no catch.** No paywall, no "unlock this template" gimmick.
+- 🎨 **Looks professional without any design skill.** Three ready-made templates, live A4 preview as you type.
+- 📥 **Already have a résumé somewhere else?** Import it straight from a PDF, a LinkedIn export, `.txt`/`.md`, or the open JSON Resume standard — no retyping from scratch.
 
 ---
 
-## Tech Stack
+## ✨ Features
+
+### Building the résumé
+- 📝 5-step guided form (personal info, profile, experience, education, skills & languages)
+- 💼 Profession-based suggestions — autocomplete over ~2,460 CBO occupations, with a ready-to-edit summary/skills/bullet-point suggestion for common professions (or a broad category as fallback)
+- 🎙️ Voice dictation on long text fields (native Web Speech API), plus native spellcheck everywhere
+- 🏷️ "Current job" / "In progress" badge toggles, multiple phone numbers, extra skills and languages
+- ❌ One-click "×" to clear any field instead of deleting character by character
+- 📊 Fill-in progress bar and a text-size toggle for accessibility
+
+### Preview, export & import
+- 👀 Real-time A4 preview in a Classic, Modern or Executive (sidebar) template, with a custom accent color picker
+- 🖨️ Export / print as a finished PDF
+- ✉️ Auto-generated cover letter draft, printed as its own document
+- 📤 Import from a previously exported `.json`, the open [JSON Resume](https://jsonresume.org/) standard, a `.pdf`, or a plain `.txt`/`.md` file — best-effort extraction of contact info, profile, experience, education, skills and languages
+- 🔗 PDFs exported from LinkedIn are detected via PDF metadata and get a higher-confidence, structured experience list (company, role, dates)
+- 🖱️ Drag-and-drop import anywhere on the page, or the regular file picker
+- 📲 Share a text summary of the résumé via WhatsApp / the system share sheet
+
+### Built for how it's actually used
+- 💾 Auto-save to `localStorage` — safe to close the tab mid-fill and pick up later
+- 📱 Mobile-first, with a Form/Preview toggle on narrow screens
+- 🪪 Personal documents section (CNH category, RG, CPF, título de eleitor) with an explicit warning against sharing them with job listings that shouldn't need them
+- 🇧🇷 pt-BR only, on purpose — the personal documents are Brazil-specific and don't translate meaningfully
+
+---
+
+## 🧱 Tech Stack
 
 ```
 HTML · CSS (custom properties) · Vanilla JS (ES Modules)
 ```
 
-No build tools. No frameworks. No npm dependencies. Runs directly on GitHub Pages.
+No build tools. No frameworks. No npm dependencies — the one exception is [pdf.js](https://mozilla.github.io/pdf.js/), loaded from a CDN on demand only when a PDF is imported. Runs directly on GitHub Pages.
 
----
-
-## Architecture
+## 🏗️ Architecture
 
 Components follow a factory pattern with a `{ element, getData, destroy }` interface:
 
@@ -61,9 +71,7 @@ function createExperience(index, initialData = {}) {
 
 Reactive state via `createState()` with `.subscribe()`. i18n via `t('key')` for dynamic content and `translateDOM()` for static DOM.
 
----
-
-## Lighthouse Scores
+## 🚦 Lighthouse Scores
 
 | Metric | Score |
 |---|---|
@@ -76,6 +84,6 @@ _Best Practices is dragged down by missing security headers (CSP, HSTS) that onl
 
 ---
 
-## License
+## 📄 License
 
 [MIT](LICENSE)
